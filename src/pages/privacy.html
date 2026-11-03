@@ -1,0 +1,38 @@
+<!--
+slug: privacy
+order: 15
+title: Your privacy
+short_title: Privacy
+description: No accounts, ads, cookies, or tracking. The 1-minute check runs on your device and sends nothing. What Cloudflare, the host, can see.
+sources: S34
+-->
+    <h1>Your privacy</h1>
+    <p class="purpose">This site is built so your answers stay with you.</p>
+
+    <h2>The short version</h2>
+    <ul class="short">
+      <li data-claim="C-PRIV-NONE"><strong>Nothing to sign up for:</strong> No accounts, ads, cookies, or tracking.</li>
+      <li data-claim="C-PRIV-NOSEND"><strong>Your answers stay here:</strong> The 1-minute check runs on your device. Your answers are never saved or sent.</li>
+      <li data-claim="C-PRIV-SETTINGS"><strong>Display settings:</strong> Text size and colors are saved on this device only. Use "Reset to standard" to clear them.</li>
+      <li data-claim="C-PRIV-HOST"><strong>The host:</strong> Cloudflare hosts this site. To run it, Cloudflare handles visitors' IP addresses.</li>
+    </ul>
+
+    <h2>How we keep your answers private</h2>
+    <ul>
+      <li data-claim="C-PRIV-CSP">Our code never sends your answers anywhere. As a second lock, each page tells your browser to block the page from sending any data.</li>
+      <li data-claim="C-PRIV-NOREF">When you click a link to a state website, your browser does not tell that site which of our pages you came from.</li>
+      <li data-claim="C-NO-IMM-Q">The check never asks about immigration status.</li>
+      <li data-claim="C-PRIV-NOFONTS">We do not load fonts, images, or code from other companies.</li>
+    </ul>
+
+    <div class="more">
+      <h2>For the technical reader</h2>
+      <p data-claim="C-PRIV-CSP">Every page comes with a Content Security Policy that has <code>connect-src 'none'</code> and <code>form-action 'none'</code>. The host sends it, and the page repeats it. Scripts and styles load only from this site. <code>frame-ancestors 'none'</code> stops other sites from showing these pages inside their own. You can check all of this in your browser's developer tools.</p>
+      <p data-claim="C-PRIV-SETTINGS">Display settings use one localStorage key, <code>stasis-display-v1</code>. Nothing else is stored.</p>
+      <p>Full details are in our public <a href="https://github.com/radiofreelove/projectstasis/blob/main/docs/privacy.md">privacy notes</a>.</p>
+    </div>
+
+    <h2>Telling us about a problem</h2>
+    <div class="warn">
+      <p>Problem reports go to GitHub and are public. Do not share your name, case number, health, immigration status, or other personal details.</p>
+    </div>

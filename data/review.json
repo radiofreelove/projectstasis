@@ -1,0 +1,35 @@
+{
+  "notes": "Dated checkpoints. tools/check_review_dates.py fails after a date passes, so the weekly workflow opens an issue and a person re-checks the sources. A checkpoint is a prompt to re-read sources, not a prediction that anything will change. Remove or move a checkpoint only after doing the work, and say so in CHANGELOG.md.",
+  "checkpoints": [
+    {
+      "review_by": "2026-11-16",
+      "what": "Re-check OHA's pages (S01, S03, S07, S24 by hand) for any update after the Oct. 29, 2026 court ruling. Update claim C-COURT and its 'As of' date on reasons.html and health.html.",
+      "claims": ["C-COURT", "C-EX-HEALTH"]
+    },
+    {
+      "review_by": "2026-12-31",
+      "what": "Retire the 'before Jan. 1, 2027' medical bills box on the home page and reword C-RETRO-NOW on bills.html into the past tense.",
+      "claims": ["C-RETRO-NOW", "C-RETRO-2027"]
+    },
+    {
+      "review_by": "2027-01-15",
+      "what": "First check after the rules start. Re-read S01 to S09 and S24 by hand. Look for new OHA notices, forms (including any new version of OHP 7210), and any change to the 35-day reply window.",
+      "claims": ["C-START", "C-LOOKBACK-APP", "C-RFI-35", "C-7210-NOQS"]
+    },
+    {
+      "review_by": "2027-04-29",
+      "what": "End of the court's six-month bar on penalizing plaintiff states (S28). Re-check the health reason and the case docket for appeals or new orders.",
+      "claims": ["C-COURT", "C-EX-HEALTH", "C-W-FRAIL"]
+    },
+    {
+      "review_by": "2027-08-01",
+      "what": "Prepare for more frequent renewals in late 2027. Decide whether to add renewal pages for people who are now members.",
+      "claims": ["C-W-RENEWAL", "C-NO-MONTHLY"]
+    },
+    {
+      "review_by": "2027-12-01",
+      "what": "Prepare for 2028 proof rules. Replace 'In 2027, no doctor's note is needed' with current OHA guidance.",
+      "claims": ["C-HEALTH-2027", "C-HEALTH-WHO", "C-2028-PROOF"]
+    }
+  ]
+}

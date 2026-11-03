@@ -1,0 +1,35 @@
+name: Live site check
+
+# After every push to main, wait for Cloudflare Pages to publish, then check
+# that the live site matches this repository: every page and file byte for
+# byte, every header in site/_headers, the 404 page, and redirects from old
+# .html addresses. A red X means visitors are not getting what is in main.
+# Run it by hand from the Actions tab after any change to the Cloudflare
+# settings. It opens no issues; the weekly check does that.
+# See docs/maintenance.md.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: live-check
+  cancel-in-progress: true
+
+jobs:
+  live:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Live site matches this commit (waits up to 15 minutes for Cloudflare)
+        run: python3 tools/check_live.py --wait 900

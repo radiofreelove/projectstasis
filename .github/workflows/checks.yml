@@ -1,0 +1,72 @@
+name: Checks
+
+# Runs on every push and pull request. See docs/testing.md.
+
+on:
+  push:
+  pull_request:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  content:
+    name: Facts, structure, contrast, reading level
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Site matches its sources; every link registered; every fact logged
+        run: python3 tools/build.py --check
+
+      - name: Structure, privacy, and accessibility lint
+        run: python3 tools/check_structure.py
+
+      - name: Color contrast (7:1 text, 3:1 borders and focus)
+        run: python3 tools/check_contrast.py --check
+
+      - name: Reading level (target grade 6, fails above 8)
+        run: python3 tools/check_reading_level.py --check
+
+      - name: Dated checkpoints (reported here; the weekly job opens the issue)
+        run: python3 tools/check_review_dates.py
+        continue-on-error: true
+
+  browser:
+    name: Real-browser tests with axe-core
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install Playwright with Chromium, and axe-core
+        run: |
+          python3 -m pip install "playwright==1.*"
+          python3 -m playwright install --with-deps chromium
+          npm install --no-save --no-audit --no-fund axe-core@4
+
+      - name: Browser checks
+        env:
+          AXE_JS: node_modules/axe-core/axe.min.js
+        run: python3 tools/browser_check.py --shots screenshots
+
+      - name: Keep the report and screenshots
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: browser-report
+          path: |
+            docs/testing-browser.md
+            screenshots/

@@ -1,0 +1,65 @@
+name: Weekly source check
+
+# Every Monday morning (Oregon time): check every official link, every
+# dated checkpoint, and what Cloudflare serves at the live address. If
+# anything needs a person, open one GitHub issue with the full report.
+# Run it by hand from the Actions tab after any change to the Cloudflare
+# settings. See docs/maintenance.md.
+
+on:
+  schedule:
+    - cron: "17 15 * * 1"
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  issues: write
+
+jobs:
+  review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Check official links (respects robots.txt)
+        id: links
+        continue-on-error: true
+        run: python3 tools/check_links.py --report link-report.md
+
+      - name: Check dated checkpoints
+        id: dates
+        continue-on-error: true
+        run: python3 tools/check_review_dates.py > review-report.txt 2>&1
+
+      - name: Check the live site (pages, headers, and the 404 page match this repository)
+        id: live
+        continue-on-error: true
+        run: python3 tools/check_live.py --report live-report.md
+
+      - name: Open an issue if a person is needed
+        if: steps.links.outcome == 'failure' || steps.dates.outcome == 'failure' || steps.live.outcome == 'failure'
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          {
+            echo "The weekly source check found something that needs a person."
+            echo
+            echo "## Checkpoints"
+            echo
+            echo '```'
+            cat review-report.txt 2>/dev/null || echo "(no checkpoint report)"
+            echo '```'
+            echo
+            cat link-report.md 2>/dev/null || echo "(no link report)"
+            echo
+            cat live-report.md 2>/dev/null || echo "(no live-site report)"
+            echo
+            echo "See docs/maintenance.md for what to do."
+          } > body.md
+          gh issue create \
+            --title "Weekly source check needs attention ($(date -u +%Y-%m-%d))" \
+            --body-file body.md

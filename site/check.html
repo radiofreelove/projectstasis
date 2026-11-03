@@ -1,0 +1,237 @@
+<!doctype html>
+<html lang="en" data-theme="auto" data-text="m" data-spacing="normal" data-details="all">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Do the rules fit me? A 1-minute check | The Stasis Project</title>
+  <meta name="description" content="Answer 3 quick questions to see whether the new OHP work or activity rules may apply to you. Your answers never leave your device.">
+  <link rel="canonical" href="https://projectstasis.pages.dev/check">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/settings.js"></script>
+  <script src="assets/js/site.js" defer></script>
+  <script src="assets/js/checker.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="independent-banner">
+      <div class="wrap">
+        <p><strong>Independent guide.</strong> Not run by the state. <a href="about">Why this site exists</a></p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="header-row">
+        <a class="brand" href="./">
+          <img src="assets/img/logo.svg" alt="" width="40" height="40">
+          <span><span class="brand-name">The Stasis Project</span><span class="brand-tag">OHP, made plain</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="./">Home</a></li>
+          <li><a href="check" aria-current="page">Check</a></li>
+          <li><a href="apply">Apply</a></li>
+          <li><a href="help">Get help</a></li>
+        </ul>
+        </nav>
+      </div>
+    <details class="display-settings" data-settings>
+      <summary>Display settings</summary>
+      <div class="settings-body">
+        <fieldset>
+          <legend>Text size</legend>
+          <label class="choice"><input type="radio" name="text" value="m" checked> Standard</label>
+          <label class="choice"><input type="radio" name="text" value="l"> Large</label>
+          <label class="choice"><input type="radio" name="text" value="xl"> Extra large</label>
+        </fieldset>
+        <fieldset>
+          <legend>Spacing</legend>
+          <label class="choice"><input type="radio" name="spacing" value="normal" checked> Standard</label>
+          <label class="choice"><input type="radio" name="spacing" value="roomy"> More space between lines and letters</label>
+        </fieldset>
+        <fieldset>
+          <legend>Colors</legend>
+          <label class="choice"><input type="radio" name="theme" value="auto" checked> Match my device</label>
+          <label class="choice"><input type="radio" name="theme" value="warm"> Warm light</label>
+          <label class="choice"><input type="radio" name="theme" value="white"> Plain white</label>
+          <label class="choice"><input type="radio" name="theme" value="dark"> Dark</label>
+        </fieldset>
+        <fieldset>
+          <legend>How much to show</legend>
+          <label class="choice"><input type="radio" name="details" value="all" checked> Everything</label>
+          <label class="choice"><input type="radio" name="details" value="fewer"> Just the key points</label>
+        </fieldset>
+        <div class="settings-actions">
+          <button type="button" class="button-secondary" data-reset-settings>Reset to standard</button>
+          <p>Your choices are saved on this device only.</p>
+        </div>
+      </div>
+    </details>
+    <p id="settings-status" class="visually-hidden" role="status" aria-live="polite"></p>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="wrap">
+    <p class="fewer-note">Some details are hidden. To see everything, open Display settings at the top.</p>
+    <h1>Do the rules fit me?</h1>
+    <p class="purpose">Answer 3 quick questions. See what may apply to you, and what to do next.</p>
+
+    <div class="promise">
+      <h2>Before you start</h2>
+      <ul>
+        <li>It takes about 1 minute.</li>
+        <li data-claim="C-PRIV-NOSEND">Nothing you pick is saved or sent. It stays on this device.</li>
+        <li data-claim="C-NO-IMM-Q">It never asks about immigration status.</li>
+        <li data-claim="C-ONLY-OHP">This is not a decision. Only OHP decides.</li>
+      </ul>
+    </div>
+
+    <noscript>
+      <div class="warn">
+        <p>This check needs JavaScript, and it looks like JavaScript is off. You can get the same answers from these pages:</p>
+        <ul>
+          <li><a href="rules">The new rules, in plain words</a></li>
+          <li><a href="reasons">Reasons you may not have to meet the rules</a></li>
+        </ul>
+      </div>
+    </noscript>
+
+    <p class="progress" id="checker-progress" aria-live="polite" hidden>Step 1 of 3</p>
+
+    <form id="checker" class="checker" novalidate hidden>
+      <div class="step" data-step="1" tabindex="-1">
+        <fieldset aria-describedby="step-1-error">
+          <legend><h2>How old are you?</h2></legend>
+          <label class="choice"><input type="radio" name="age" value="under19"> 18 or younger</label>
+          <label class="choice"><input type="radio" name="age" value="19to64"> 19 to 64</label>
+          <label class="choice"><input type="radio" name="age" value="65plus"> 65 or older</label>
+        </fieldset>
+        <p class="error-message" id="step-1-error" hidden>Please pick one answer to go on.</p>
+        <div class="actions">
+          <button type="button" class="button" data-next>Next</button>
+        </div>
+      </div>
+
+      <div class="step" data-step="2" tabindex="-1" hidden>
+        <fieldset aria-describedby="step-2-hint step-2-error">
+          <legend><h2>Do any of these fit you?</h2></legend>
+          <p class="hint" id="step-2-hint">Pick all that fit. These are reasons you may not have to meet the rules.</p>
+
+          <div class="step-group" role="group" aria-labelledby="group-health">
+            <h3 id="group-health">Health and care</h3>
+            <label class="choice"><input type="checkbox" name="reason" value="pregnant"> I am pregnant, or I was in the last 12 months.</label>
+            <label class="choice"><input type="checkbox" name="reason" value="child"> I care for a child 13 or younger.</label>
+            <label class="choice"><input type="checkbox" name="reason" value="caregiver"> I care for someone with a disability or a serious health condition.</label>
+            <label class="choice"><input type="checkbox" name="reason" value="health"> I have a serious or disabling health condition.</label>
+            <label class="choice"><input type="checkbox" name="reason" value="ssi"> I get SSI or SSDI.</label>
+            <label class="choice"><input type="checkbox" name="reason" value="treatment"> I am in drug or alcohol treatment, or I was in the last 5 years.</label>
+          </div>
+
+          <div class="step-group" role="group" aria-labelledby="group-coverage">
+            <h3 id="group-coverage">Coverage and benefits</h3>
+            <label class="choice"><input type="checkbox" name="reason" value="medicare"> I have Medicare.</label>
+            <label class="choice"><input type="checkbox" name="reason" value="disability_ohp"> I am applying for OHP because of a disability.</label>
+            <label class="choice"><input type="checkbox" name="reason" value="snap"> I get SNAP, and I meet SNAP work rules.</label>
+            <label class="choice"><input type="checkbox" name="reason" value="tanf"> I get TANF, and I meet TANF work rules.</label>
+          </div>
+
+          <div class="step-group" role="group" aria-labelledby="group-background">
+            <h3 id="group-background">About you</h3>
+            <label class="choice"><input type="checkbox" name="reason" value="aian"> I am American Indian or Alaska Native.</label>
+            <label class="choice"><input type="checkbox" name="reason" value="foster"> I was in foster care at age 18, and I am under 26.</label>
+            <label class="choice"><input type="checkbox" name="reason" value="veteran"> I am a veteran with a 100% disability rating from the VA.</label>
+          </div>
+
+          <div class="step-group" role="group" aria-labelledby="group-recent">
+            <h3 id="group-recent">Something that happened recently</h3>
+            <label class="choice"><input type="checkbox" name="reason" value="jail"> I got out of jail or prison in the last 4 months.</label>
+            <label class="choice"><input type="checkbox" name="reason" value="hospital"> I stayed at least one night as a patient in a hospital, nursing facility, or behavioral health facility.</label>
+            <label class="choice"><input type="checkbox" name="reason" value="travel"> I was away from home 7 or more days in a month to get medical care for me, my child, or a tax dependent.</label>
+          </div>
+
+          <div class="step-group">
+            <h3 id="group-none">None of these</h3>
+            <label class="choice"><input type="checkbox" name="reason" value="none" data-none> None of these fit me.</label>
+          </div>
+        </fieldset>
+        <p class="error-message" id="step-2-error" hidden>Please pick at least one answer, or pick "None of these fit me."</p>
+        <div class="actions">
+          <button type="button" class="button-secondary" data-back>Back</button>
+          <button type="button" class="button" data-next>Next</button>
+        </div>
+      </div>
+
+      <div class="step" data-step="3" tabindex="-1" hidden>
+        <fieldset aria-describedby="step-3-hint step-3-error">
+          <legend><h2>Do any of these fit you?</h2></legend>
+          <p class="hint" id="step-3-hint">Pick all that fit. Think about the month before you apply. These are ways to meet the rules.</p>
+          <label class="choice"><input type="checkbox" name="meet" value="income"> My household brings in $580 or more a month.</label>
+          <label class="choice"><input type="checkbox" name="meet" value="school"> I go to school at least half-time.</label>
+          <label class="choice"><input type="checkbox" name="meet" value="hours"> I spend 80 hours a month on work, volunteering, school, or job training, added together.</label>
+          <label class="choice"><input type="checkbox" name="meet" value="none" data-none> None of these fit me yet.</label>
+        </fieldset>
+        <p class="error-message" id="step-3-error" hidden>Please pick at least one answer, or pick "None of these fit me yet."</p>
+        <div class="actions">
+          <button type="button" class="button-secondary" data-back>Back</button>
+          <button type="submit" class="button">See my results</button>
+        </div>
+      </div>
+    </form>
+
+    <section id="checker-result" class="result" tabindex="-1" aria-labelledby="result-title" hidden>
+      <h2 id="result-title">Your results</h2>
+    </section>
+
+    <div class="more">
+      <h2>How this check works</h2>
+      <p>The check runs on this page only. It uses the same lists as our pages on <a href="rules">the rules</a> and <a href="reasons">the reasons you may not have to meet them</a>. You can read every rule it uses in our public <a href="https://github.com/radiofreelove/projectstasis/blob/main/docs/checker-logic.md">checker notes</a>.</p>
+    </div>
+    <section class="sources" aria-labelledby="sources-title">
+      <h2 id="sources-title">Sources for this page</h2>
+      <p>We checked these on <time datetime="2026-11-02">Nov. 2, 2026</time>. Want every detail? See <a href="sources">every source</a> and the public <a href="https://github.com/radiofreelove/projectstasis/blob/main/docs/claims.md">fact log</a>.</p>
+      <ol>
+      <li id="src-s02"><a href="https://www.oregon.gov/oha/HSD/OHP/Tools/Work-Activity-Requirements-EN.pdf">Work or Activity Rules for Some Oregon Health Plan (OHP) Members</a> <span class="tag">PDF</span><br>Oregon Health Authority. Date on it: Updated June 1, 2026.</li>
+      <li id="src-s03"><a href="https://www.oregon.gov/oha/HSD/OHP/Documents/Work-Activity-Exemptions.pdf">OHP work or activity rules: exemptions explainer and checklist</a> <span class="tag">PDF</span><br>Oregon Health Authority. Date on it: No date shown.</li>
+      <li id="src-s01"><a href="https://www.oregon.gov/oha/HSD/OHP/Tools/HR1-Provider-FAQ.pdf">How will providers be affected by federal changes to Oregon Health Plan (OHP)? (HR1 provider FAQ)</a> <span class="tag">PDF</span><br>Oregon Health Authority. Date on it: No date shown.</li>
+      <li id="src-s05"><a href="https://www.oregon.gov/oha/HSD/OHP/Documents/HR1-Mythbusters.pdf">HR1 mythbusters (OHP)</a> <span class="tag">PDF</span><br>Oregon Health Authority. Date on it: No date shown.</li>
+      <li id="src-s04"><a href="https://www.oregon.gov/oha/HSD/OHP/Documents/Applicant-Renewal-Journey-Maps.pdf">Applicant and renewal journey maps (OHP work or activity rules)</a> <span class="tag">PDF</span><br>Oregon Health Authority. Date on it: No date shown.</li>
+      <li id="src-s27"><a href="https://www.federalregister.gov/documents/2026/06/03/2026-11094/medicaid-program-community-engagement-requirement-for-certain-individuals">Medicaid Program; Community Engagement Requirement for Certain Individuals (interim final rule), 91 Fed. Reg. 33348</a><br>Centers for Medicare &amp; Medicaid Services. Date on it: Published June 3, 2026; effective July 31, 2026.</li>
+      </ol>
+    </section>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <h2>Why this site exists</h2>
+      <p>The state explains the new OHP rules across more than a dozen documents. This site puts what applicants need in one place, in plain words. Each page lists the official sources behind it.</p>
+      <p><strong>Independent.</strong> Not run by the State of Oregon, the Oregon Health Authority (OHA), or the Oregon Department of Human Services (ODHS). Only OHP decides who qualifies.</p>
+      <p><strong>Private.</strong> No accounts, ads, cookies, or tracking. <a href="privacy">How your privacy is protected</a>.</p>
+      <p>Facts last checked <time datetime="2026-11-02">Nov. 2, 2026</time>. Version 0.1.0 beta. <a href="https://github.com/radiofreelove/projectstasis">See how this site is made</a>.</p>
+      <nav class="footer-pages" aria-label="All pages">
+        <h2>All pages</h2>
+        <ul>
+          <li><a href="./">Home</a></li>
+          <li><a href="check" aria-current="page">Do the rules fit me?</a></li>
+          <li><a href="rules">The new rules</a></li>
+          <li><a href="reasons">Reasons you may not have to</a></li>
+          <li><a href="apply">How to apply</a></li>
+          <li><a href="letter">OHP sent me a letter</a></li>
+          <li><a href="denied">I was turned down</a></li>
+          <li><a href="bills">Past medical bills</a></li>
+          <li><a href="health">Health conditions</a></li>
+          <li><a href="immigration">Immigration status</a></li>
+          <li><a href="help">Free help and languages</a></li>
+          <li><a href="words">Words on your letters</a></li>
+          <li><a href="log">Hours log</a></li>
+          <li><a href="about">Why this site exists</a></li>
+          <li><a href="privacy">Privacy</a></li>
+          <li><a href="accessibility">Accessibility</a></li>
+          <li><a href="sources">Every source</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>

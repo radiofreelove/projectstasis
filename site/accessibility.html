@@ -1,0 +1,154 @@
+<!doctype html>
+<html lang="en" data-theme="auto" data-text="m" data-spacing="normal" data-details="all">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Accessibility | The Stasis Project</title>
+  <meta name="description" content="How this site is built for people who use screen readers, keyboards, zoom, or voice control, and for people with ADHD, autism, dyslexia, brain injury, or anxiety.">
+  <link rel="canonical" href="https://projectstasis.pages.dev/accessibility">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/settings.js"></script>
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="independent-banner">
+      <div class="wrap">
+        <p><strong>Independent guide.</strong> Not run by the state. <a href="about">Why this site exists</a></p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="header-row">
+        <a class="brand" href="./">
+          <img src="assets/img/logo.svg" alt="" width="40" height="40">
+          <span><span class="brand-name">The Stasis Project</span><span class="brand-tag">OHP, made plain</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="./">Home</a></li>
+          <li><a href="check">Check</a></li>
+          <li><a href="apply">Apply</a></li>
+          <li><a href="help">Get help</a></li>
+        </ul>
+        </nav>
+      </div>
+    <details class="display-settings" data-settings>
+      <summary>Display settings</summary>
+      <div class="settings-body">
+        <fieldset>
+          <legend>Text size</legend>
+          <label class="choice"><input type="radio" name="text" value="m" checked> Standard</label>
+          <label class="choice"><input type="radio" name="text" value="l"> Large</label>
+          <label class="choice"><input type="radio" name="text" value="xl"> Extra large</label>
+        </fieldset>
+        <fieldset>
+          <legend>Spacing</legend>
+          <label class="choice"><input type="radio" name="spacing" value="normal" checked> Standard</label>
+          <label class="choice"><input type="radio" name="spacing" value="roomy"> More space between lines and letters</label>
+        </fieldset>
+        <fieldset>
+          <legend>Colors</legend>
+          <label class="choice"><input type="radio" name="theme" value="auto" checked> Match my device</label>
+          <label class="choice"><input type="radio" name="theme" value="warm"> Warm light</label>
+          <label class="choice"><input type="radio" name="theme" value="white"> Plain white</label>
+          <label class="choice"><input type="radio" name="theme" value="dark"> Dark</label>
+        </fieldset>
+        <fieldset>
+          <legend>How much to show</legend>
+          <label class="choice"><input type="radio" name="details" value="all" checked> Everything</label>
+          <label class="choice"><input type="radio" name="details" value="fewer"> Just the key points</label>
+        </fieldset>
+        <div class="settings-actions">
+          <button type="button" class="button-secondary" data-reset-settings>Reset to standard</button>
+          <p>Your choices are saved on this device only.</p>
+        </div>
+      </div>
+    </details>
+    <p id="settings-status" class="visually-hidden" role="status" aria-live="polite"></p>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="wrap">
+    <p class="fewer-note">Some details are hidden. To see everything, open Display settings at the top.</p>
+    <h1>Accessibility</h1>
+    <p class="purpose">This site is built to be easy to use for as many people as possible.</p>
+
+    <h2>The short version</h2>
+    <ul class="short">
+      <li data-claim="C-A11Y-TARGET"><strong>Standard:</strong> Built to meet WCAG 2.2 Level AA. Colors meet the stricter AAA level.</li>
+      <li data-claim="C-A11Y-COGA"><strong>Easy to think through:</strong> Built with W3C advice for people with cognitive and learning disabilities.</li>
+      <li data-claim="C-A11Y-SETTINGS"><strong>Make it yours:</strong> Change text size, spacing, colors, and how much shows. Look for "Display settings" at the top.</li>
+      <li data-claim="C-A11Y-TESTED"><strong>Tested so far:</strong> Automated checks only. Testing with people who use assistive technology has not happened yet.</li>
+    </ul>
+
+    <h2>What we did</h2>
+    <ul>
+      <li>One main idea per page. The page's purpose is in the first lines.</li>
+      <li>Short sentences and plain words. We aim for a 6th grade reading level and check it with a tool.</li>
+      <li>The same layout on every page. Nothing moves, blinks, or plays on its own.</li>
+      <li>No time limits. The check lets you go back and change answers.</li>
+      <li>Big buttons and links that are easy to tap.</li>
+      <li>A thick yellow and black outline shows where you are when you use a keyboard.</li>
+      <li>Works at 400% zoom and on small phones.</li>
+      <li>"Just the key points" mode hides extra details.</li>
+      <li data-claim="C-COLORS">Colors come from the Oregon Department of Human Services' published palette. Every text color pair is checked for contrast.</li>
+      <li>Pages print cleanly, with web addresses shown.</li>
+    </ul>
+
+    <h2>What we cannot control</h2>
+    <ul>
+      <li>State forms and PDFs we link to are made by the state. Some may be hard to use with a screen reader. You can ask OHP for another format for free at <span class="nowrap">800-699-9075</span>.</li>
+      <li>We have not translated this site. We link to the state's own translated forms and language lines instead.</li>
+    </ul>
+
+    <h2>Tell us what is not working</h2>
+    <p>Please tell us on <a href="https://github.com/radiofreelove/projectstasis/issues">GitHub</a>. Reports are public, so do not share personal details.</p>
+    <p class="more">Full notes, including each W3C pattern we used: <a href="https://github.com/radiofreelove/projectstasis/blob/main/docs/accessibility.md">accessibility notes on GitHub</a>.</p>
+    <section class="sources" aria-labelledby="sources-title">
+      <h2 id="sources-title">Sources for this page</h2>
+      <p>We checked these on <time datetime="2026-11-02">Nov. 2, 2026</time>. Want every detail? See <a href="sources">every source</a> and the public <a href="https://github.com/radiofreelove/projectstasis/blob/main/docs/claims.md">fact log</a>.</p>
+      <ol>
+      <li id="src-s33"><a href="https://www.w3.org/TR/WCAG22/">Web Content Accessibility Guidelines (WCAG) 2.2</a><br>W3C. Date on it: W3C Recommendation, 12 December 2024.</li>
+      <li id="src-s32"><a href="https://www.w3.org/TR/coga-usable/">Making Content Usable for People with Cognitive and Learning Disabilities (W3C Working Group Note)</a><br>W3C. Date on it: 29 April 2021.</li>
+      <li id="src-s31"><a href="https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/dhs2022.pdf">Oregon Department of Human Services Brand Guidelines (de2022, 07/25)</a> <span class="tag">PDF</span><br>Oregon Department of Human Services. Date on it: 07/25.</li>
+      </ol>
+    </section>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <h2>Why this site exists</h2>
+      <p>The state explains the new OHP rules across more than a dozen documents. This site puts what applicants need in one place, in plain words. Each page lists the official sources behind it.</p>
+      <p><strong>Independent.</strong> Not run by the State of Oregon, the Oregon Health Authority (OHA), or the Oregon Department of Human Services (ODHS). Only OHP decides who qualifies.</p>
+      <p><strong>Private.</strong> No accounts, ads, cookies, or tracking. <a href="privacy">How your privacy is protected</a>.</p>
+      <p>Facts last checked <time datetime="2026-11-02">Nov. 2, 2026</time>. Version 0.1.0 beta. <a href="https://github.com/radiofreelove/projectstasis">See how this site is made</a>.</p>
+      <nav class="footer-pages" aria-label="All pages">
+        <h2>All pages</h2>
+        <ul>
+          <li><a href="./">Home</a></li>
+          <li><a href="check">Do the rules fit me?</a></li>
+          <li><a href="rules">The new rules</a></li>
+          <li><a href="reasons">Reasons you may not have to</a></li>
+          <li><a href="apply">How to apply</a></li>
+          <li><a href="letter">OHP sent me a letter</a></li>
+          <li><a href="denied">I was turned down</a></li>
+          <li><a href="bills">Past medical bills</a></li>
+          <li><a href="health">Health conditions</a></li>
+          <li><a href="immigration">Immigration status</a></li>
+          <li><a href="help">Free help and languages</a></li>
+          <li><a href="words">Words on your letters</a></li>
+          <li><a href="log">Hours log</a></li>
+          <li><a href="about">Why this site exists</a></li>
+          <li><a href="privacy">Privacy</a></li>
+          <li><a href="accessibility" aria-current="page">Accessibility</a></li>
+          <li><a href="sources">Every source</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
