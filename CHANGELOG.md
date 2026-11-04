@@ -2,6 +2,16 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.1.1 beta (2026-11-03)
+
+Follow-up to an outside review that compared this project with The Strand Project. Shared conventions are now recorded in [docs/decisions/0012-shared-with-strand.md](docs/decisions/0012-shared-with-strand.md).
+
+- Jan. 1, 2027: the medical bills box on the home page now stays after the change. Only the "Read this before Jan. 1, 2027" line and the "Through Dec. 31, 2026" sentence hide after Dec. 31; the 1-month rule is now a full sentence that reads true on either side of the date. The "Through Dec. 31, 2026" line on the bills page also hides after Dec. 31, and that page's opening line no longer says the window "is getting shorter."
+- Dated checkpoints: new Dec. 13, 2026 dry run before the switch. The Dec. 31 checkpoint now covers deleting the expired notes for readers without JavaScript and rewording the home page title and headline. The weekly review workflow also runs on Jan. 1 each year, so notes that expire on Dec. 31 are flagged that day instead of the next Monday.
+- Display settings: new optional font, Atkinson Hyperlegible Next, the same files and setting as The Strand Project. It is served from this site, pinned by SHA-256 in `fonts.lock.json`, checked by the build, and downloaded only by readers who choose it. The Content Security Policy adds `font-src 'self'`. The default font order now matches Strand (system font first).
+- "Report a mistake" is now in the banner on every page. It opens a new About section that says reports and GitHub account names are public.
+- Every page footer now names the licenses, and the About page has a "Reuse this guide" section (roadmap item 4).
+
 ## 0.1.0 beta (2026-11-03)
 
 First public beta of The Stasis Project, a plain-language guide for OHP applicants.

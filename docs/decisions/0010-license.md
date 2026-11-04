@@ -24,6 +24,8 @@ The maintainer chose two licenses on Nov. 2, 2026.
 - The generated pages in `site/` count as words, even though the build adds shared markup to them.
 - The logo was left out of both licenses by default when they were added, so that copies cannot look like the original site. The maintainer can add it to CC BY 4.0 later.
 
+Update, Nov. 3, 2026: the optional reading font in `site/assets/fonts/` keeps its own license, the SIL Open Font License 1.1 (`site/assets/fonts/OFL.txt`). It is not covered by CC BY 4.0 or MIT. See [0012](0012-shared-with-strand.md) and the README.
+
 ## Options considered
 
 | Option | Why it was not chosen |

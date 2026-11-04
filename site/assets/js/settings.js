@@ -1,5 +1,5 @@
 /*
-  Display settings: text size, spacing, colors, and how much to show.
+  Display settings: text size, spacing, font, colors, and how much to show.
 
   Loaded in <head> without "defer" so the page draws in the chosen colors
   from the start (no flash). Settings are saved in this browser's
@@ -11,10 +11,11 @@
   'use strict';
 
   var KEY = 'stasis-display-v1';
-  var DEFAULTS = { text: 'm', spacing: 'normal', theme: 'auto', details: 'all' };
+  var DEFAULTS = { text: 'm', spacing: 'normal', font: 'system', theme: 'auto', details: 'all' };
   var ALLOWED = {
     text: ['m', 'l', 'xl'],
     spacing: ['normal', 'roomy'],
+    font: ['system', 'hyper'],
     theme: ['auto', 'warm', 'white', 'dark'],
     details: ['all', 'fewer']
   };
@@ -59,6 +60,7 @@
   function apply(settings) {
     root.setAttribute('data-text', settings.text);
     root.setAttribute('data-spacing', settings.spacing);
+    root.setAttribute('data-font', settings.font);
     root.setAttribute('data-theme', settings.theme);
     root.setAttribute('data-details', settings.details);
   }

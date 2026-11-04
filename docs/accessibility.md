@@ -17,7 +17,7 @@
 | 5. Help users focus | No pop-ups, carousels, autoplay, animation, or ads. A "Just the key points" setting hides extra detail. |
 | 6. Do not rely on memory | No accounts or logins. Results list what the person picked. Pages and results can be printed. An hours log can be printed. |
 | 7. Provide help and support | "Get help" is in the same place on every page (also WCAG 3.2.6). Phone numbers for people, free helpers, language lines, and legal help. The check's results always name a next step. |
-| 8. Support adaptation and personalization | Display settings: text size (3 levels), spacing (WCAG 1.4.12 values or more), colors (device, warm light, plain white, dark), and how much to show. Respects the device's dark mode and reduced-motion settings, Windows high contrast (forced colors), and browser zoom. |
+| 8. Support adaptation and personalization | Display settings: text size (3 levels), spacing (WCAG 1.4.12 values or more), an optional easy-to-read font (Atkinson Hyperlegible Next), colors (device, warm light, plain white, dark), and how much to show. Respects the device's dark mode and reduced-motion settings, Windows high contrast (forced colors), and browser zoom. |
 
 ## Other details
 

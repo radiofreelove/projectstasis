@@ -30,6 +30,7 @@ Standard library only, so anyone can read, audit, and run it.
 from __future__ import annotations
 
 import argparse
+import hashlib
 import html
 import json
 import re
@@ -41,6 +42,8 @@ SRC = ROOT / "src" / "pages"
 SITE = ROOT / "site"
 DOCS = ROOT / "docs"
 DATA = ROOT / "data"
+FONTS = SITE / "assets" / "fonts"
+FONTS_LOCK = ROOT / "fonts.lock.json"
 
 SITE_NAME = "The Stasis Project"
 TAGLINE = "OHP, made plain"
@@ -48,7 +51,7 @@ BASE_URL = "https://projectstasis.pages.dev/"
 PROJECT_REPO = "https://github.com/radiofreelove/projectstasis"
 FACTS_CHECKED_ISO = "2026-11-02"
 FACTS_CHECKED_TEXT = "Nov. 2, 2026"
-VERSION = "0.1.0 beta"
+VERSION = "0.1.1 beta"
 
 NAV = [("index", "Home"), ("check", "Check"), ("apply", "Apply"), ("help", "Get help")]
 
@@ -57,7 +60,7 @@ HREF_RE = re.compile(r'href="([^"]+)"')
 CLAIM_RE = re.compile(r'data-claim="([^"]+)"')
 
 CSP = (
-    "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; "
+    "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; "
     "connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'"
 )
 
@@ -155,6 +158,11 @@ SETTINGS_PANEL = """    <details class="display-settings" data-settings>
           <label class="choice"><input type="radio" name="spacing" value="roomy"> More space between lines and letters</label>
         </fieldset>
         <fieldset>
+          <legend>Font</legend>
+          <label class="choice"><input type="radio" name="font" value="system" checked> Standard</label>
+          <label class="choice"><input type="radio" name="font" value="hyper"> Atkinson Hyperlegible, a font designed so letters are easy to tell apart</label>
+        </fieldset>
+        <fieldset>
           <legend>Colors</legend>
           <label class="choice"><input type="radio" name="theme" value="auto" checked> Match my device</label>
           <label class="choice"><input type="radio" name="theme" value="warm"> Warm light</label>
@@ -210,7 +218,7 @@ def render_page(meta, body, pages, by_id, state_doc_count):
         canonical = f'  <link rel="canonical" href="{BASE_URL}{"" if slug == "index" else slug}">\n'
 
     return f"""<!doctype html>
-<html lang="en" data-theme="auto" data-text="m" data-spacing="normal" data-details="all">
+<html lang="en" data-theme="auto" data-text="m" data-spacing="normal" data-font="system" data-details="all">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
@@ -228,7 +236,7 @@ def render_page(meta, body, pages, by_id, state_doc_count):
   <header class="site-header">
     <div class="independent-banner">
       <div class="wrap">
-        <p><strong>Independent guide.</strong> Not run by the state. <a href="about.html">Why this site exists</a></p>
+        <p><strong>Independent guide.</strong> Not run by the state. <a href="about.html">Why this site exists</a>. <a href="about.html#report">Report a mistake</a>.</p>
       </div>
     </div>
     <div class="wrap">
@@ -258,6 +266,7 @@ def render_page(meta, body, pages, by_id, state_doc_count):
       <p><strong>Independent.</strong> Not run by the State of Oregon, the Oregon Health Authority (OHA), or the Oregon Department of Human Services (ODHS). Only OHP decides who qualifies.</p>
       <p><strong>Private.</strong> No accounts, ads, cookies, or tracking. <a href="privacy.html">How your privacy is protected</a>.</p>
       <p>Facts last checked <time datetime="{FACTS_CHECKED_ISO}">{FACTS_CHECKED_TEXT}</time>. Version {VERSION}. <a href="{PROJECT_REPO}">See how this site is made</a>.</p>
+      <p>Words: <a href="{PROJECT_REPO}/blob/main/LICENSE">CC BY 4.0</a>. Code: <a href="{PROJECT_REPO}/blob/main/LICENSE-CODE">MIT</a>. <a href="about.html#license">Reuse this guide</a>.</p>
       <nav class="footer-pages" aria-label="All pages">
         <h2>All pages</h2>
         <ul>
@@ -416,6 +425,19 @@ def render_claims_md(claims, by_id, usage):
     return "\n".join(lines)
 
 
+def check_fonts():
+    """Every font file named in fonts.lock.json exists and matches its SHA-256."""
+    lock = json.loads(FONTS_LOCK.read_text(encoding="utf-8"))
+    errors = []
+    for item in lock["files"]:
+        path = FONTS / item["dest"]
+        if not path.is_file():
+            errors.append(f"font file missing: {path.relative_to(ROOT)}")
+        elif hashlib.sha256(path.read_bytes()).hexdigest() != item["sha256"]:
+            errors.append(f"font file changed (checksum mismatch): {path.relative_to(ROOT)}")
+    return errors
+
+
 def build():
     registry = load_json(DATA / "sources.json")
     claims = load_json(DATA / "claims.json")
@@ -511,6 +533,8 @@ def build():
     outputs[SITE / "_headers"] = render_headers()
     outputs[DOCS / "sources.md"] = render_sources_md(registry)
     outputs[DOCS / "claims.md"] = render_claims_md(claims, by_id, usage)
+
+    errors.extend(check_fonts())
 
     if errors:
         raise BuildError("Build stopped:\n  - " + "\n  - ".join(errors))

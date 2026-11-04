@@ -7,7 +7,7 @@ The goal: help as many applicants as possible keep or get coverage through the 2
 1. **Expert review.** A benefits attorney or advocate reads every claim in [claims.md](claims.md). Disability Rights Oregon and the Public Benefits Hotline are natural reviewers.
 2. **Usability testing with applicants.** Paid sessions with people who use screen readers, voice control, and magnification; neurodivergent people; people with low literacy; and people reading in a second language. Fix what they find before anything else.
 3. **Send the corrections log to OHA** ([corrections.md](corrections.md)), and record the reply.
-4. **Show the license on the site.** The words are CC BY 4.0 and the code is MIT ([decisions/0010-license.md](decisions/0010-license.md)), but only the repository says so. One footer line on every page would tell clinics, libraries, and other states that they can reuse the words.
+4. ~~**Show the license on the site.**~~ Done in 0.1.1: a footer line on every page and a "Reuse this guide" section on the About page.
 
 ## Next pages
 

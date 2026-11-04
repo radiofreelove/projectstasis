@@ -1,14 +1,16 @@
 name: Weekly source check
 
-# Every Monday morning (Oregon time): check every official link, every
-# dated checkpoint, and what Cloudflare serves at the live address. If
-# anything needs a person, open one GitHub issue with the full report.
+# Every Monday morning (Oregon time), and on Jan. 1 each year when dated
+# notes expire: check every official link, every dated checkpoint, and
+# what Cloudflare serves at the live address. If anything needs a person,
+# open one GitHub issue with the full report.
 # Run it by hand from the Actions tab after any change to the Cloudflare
 # settings. See docs/maintenance.md.
 
 on:
   schedule:
     - cron: "17 15 * * 1"
+    - cron: "17 15 1 1 *"
   workflow_dispatch:
 
 permissions:

@@ -7,7 +7,7 @@
 | Every push and pull request | Build freshness, structure lint, contrast, reading level, browser tests with axe-core | [checks.yml](../.github/workflows/checks.yml) | The commit shows a red X. Fix it before merging. |
 | Every push to any branch | Cloudflare Pages runs build freshness and structure lint, then publishes `site/`: `main` to <https://projectstasis.pages.dev/>, other branches and pull requests to preview addresses | Cloudflare (settings below) | Nothing new is published, and the live site stays as it was. The commit shows a failed Cloudflare check. |
 | Every push to `main`, after Cloudflare publishes | Live-site check: every page, asset, and header matches the commit (waits up to 15 minutes) | [live.yml](../.github/workflows/live.yml) | The commit shows a red X: visitors are not getting what is in `main`. Check the Cloudflare build. |
-| Mondays, 15:17 UTC (morning in Oregon) | Official link check (respects robots.txt), dated checkpoints, and a live-site check that every page, asset, and header matches this repository | [weekly.yml](../.github/workflows/weekly.yml) | Opens a GitHub issue with the report. |
+| Mondays, and Jan. 1 each year, 15:17 UTC (morning in Oregon) | Official link check (respects robots.txt), dated checkpoints, and a live-site check that every page, asset, and header matches this repository | [weekly.yml](../.github/workflows/weekly.yml) | Opens a GitHub issue with the report. |
 
 ## Cloudflare Pages settings
 

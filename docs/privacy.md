@@ -2,7 +2,7 @@
 
 ## What the site collects
 
-Nothing. There are no accounts, forms that submit, cookies, analytics, ads, embedded videos, maps, fonts, or scripts from other companies.
+Nothing. There are no accounts, forms that submit, cookies, analytics, ads, embedded videos, maps, fonts, or scripts from other companies. The optional reading font is served from this site, like the stylesheet.
 
 ## Data flows, end to end
 
@@ -19,7 +19,7 @@ Nothing. There are no accounts, forms that submit, cookies, analytics, ads, embe
 Cloudflare Pages sends these headers with every response. They come from [`site/_headers`](../site/_headers), which `tools/build.py` writes, so they cannot drift from the pages:
 
 ```text
-Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self';
+Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self';
   connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'; frame-ancestors 'none'
 Referrer-Policy: no-referrer
 X-Content-Type-Options: nosniff
@@ -32,7 +32,7 @@ Every page also repeats the same policy in a meta tag (without `frame-ancestors`
 
 - `connect-src 'none'`: scripts cannot make network requests (fetch, XHR, beacons, WebSockets).
 - `form-action 'none'`: forms cannot submit anywhere.
-- `default-src 'none'` with `'self'` for scripts, styles, and images: nothing loads from other sites, and inline scripts and styles are blocked.
+- `default-src 'none'` with `'self'` for scripts, styles, images, and the optional font: nothing loads from other sites, and inline scripts and styles are blocked.
 - `frame-ancestors 'none'` and `X-Frame-Options: DENY`: other sites cannot show these pages inside their own.
 - `Referrer-Policy: no-referrer`: replaces Cloudflare's default (`strict-origin-when-cross-origin`), so state sites do not learn which of our pages sent a visitor.
 - `Permissions-Policy`: the pages cannot use the camera, microphone, location, payments, or USB devices.

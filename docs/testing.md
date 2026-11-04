@@ -24,7 +24,7 @@ The first run found sideways scrolling at 320 px with extra-large text and extra
 - Screen readers (NVDA, JAWS, VoiceOver on iPhone and Mac, TalkBack).
 - Voice control, switch access, and screen magnifiers.
 - Real applicants, including neurodivergent people, people with low literacy, and people reading in a second language.
-- Older phones and slow connections. The pages are small: the home page is about 13 KB of HTML, plus 16 KB of styles, 5 KB of script on most pages (18 KB on the check page), and a 1 KB logo, all before compression. No web fonts, no photos.
+- Older phones and slow connections. The pages are small: the home page is about 13 KB of HTML, plus 16 KB of styles, 5 KB of script on most pages (18 KB on the check page), and a 1 KB logo, all before compression. No photos. The optional reading font adds about 25 KB, and only for readers who choose it.
 
 These are the next priority. See [roadmap.md](roadmap.md).
 

@@ -13,7 +13,7 @@ A free, independent guide for people applying for the Oregon Health Plan (OHP) a
 - 17 short pages for applicants, written in a Smart Brevity style: a plain headline, one line on why the page exists, a few bold-labeled bullets, then details.
 - A 1-minute check ("Do the rules fit me?") that runs in the browser. Answers are never stored or sent.
 - Links to the state's own forms, phone lines, and pages, including the paper OHP application in 17 languages. Nothing is copied or re-hosted, so the forms are always the state's current versions.
-- Display settings for text size, spacing, colors (warm, white, dark), and a "just the key points" mode.
+- Display settings for text size, spacing, an easy-to-read font (Atkinson Hyperlegible Next, the same option as The Strand Project), colors (warm, white, dark), and a "just the key points" mode.
 
 ## What it is not
 
@@ -99,6 +99,7 @@ The words and the code have different licenses, so each can be reused in the way
 |---|---|---|
 | Words and data | Every file not listed below, including the pages (`src/pages/` and `site/*.html`), `data/`, `docs/`, and this README | [CC BY 4.0](LICENSE) |
 | Code | `tools/`, `site/assets/js/`, `site/assets/css/`, and `.github/workflows/` | [MIT](LICENSE-CODE) |
+| Reading font | `site/assets/fonts/` (Atkinson Hyperlegible Next, by the Braille Institute) | [SIL Open Font License 1.1](site/assets/fonts/OFL.txt) |
 | Logo | `site/assets/img/logo.svg` | Not licensed for reuse |
 
 **To reuse the words,** for example in a clinic handout, a translation, or another state's guide: credit The Stasis Project, link to the site and to the license, and say what you changed (CC BY 4.0, section 3). For example:

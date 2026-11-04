@@ -1,9 +1,9 @@
 <!doctype html>
-<html lang="en" data-theme="auto" data-text="m" data-spacing="normal" data-details="all">
+<html lang="en" data-theme="auto" data-text="m" data-spacing="normal" data-font="system" data-details="all">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
   <meta name="referrer" content="no-referrer">
   <title>The Stasis Project: OHP, made plain</title>
   <meta name="description" content="A plain guide to the new Oregon Health Plan (OHP) work or activity rules for people who are applying. Independent. Each page lists its official sources.">
@@ -18,7 +18,7 @@
   <header class="site-header">
     <div class="independent-banner">
       <div class="wrap">
-        <p><strong>Independent guide.</strong> Not run by the state. <a href="about">Why this site exists</a></p>
+        <p><strong>Independent guide.</strong> Not run by the state. <a href="about">Why this site exists</a>. <a href="about#report">Report a mistake</a>.</p>
       </div>
     </div>
     <div class="wrap">
@@ -51,6 +51,11 @@
           <label class="choice"><input type="radio" name="spacing" value="roomy"> More space between lines and letters</label>
         </fieldset>
         <fieldset>
+          <legend>Font</legend>
+          <label class="choice"><input type="radio" name="font" value="system" checked> Standard</label>
+          <label class="choice"><input type="radio" name="font" value="hyper"> Atkinson Hyperlegible, a font designed so letters are easy to tell apart</label>
+        </fieldset>
+        <fieldset>
           <legend>Colors</legend>
           <label class="choice"><input type="radio" name="theme" value="auto" checked> Match my device</label>
           <label class="choice"><input type="radio" name="theme" value="warm"> Warm light</label>
@@ -77,10 +82,10 @@
     <h1>Applying for OHP? New rules start Jan.&nbsp;1, 2027.</h1>
     <p class="purpose" data-claim="C-STATE-DOCS"><strong>Why this site exists:</strong> The state explains the new OHP rules across more than a dozen documents. This site puts what applicants need in one place, in plain words. Each page lists its official sources.</p>
 
-    <section class="warn" data-show-until="2026-12-31" aria-labelledby="bills-title">
-      <h2 id="bills-title">Have medical bills? Read this before Jan.&nbsp;1, 2027.</h2>
-      <p data-claim="C-RETRO-NOW">Through Dec.&nbsp;31, 2026, OHP can help with medical bills from up to 3 months before you apply.</p>
-      <p data-claim="C-RETRO-2027">Starting Jan.&nbsp;1, 2027, it is 1 month for most adults ages 19 to 64.</p>
+    <section class="warn" aria-labelledby="bills-title">
+      <h2 id="bills-title">Have medical bills? <span data-show-until="2026-12-31">Read this before Jan.&nbsp;1, 2027.</span></h2>
+      <p data-claim="C-RETRO-NOW" data-show-until="2026-12-31">Through Dec.&nbsp;31, 2026, OHP can help with medical bills from up to 3 months before you apply.</p>
+      <p data-claim="C-RETRO-2027">Starting Jan.&nbsp;1, 2027, OHP can help with medical bills from 1 month before you apply for most adults ages 19 to 64.</p>
       <p><a href="bills">More about past medical bills</a></p>
     </section>
 
@@ -154,7 +159,8 @@
       <p>The state explains the new OHP rules across more than a dozen documents. This site puts what applicants need in one place, in plain words. Each page lists the official sources behind it.</p>
       <p><strong>Independent.</strong> Not run by the State of Oregon, the Oregon Health Authority (OHA), or the Oregon Department of Human Services (ODHS). Only OHP decides who qualifies.</p>
       <p><strong>Private.</strong> No accounts, ads, cookies, or tracking. <a href="privacy">How your privacy is protected</a>.</p>
-      <p>Facts last checked <time datetime="2026-11-02">Nov. 2, 2026</time>. Version 0.1.0 beta. <a href="https://github.com/radiofreelove/projectstasis">See how this site is made</a>.</p>
+      <p>Facts last checked <time datetime="2026-11-02">Nov. 2, 2026</time>. Version 0.1.1 beta. <a href="https://github.com/radiofreelove/projectstasis">See how this site is made</a>.</p>
+      <p>Words: <a href="https://github.com/radiofreelove/projectstasis/blob/main/LICENSE">CC BY 4.0</a>. Code: <a href="https://github.com/radiofreelove/projectstasis/blob/main/LICENSE-CODE">MIT</a>. <a href="about#license">Reuse this guide</a>.</p>
       <nav class="footer-pages" aria-label="All pages">
         <h2>All pages</h2>
         <ul>

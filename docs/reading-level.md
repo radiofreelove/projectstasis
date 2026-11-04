@@ -6,16 +6,16 @@ Flesch-Kincaid grade level of each page's main text. Target: grade 6 or lower. T
 
 | Page | Grade | Words | Sentences | Words per sentence | Status |
 |---|---|---|---|---|---|
-| about.html | 3.8 | 311 | 41 | 7.6 | On target |
-| accessibility.html | 3.7 | 298 | 36 | 8.3 | On target |
+| about.html | 3.7 | 398 | 49 | 8.1 | On target |
+| accessibility.html | 3.7 | 299 | 36 | 8.3 | On target |
 | apply.html | 4.5 | 362 | 57 | 6.4 | On target |
-| bills.html | 3.6 | 122 | 22 | 5.5 | On target |
+| bills.html | 3.6 | 128 | 23 | 5.6 | On target |
 | check.html | 2.8 | 435 | 61 | 7.1 | On target |
 | denied.html | 4.5 | 267 | 37 | 7.2 | On target |
 | health.html | 6.6 | 238 | 30 | 7.9 | Above target |
 | help.html | 5.0 | 239 | 57 | 4.2 | On target |
 | immigration.html | 7.2 | 247 | 30 | 8.2 | Above target |
-| index.html | 3.7 | 389 | 52 | 7.5 | On target |
+| index.html | 3.8 | 397 | 52 | 7.6 | On target |
 | letter.html | 2.9 | 247 | 38 | 6.5 | On target |
 | log.html | 1.9 | 138 | 30 | 4.6 | On target |
 | privacy.html | 4.5 | 253 | 28 | 9.0 | On target |

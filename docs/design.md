@@ -34,7 +34,7 @@ The site uses the ODHS **palette** only. It does not use the ODHS logo, brandmar
 
 ## Type
 
-- System fonts, starting with Noto Sans if it is installed (Noto Sans is the ODHS primary font). No web fonts are downloaded, for privacy and speed.
+- System fonts by default, in the same order as The Strand Project (system-ui first). Readers can choose Atkinson Hyperlegible Next in Display settings; it is served from this site and downloaded only when chosen. See [decisions/0012-shared-with-strand.md](decisions/0012-shared-with-strand.md).
 - Base size 18 px at the browser's default, set as a percentage so the browser's own text-size setting still works. Large and extra large raise it to 21 and 24 px.
 - Line height 1.6; "More space" raises it to 2 and adds letter and word spacing beyond the WCAG 1.4.12 values.
 - Text column about 38 characters wide in rem units, which keeps lines near 60 to 75 characters.

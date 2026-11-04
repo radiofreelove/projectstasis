@@ -122,6 +122,25 @@ html { font-size: 112.5%; }
 :root[data-text="l"] { font-size: 131.25%; }
 :root[data-text="xl"] { font-size: 150%; }
 
+/* Optional reading font, chosen in Display settings. Served from this site
+   (see fonts.lock.json); the browser downloads it only when it is chosen.
+   Atkinson Hyperlegible Next: SIL Open Font License 1.1, Braille Institute.
+   Same font, files, and setting values as The Strand Project. */
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("../fonts/AtkinsonHyperlegibleNext-Regular.woff2") format("woff2");
+  font-weight: 400;
+  font-style: normal;
+  font-display: swap;
+}
+@font-face {
+  font-family: "Atkinson Hyperlegible Next";
+  src: url("../fonts/AtkinsonHyperlegibleNext-Bold.woff2") format("woff2");
+  font-weight: 700;
+  font-style: normal;
+  font-display: swap;
+}
+
 /* Base */
 *, *::before, *::after { box-sizing: border-box; }
 
@@ -129,13 +148,16 @@ body {
   margin: 0;
   background: var(--bg);
   color: var(--text);
-  font-family: "Noto Sans", system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", "Helvetica Neue", Arial, sans-serif;
   font-size: 1rem;
   line-height: var(--leading);
   text-rendering: optimizeLegibility;
   -webkit-text-size-adjust: 100%;
   /* Long web addresses wrap instead of pushing the page sideways (WCAG 1.4.10) */
   overflow-wrap: anywhere;
+}
+:root[data-font="hyper"] body {
+  font-family: "Atkinson Hyperlegible Next", system-ui, -apple-system, "Segoe UI", Roboto, "Noto Sans", Arial, sans-serif;
 }
 
 /* At the largest settings, phone numbers may wrap at their dashes rather than overflow */
