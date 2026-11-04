@@ -17,7 +17,8 @@ Both projects follow these conventions. A change to one should be made in both, 
 | Independence | Every page says "Independent guide" in a banner near the top, and again in the footer. |
 | Fonts | System fonts by default, `system-ui` first. Readers can choose Atkinson Hyperlegible Next (setting value `hyper`), served from the site itself. Same package, version (5.3.0), files, and SHA-256 values in each project's `fonts.lock.json`. |
 | Links | One link color, visited or not. |
-| Mistakes | "Report a mistake" in that banner opens the About page section `#report`. That section says reports and GitHub account names are public, then links to GitHub issues. |
+| Mistakes | "Report a mistake" in that banner opens the About page section `#report`. That section says reports and GitHub account names are public, then links to GitHub issues. GitHub issues are the only reporting route: the maintainer chose not to add a form (Nov. 3, 2026), which keeps both sites free of server code. |
+| Saved settings | Display or reading settings are saved on the device automatically when the reader changes one. A reset or "Forget everything" control erases them. Strand's checklist checkmarks are still saved only if the reader turns on "Remember my checklist." |
 | Licenses | `LICENSE` holds CC BY 4.0 (the words, which are most of each project). `LICENSE-CODE` holds MIT. The footer names both, and the About page section `#license` explains reuse. |
 | Privacy headers | Content Security Policy with `connect-src 'none'`, `form-action 'none'`, and `font-src 'self'`; `Referrer-Policy: no-referrer`. |
 | Interactive tools | Each tool has a public note in plain words that lists every question and every rule: [checker-logic.md](../checker-logic.md) here, [PATH-LOGIC.md](https://github.com/radiofreelove/projectstrand/blob/main/docs/PATH-LOGIC.md) in Strand. |
@@ -30,10 +31,7 @@ Differences kept on purpose:
 | Commits the built site, including the font files | Builds on Cloudflare and downloads the font at build time | Each project's build model. Both pin the same checksums. |
 | No "Leave quickly" button | "Leave quickly" on every page | Strand's readers may need to hide what they are reading from people in their household. |
 
-Differences not yet decided (the maintainer's call):
-
-- Display settings are saved automatically on Stasis. On Strand, nothing is saved unless the reader turns on "Remember."
-- Stasis's dark theme is black. Strand's dark theme and header band are deep indigo.
+Each site's dark theme keeps its own background, by the maintainer's choice of Nov. 3, 2026: black for Stasis and deep indigo for Strand. Both names nod to Destiny 2 powers. Stasis's color there is icy blue, so its dark theme shows glacial blue headings and links on black. Strand's color there is green, which lives in Strand's mark; its indigo comes from the ODHS palette. Both themes hold text at 7:1, and neither uses color alone to carry meaning: colored boxes have headings, and the current page is marked by shape, not only color.
 
 ## Consequences
 
