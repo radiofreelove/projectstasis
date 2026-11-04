@@ -6,7 +6,7 @@ A free, independent guide for people applying for the Oregon Health Plan (OHP) a
 
 **Why it exists:** The state explains the new rules across more than a dozen documents (22 are listed in [`data/sources.json`](data/sources.json) as of Nov. 2, 2026). Many carry no date. Some were written before the latest federal rule and a federal court ruling, and a few disagree with each other. This site puts what applicants need on short pages, in plain words, and lists the official source behind every fact.
 
-**Status:** 0.1.0 beta. Not yet reviewed by a lawyer, a benefits advocate, or people who use assistive technology. See [docs/roadmap.md](docs/roadmap.md).
+**Status:** Beta (current version in [CHANGELOG.md](CHANGELOG.md)). Not yet reviewed by a lawyer, a benefits advocate, or people who use assistive technology. See [docs/roadmap.md](docs/roadmap.md).
 
 ## What it is
 
