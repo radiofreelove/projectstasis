@@ -2,6 +2,14 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.1.3 beta (2026-11-03)
+
+Third review follow-up. Nothing readers see changes.
+
+- New `.github/dependabot.yml`: monthly update proposals for the GitHub Actions and the test-only tools, the same setup as Strand. Expect update proposals for the Actions, which are several major versions behind Strand's.
+- The browser test tools are now pinned to Strand's versions in `test-tools/requirements.txt` (Playwright 1.63.0) and `test-tools/package.json` (axe-core 4.10.2). Before this, the workflow installed any Playwright 1.x and any axe-core 4.x. The site build still uses only the Python standard library.
+- `docs/testing.md` no longer carries a dated results summary that went stale with each release. It now lists each check, its tool, and when it runs; results live in the Actions logs, the generated reports, and this changelog.
+
 ## 0.1.2 beta (2026-11-03)
 
 Second review follow-up.

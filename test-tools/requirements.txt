@@ -1,0 +1,3 @@
+# Test-only tools for tools/browser_check.py. The site build uses none of
+# these. Same version as The Strand Project. Dependabot proposes updates.
+playwright==1.63.0

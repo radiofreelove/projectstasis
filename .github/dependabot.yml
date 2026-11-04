@@ -1,0 +1,20 @@
+# Monthly update proposals for the GitHub Actions and the test-only tools
+# in test-tools/. They sit in a folder, not the repository root, so Cloudflare
+# Pages does not install them on every deploy. The site build itself uses only
+# the Python standard library. Each proposal arrives as a pull request that
+# must pass the checks before merging. Same setup as The Strand Project
+# (docs/decisions/0012-shared-with-strand.md).
+version: 2
+updates:
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: monthly
+  - package-ecosystem: pip
+    directory: /test-tools
+    schedule:
+      interval: monthly
+  - package-ecosystem: npm
+    directory: /test-tools
+    schedule:
+      interval: monthly

@@ -1,23 +1,25 @@
 # Testing
 
-## Summary for 0.1.0 beta (Nov. 3, 2026)
+## What runs, and where
 
-| Test | Tool | Result |
+Results are not kept in this file, so it cannot go out of date. Each run's log is in the repository's Actions tab, the generated reports are linked below, and [CHANGELOG.md](../CHANGELOG.md) says what changed in each release.
+
+| Check | Tool | When it runs |
 |---|---|---|
-| Build freshness, registered links, logged facts | `tools/build.py --check` | Pass |
-| Structure, privacy, and accessibility lint (16 rules, 18 pages and `site/_headers`) | `tools/check_structure.py` | Pass |
-| Color contrast (31 pairs, 3 themes) | `tools/check_contrast.py` | Pass; see [contrast.md](contrast.md) |
-| Reading level (16 pages) | `tools/check_reading_level.py` | 14 on target (grade 6 or lower); health and immigration pages above target but under the limit; see [reading-level.md](reading-level.md) |
-| Dated checkpoints | `tools/check_review_dates.py` | None past due; next on 2026-11-16 |
-| Real browser, 5 settings x 18 pages, served like Cloudflare Pages (`tools/serve.py`) | `tools/browser_check.py` | Pass; see [testing-browser.md](testing-browser.md) |
-| Every path through the 1-minute check | `tools/browser_check.py` | Pass |
-| axe-core | `tools/browser_check.py` with `AXE_JS` | Not run locally (package registry unreachable). Runs in [checks.yml](../.github/workflows/checks.yml). |
-| Official link check | `tools/check_links.py` | Not run locally (most outside sites unreachable from the build environment). Runs weekly in [weekly.yml](../.github/workflows/weekly.yml). |
-| Live site matches the repository | `tools/check_live.py` | Not run locally (the live site is unreachable from the build environment). Runs after every push to `main` in [live.yml](../.github/workflows/live.yml), weekly in [weekly.yml](../.github/workflows/weekly.yml), and by hand after any change to the Cloudflare settings. |
+| Built pages match their sources; every link registered; every fact logged; font files match their checksums | `tools/build.py --check` | Every push, in GitHub Actions and in the Cloudflare build |
+| Structure, privacy, and accessibility lint, including the security headers in `site/_headers` | `tools/check_structure.py` | Every push, in GitHub Actions and in the Cloudflare build |
+| Color contrast (7:1 text) | `tools/check_contrast.py` | Every push. Report: [contrast.md](contrast.md) |
+| Reading level (target grade 6, fails above 8) | `tools/check_reading_level.py` | Every push. Report: [reading-level.md](reading-level.md) |
+| Dated checkpoints and expired notes | `tools/check_review_dates.py` | Every push (reported only); Mondays and Jan. 1 (opens an issue) |
+| Real browser on a server that behaves like Cloudflare Pages: every page in each display setting, every path through the check, no outside requests, nothing left in storage, and axe-core | `tools/browser_check.py` | Every push. Report: [testing-browser.md](testing-browser.md) |
+| Official links | `tools/check_links.py` | Mondays |
+| Live site matches the repository, headers included | `tools/check_live.py` | After every push to `main`, and Mondays |
+
+The browser checks use two test-only tools, pinned to the same versions as The Strand Project: Playwright ([test-tools/requirements.txt](../test-tools/requirements.txt)) and axe-core ([test-tools/package.json](../test-tools/package.json)). Dependabot proposes updates to them and to the GitHub Actions each month ([.github/dependabot.yml](../.github/dependabot.yml)). The site build itself uses only the Python standard library. The test tools sit in `test-tools/`, not the repository root, because Cloudflare Pages installs any `package.json` it finds at the root on every deploy ([Cloudflare docs: Build image](https://developers.cloudflare.com/pages/configuration/build-image/), updated Oct. 26, 2026).
 
 ## What the browser test found and fixed
 
-The first run found sideways scrolling at 320 px with extra-large text and extra spacing on 8 pages. Long web addresses such as `benefits.oregon.gov` could not wrap. Fix: `overflow-wrap: anywhere` on the page, and phone numbers may wrap at their dashes at the largest settings. Second run: no problems.
+The first run (0.1.0 beta, Nov. 3, 2026) found sideways scrolling at 320 px with extra-large text and extra spacing on 8 pages. Long web addresses such as `benefits.oregon.gov` could not wrap. Fix: `overflow-wrap: anywhere` on the page, and phone numbers may wrap at their dashes at the largest settings. Second run: no problems.
 
 ## Not tested yet
 
@@ -36,9 +38,9 @@ python3 tools/check_structure.py
 python3 tools/check_contrast.py --check
 python3 tools/check_reading_level.py --check
 python3 tools/check_review_dates.py
-pip install playwright && python3 -m playwright install chromium
-npm install --no-save axe-core@4
-AXE_JS=node_modules/axe-core/axe.min.js python3 tools/browser_check.py --shots screenshots
+pip install -r test-tools/requirements.txt && python3 -m playwright install chromium
+npm install --prefix test-tools --no-package-lock
+AXE_JS=test-tools/node_modules/axe-core/axe.min.js python3 tools/browser_check.py --shots screenshots
 python3 tools/check_links.py
 python3 tools/check_live.py
 ```

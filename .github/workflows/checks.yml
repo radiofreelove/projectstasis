@@ -51,15 +51,15 @@ jobs:
         with:
           node-version: "22"
 
-      - name: Install Playwright with Chromium, and axe-core
+      - name: Install Playwright with Chromium, and axe-core (pinned in test-tools/requirements.txt and test-tools/package.json)
         run: |
-          python3 -m pip install "playwright==1.*"
+          python3 -m pip install -r test-tools/requirements.txt
           python3 -m playwright install --with-deps chromium
-          npm install --no-save --no-audit --no-fund axe-core@4
+          npm install --prefix test-tools --no-audit --no-fund --no-package-lock
 
       - name: Browser checks
         env:
-          AXE_JS: node_modules/axe-core/axe.min.js
+          AXE_JS: test-tools/node_modules/axe-core/axe.min.js
         run: python3 tools/browser_check.py --shots screenshots
 
       - name: Keep the report and screenshots

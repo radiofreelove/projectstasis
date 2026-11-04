@@ -82,7 +82,7 @@ python3 tools/serve.py    # serve it the way Cloudflare Pages does, then open ht
 | `python3 tools/check_reading_level.py` | Each page's estimated reading grade (target 6, fails above 8) |
 | `python3 tools/check_review_dates.py` | No dated checkpoint is past due |
 | `python3 tools/check_links.py` | Every official link answers, respecting robots.txt (needs internet) |
-| `python3 tools/browser_check.py` | Real-browser tests on a server that behaves like Cloudflare Pages: reflow at 320 px, contrast in every theme, target sizes, focus visibility, no outside requests, the policy header on every page, every path through the check, and axe-core when `AXE_JS` is set (needs Playwright) |
+| `python3 tools/browser_check.py` | Real-browser tests on a server that behaves like Cloudflare Pages: reflow at 320 px, contrast in every theme, target sizes, focus visibility, no outside requests, the policy header on every page, every path through the check, and axe-core when `AXE_JS` is set (needs the test tools in `test-tools/requirements.txt` and `test-tools/package.json`) |
 | `python3 tools/check_live.py` | The live site matches this repository byte for byte, with every header, the 404 page, and redirects from old `.html` addresses (needs internet) |
 
 GitHub Actions run the checks on every push ([checks.yml](.github/workflows/checks.yml)), confirm after every push to `main` that the live site matches the commit ([live.yml](.github/workflows/live.yml)), and every Monday check links, checkpoints, and the live site, opening an issue if a person is needed ([weekly.yml](.github/workflows/weekly.yml)). Cloudflare Pages publishes `site/` from `main` after its own freshness and structure check ([settings](docs/maintenance.md#cloudflare-pages-settings)).

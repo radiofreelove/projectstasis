@@ -10,7 +10,7 @@ headers in site/_headers.
     python3 tools/browser_check.py --shots DIR         Also save screenshots to DIR
     AXE_JS=path/to/axe.min.js python3 tools/browser_check.py   Also run the axe-core engine
 
-Needs: pip install playwright, then python -m playwright install chromium.
+Needs: pip install -r test-tools/requirements.txt, then python -m playwright install chromium.
 axe-core is optional; the CI workflow installs it from npm and passes AXE_JS.
 
 What it checks, on every page:

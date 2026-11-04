@@ -51,7 +51,7 @@ BASE_URL = "https://projectstasis.pages.dev/"
 PROJECT_REPO = "https://github.com/radiofreelove/projectstasis"
 FACTS_CHECKED_ISO = "2026-11-02"
 FACTS_CHECKED_TEXT = "Nov. 2, 2026"
-VERSION = "0.1.2 beta"
+VERSION = "0.1.3 beta"
 
 NAV = [("index", "Home"), ("check", "Check"), ("apply", "Apply"), ("help", "Get help")]
 
