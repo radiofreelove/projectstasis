@@ -3,6 +3,6 @@
   "private": true,
   "description": "Test-only tools for The Stasis Project's browser checks. The site itself uses none of these. Same version as The Strand Project. Dependabot proposes updates.",
   "devDependencies": {
-    "axe-core": "4.10.2"
+    "axe-core": "4.14.0"
   }
 }
