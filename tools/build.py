@@ -51,7 +51,7 @@ BASE_URL = "https://projectstasis.pages.dev/"
 PROJECT_REPO = "https://github.com/radiofreelove/projectstasis"
 FACTS_CHECKED_ISO = "2026-11-02"
 FACTS_CHECKED_TEXT = "Nov. 2, 2026"
-VERSION = "0.1.1 beta"
+VERSION = "0.1.2 beta"
 
 NAV = [("index", "Home"), ("check", "Check"), ("apply", "Apply"), ("help", "Get help")]
 
@@ -66,13 +66,17 @@ CSP = (
 
 # Sent by Cloudflare Pages with every response (site/_headers). The header
 # version of the policy adds frame-ancestors, which a meta tag cannot set.
+# The same set The Strand Project sends (docs/decisions/0012-shared-with-strand.md).
+# HSTS changes nothing on pages.dev, because the whole .dev domain is already
+# HTTPS-only in browsers; it matters only if the site moves to a custom domain.
 HEADERS = [
     ("Content-Security-Policy", CSP + "; frame-ancestors 'none'"),
     ("Referrer-Policy", "no-referrer"),
     ("X-Content-Type-Options", "nosniff"),
     ("X-Frame-Options", "DENY"),
-    ("Permissions-Policy", "camera=(), microphone=(), geolocation=(), payment=(), usb=()"),
+    ("Permissions-Policy", "accelerometer=(), browsing-topics=(), camera=(), geolocation=(), gyroscope=(), magnetometer=(), microphone=(), payment=(), usb=()"),
     ("Cross-Origin-Opener-Policy", "same-origin"),
+    ("Strict-Transport-Security", "max-age=31536000"),
 ]
 
 PAGE_LINK_RE = re.compile(r'href="([a-z0-9-]+)\.html(#[^"]*)?"')

@@ -2,6 +2,14 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.1.2 beta (2026-11-03)
+
+Second review follow-up.
+
+- Security headers now match The Strand Project exactly: four more blocked browser features (accelerometer, browsing-topics, gyroscope, magnetometer) and `Strict-Transport-Security`. The Content Security Policy is unchanged.
+- New [CODE_OF_CONDUCT.md](CODE_OF_CONDUCT.md), adapted from Strand's. Linked from the README and CONTRIBUTING.
+- Decision 0012 now records the shared headers, the tool-page source lists, the code of conduct, and the different doc naming as intentional.
+
 ## 0.1.1 beta (2026-11-03)
 
 Follow-up to an outside review that compared this project with The Strand Project. Shared conventions are now recorded in [docs/decisions/0012-shared-with-strand.md](docs/decisions/0012-shared-with-strand.md).

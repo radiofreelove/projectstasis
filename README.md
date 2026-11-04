@@ -89,7 +89,7 @@ GitHub Actions run the checks on every push ([checks.yml](.github/workflows/chec
 
 ## Report a problem
 
-Open an [issue](https://github.com/radiofreelove/projectstasis/issues). **Issues are public.** Do not include names, case numbers, health details, immigration status, or anything else personal.
+Open an [issue](https://github.com/radiofreelove/projectstasis/issues). **Issues are public, and so is your GitHub account name.** Do not include names, case numbers, health details, immigration status, or anything else personal. See [CONTRIBUTING.md](CONTRIBUTING.md) and the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## License
 

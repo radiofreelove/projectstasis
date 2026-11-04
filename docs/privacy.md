@@ -24,8 +24,10 @@ Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'
 Referrer-Policy: no-referrer
 X-Content-Type-Options: nosniff
 X-Frame-Options: DENY
-Permissions-Policy: camera=(), microphone=(), geolocation=(), payment=(), usb=()
+Permissions-Policy: accelerometer=(), browsing-topics=(), camera=(), geolocation=(), gyroscope=(),
+  magnetometer=(), microphone=(), payment=(), usb=()
 Cross-Origin-Opener-Policy: same-origin
+Strict-Transport-Security: max-age=31536000
 ```
 
 Every page also repeats the same policy in a meta tag (without `frame-ancestors`, which works only as a header), so the protection travels with the page if it is ever served from somewhere else.
@@ -35,7 +37,9 @@ Every page also repeats the same policy in a meta tag (without `frame-ancestors`
 - `default-src 'none'` with `'self'` for scripts, styles, images, and the optional font: nothing loads from other sites, and inline scripts and styles are blocked.
 - `frame-ancestors 'none'` and `X-Frame-Options: DENY`: other sites cannot show these pages inside their own.
 - `Referrer-Policy: no-referrer`: replaces Cloudflare's default (`strict-origin-when-cross-origin`), so state sites do not learn which of our pages sent a visitor.
-- `Permissions-Policy`: the pages cannot use the camera, microphone, location, payments, or USB devices.
+- `Permissions-Policy`: the pages cannot use the camera, microphone, location, motion sensors, payments, or USB devices, or the browser's ad-interest feature (Topics).
+- `Strict-Transport-Security`: browsers use only HTTPS for this site. On pages.dev this changes nothing, because browsers already treat the whole .dev domain as HTTPS-only ([Google Security Blog](https://security.googleblog.com/2017/09/broadening-hsts-to-secure-more-of-web.html), Sept. 27, 2017). It would matter on a custom domain.
+- The header set is the same one The Strand Project sends ([decisions/0012-shared-with-strand.md](decisions/0012-shared-with-strand.md)).
 
 Cloudflare Pages also adds `Access-Control-Allow-Origin: *` to every response ([Cloudflare docs: Serving Pages](https://developers.cloudflare.com/pages/configuration/serving-pages/), updated Oct. 10, 2026). That lets other websites read these public pages through a visitor's browser. The pages hold nothing private, so it is left as is.
 

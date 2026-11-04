@@ -1,6 +1,6 @@
 # Contributing
 
-Thank you for helping applicants. A few rules keep the site accurate and safe.
+Thank you for helping applicants. A few rules keep the site accurate and safe. Everyone follows the [Code of Conduct](CODE_OF_CONDUCT.md).
 
 ## Never share personal details
 
