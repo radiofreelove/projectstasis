@@ -6,7 +6,7 @@ Flesch-Kincaid grade level of each page's main text. Target: grade 6 or lower. T
 
 | Page | Grade | Words | Sentences | Words per sentence | Status |
 |---|---|---|---|---|---|
-| about.html | 3.7 | 398 | 49 | 8.1 | On target |
+| about.html | 3.5 | 451 | 56 | 8.1 | On target |
 | accessibility.html | 3.7 | 299 | 36 | 8.3 | On target |
 | apply.html | 4.5 | 362 | 57 | 6.4 | On target |
 | bills.html | 3.6 | 128 | 23 | 5.6 | On target |
@@ -15,10 +15,27 @@ Flesch-Kincaid grade level of each page's main text. Target: grade 6 or lower. T
 | health.html | 6.6 | 238 | 30 | 7.9 | Above target |
 | help.html | 5.0 | 239 | 57 | 4.2 | On target |
 | immigration.html | 7.2 | 247 | 30 | 8.2 | Above target |
-| index.html | 3.8 | 397 | 52 | 7.6 | On target |
+| index.html | 3.7 | 413 | 55 | 7.5 | On target |
 | letter.html | 2.9 | 247 | 38 | 6.5 | On target |
 | log.html | 1.9 | 138 | 30 | 4.6 | On target |
 | privacy.html | 4.5 | 253 | 28 | 9.0 | On target |
 | reasons.html | 4.7 | 567 | 60 | 9.4 | On target |
 | rules.html | 3.7 | 375 | 48 | 7.8 | On target |
+| utah-about.html | 3.6 | 509 | 61 | 8.3 | On target |
+| utah-accessibility.html | 3.8 | 305 | 36 | 8.5 | On target |
+| utah-apply.html | 3.9 | 431 | 57 | 7.6 | On target |
+| utah-bills.html | 5.1 | 129 | 18 | 7.2 | On target |
+| utah-check.html | 3.1 | 430 | 59 | 7.3 | On target |
+| utah-denied.html | 4.7 | 417 | 51 | 8.2 | On target |
+| utah-health.html | 3.9 | 300 | 39 | 7.7 | On target |
+| utah-help.html | 5.1 | 262 | 44 | 6.0 | On target |
+| utah-immigration.html | 7.1 | 276 | 36 | 7.7 | Above target |
+| utah-letter.html | 3.7 | 325 | 45 | 7.2 | On target |
+| utah-log.html | 2.4 | 160 | 32 | 5.0 | On target |
+| utah-privacy.html | 4.5 | 253 | 28 | 9.0 | On target |
+| utah-reasons.html | 5.3 | 636 | 65 | 9.8 | On target |
+| utah-rules.html | 4.2 | 366 | 44 | 8.3 | On target |
+| utah-sources.html | 6.8 | 3569 | 350 | 10.2 | Above target |
+| utah-words.html | 5.7 | 294 | 45 | 6.5 | On target |
+| utah.html | 4.6 | 428 | 55 | 7.8 | On target |
 | words.html | 4.9 | 274 | 49 | 5.6 | On target |

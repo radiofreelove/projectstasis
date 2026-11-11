@@ -101,7 +101,7 @@ CONTRAST_JS = r"""
 
 TARGETS_JS = r"""
 () => {
-  const sel = 'button, .choice, .main-nav a, ul.cards a, summary, .skip-link';
+  const sel = 'button, .choice, .main-nav a, ul.cards a, .guide-switch a, summary, .skip-link';
   const out = [];
   document.querySelectorAll(sel).forEach(el => {
     const r = el.getBoundingClientRect();
@@ -202,7 +202,7 @@ def run(shots: Path | None):
                     problems.append(f"{label}: {name} console errors: {real}")
                 if outside:
                     problems.append(f"{label}: {name} requests outside the site: {outside}")
-                if shots and name in {"index.html", "check.html", "reasons.html", "apply.html", "help.html"}:
+                if shots and name in {"index.html", "check.html", "reasons.html", "apply.html", "help.html", "utah.html", "utah-check.html"}:
                     shots.mkdir(parents=True, exist_ok=True)
                     safe = label.split(",")[0].replace(" ", "-")
                     theme = settings.get("theme", "auto")
@@ -230,76 +230,111 @@ def run(shots: Path | None):
             problems.append(f"focus not visible on: {invisible}")
         context.close()
 
-        # The check: every path
-        context = browser.new_context(viewport={"width": 390, "height": 844})
-        page = context.new_page()
-        page.goto(base + "check")
+        # The check: every path, in each guide
         flow = []
+        for guide, check_address, care in (("Oregon", "check", "child"), ("Utah", "utah-check", "care")):
+            context = browser.new_context(viewport={"width": 390, "height": 844})
+            page = context.new_page()
+            page.goto(base + check_address)
+            flow.append(f"**{guide} check** (`/{check_address}`)")
 
-        def result_title():
-            return page.locator("#result-title").inner_text()
+            def result_title():
+                return page.locator("#result-title").inner_text()
 
-        page.click("[data-step='1'] [data-next]")
-        if not page.locator("#step-1-error").is_visible():
-            problems.append("check: no error when Next is pressed with no answer")
-        flow.append("Error shown when no age is picked: yes")
-        focused = page.evaluate("document.activeElement && document.activeElement.name")
-        flow.append(f"Focus moves to the first choice after the error: {'yes' if focused == 'age' else 'no'}")
+            def result_text():
+                return page.locator("#checker-result").inner_text()
 
-        page.check("input[value='65plus']")
-        page.click("[data-step='1'] [data-next]")
-        flow.append(f"65 or older: '{result_title()}'")
-        page.click("text=Start over")
-        back_to_one = page.locator("[data-step='1']").is_visible()
-        flow.append("Start over returns to step 1: " + ("yes" if back_to_one else "no"))
+            page.click("[data-step='1'] [data-next]")
+            if not page.locator("#step-1-error").is_visible():
+                problems.append(f"{guide} check: no error when Next is pressed with no answer")
+            flow.append("Error shown when no age is picked: yes")
+            focused = page.evaluate("document.activeElement && document.activeElement.name")
+            flow.append(f"Focus moves to the first choice after the error: {'yes' if focused == 'age' else 'no'}")
 
-        page.check("input[value='19to64']")
-        page.click("[data-step='1'] [data-next]")
-        page.check("input[name='reason'][value='pregnant']")
-        page.check("input[name='reason'][value='none']")
-        exclusive = not page.is_checked("input[name='reason'][value='pregnant']")
-        flow.append(f"'None of these' clears other boxes: {'yes' if exclusive else 'no'}")
-        page.check("input[name='reason'][value='medicare']")
-        none_cleared = not page.is_checked("input[name='reason'][value='none']")
-        flow.append("Picking a reason clears 'None of these': " + ("yes" if none_cleared else "no"))
-        page.click("[data-step='2'] [data-next]")
-        page.check("input[name='meet'][value='none']")
-        page.click("[data-step='3'] button[type='submit']")
-        flow.append(f"Medicare: '{result_title()}'")
-        page.click("text=Start over")
+            page.check("input[value='65plus']")
+            page.click("[data-step='1'] [data-next]")
+            flow.append(f"65 or older: '{result_title()}'")
+            page.click("text=Start over")
+            back_to_one = page.locator("[data-step='1']").is_visible()
+            flow.append("Start over returns to step 1: " + ("yes" if back_to_one else "no"))
 
-        page.check("input[value='19to64']")
-        page.click("[data-step='1'] [data-next]")
-        page.check("input[name='reason'][value='child']")
-        page.click("[data-step='2'] [data-next]")
-        page.check("input[name='meet'][value='hours']")
-        page.click("[data-step='3'] button[type='submit']")
-        flow.append(f"Caring for a child, plus 80 hours: '{result_title()}'")
-        page.click("text=Start over")
+            page.check("input[value='19to64']")
+            page.click("[data-step='1'] [data-next]")
+            page.check("input[name='reason'][value='pregnant']")
+            page.check("input[name='reason'][value='none']")
+            exclusive = not page.is_checked("input[name='reason'][value='pregnant']")
+            flow.append(f"'None of these' clears other boxes: {'yes' if exclusive else 'no'}")
+            page.check("input[name='reason'][value='medicare']")
+            none_cleared = not page.is_checked("input[name='reason'][value='none']")
+            flow.append("Picking a reason clears 'None of these': " + ("yes" if none_cleared else "no"))
+            page.click("[data-step='2'] [data-next]")
+            page.check("input[name='meet'][value='none']")
+            page.click("[data-step='3'] button[type='submit']")
+            flow.append(f"Medicare: '{result_title()}'")
+            page.click("text=Start over")
 
-        page.check("input[value='19to64']")
-        page.click("[data-step='1'] [data-next]")
-        page.check("input[name='reason'][value='none']")
-        page.click("[data-step='2'] [data-next]")
-        page.check("input[name='meet'][value='income']")
-        page.click("[data-step='3'] button[type='submit']")
-        flow.append(f"No reason, income $580 or more: '{result_title()}'")
-        page.click("text=Start over")
+            page.check("input[value='19to64']")
+            page.click("[data-step='1'] [data-next]")
+            page.check(f"input[name='reason'][value='{care}']")
+            page.click("[data-step='2'] [data-next]")
+            page.check("input[name='meet'][value='hours']")
+            page.click("[data-step='3'] button[type='submit']")
+            flow.append(f"Caring for a child, plus 80 hours: '{result_title()}'")
+            page.click("text=Start over")
 
-        page.check("input[value='19to64']")
-        page.click("[data-step='1'] [data-next]")
-        page.check("input[name='reason'][value='none']")
-        page.click("[data-step='2'] [data-next]")
-        page.check("input[name='meet'][value='none']")
-        page.click("[data-step='3'] button[type='submit']")
-        flow.append(f"No reason, nothing yet: '{result_title()}'")
-        stored = page.evaluate("Object.keys(localStorage)")
-        flow.append(f"Storage keys after the check: {stored or 'none'}")
-        if any(k != KEY for k in stored):
-            problems.append(f"check stored unexpected data: {stored}")
-        if shots:
-            page.screenshot(path=str(shots / "check-result-phone.png"), full_page=True)
-        context.close()
+            page.check("input[value='19to64']")
+            page.click("[data-step='1'] [data-next]")
+            page.check("input[name='reason'][value='none']")
+            page.click("[data-step='2'] [data-next]")
+            page.check("input[name='meet'][value='income']")
+            page.click("[data-step='3'] button[type='submit']")
+            flow.append(f"No reason, income $580 or more: '{result_title()}'")
+            page.click("text=Start over")
+
+            page.check("input[value='19to64']")
+            page.click("[data-step='1'] [data-next]")
+            page.check("input[name='reason'][value='none']")
+            page.click("[data-step='2'] [data-next]")
+            page.check("input[name='meet'][value='none']")
+            page.click("[data-step='3'] button[type='submit']")
+            flow.append(f"No reason, nothing yet: '{result_title()}'")
+
+            # Every choice on the page has words in the check's script, and
+            # the other state's program name never shows in a result.
+            page.click("text=Start over")
+            page.check("input[value='19to64']")
+            page.click("[data-step='1'] [data-next]")
+            reasons = page.eval_on_selector_all(
+                "input[name='reason']:not([data-none])", "els => els.map(el => el.value)"
+            )
+            for value in reasons:
+                page.check(f"input[name='reason'][value='{value}']")
+            page.click("[data-step='2'] [data-next]")
+            for value in ("income", "school", "hours"):
+                page.check(f"input[name='meet'][value='{value}']")
+            page.click("[data-step='3'] button[type='submit']")
+            shown = page.locator("#checker-result ul.short li").count()
+            if shown != len(reasons) + 3:
+                problems.append(f"{guide} check: {len(reasons) + 3} choices picked but {shown} shown in the result")
+            flow.append(f"Every choice picked: {shown} of {len(reasons) + 3} shown in the result")
+            wrong = "OHP" if guide == "Utah" else "Utah"
+            if wrong in result_text():
+                problems.append(f"{guide} check: a result names {wrong}")
+            bad_links = page.eval_on_selector_all(
+                "#checker-result a",
+                "els => els.map(el => el.getAttribute('href')).filter(h => !h.startsWith('https://'))",
+            )
+            for href in bad_links:
+                if (guide == "Utah") != href.startswith("utah-"):
+                    problems.append(f"{guide} check: a result links to the other guide: {href}")
+
+            stored = page.evaluate("Object.keys(localStorage)")
+            flow.append(f"Storage keys after the check: {stored or 'none'}")
+            if any(k != KEY for k in stored):
+                problems.append(f"{guide} check stored unexpected data: {stored}")
+            if shots:
+                page.screenshot(path=str(shots / f"{check_address}-result-phone.png"), full_page=True)
+            context.close()
 
         # Optional: axe-core
         if axe_path and Path(axe_path).exists():

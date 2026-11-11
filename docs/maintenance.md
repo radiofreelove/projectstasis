@@ -50,6 +50,13 @@ Optional and safe: **Enable access policy** (Settings, General) limits preview a
 5. Search the Oregon Administrative Rules Database for filings that implement the work or activity rules (likely OAR chapter 410, division 200, or chapter 461; unverified).
 6. Watch for a CMS final rule replacing the interim final rule (S27).
 
+For the Utah guide, in the same sitting:
+
+1. Re-read Utah Medicaid's H.R. 1 page (U02), its community engagement page (U01), its support page (U03), and DWS's page for adults (U04). None shows a date, so compare the wording with the notes in `data/sources.json`.
+2. Look for new Utah letters, toolkits, and forms on U02, and for form 742, the Medically Frail Exclusion Screener, and a new version of form 61MED.
+3. Search the Utah State Bulletin and the Utah Administrative Code (title R414) for filings that implement the community engagement requirement (unverified whether any exist).
+4. Check whether Utah's pages say anything about the court ruling.
+
 ### At each checkpoint in `data/review.json`
 
 Do the listed work, then move or remove the checkpoint and say what you did in [CHANGELOG.md](../CHANGELOG.md).
@@ -60,7 +67,7 @@ Do the listed work, then move or remove the checkpoint and say what you did in [
 2. Update the claim in `data/claims.json` (statement, sources, kind, note).
 3. If there is a new source, add it to `data/sources.json` with `checked` set to today and `opened` set honestly.
 4. If official sources disagree, add an item to [corrections.md](corrections.md).
-5. Update `FACTS_CHECKED_ISO` and `FACTS_CHECKED_TEXT` in `tools/build.py` when you re-check the whole site.
+5. Set the source's `checked` date in `data/sources.json` to the day you re-read it. Each page shows that date next to the source. When you re-check a whole guide, also update `FACTS_CHECKED_ISO` (Oregon) or `UTAH_FACTS_CHECKED_ISO` (Utah) in `tools/build.py`; the footer date comes from it.
 6. Run:
 
    ```bash
@@ -79,7 +86,7 @@ Do the listed work, then move or remove the checkpoint and say what you did in [
 ## If something on the site is wrong
 
 1. If the fix is clear, fix it and push to `main`. Cloudflare publishes it within a few minutes.
-2. If not, replace the sentence with a link to the official source and a plain line such as "Check OHA's page for the latest." Saying less is better than saying something wrong.
+2. If not, replace the sentence with a link to the official source and a plain line such as "Check OHA's page for the latest" (or Utah Medicaid's, on a Utah page). Saying less is better than saying something wrong.
 3. Log it in [corrections.md](corrections.md) and the changelog.
 
 ## If an official link breaks

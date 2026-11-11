@@ -11,7 +11,7 @@ Results are not kept in this file, so it cannot go out of date. Each run's log i
 | Color contrast (7:1 text) | `tools/check_contrast.py` | Every push. Report: [contrast.md](contrast.md) |
 | Reading level (target grade 6, fails above 8) | `tools/check_reading_level.py` | Every push. Report: [reading-level.md](reading-level.md) |
 | Dated checkpoints and expired notes | `tools/check_review_dates.py` | Every push (reported only); Mondays and Jan. 1 (opens an issue) |
-| Real browser on a server that behaves like Cloudflare Pages: every page in each display setting, every path through the check, no outside requests, nothing left in storage, and axe-core | `tools/browser_check.py` | Every push. Report: [testing-browser.md](testing-browser.md) |
+| Real browser on a server that behaves like Cloudflare Pages: every page in each display setting, every path through both checks, no outside requests, nothing left in storage, and axe-core | `tools/browser_check.py` | Every push. Report: [testing-browser.md](testing-browser.md) |
 | Official links | `tools/check_links.py` | Mondays |
 | Live site matches the repository, headers included | `tools/check_live.py` | After every push to `main`, and Mondays |
 
@@ -26,7 +26,7 @@ The first run (0.1.0 beta, Nov. 3, 2026) found sideways scrolling at 320 px with
 - Screen readers (NVDA, JAWS, VoiceOver on iPhone and Mac, TalkBack).
 - Voice control, switch access, and screen magnifiers.
 - Real applicants, including neurodivergent people, people with low literacy, and people reading in a second language.
-- Older phones and slow connections. The pages are small: the home page is about 13 KB of HTML, plus 16 KB of styles, 5 KB of script on most pages (18 KB on the check page), and a 1 KB logo, all before compression. No photos. The optional reading font adds about 25 KB, and only for readers who choose it.
+- Older phones and slow connections. The pages are small: the home page is about 15 KB of HTML, plus 19 KB of styles, 5 KB of script on most pages (18 KB on the check page), and a 1 KB logo, all before compression. No photos. The optional reading font adds about 25 KB, and only for readers who choose it.
 
 These are the next priority. See [roadmap.md](roadmap.md).
 

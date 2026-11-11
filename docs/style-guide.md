@@ -16,10 +16,12 @@ Inspired by Axios's Smart Brevity approach. No text from that book is used here.
 ## Words
 
 - Plain word first, OHP's word second, the first time: "a reason you do not have to meet the rules (OHP calls this an exemption)." Then use the word OHP uses, so people recognize it on letters.
+- On Utah pages, do the same with Utah's words: "the work or activity rules (Utah calls this the community engagement requirement)," "reasons (Utah calls these exclusions and exceptions)."
 - One idea per sentence. Aim for 8 words per sentence or fewer on average.
 - Literal language. No idioms, sayings, or jokes.
 - "May" for anything OHP decides. Never "you are exempt," "you qualify," or "you will get."
 - "You" for the reader. "OHP" for the program and its decisions. "OHA" and "ODHS" only when naming who publishes something.
+- On Utah pages: "the state" for whoever decides or asks, "DWS" (spelled out the first time on a page) when the reader has to call, write to, or visit it, and "Utah Medicaid" for the program. Never "OHP" on a Utah page.
 - Say "apply again," not "reapply." Say "turned down," then "denied" only when quoting.
 - People first, and only describe people when it matters to the rule.
 
