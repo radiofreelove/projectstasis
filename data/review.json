@@ -3,7 +3,7 @@
   "checkpoints": [
     {
       "review_by": "2026-11-24",
-      "what": "A person reads every Utah page against its sources. The Utah guide was researched on Nov. 10, 2026 through a tool that answers questions about a page instead of returning its full text (docs/research-log.md), so nobody has yet read the Utah documents themselves end to end. Start with the numbers people act on: 90 and 15 days for hearings (U19), 30 days for the verification form (U04), 10 days for requested items (U16), the Jan. 1, 2027 date for tribal status proof (U28), and every phone, fax, and mailing address.",
+      "what": "A person reads every Utah page against its sources. The Utah guide was researched on Nov. 10, 2026 through a tool that answers questions about a page instead of returning its full text (docs/research-log.md), so nobody has yet read the Utah documents themselves end to end. Start with the numbers people act on: 90 and 15 days for hearings (U19), 30 days for the verification form (U04), 10 days for requested items (U16), the Jan. 1, 2027 date for tribal status proof (U28), and every phone, fax, and mailing address. When it is done, remove the 'This guide is new' box from the Utah About page and the 'How we read Utah's' line from the Utah Every source page (claim U-NEW-GUIDE), or reword them to say a person has read the documents.",
       "claims": ["U-HEARING-90", "U-HEARING-15", "U-VERIFY-30", "U-READY-10", "U-AIAN-PROOF", "U-SEND-WAYS", "U-HEARING-HOW"]
     },
     {
@@ -23,7 +23,7 @@
     },
     {
       "review_by": "2027-01-15",
-      "what": "First check after the rules start. Oregon: re-read S01 to S09 and S24 by hand. Look for new OHA notices, forms (including any new version of OHP 7210), and any change to the 35-day reply window. Utah: re-read U01 to U05 and U14 to U16. Look for a new 61MED that asks about the rules, form 742, the medically frail screener, and what Utah's denial and verification letters are called.",
+      "what": "First check after the rules start. Oregon: re-read S01 to S09 and S24 by hand. Look for new OHA notices, forms (including any new version of OHP 7210), and any change to the 35-day reply window. Utah: re-read U01 to U05 and U14 to U16. Look for a new 61MED that asks about the rules, form 742, the medically frail screener, and what Utah's denial and verification letters are called. If form 742 or the screener is posted, update the 'what to do' lines in site/assets/js/checker-utah.js, docs/checker-logic.md, and U-742-NOLINK.",
       "claims": ["C-START", "C-LOOKBACK-APP", "C-RFI-35", "C-7210-NOQS", "U-START-APP", "U-LOOKBACK-APP", "U-VERIFY-30", "U-61MED-NOQS", "U-TELL-HOW"]
     },
     {

@@ -19,7 +19,7 @@ Added in 0.2.0 ([decisions/0013-utah-section.md](decisions/0013-utah-section.md)
 
 Then:
 
-- **A Utah check**, once Utah posts form 742 and its medically frail screener, with its own public logic note and browser tests.
+- **Update the Utah check** when Utah posts form 742 and its medically frail screener (checkpoint 2027-01-15).
 - **Utah renewals**, before current members reach reviews for renewals due in March 2027.
 - **Utah forms in Spanish**, checked by a Spanish reader: the guide links to 2 Spanish forms it has not opened.
 
@@ -37,7 +37,7 @@ Then:
 11. **One-page handouts** for clinics, libraries, food banks, and shelters, each with a short web address.
 12. **A partner kit** for community partners and clinic front desks: the same plain facts, formatted for a conversation.
 13. **A "what changed" page** generated from the changelog, for helpers who need to keep up.
-14. **A way to pick a state** that does not depend on the footer: the shared pages (About, Privacy, Accessibility, Every source) show the Oregon menu to Utah readers too.
+14. **A front door for both states**, if a third guide is added or the site gets its own address: today `/` is the Oregon home page, and it links to the Utah guide under its first lines.
 
 ## Engineering
 

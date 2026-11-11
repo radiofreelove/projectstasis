@@ -12,8 +12,8 @@ A free, independent guide for people applying for the Oregon Health Plan (OHP), 
 
 ## What it is
 
-- Two guides built the same way: 13 pages for OHP applicants and 12 pages for Utah Medicaid applicants, plus 4 pages both share (why the site exists, privacy, accessibility, and every source). Each is written in a Smart Brevity style: a plain headline, one line on why the page exists, a few bold-labeled bullets, then details.
-- A 1-minute check ("Do the rules fit me?") for Oregon that runs in the browser. Answers are never stored or sent. Utah has no check yet.
+- Two complete guides built the same way, 17 pages for OHP applicants and 17 pages for Utah Medicaid applicants. Each guide has its own home page, 1-minute check, About, Privacy, Accessibility, and Every source pages, so a reader never lands in the other state's guide by accident. The build stops if a page in one guide links to a page in the other, other than its home page. Each page is written in a Smart Brevity style: a plain headline, one line on why the page exists, a few bold-labeled bullets, then details.
+- A 1-minute check ("Do the rules fit me?") for each state that runs in the browser. Answers are never stored or sent.
 - Links to each state's own forms, phone lines, and pages, including the paper OHP application in 17 languages and Utah's application in English and Spanish. Nothing is copied or re-hosted, so the forms are always the state's current versions.
 - Display settings for text size, spacing, an easy-to-read font (Atkinson Hyperlegible Next, the same option as The Strand Project), colors (warm, white, dark), and a "just the key points" mode.
 
@@ -46,7 +46,8 @@ Everything behind the site is public and checkable.
 
 ```text
 src/pages/*.html     page text, each with a short metadata header
-                     (utah*.html pages say "section: utah")
+                     (utah*.html pages say "section: utah"; the 4 pages
+                     marked "shared: yes" are built once for each guide)
 data/sources.json    every outside source and link (the registry)
 data/claims.json     every factual statement and what supports it (the fact log)
 data/palette.json    ODHS colors and every color pair the site uses
@@ -57,7 +58,7 @@ tools/build.py       wraps pages in their guide's header and footer, adds each
                      page's Sources list with the date each source was
                      checked, writes the HTTP headers file, and
                      refuses to build if a page uses an unregistered link or
-                     an unlogged fact
+                     an unlogged fact, or reaches into the other guide
         |
         v
 site/                plain HTML, CSS, three small scripts, and _headers.

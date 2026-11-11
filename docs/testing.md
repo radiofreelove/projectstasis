@@ -11,7 +11,7 @@ Results are not kept in this file, so it cannot go out of date. Each run's log i
 | Color contrast (7:1 text) | `tools/check_contrast.py` | Every push. Report: [contrast.md](contrast.md) |
 | Reading level (target grade 6, fails above 8) | `tools/check_reading_level.py` | Every push. Report: [reading-level.md](reading-level.md) |
 | Dated checkpoints and expired notes | `tools/check_review_dates.py` | Every push (reported only); Mondays and Jan. 1 (opens an issue) |
-| Real browser on a server that behaves like Cloudflare Pages: every page in each display setting, every path through the check, no outside requests, nothing left in storage, and axe-core | `tools/browser_check.py` | Every push. Report: [testing-browser.md](testing-browser.md) |
+| Real browser on a server that behaves like Cloudflare Pages: every page in each display setting, every path through both checks, no outside requests, nothing left in storage, and axe-core | `tools/browser_check.py` | Every push. Report: [testing-browser.md](testing-browser.md) |
 | Official links | `tools/check_links.py` | Mondays |
 | Live site matches the repository, headers included | `tools/check_live.py` | After every push to `main`, and Mondays |
 
