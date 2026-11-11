@@ -21,6 +21,8 @@ All colors come from the [ODHS Brand Guidelines](https://sharedsystems.dhsoha.st
 
 ### Brand boundary
 
+The Utah guide uses the same palette and components as the Oregon guide. The palette is the site's design system; it does not signal any tie to either state ([decisions/0013-utah-section.md](decisions/0013-utah-section.md)).
+
 The site uses the ODHS **palette** only. It does not use the ODHS logo, brandmark, name, or typeface as its brand, and every page says "Independent guide. Not run by the state." in a banner and again in the footer. The logo is an original mark: a still, six-sided crystal, lit from above, drawn only from palette colors. A light outer edge and a dark inner edge keep it visible on light and dark backgrounds. See [decisions/0004-odhs-palette-not-identity.md](decisions/0004-odhs-palette-not-identity.md).
 
 ## Themes

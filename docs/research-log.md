@@ -1,8 +1,15 @@
 # Research log
 
-Release 0.1.0 beta. Content research done on **Nov. 2, 2026**, and hosting research on **Nov. 3, 2026**, with an AI research assistant (Claude, by Anthropic) working under the maintainer's direction. Registry IDs refer to [sources.md](sources.md).
+Registry IDs refer to [sources.md](sources.md).
 
-## Read in full or in part
+- [Release 0.1.0 beta](#release-010-beta-oregon): Oregon content research on **Nov. 2, 2026**, and hosting research on **Nov. 3, 2026**.
+- [Release 0.2.0 beta](#release-020-beta-utah-and-an-oregon-re-check): Utah content research and an Oregon re-check on **Nov. 10, 2026**.
+
+All of it was done with an AI research assistant (Claude, by Anthropic) working under the maintainer's direction.
+
+## Release 0.1.0 beta: Oregon
+
+### Read in full or in part
 
 | Source | What was read | Result |
 |---|---|---|
@@ -33,7 +40,7 @@ Release 0.1.0 beta. Content research done on **Nov. 2, 2026**, and hosting resea
 | S35 Oregon DOJ release (June 29, 2026) | Whole page | Oregon joined the suit |
 | K02 ODHS partner timeline | Whole document | Dates may change with federal guidance |
 
-## Hosting research (Nov. 3, 2026)
+### Hosting research (Nov. 3, 2026)
 
 Cloudflare's own documentation, read to set up hosting. The decision is in [decisions/0011-cloudflare-pages.md](decisions/0011-cloudflare-pages.md).
 
@@ -50,14 +57,14 @@ Cloudflare's own documentation, read to set up hosting. The decision is in [deci
 
 GitHub's lack of custom headers on GitHub Pages comes from [GitHub community discussion #54257](https://github.com/orgs/community/discussions/54257) (May 2023 to Sept. 2026, user reports and replies written for GitHub).
 
-## Currency checks
+### Currency checks
 
 - Court docket (CourtListener copy) searched for entries after Oct. 29, 2026: none found. CourtListener can lag the court's own system (PACER).
 - OHA's federal changes page (S07) and provider FAQ (S01) were checked for any response to the Oct. 29 ruling: none found.
 - Oregon Administrative Rules: one web search for filings implementing the work or activity rules found only an ODHS chapter 461 proposal (filed July 31, 2026) about noncitizen eligibility and related changes. The Oregon rule text for the work or activity rules is **unverified**.
 - The federal statute (Public Law 119-21) was **not opened**. Federal requirements are taken from the federal rule (S27).
 
-## Could not check
+### Could not check
 
 | What | Why |
 |---|---|
@@ -68,6 +75,77 @@ GitHub's lack of custom headers on GitHub Pages comes from [GitHub community dis
 | axe-core accessibility engine | The package registry was not reachable from the build environment. The GitHub workflow installs and runs it. |
 | The live site, projectstasis.pages.dev | Not reachable from the build environment. `tools/check_live.py` checks it from GitHub Actions every Monday. |
 
-## Not used as support
+### Not used as support
 
 Third-party summaries (law firm alerts, trade press, a national "Medicaid work navigator" site, and an AI-generated coverage site) were seen in search results. They were used only as leads, never as sources for claims.
+
+## Release 0.2.0 beta: Utah, and an Oregon re-check
+
+Done on **Nov. 10, 2026**.
+
+### How the Utah documents were read
+
+The assistant could not download pages in this session. It read each Utah page and PDF through a fetch tool that answers questions about a document instead of returning its full text. For each source, it asked for the exact wording of every date, number, list, phone number, and address, and it asked more than one source about the same fact wherever it could.
+
+What that means:
+
+- "Read by us: Yes" for a Utah source means read this way, on this date. It does not mean a person or the assistant saw the whole text.
+- Words inside quotation marks in the Utah part of [corrections.md](corrections.md) and in the fact log are words the tool returned as quotations. Everything else is paraphrase.
+- Long documents were cut off by the tool. The federal rule (S27) and the federal letter to Utah (U30) were read only in their first 100,000 characters.
+- A person should read the Utah documents end to end before the Utah guide is promoted. Checkpoint 2026-11-24 in [review.json](../data/review.json) exists for that.
+
+### Utah sources read
+
+| Source | What was asked | Result |
+|---|---|---|
+| U01 Community engagement page | Who, activities, $580, exclusions, look-back, proof, phones, court or waiver mentions | The core list; says nothing about a court ruling |
+| U02 H.R. 1 page for members | Every document link, each rule's wording, tribal status proof, contacts | The hub; a second general phone number; retroactive coverage wording |
+| U03 Support page on meeting the rules | How to report, how exclusions are confirmed, how to send papers | Records first; form 742; 3 ways to confirm a medically frail or treatment exclusion |
+| U04 DWS page for adults | Start dates, look-back, exclusions, exceptions, verification | Jan. 1, 2027 for applicants; renewals due March 2027 or later for members; the 30-day form |
+| U05 Exclusions and exceptions table | Every row | Exclusions, mandatory exceptions, optional hardships; 2 must be requested |
+| U06, U13 Staff toolkits | Scripts, deadlines, verification | Personal letter from DWS; no day counts |
+| U07 Member letter (July 2026) | Every statement | No action yet; keep myCase current |
+| U08 Glossary (August 2026) | Every term | Agency roles; TAM ending; retroactive coverage |
+| U09 Quick guide (June 2026), U10 flyer | Every statement | Immigrant change; half-time as the school defines it |
+| U11 Partner FAQ (January 2026), U12 member FAQ | Every topic | Waiver request of July 3, 2025; about 83,000 members in the 2 programs |
+| U14 Apply page, U15 form 61MED, U16 DWS how-to-apply page | Ways to apply, addresses, fax numbers, timing, language help | 3 ways to apply; two sets of fax numbers; 30 and 90 days; the form does not ask about the rules |
+| U17 Hearings page, U18 and U20 DWS appeal pages, U19 form 490 | Who hears what, deadlines, continued benefits, how to ask | DWS hears eligibility disputes; 90 days; 15 days to keep medical benefits |
+| U21, U22, U24 Support site | Options after losing coverage, free help | No waiting period to apply again; Emergency Medicaid; Take Care Utah |
+| U23 Take Care Utah, U37 Utah Legal Services | Their own services and contact details | Free help; statewide |
+| U25 Expansion page, U26 TAM page | Eligibility, income, employer insurance, TAM changes | Income table; two different sets of income numbers on one page |
+| U27 Immigrant letter, U28 tribal status letter, U29 letter key | Every statement | Groups listed; proof list and Jan. 1, 2027 date; paper colors |
+| U30 Federal letter to Utah (Sept. 25, 2026) | Whether it approves a Utah-designed requirement | It does not; it conforms Utah's demonstration to the federal requirement |
+| U31 Language services page | What help, how to ask | Free language help; no TTY number |
+| U33 DWS office finder | Whether it loads | It loads |
+| S27 Federal rule | Household income, community service definition, half-time, re-applying, notice period | Confirmed in sections I and II.C; sections II.E, II.H, and II.J were beyond what the tool read |
+| S28 Court order, S40 docket | The order's full text; docket entries 139 to 151 | Read in full through CourtListener's records. Utah is not among the plaintiffs. Judgment entered Oct. 29; no notice of appeal through the Nov. 6 entries |
+
+### Oregon re-check
+
+Done early, ahead of checkpoint 2026-11-16.
+
+- **S07** (federal changes page): still "Last updated Sept. 18, 2026." No mention of the ruling.
+- **S01** (provider FAQ) and **S03** (exemptions explainer): no date shown; no mention of the ruling; the work-limit sentence in S01 is unchanged.
+- **S24 and S23** (OHP.Oregon.gov pages) still have to be read by hand.
+- **Court docket (S40):** entry 149 enters judgment and dismisses the case on Oct. 29, 2026. Entries 150 and 151 (Nov. 6) are a transcript and its notice. No notice of appeal appeared. CourtListener can lag the court's own system (PACER).
+- The rest of the Oregon sources were **not** re-read. The Oregon guide's "facts last checked" date stays Nov. 2, 2026, and each re-read source shows its own date.
+
+### Utah: could not check
+
+| What | Why |
+|---|---|
+| Utah Legal Services' Get Help page (intake hours, who qualifies) | The page returned an error. Its phone numbers come from the state's hearing form (U19). |
+| Form 742 (Community Engagement Declaration), the Medically Frail Exclusion Screener, and the provider attestation form | Named on U03 without links, and not on DWS's public forms page. |
+| myCase (U32) | A login page. |
+| The Spanish forms (U15S, U19S), Emergency Medicaid page (U36), 211 Utah (U35), HealthCare.gov (U34), the diagnosis code list (U38) | Linked only; not opened. |
+| The CourtListener docket web page (S40) | It tells automated tools not to load it. The docket was read through CourtListener's search service instead. |
+| Whether the phone and fax numbers work | Nobody called them. |
+| The federal statute (Public Law 119-21) | Still **not opened**. |
+| Utah Administrative Code filings that implement the requirement | One web search found none; a March 26, 2026 Utah Medicaid rules summary listed none. **Unverified.** |
+| The live link check | The session had no general internet access from its command line. The weekly workflow runs it. |
+
+### Utah: not used
+
+- **Disability Law Center (Utah's protection and advocacy agency).** Its site says it does not help with applications for, or denials of, public benefits like Medicaid, so the Utah guide does not send people there for that.
+- Third-party summaries seen in search results (an insurance sales site, a news aggregator, an advocacy petition) were used only as leads, never as sources for claims.
+

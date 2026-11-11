@@ -1,5 +1,7 @@
 # How the 1-minute check works
 
+The check is part of the Oregon guide only. The Utah guide has no check yet ([decisions/0013-utah-section.md](decisions/0013-utah-section.md)).
+
 The check lives in [`src/pages/check.html`](../src/pages/check.html) and [`site/assets/js/checker.js`](../site/assets/js/checker.js). This page describes every input, every result, and the claim behind each line, so anyone can audit it without reading code.
 
 ## Promises

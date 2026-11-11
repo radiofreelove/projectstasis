@@ -8,9 +8,9 @@ Issues and pull requests are public. Do not include anyone's name, case number, 
 
 ## Every fact needs an official source
 
-1. Find the official source (OHA, ODHS, the federal rule, or a court order). Read it, do not rely on a summary.
+1. Find the official source (OHA or ODHS for Oregon; Utah Medicaid or DWS for Utah; the federal rule; or a court order). Read it, do not rely on a summary. A source from one state never supports a fact about the other.
 2. Add it to `data/sources.json` with today's date in `checked`, and `opened: true`.
-3. Add or change the claim in `data/claims.json`.
+3. Add or change the claim in `data/claims.json`. Utah claims start with `U-`, and Utah pages say `section: utah` in their metadata.
 4. Mark the sentence in `src/pages/*.html` with `data-claim="ID"`, and list the source ID in that page's `sources:` line.
 5. If official sources disagree, add an item to `docs/corrections.md`.
 

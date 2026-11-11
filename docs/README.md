@@ -32,4 +32,4 @@ Start with the [project README](../README.md). These files show how the site is 
 - [maintenance.md](maintenance.md): what runs on its own, the Cloudflare Pages settings, and what a person must do.
 - [../data/review.json](../data/review.json): dated checkpoints.
 - [roadmap.md](roadmap.md): what comes next.
-- [decisions/](decisions/): why it was built this way.
+- [decisions/](decisions/): why it was built this way. [0013](decisions/0013-utah-section.md) explains the Utah guide.

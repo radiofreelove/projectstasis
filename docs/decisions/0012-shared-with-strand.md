@@ -34,6 +34,7 @@ Differences kept on purpose:
 | Lowercase doc names (`design.md`) and numbered decisions (`0012-...`) | Uppercase doc names (`PRIVACY.md`) and ADR numbering (`ADR-0010-...`) | Renaming would break links into the docs. The paired records link across. |
 | Commits the built site, including the font files | Builds on Cloudflare and downloads the font at build time | Each project's build model. Both pin the same checksums. |
 | No "Leave quickly" button | "Leave quickly" on every page | Strand's readers may need to hide what they are reading from people in their household. |
+| Two guides (Oregon and Utah) built as sections, and a checked date shown for each source on every page ([0013](0013-utah-section.md), proposed Nov. 10, 2026) | One guide and one checked date | Stasis now covers two states checked on different days. If Strand adopts per-source dates, record it in both places. |
 
 Each site's dark theme keeps its own background, by the maintainer's choice of Nov. 3, 2026: black for Stasis and deep indigo for Strand. Both names nod to Destiny 2 powers. Stasis's color there is icy blue, so its dark theme shows glacial blue headings and links on black. Strand's color there is green, which lives in Strand's mark; its indigo comes from the ODHS palette. Both themes hold text at 7:1, and neither uses color alone to carry meaning: colored boxes have headings, and the current page is marked by shape, not only color.
 

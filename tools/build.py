@@ -10,6 +10,10 @@ Build The Stasis Project site.
 
 Inputs
     src/pages/*.html    Page bodies, each starting with a metadata comment.
+                        "section: utah" puts a page in the Utah guide; pages
+                        without it belong to the Oregon guide. "shared: yes"
+                        marks pages both guides link to (About, Privacy,
+                        Accessibility, Every source).
     data/sources.json   Registry of every outside source and link.
     data/claims.json    Ledger of every factual statement on the site.
 
@@ -49,11 +53,64 @@ SITE_NAME = "The Stasis Project"
 TAGLINE = "OHP, made plain"
 BASE_URL = "https://projectstasis.pages.dev/"
 PROJECT_REPO = "https://github.com/radiofreelove/projectstasis"
+# The day the whole Oregon guide was last re-checked against its sources.
+# Sources re-read since then carry their own "checked" date in the registry,
+# and every page shows that date next to each source.
 FACTS_CHECKED_ISO = "2026-11-02"
-FACTS_CHECKED_TEXT = "Nov. 2, 2026"
-VERSION = "0.1.3 beta"
+# The day the whole Utah guide was last checked against its sources.
+UTAH_FACTS_CHECKED_ISO = "2026-11-10"
+VERSION = "0.2.0 beta"
+
+AP_MONTHS = ["Jan.", "Feb.", "March", "April", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."]
+
+
+def ap_date(iso: str) -> str:
+    """2026-11-02 -> Nov. 2, 2026 (docs/style-guide.md: AP month style, always with the year)."""
+    year, month, day = (int(part) for part in iso.split("-"))
+    return f"{AP_MONTHS[month - 1]} {day}, {year}"
+
+
+FACTS_CHECKED_TEXT = ap_date(FACTS_CHECKED_ISO)
 
 NAV = [("index", "Home"), ("check", "Check"), ("apply", "Apply"), ("help", "Get help")]
+
+# One guide per state. Every page belongs to one section, which sets its
+# tagline, menu, footer text, and "facts last checked" date. See
+# docs/decisions/0013-utah-section.md.
+SECTIONS = {
+    "oregon": {
+        "tagline": TAGLINE,
+        "home": "index",
+        "nav": NAV,
+        "facts_iso": FACTS_CHECKED_ISO,
+        "explainer_kind": "state-explainer",
+        "footer_why": (
+            "The state explains the new OHP rules across more than a dozen documents. This site puts what "
+            "applicants need in one place, in plain words. Each page lists the official sources behind it."
+        ),
+        "footer_independent": (
+            "Not run by the State of Oregon, the Oregon Health Authority (OHA), or the Oregon Department of "
+            "Human Services (ODHS). Only OHP decides who qualifies."
+        ),
+        "other_guide": ("utah", "Utah Medicaid guide"),
+    },
+    "utah": {
+        "tagline": "Utah Medicaid, made plain",
+        "home": "utah",
+        "nav": [("utah", "Utah home"), ("utah-rules", "Rules"), ("utah-apply", "Apply"), ("utah-help", "Get help")],
+        "facts_iso": UTAH_FACTS_CHECKED_ISO,
+        "explainer_kind": "utah-explainer",
+        "footer_why": (
+            "Utah explains the new Medicaid rules across more than a dozen pages and papers. This guide puts "
+            "what applicants need in one place, in plain words. Each page lists the official sources behind it."
+        ),
+        "footer_independent": (
+            "Not run by the State of Utah, the Utah Department of Health and Human Services (DHHS), or the "
+            "Utah Department of Workforce Services (DWS). Only the state decides who qualifies."
+        ),
+        "other_guide": ("index", "Oregon Health Plan guide"),
+    },
+}
 
 META_RE = re.compile(r"\A<!--\s*\n(.*?)\n-->\s*\n", re.S)
 HREF_RE = re.compile(r'href="([^"]+)"')
@@ -115,6 +172,10 @@ def parse_page(path: Path):
     meta["sources"] = [s.strip() for s in meta.get("sources", "").split(",") if s.strip()]
     meta["scripts"] = [s.strip() for s in meta.get("scripts", "").split(",") if s.strip()]
     meta["in_lists"] = meta.get("in_lists", "yes") != "no"
+    meta["section"] = meta.get("section", "oregon")
+    if meta["section"] not in SECTIONS:
+        raise BuildError(f"{path.name}: unknown section {meta['section']!r}")
+    meta["shared"] = meta.get("shared", "no") == "yes"
     body = text[match.end():]
     return meta, body
 
@@ -132,14 +193,16 @@ def render_sources_section(ids, by_id):
         src = by_id[source_id]
         fmt = f' <span class="tag">{esc(src["format"])}</span>' if src["format"] == "PDF" else ""
         dated = src["date_on_document"]
+        checked = src["checked"]
         items.append(
             f'      <li id="src-{esc(source_id.lower())}"><a href="{esc(src["url"])}">{esc(src["title"])}</a>{fmt}<br>'
-            f'{esc(src["publisher"])}. Date on it: {esc(dated)}.</li>'
+            f'{esc(src["publisher"])}. Date on it: {esc(dated)}. '
+            f'Checked: <time datetime="{esc(checked)}">{esc(ap_date(checked))}</time>.</li>'
         )
     return (
         '    <section class="sources" aria-labelledby="sources-title">\n'
         '      <h2 id="sources-title">Sources for this page</h2>\n'
-        f'      <p>We checked these on <time datetime="{FACTS_CHECKED_ISO}">{FACTS_CHECKED_TEXT}</time>. '
+        '      <p>Each source shows the date printed on it and the date we last checked it. '
         'Want every detail? See <a href="sources.html">every source</a> and the public '
         f'<a href="{PROJECT_REPO}/blob/main/docs/claims.md">fact log</a>.</p>\n'
         '      <ol>\n' + "\n".join(items) + "\n      </ol>\n"
@@ -188,34 +251,43 @@ SETTINGS_PANEL = """    <details class="display-settings" data-settings>
 """
 
 
-def render_page(meta, body, pages, by_id, state_doc_count):
+def render_page(meta, body, pages, by_id, doc_counts):
     slug = meta["slug"]
-    if slug == "index":
-        title_tag = f"{SITE_NAME}: {TAGLINE}"
+    section = SECTIONS[meta["section"]]
+    tagline = section["tagline"]
+    facts_iso = section["facts_iso"]
+    facts_text = ap_date(facts_iso)
+    if slug == section["home"]:
+        title_tag = f"{SITE_NAME}: {tagline}"
     else:
         title_tag = f"{meta['title']} | {SITE_NAME}"
 
     nav_links = []
-    for target, label in NAV:
+    for target, label in section["nav"]:
         current = ' aria-current="page"' if target == slug else ""
         nav_links.append(f'          <li><a href="{target}.html"{current}>{esc(label)}</a></li>')
 
+    # "All pages": this guide's pages, then the pages both guides share,
+    # then one link to the other guide.
+    own = [p for p in pages if p["in_lists"] and p["section"] == meta["section"] and not p["shared"]]
+    shared = [p for p in pages if p["in_lists"] and p["shared"]]
     footer_links = []
-    for page in pages:
-        if not page["in_lists"]:
-            continue
+    for page in own + shared:
         current = ' aria-current="page"' if page["slug"] == slug else ""
         footer_links.append(
             f'          <li><a href="{page["slug"]}.html"{current}>{esc(page["short_title"])}</a></li>'
         )
+    other_slug, other_label = section["other_guide"]
+    footer_links.append(f'          <li><a href="{other_slug}.html">{esc(other_label)}</a></li>')
 
     scripts = "".join(
         f'\n  <script src="assets/js/{esc(name)}.js" defer></script>' for name in meta["scripts"]
     )
     sources_html = render_sources_section(meta["sources"], by_id) if meta["sources"] else ""
-    body = body.replace("{{STATE_DOC_COUNT}}", str(state_doc_count))
-    body = body.replace("{{FACTS_CHECKED_TEXT}}", FACTS_CHECKED_TEXT)
-    body = body.replace("{{FACTS_CHECKED_ISO}}", FACTS_CHECKED_ISO)
+    body = body.replace("{{STATE_DOC_COUNT}}", str(doc_counts["oregon"]))
+    body = body.replace("{{UTAH_DOC_COUNT}}", str(doc_counts["utah"]))
+    body = body.replace("{{FACTS_CHECKED_TEXT}}", facts_text)
+    body = body.replace("{{FACTS_CHECKED_ISO}}", facts_iso)
 
     canonical = ""
     if meta["in_lists"]:
@@ -245,9 +317,9 @@ def render_page(meta, body, pages, by_id, state_doc_count):
     </div>
     <div class="wrap">
       <div class="header-row">
-        <a class="brand" href="index.html">
+        <a class="brand" href="{section["home"]}.html">
           <img src="assets/img/logo.svg" alt="" width="40" height="40">
-          <span><span class="brand-name">{SITE_NAME}</span><span class="brand-tag">{TAGLINE}</span></span>
+          <span><span class="brand-name">{SITE_NAME}</span><span class="brand-tag">{esc(tagline)}</span></span>
         </a>
         <nav class="main-nav" aria-label="Main">
         <ul>
@@ -266,10 +338,10 @@ def render_page(meta, body, pages, by_id, state_doc_count):
   <footer class="site-footer">
     <div class="wrap">
       <h2>Why this site exists</h2>
-      <p>The state explains the new OHP rules across more than a dozen documents. This site puts what applicants need in one place, in plain words. Each page lists the official sources behind it.</p>
-      <p><strong>Independent.</strong> Not run by the State of Oregon, the Oregon Health Authority (OHA), or the Oregon Department of Human Services (ODHS). Only OHP decides who qualifies.</p>
+      <p>{esc(section["footer_why"])}</p>
+      <p><strong>Independent.</strong> {esc(section["footer_independent"])}</p>
       <p><strong>Private.</strong> No accounts, ads, cookies, or tracking. <a href="privacy.html">How your privacy is protected</a>.</p>
-      <p>Facts last checked <time datetime="{FACTS_CHECKED_ISO}">{FACTS_CHECKED_TEXT}</time>. Version {VERSION}. <a href="{PROJECT_REPO}">See how this site is made</a>.</p>
+      <p>Facts last checked <time datetime="{facts_iso}">{facts_text}</time>. Version {VERSION}. <a href="{PROJECT_REPO}">See how this site is made</a>.</p>
       <p>Words: <a href="{PROJECT_REPO}/blob/main/LICENSE">CC BY 4.0</a>. Code: <a href="{PROJECT_REPO}/blob/main/LICENSE-CODE">MIT</a>. <a href="about.html#license">Reuse this guide</a>.</p>
       <nav class="footer-pages" aria-label="All pages">
         <h2>All pages</h2>
@@ -284,10 +356,33 @@ def render_page(meta, body, pages, by_id, state_doc_count):
 """
 
 
+def is_utah_source(src) -> bool:
+    """Utah sources carry IDs that start with U (U01, U15S, and so on)."""
+    return src["id"].startswith("U")
+
+
 def render_sources_page_table(registry):
+    def group(title, anchor, sources):
+        return (
+            f'      <h2 id="{anchor}">{title}</h2>\n'
+            '      <ol class="all-sources">\n' + "\n".join(source_rows(sources)) + "\n      </ol>\n"
+        )
+
+    oregon = [s for s in registry["sources"] if not is_utah_source(s)]
+    utah = [s for s in registry["sources"] if is_utah_source(s)]
+    langs = registry["application_languages"]
+    return (
+        group("Oregon, federal, and site sources", "oregon-sources", oregon)
+        + f'      <p>We also link to the paper application in {len(langs["items"])} languages, '
+        'exactly as listed on OHA\'s how-to-apply page. See <a href="help.html#languages">Free help and other languages</a>.</p>\n'
+        + group("Utah sources", "utah-sources", utah)
+    )
+
+
+def source_rows(sources):
     rows = []
     pdf_tag = ' <span class="tag">PDF</span>'
-    for src in registry["sources"]:
+    for src in sources:
         if src["opened"]:
             opened = "Yes"
         else:
@@ -300,12 +395,7 @@ def render_sources_page_table(registry):
             f"Checked: {esc(src['checked'])}. Read by us: {esc(opened)}.<br>"
             f"<span>Why we list it: {esc(src['notes'])}</span></li>"
         )
-    langs = registry["application_languages"]
-    return (
-        '      <ol class="all-sources">\n' + "\n".join(rows) + "\n      </ol>\n"
-        f'      <p>We also link to the paper application in {len(langs["items"])} languages, '
-        'exactly as listed on OHA\'s how-to-apply page. See <a href="help.html#languages">Free help and other languages</a>.</p>\n'
-    )
+    return rows
 
 
 def render_language_list(registry):
@@ -331,7 +421,8 @@ def render_sitemap(pages):
         if not page["in_lists"]:
             continue
         loc = BASE_URL if page["slug"] == "index" else f"{BASE_URL}{page['slug']}"
-        entries.append(f"  <url><loc>{loc}</loc><lastmod>{FACTS_CHECKED_ISO}</lastmod></url>")
+        lastmod = SECTIONS[page["section"]]["facts_iso"]
+        entries.append(f"  <url><loc>{loc}</loc><lastmod>{lastmod}</lastmod></url>")
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
         '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">\n'
@@ -458,11 +549,18 @@ def build():
         if claim["kind"] in {"fact", "math", "inference"} and not claim["sources"]:
             errors.append(f"claim {claim['id']}: kind {claim['kind']} needs at least one source")
 
-    state_doc_count = sum(1 for s in registry["sources"] if s["kind"] == "state-explainer")
-    if state_doc_count <= 12:
-        errors.append(
-            f"the site says 'more than a dozen documents' but the registry counts {state_doc_count}"
-        )
+    doc_counts = {}
+    for name, section in SECTIONS.items():
+        doc_counts[name] = sum(1 for s in registry["sources"] if s["kind"] == section["explainer_kind"])
+        if doc_counts[name] <= 12:
+            errors.append(
+                f"the {name} guide says 'more than a dozen' but the registry counts {doc_counts[name]} "
+                f"'{section['explainer_kind']}' entries"
+            )
+
+    for src in registry["sources"]:
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", src.get("checked", "")):
+            errors.append(f"source {src['id']}: 'checked' must be a date like 2026-11-02")
 
     pages = []
     for path in sorted(SRC.glob("*.html")):
@@ -519,7 +617,7 @@ def build():
                 elif not (SITE / target).exists():
                     errors.append(f"{page['file']}: link to missing file {href}")
 
-        rendered = pretty_links(render_page(page, body, pages, by_id, state_doc_count))
+        rendered = pretty_links(render_page(page, body, pages, by_id, doc_counts))
         if page.get("root_absolute") == "yes":
             # Cloudflare Pages serves 404.html at whatever address was missing, so
             # its links and assets must not depend on the current folder.

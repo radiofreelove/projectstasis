@@ -2,6 +2,37 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.2.0 beta (2026-11-10)
+
+A second guide, for Utah Medicaid, and a re-check of the Oregon court note. Built on the `utah-section` branch.
+
+### New: the Utah Medicaid guide
+
+- 12 pages for people applying for Utah Medicaid, starting at `/utah`: home, the rules, reasons you may not have to meet them (Utah's exclusions and exceptions, and proof of tribal status), how to apply, letters, being turned down, past medical bills, health conditions, immigration status, free help and languages, words on letters, and a printable hours log. Same page pattern, word rules, and design as the OHP guide.
+- 111 Utah claims in the fact log (IDs start with `U-`: 103 facts, 4 inferences, 2 math, 1 design promise, and 1 tip) and 40 Utah entries in the source registry (IDs start with `U`; 33 were read, and 18 are Utah documents that explain the changes).
+- 11 places where Utah's own pages disagree or are unclear, in a new Utah part of [docs/corrections.md](docs/corrections.md): the months a current member must meet, whose income counts toward $580, foster care wording, jail and treatment, two general phone numbers, a child's age, income numbers, fax numbers, where the paper form asks about the rules, whether Targeted Adult Medicaid ends, and document dates.
+- No Utah version of the 1-minute check yet. Why, and every other design choice: [docs/decisions/0013-utah-section.md](docs/decisions/0013-utah-section.md).
+- **Read this before sharing the Utah guide.** It was researched in one day through a tool that answers questions about a document instead of returning its full text. No person has read the Utah documents end to end. Checkpoint 2026-11-24 covers that, and [docs/research-log.md](docs/research-log.md) lists what could not be checked.
+
+### Oregon
+
+- Checkpoint 2026-11-16 done early, on Nov. 10. OHA's federal changes page (S07, still last updated Sept. 18, 2026), provider FAQ (S01), and exemptions explainer (S03) had not changed and did not mention the Oct. 29, 2026 court ruling. The "In the news" note on the reasons and health pages now says "As of Nov. 10, 2026." OHP.Oregon.gov/HR1 (S24) still has to be read by hand.
+- The court entered judgment and dismissed *Commonwealth of Massachusetts v. Oz* on Oct. 29, 2026. No notice of appeal appeared in the docket entries through Nov. 6. The docket is now in the registry as S40. Next checkpoint: 2026-12-10.
+- The home page, the About page, and the 404 page link to the Utah guide. The About page has a "Two guides" section.
+
+### Both guides
+
+- Every page's source list now shows the date each source was last checked, next to the date printed on it. Before, one line gave a single date for all of them, which stopped being true as soon as one source was re-read.
+- The footer's "All pages" list shows the pages of the guide you are in, the 4 shared pages, and a link to the other guide.
+- The "Every source" page lists Oregon, federal, and site sources first, then Utah sources.
+
+### Build and upkeep
+
+- `tools/build.py`: guide sections (`section: utah` and `shared: yes` in page metadata), one "facts last checked" date per guide, a count check for Utah's documents like the one for Oregon's, a format check on every source's `checked` date, and dates written in the site's style from one value instead of two constants that could drift apart.
+- `data/review.json`: Utah checkpoints for 2026-11-24 (a person reads the Utah pages against their sources), 2027-03-01 (renewals), and 2027-06-15 (Targeted Adult Medicaid), and Utah work added to the Dec. 10, Dec. 13, Dec. 31, and Jan. 15 checkpoints.
+- Docs updated to match: README, methodology, style guide, boundaries, design, maintenance, roadmap, research log, and decision 0012 (a recorded difference from Strand).
+- Checked on Nov. 10, 2026: build freshness, structure lint (30 pages), contrast, reading level (Utah pages grade 2.4 to 7.1), dated checkpoints, and the real-browser tests on all 30 pages. Not run: axe-core, the link check, and the live-site check, which need the GitHub workflows.
+
 ## 0.1.3 beta (2026-11-03)
 
 Third review follow-up. Nothing readers see changes.
