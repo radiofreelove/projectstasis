@@ -8,19 +8,34 @@ Check that every official link still works.
 Reads every address from data/sources.json (sources and paper application
 languages). For each one it:
 
-  1. Reads the site's robots.txt and skips the address if automated
+  1. Skips the address if its registry entry says "link_check": "by hand".
+     Those sites block automated tools, and docs/maintenance.md has a
+     person open them at least every 30 days.
+  2. Reads the site's robots.txt and skips the address if automated
      visitors are not allowed. Those are listed for a person to check.
-  2. Sends a HEAD request, then a GET request if HEAD is refused.
-  3. Waits between requests to the same site, to be polite.
+  3. Sends a HEAD request, then a GET request if HEAD fails for any reason.
+     Some servers refuse HEAD and answer GET, so only GET decides.
+  4. Waits between requests to the same site, to be polite.
 
-Exit code 1 if any allowed address is broken (HTTP 400 or higher, or no
-answer). The weekly workflow opens a GitHub issue with the report.
+Some official sites send an incomplete certificate chain. Browsers fill
+the gap; this tool cannot, so it cannot verify the site. For that one
+problem only, it asks again without verifying, to learn whether the
+address still answers. Nothing is sent but the request, and nothing in
+the reply is used but its status. If the address answers, it is listed
+under "Check by hand" with a note. If it does not, it is broken. Any
+other certificate problem (expired, wrong name, self-signed) counts as
+broken, because a reader's browser would warn about it too.
+
+Exit code 1 if any address is broken (HTTP 400 or higher, or no answer).
+"Check by hand" addresses do not change the exit code. The weekly
+workflow opens a GitHub issue with the report when the exit code is 1.
 Standard library only.
 """
 from __future__ import annotations
 
 import argparse
 import json
+import ssl
 import sys
 import time
 import urllib.error
@@ -35,14 +50,41 @@ TIMEOUT = 25
 PAUSE = 1.5
 
 
-def addresses():
-    registry = json.loads((ROOT / "data" / "sources.json").read_text(encoding="utf-8"))
+# OpenSSL's codes for "the site did not send its whole certificate chain":
+# 20 = unable to get local issuer certificate, 21 = unable to verify the
+# first certificate. Browsers fetch the missing piece; this tool cannot.
+INCOMPLETE_CHAIN = {20, 21}
+UNVERIFIED = ssl.create_default_context()
+UNVERIFIED.check_hostname = False
+UNVERIFIED.verify_mode = ssl.CERT_NONE
+# Hosts found to send an incomplete chain during this run.
+UNVERIFIABLE_HOSTS: set[str] = set()
+
+
+def addresses(registry_path: Path | None = None):
+    """Every address to check, as (id, url, by_hand)."""
+    path = registry_path or ROOT / "data" / "sources.json"
+    registry = json.loads(path.read_text(encoding="utf-8"))
     seen = []
     for src in registry["sources"]:
-        seen.append((src["id"], src["url"]))
+        seen.append((src["id"], src["url"], src.get("link_check") == "by hand"))
     for item in registry["application_languages"]["items"]:
-        seen.append((f"7210-{item['hreflang']}", item["url"]))
+        seen.append((f"7210-{item['hreflang']}", item["url"], False))
     return seen
+
+
+def incomplete_chain(error: Exception) -> bool:
+    """True if the only problem is a certificate chain this tool cannot complete."""
+    reason = getattr(error, "reason", error)
+    return isinstance(reason, ssl.SSLCertVerificationError) and reason.verify_code in INCOMPLETE_CHAIN
+
+
+def open_url(request: urllib.request.Request):
+    """Open a request, without verifying only for hosts known to send an incomplete chain."""
+    host = urlsplit(request.full_url).netloc
+    if host in UNVERIFIABLE_HOSTS:
+        return urllib.request.urlopen(request, timeout=TIMEOUT, context=UNVERIFIED)
+    return urllib.request.urlopen(request, timeout=TIMEOUT)
 
 
 ROBOTS: dict[str, urllib.robotparser.RobotFileParser | None] = {}
@@ -54,16 +96,22 @@ def allowed(url: str) -> bool:
     if base not in ROBOTS:
         parser = urllib.robotparser.RobotFileParser()
         parser.set_url(base + "/robots.txt")
-        try:
-            request = urllib.request.Request(base + "/robots.txt", headers={"User-Agent": USER_AGENT})
-            with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
-                parser.parse(response.read().decode("utf-8", "replace").splitlines())
-            ROBOTS[base] = parser
-        except urllib.error.HTTPError as error:
-            # No robots.txt (404) means everything is allowed; 401/403 means stay out.
-            ROBOTS[base] = None if error.code >= 500 or error.code in (404, 410) else "deny"  # type: ignore
-        except Exception:
-            ROBOTS[base] = None
+        request = urllib.request.Request(base + "/robots.txt", headers={"User-Agent": USER_AGENT})
+        for attempt in (1, 2):
+            try:
+                with open_url(request) as response:
+                    parser.parse(response.read().decode("utf-8", "replace").splitlines())
+                ROBOTS[base] = parser
+            except urllib.error.HTTPError as error:
+                # No robots.txt (404) means everything is allowed; 401/403 means stay out.
+                ROBOTS[base] = None if error.code >= 500 or error.code in (404, 410) else "deny"  # type: ignore
+            except Exception as error:
+                if attempt == 1 and incomplete_chain(error):
+                    # Read the site's rules anyway, so they are still respected.
+                    UNVERIFIABLE_HOSTS.add(parts.netloc)
+                    continue
+                ROBOTS[base] = None
+            break
     rules = ROBOTS[base]
     if rules == "deny":
         return False
@@ -73,33 +121,46 @@ def allowed(url: str) -> bool:
 
 
 def probe(url: str):
-    last_error = None
-    for method in ("HEAD", "GET"):
+    """Return (status, final address, error text, certificate note).
+
+    HEAD first, because it is cheap. If HEAD fails in any way, GET decides:
+    some servers answer 401 or 403 to HEAD and 200 to GET.
+    """
+    host = urlsplit(url).netloc
+    chain_error = None
+    for method in ("HEAD", "GET", "GET"):
         request = urllib.request.Request(url, method=method, headers={"User-Agent": USER_AGENT})
         try:
-            with urllib.request.urlopen(request, timeout=TIMEOUT) as response:
-                return response.status, response.geturl(), None
+            with open_url(request) as response:
+                return response.status, response.geturl(), None, chain_error
         except urllib.error.HTTPError as error:
-            last_error = error
-            if method == "HEAD" and error.code in (400, 403, 405, 406, 429, 501):
-                continue
-            return error.code, url, str(error.reason)
-        except Exception as error:  # network failure, timeout, TLS
-            last_error = error
             if method == "HEAD":
                 continue
-            return None, url, str(error)
-    return None, url, str(last_error)
+            return error.code, url, str(error.reason), chain_error
+        except Exception as error:  # network failure, timeout, TLS
+            if incomplete_chain(error) and host not in UNVERIFIABLE_HOSTS:
+                chain_error = str(getattr(error, "reason", error))
+                UNVERIFIABLE_HOSTS.add(host)
+                continue
+            if method == "HEAD":
+                continue
+            return None, url, str(error), chain_error
+    return None, url, "no answer", chain_error
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--report", type=Path)
+    parser.add_argument("--registry", type=Path, help="a registry file to check instead of data/sources.json (for tests)")
     args = parser.parse_args()
 
     broken, manual, good = [], [], []
     last_host_time: dict[str, float] = {}
-    for source_id, url in addresses():
+    for source_id, url, by_hand in addresses(args.registry):
+        if by_hand:
+            manual.append((source_id, url, "the registry says this site blocks automated tools; "
+                                           "a person opens it at least every 30 days (docs/maintenance.md)"))
+            continue
         host = urlsplit(url).netloc
         wait = PAUSE - (time.time() - last_host_time.get(host, 0))
         if wait > 0:
@@ -107,10 +168,14 @@ def main() -> int:
         if not allowed(url):
             manual.append((source_id, url, "robots.txt asks automated visitors not to load this address"))
             continue
-        status, final, error = probe(url)
+        status, final, error, chain_error = probe(url)
         last_host_time[host] = time.time()
         if status is None or status >= 400:
             broken.append((source_id, url, f"{status or 'no answer'} {error or ''}".strip()))
+        elif chain_error or host in UNVERIFIABLE_HOSTS:
+            manual.append((source_id, url, f"answers ({status}), but this tool could not verify the site's "
+                                           "certificate because the site sends an incomplete chain. "
+                                           "Open it in a browser"))
         else:
             note = "" if final == url else f"redirects to {final}"
             good.append((source_id, url, note))

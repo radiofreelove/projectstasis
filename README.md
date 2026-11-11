@@ -87,7 +87,7 @@ python3 tools/serve.py    # serve it the way Cloudflare Pages does, then open ht
 | `python3 tools/check_contrast.py` | Every color pair meets 7:1 for text and 3:1 for borders and focus |
 | `python3 tools/check_reading_level.py` | Each page's estimated reading grade (target 6, fails above 8) |
 | `python3 tools/check_review_dates.py` | No dated checkpoint is past due |
-| `python3 tools/check_links.py` | Every official link answers, respecting robots.txt (needs internet) |
+| `python3 tools/check_links.py` | Every official link answers, respecting robots.txt; addresses it cannot judge are listed for a person (needs internet) |
 | `python3 tools/browser_check.py` | Real-browser tests on a server that behaves like Cloudflare Pages: reflow at 320 px, contrast in every theme, target sizes, focus visibility, no outside requests, the policy header on every page, every path through the check, and axe-core when `AXE_JS` is set (needs the test tools in `test-tools/requirements.txt` and `test-tools/package.json`) |
 | `python3 tools/check_live.py` | The live site matches this repository byte for byte, with every header, the 404 page, and redirects from old `.html` addresses (needs internet) |
 

@@ -41,14 +41,15 @@ Optional and safe: **Enable access policy** (Settings, General) limits preview a
 
 ### At least every 30 days
 
-1. Open the pages that block automated tools and read them by hand:
+1. Open the pages that block automated tools and read them by hand. They carry `"link_check": "by hand"` in `data/sources.json`, so the weekly link check lists them and does not request them:
    - <https://ohp.oregon.gov/HR1> (registry S24)
    - <https://ohp.oregon.gov/Resources> (registry S23)
-2. Re-read OHA's federal changes page (S07) and note its "last updated" date in `data/sources.json`.
-3. Search for new OHA notices, fact sheets, and forms about the rules. Add new ones to the registry as `state-explainer` entries.
-4. Check the court docket for *Commonwealth of Massachusetts v. Oz*, No. 1:26-cv-12962 (D. Mass.), for appeals or new orders.
-5. Search the Oregon Administrative Rules Database for filings that implement the work or activity rules (likely OAR chapter 410, division 200, or chapter 461; unverified).
-6. Watch for a CMS final rule replacing the interim final rule (S27).
+2. Open the newest **Weekly source check** run in the Actions tab and read its "Check by hand" list. Open at least one paper application link from it in a browser. The forms site (`sharedsystems.dhsoha.state.or.us`) sends an incomplete certificate chain, so the link check can tell that each form still answers but cannot verify the site the way a browser does.
+3. Re-read OHA's federal changes page (S07) and note its "last updated" date in `data/sources.json`.
+4. Search for new OHA notices, fact sheets, and forms about the rules. Add new ones to the registry as `state-explainer` entries.
+5. Check the court docket for *Commonwealth of Massachusetts v. Oz*, No. 1:26-cv-12962 (D. Mass.), for appeals or new orders.
+6. Search the Oregon Administrative Rules Database for filings that implement the work or activity rules (likely OAR chapter 410, division 200, or chapter 461; unverified).
+7. Watch for a CMS final rule replacing the interim final rule (S27).
 
 For the Utah guide, in the same sitting:
 
@@ -90,6 +91,8 @@ Do the listed work, then move or remove the checkpoint and say what you did in [
 3. Log it in [corrections.md](corrections.md) and the changelog.
 
 ## If an official link breaks
+
+First read why the link check called it broken. "Broken" means the site answered with an error, did not answer, or has a certificate a browser would warn about. Addresses the tool could not judge are under "Check by hand" and do not open an issue. Open the address in a browser before changing anything.
 
 1. Search the publisher's site for the new address.
 2. Update `data/sources.json` (and the page, if the address is written in the text), with today's date.

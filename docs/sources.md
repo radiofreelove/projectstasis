@@ -2,7 +2,7 @@
 
 Generated from `data/sources.json` by `tools/build.py`. Do not edit by hand.
 
-Registry version 2026-11-10. Every external link on the site must appear here. 'opened' means the document itself was read on the 'checked' date. 'linked_from' means the address came from another official source and was not opened by our tools. Kind 'state-explainer' entries are counted on the About page to support the claim that the state explains the rules across more than a dozen documents. Kind 'utah-explainer' entries are counted the same way for the Utah guide. IDs that start with U are Utah sources, added on 2026-11-10.
+Registry version 2026-11-11. Every external link on the site must appear here. 'opened' means the document itself was read on the 'checked' date. 'linked_from' means the address came from another official source and was not opened by our tools. Kind 'state-explainer' entries are counted on the About page to support the claim that the state explains the rules across more than a dozen documents. Kind 'utah-explainer' entries are counted the same way for the Utah guide. IDs that start with U are Utah sources, added on 2026-11-10. 'link_check': 'by hand' marks an address whose site blocks automated tools: the weekly link check lists it for a person and does not request it.
 
 | ID | Source | Kind | Date on it | Checked | Read by us | Notes |
 |---|---|---|---|---|---|---|

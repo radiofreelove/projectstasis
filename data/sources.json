@@ -1,7 +1,7 @@
 {
-  "registry_version": "2026-11-10",
+  "registry_version": "2026-11-11",
   "checked_by": "Project maintainer, with AI research assistance (see docs/research-log.md)",
-  "notes": "Every external link on the site must appear here. 'opened' means the document itself was read on the 'checked' date. 'linked_from' means the address came from another official source and was not opened by our tools. Kind 'state-explainer' entries are counted on the About page to support the claim that the state explains the rules across more than a dozen documents. Kind 'utah-explainer' entries are counted the same way for the Utah guide. IDs that start with U are Utah sources, added on 2026-11-10.",
+  "notes": "Every external link on the site must appear here. 'opened' means the document itself was read on the 'checked' date. 'linked_from' means the address came from another official source and was not opened by our tools. Kind 'state-explainer' entries are counted on the About page to support the claim that the state explains the rules across more than a dozen documents. Kind 'utah-explainer' entries are counted the same way for the Utah guide. IDs that start with U are Utah sources, added on 2026-11-10. 'link_check': 'by hand' marks an address whose site blocks automated tools: the weekly link check lists it for a person and does not request it.",
   "sources": [
     {
       "id": "S01",
@@ -309,7 +309,8 @@
       "checked": "2026-11-02",
       "opened": false,
       "linked_from": "S08",
-      "notes": "The OHP.Oregon.gov short-link domain blocks automated access, so this was not opened. Check by hand."
+      "notes": "The OHP.Oregon.gov short-link domain blocks automated access, so this was not opened. Check by hand.",
+      "link_check": "by hand"
     },
     {
       "id": "S24",
@@ -323,7 +324,8 @@
       "checked": "2026-11-02",
       "opened": false,
       "linked_from": "S01, S02, S03, S08",
-      "notes": "Blocks automated access. OHA's official update page per its own materials. Check by hand."
+      "notes": "Blocks automated access. OHA's official update page per its own materials. Check by hand.",
+      "link_check": "by hand"
     },
     {
       "id": "S25",
