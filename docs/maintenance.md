@@ -65,15 +65,16 @@ Do the listed work, then move or remove the checkpoint and say what you did in [
 
 ## How to change a fact
 
-1. Edit the page in `src/pages/`.
+1. Edit the page in its guide's folder: `src/pages/oregon/`, `src/pages/utah/`, or `src/pages/shared/` for the 4 pages both guides have.
 2. Update the claim in `data/claims.json` (statement, sources, kind, note).
 3. If there is a new source, add it to `data/sources.json` with `checked` set to today and `opened` set honestly.
 4. If official sources disagree, add an item to [corrections.md](corrections.md).
-5. Set the source's `checked` date in `data/sources.json` to the day you re-read it. Each page shows that date next to the source. When you re-check a whole guide, also update `FACTS_CHECKED_ISO` (Oregon) or `UTAH_FACTS_CHECKED_ISO` (Utah) in `tools/build.py`; the footer date comes from it.
+5. Set the source's `checked` date in `data/sources.json` to the day you re-read it. Each page shows that date next to the source. When you re-check a whole guide, also update that guide's `facts_iso` in the `SECTIONS` list in `tools/build.py`; the footer date comes from it.
 6. Run:
 
    ```bash
    python3 tools/build.py
+   python3 -m unittest discover -s tools/tests
    python3 tools/check_structure.py
    python3 tools/check_contrast.py
    python3 tools/check_reading_level.py
@@ -84,6 +85,18 @@ Do the listed work, then move or remove the checkpoint and say what you did in [
    To look at the result the way visitors will see it, run `python3 tools/serve.py` and open <http://127.0.0.1:8000>.
 
 7. Add a line to [CHANGELOG.md](../CHANGELOG.md). Commit `src/`, `data/`, `site/`, and `docs/` together.
+
+## Releasing a version
+
+1. Change `VERSION` in `tools/build.py`. Every page shows it in the footer, so run `python3 tools/build.py`.
+2. Add an entry to [CHANGELOG.md](../CHANGELOG.md) headed with the same version and the date, like `## 0.2.1 beta (2026-11-11)`. The checks fail if a version has no entry.
+3. Merge to `main`. After the checks pass there, [release.yml](../.github/workflows/release.yml) tags the commit (`v0.2.1-beta`) and publishes a GitHub release whose notes are that changelog entry. If the tag already exists, it does nothing.
+
+To see what a release would say before merging, run `python3 tools/release_notes.py`.
+
+## Adding a guide for another state
+
+See [adding-a-guide.md](adding-a-guide.md).
 
 ## If something on the site is wrong
 

@@ -9,28 +9,50 @@ Build The Stasis Project site.
                                      committed output is out of date.
 
 Inputs
-    src/pages/*.html    Page bodies, each starting with a metadata comment.
-                        "section: utah" puts a page in the Utah guide; pages
-                        without it belong to the Oregon guide. "shared: yes"
-                        marks pages both guides need (About, Privacy,
-                        Accessibility, Every source). A shared page is built
-                        once for each guide, as "about" and "utah-about", so
-                        a reader never leaves the guide they are in. Text
-                        between <!-- oregon --> and <!-- /oregon --> (or
-                        utah) appears only in that guide's copy, and
-                        "utah_title", "utah_description", and "utah_sources"
-                        replace the plain values in the Utah copy.
-    data/sources.json   Registry of every outside source and link.
-    data/claims.json    Ledger of every factual statement on the site.
+    src/pages/<guide>/*.html
+                        Page bodies, each starting with a metadata comment.
+                        The folder says which guide a page belongs to:
+                        src/pages/oregon/ and src/pages/utah/ today. The
+                        guides themselves are listed in SECTIONS below.
+    src/pages/<guide>/_not-found.html
+                        That guide's part of the "page not found" page: a
+                        heading and its main links. No metadata comment.
+    src/pages/shared/*.html
+                        Pages every guide needs (About, Privacy,
+                        Accessibility, Every source), marked "shared: yes".
+                        A shared page is built once for each guide, as
+                        "about" and "utah-about", so a reader never leaves
+                        the guide they are in. Text between <!-- oregon -->
+                        and <!-- /oregon --> (or any guide's name) appears
+                        only in that guide's copy, and "<guide>_title",
+                        "<guide>_description", and "<guide>_sources" (for
+                        example "utah_title") replace the plain values in
+                        that guide's copy. The "page not found" page lives
+                        here too; it belongs to no guide.
+    data/sources.json   Registry of every outside source and link. Each
+                        entry's "guide" says which guide may use it:
+                        a guide's name, or "all".
+    data/claims.json    Ledger of every factual statement on the site, each
+                        with a "guide" in the same way.
+
+Placeholders a page body may use
+    {{GUIDE_SWITCH}}          The "Pick your state" buttons. Every guide's
+                              home page must have it.
+    {{DOC_COUNT}}             How many state explainers this guide's
+                              registry entries hold.
+    {{SOURCES_TABLE}}         This guide's full source list.
+    {{APPLICATION_LANGUAGES}} The paper application in each language.
+    {{GUIDE_START_LISTS}}     Every guide's _not-found.html, in order.
+    {{FACTS_CHECKED_TEXT}}, {{FACTS_CHECKED_ISO}}
 
 The build refuses to finish if a page links to an address that is not in
 the source registry, uses a claim that is not in the ledger, or uses a
 claim whose sources are not listed for that page. That is how the site
 keeps "each page lists the official sources behind it" true.
 
-It also refuses to finish if a page in one guide links to a page in the
-other guide (except the other guide's home page), lists the other state's
-sources, or uses the other state's facts. That is how each guide stays
+It also refuses to finish if a page in one guide links to a page in
+another guide (except that guide's home page), lists another state's
+sources, or uses another state's facts. That is how each guide stays
 whole: every link on a Utah page leads to a Utah page.
 
 Page sources link to each other as "check.html" so the build can confirm
@@ -61,15 +83,8 @@ FONTS = SITE / "assets" / "fonts"
 FONTS_LOCK = ROOT / "fonts.lock.json"
 
 SITE_NAME = "The Stasis Project"
-TAGLINE = "OHP, made plain"
 BASE_URL = "https://projectstasis.pages.dev/"
 PROJECT_REPO = "https://github.com/radiofreelove/projectstasis"
-# The day the whole Oregon guide was last re-checked against its sources.
-# Sources re-read since then carry their own "checked" date in the registry,
-# and every page shows that date next to each source.
-FACTS_CHECKED_ISO = "2026-11-02"
-# The day the whole Utah guide was last checked against its sources.
-UTAH_FACTS_CHECKED_ISO = "2026-11-10"
 VERSION = "0.2.0 beta"
 
 AP_MONTHS = ["Jan.", "Feb.", "March", "April", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."]
@@ -81,22 +96,25 @@ def ap_date(iso: str) -> str:
     return f"{AP_MONTHS[month - 1]} {day}, {year}"
 
 
-FACTS_CHECKED_TEXT = ap_date(FACTS_CHECKED_ISO)
-
-NAV = [("index", "Home"), ("check", "Check"), ("apply", "Apply"), ("help", "Get help")]
-
-# One guide per state. Every page belongs to one section, which sets its
-# tagline, menu, footer text, and "facts last checked" date. See
-# docs/decisions/0013-utah-section.md.
+# One guide per state. This list is the only place the guides are named:
+# the build, the state switch, the footers, the "page not found" page, and
+# the tests all read it. A guide's pages live in src/pages/<name>/. Every
+# page belongs to one section, which sets its tagline, menu, footer text,
+# and "facts last checked" date. Order here is the order readers see.
+# To add a state, follow docs/adding-a-guide.md. See also
+# docs/decisions/0013-utah-section.md and docs/decisions/0014-guide-list.md.
 SECTIONS = {
     "oregon": {
-        "tagline": TAGLINE,
+        "state": "Oregon",
+        "tagline": "OHP, made plain",
         "prefix": "",
         "shared_order": 0,
         "home": "index",
-        "nav": NAV,
-        "facts_iso": FACTS_CHECKED_ISO,
-        "explainer_kind": "state-explainer",
+        "nav": [("index", "Home"), ("check", "Check"), ("apply", "Apply"), ("help", "Get help")],
+        # The day the whole guide was last re-checked against its sources.
+        # Sources re-read since then carry their own "checked" date in the
+        # registry, and every page shows that date next to each source.
+        "facts_iso": "2026-11-02",
         "footer_why": (
             "The state explains the new OHP rules across more than a dozen documents. This site puts what "
             "applicants need in one place, in plain words. Each page lists the official sources behind it."
@@ -106,9 +124,25 @@ SECTIONS = {
             "Human Services (ODHS). Only OHP decides who qualifies."
         ),
         "about_label": "Why this site exists",
-        "other_guide": ("utah", "Utah Medicaid guide"),
+        # What the other guides' footers call this guide.
+        "guide_label": "Oregon Health Plan guide",
+        # The state switch on every guide's home page: the words under this
+        # state's name when the reader is in this guide, and when they are not.
+        "switch_here": "This is the OHP guide.",
+        "switch_go": "Go to the Oregon Health Plan guide",
+        # The "Every source" page: (heading, anchor, which sources).
+        # "own and shared" lists this guide's sources and the ones every
+        # guide may use, in registry order.
+        "source_groups": [("Oregon, federal, and site sources", "oregon-sources", "own and shared")],
+        # For tools/browser_check.py: the 1-minute check's page, the value
+        # of its "caring for someone" reason, and the words that belong to
+        # this guide and must never show in another guide's check results.
+        "check": "check",
+        "check_care_reason": "child",
+        "own_words": ["OHP"],
     },
     "utah": {
+        "state": "Utah",
         "tagline": "Utah Medicaid, made plain",
         # A shared page is built for this guide as "utah-" plus its slug,
         # and listed after the guide's own pages.
@@ -116,8 +150,7 @@ SECTIONS = {
         "shared_order": 30,
         "home": "utah",
         "nav": [("utah", "Utah home"), ("utah-check", "Check"), ("utah-apply", "Apply"), ("utah-help", "Get help")],
-        "facts_iso": UTAH_FACTS_CHECKED_ISO,
-        "explainer_kind": "utah-explainer",
+        "facts_iso": "2026-11-10",
         "footer_why": (
             "Utah explains the new Medicaid rules across more than a dozen pages and papers. This guide puts "
             "what applicants need in one place, in plain words. Each page lists the official sources behind it."
@@ -127,10 +160,22 @@ SECTIONS = {
             "Utah Department of Workforce Services (DWS). Only the state decides who qualifies."
         ),
         "about_label": "Why this guide exists",
-        "other_guide": ("index", "Oregon Health Plan guide"),
+        "guide_label": "Utah Medicaid guide",
+        "switch_here": "This is the Utah Medicaid guide.",
+        "switch_go": "Go to the Utah Medicaid guide",
+        # "own" lists this guide's sources. "shared, used" lists the sources
+        # every guide may use that a page in this guide lists or links to.
+        "source_groups": [
+            ("Utah sources", "utah-sources", "own"),
+            ("Federal, court, and site sources", "other-sources", "shared, used"),
+        ],
+        "check": "utah-check",
+        "check_care_reason": "care",
+        "own_words": ["Utah"],
     },
-    # Not a guide: the frame for a page that belongs to neither state, which
-    # today is only the "page not found" page. Its menu is the two guides.
+    # Not a guide: the frame for a page that belongs to no state, which
+    # today is only the "page not found" page. Its menu is the guides. Its
+    # words name every state, so a person rewrites them when a guide is added.
     "both": {
         "guide": False,
         "tagline": "OHP and Utah Medicaid, made plain",
@@ -147,16 +192,23 @@ SECTIONS = {
             "Only the state decides who qualifies."
         ),
         "about_label": "Why this site exists",
-        "other_guide": None,
+        "footer_title": "Both guides",
     },
 }
 GUIDES = {name: section for name, section in SECTIONS.items() if section.get("guide", True)}
 
-# Source kinds that belong to the Oregon guide only. Utah sources are the
-# ones whose IDs start with U. Every other kind (federal rule, court,
-# standards, the host) may back a page in either guide.
-OREGON_ONLY_KINDS = {"state-explainer", "state-page", "state-form", "advocacy"}
-SECTION_BLOCK_RE = re.compile(r"[ \t]*<!-- (oregon|utah) -->\n(.*?)[ \t]*<!-- /\1 -->\n", re.S)
+# The registry kind that counts toward "more than a dozen documents."
+EXPLAINER_KIND = "state-explainer"
+# Files in a guide's folder that are parts of a page, not pages.
+NOT_FOUND_PART = "_not-found.html"
+
+
+def owners() -> set:
+    """Who a source or a fact may belong to: one guide, or "all" of them
+    (federal rules, court papers, standards, and what this site promises
+    about itself)."""
+    return set(GUIDES) | {"all"}
+
 
 META_RE = re.compile(r"\A<!--\s*\n(.*?)\n-->\s*\n", re.S)
 HREF_RE = re.compile(r'href="([^"]+)"')
@@ -198,38 +250,106 @@ def load_json(path: Path):
         return json.load(handle)
 
 
+def page_label(path: Path) -> str:
+    """How error messages name a page source: "utah/utah-check.html"."""
+    return f"{path.parent.name}/{path.name}"
+
+
 def parse_page(path: Path):
+    label = page_label(path)
+    folder = path.parent.name
     text = path.read_text(encoding="utf-8")
     match = META_RE.match(text)
     if not match:
-        raise BuildError(f"{path.name}: missing the metadata comment at the top")
+        raise BuildError(f"{label}: missing the metadata comment at the top")
     meta = {}
     for line in match.group(1).splitlines():
         if not line.strip():
             continue
         key, sep, value = line.partition(":")
         if not sep:
-            raise BuildError(f"{path.name}: bad metadata line {line!r}")
+            raise BuildError(f"{label}: bad metadata line {line!r}")
         meta[key.strip()] = value.strip()
     for required in ("slug", "order", "title", "short_title", "description"):
         if not meta.get(required):
-            raise BuildError(f"{path.name}: metadata needs '{required}'")
+            raise BuildError(f"{label}: metadata needs '{required}'")
     meta["order"] = int(meta["order"])
     meta["sources"] = [s.strip() for s in meta.get("sources", "").split(",") if s.strip()]
     meta["scripts"] = [s.strip() for s in meta.get("scripts", "").split(",") if s.strip()]
     meta["in_lists"] = meta.get("in_lists", "yes") != "no"
-    meta["section"] = meta.get("section", "oregon")
-    if meta["section"] not in SECTIONS:
-        raise BuildError(f"{path.name}: unknown section {meta['section']!r}")
     meta["shared"] = meta.get("shared", "no") == "yes"
+    # The folder decides which guide a page belongs to.
+    if folder in GUIDES:
+        if meta.get("section", folder) != folder:
+            raise BuildError(f"{label}: says section {meta['section']!r} but sits in the {folder} folder")
+        if meta["shared"]:
+            raise BuildError(f"{label}: a shared page belongs in src/pages/shared/")
+        meta["section"] = folder
+    elif folder == "shared":
+        frame = meta.get("section")
+        if meta["shared"]:
+            if frame:
+                raise BuildError(f"{label}: a shared page is built for every guide, so it names no section")
+            # variants() sets the section of each guide's copy.
+            meta["section"] = next(iter(GUIDES))
+        elif frame not in SECTIONS or frame in GUIDES:
+            raise BuildError(
+                f"{label}: a page in src/pages/shared/ needs 'shared: yes', or a 'section' that is not a guide"
+            )
+    else:
+        raise BuildError(f"{label}: unknown folder. Use a guide's name ({', '.join(GUIDES)}) or 'shared'")
     meta["base_slug"] = meta["slug"]
     body = text[match.end():]
     return meta, body
 
 
+def load_sources():
+    """Read src/pages: every page as (path, meta, body), and each guide's "not found" part."""
+    stray = sorted(SRC.glob("*.html"))
+    if stray:
+        raise BuildError(f"{stray[0].name}: pages live in a folder: src/pages/<guide>/ or src/pages/shared/")
+    parsed = []
+    for path in sorted(SRC.glob("*/*.html"), key=lambda p: (p.name, p.parent.name)):
+        if path.name.startswith("_"):
+            if path.name != NOT_FOUND_PART or path.parent.name not in GUIDES:
+                raise BuildError(f"{page_label(path)}: unknown page part")
+            continue
+        parsed.append((path, *parse_page(path)))
+    parts = {}
+    for name in GUIDES:
+        part = SRC / name / NOT_FOUND_PART
+        if not part.is_file():
+            raise BuildError(f"the {name} guide needs src/pages/{name}/{NOT_FOUND_PART} for the 'page not found' page")
+        parts[name] = part.read_text(encoding="utf-8").strip("\n")
+    return parsed, parts
+
+
+def load_pages():
+    """Every page the site builds, in menu order: one dict per built page."""
+    parsed, parts = load_sources()
+    shared_slugs = {meta["slug"] for _, meta, _ in parsed if meta["shared"]}
+    pages = []
+    for path, meta, body in parsed:
+        for page in variants(meta, body):
+            # Name both the file and the built page in error messages.
+            label = page_label(path)
+            page["file"] = label if page["slug"] == meta["slug"] else f"{label} (as {page['slug']})"
+            page["body"] = localize_links(page["body"], page["section"], shared_slugs)
+            pages.append(page)
+    pages.sort(key=lambda p: p["order"])
+    return pages, shared_slugs, parts
+
+
+def guide_slugs():
+    """For the tests: the built pages of each guide, as {guide: set of slugs}."""
+    pages, _, _ = load_pages()
+    return {name: {p["slug"] for p in pages if p["section"] == name} for name in GUIDES}
+
+
 def section_blocks(body: str, section: str) -> str:
-    """Keep the blocks marked for this guide, and drop the other guide's."""
-    return SECTION_BLOCK_RE.sub(lambda m: m.group(2) if m.group(1) == section else "", body)
+    """Keep the blocks marked for this guide, and drop every other guide's."""
+    block = re.compile(r"[ \t]*<!-- (" + "|".join(GUIDES) + r") -->\n(.*?)[ \t]*<!-- /\1 -->\n", re.S)
+    return block.sub(lambda m: m.group(2) if m.group(1) == section else "", body)
 
 
 def variants(meta, body):
@@ -328,6 +448,25 @@ SETTINGS_PANEL = """    <details class="display-settings" data-settings>
 """
 
 
+def render_guide_switch(current: str) -> str:
+    """The "Pick your state" buttons: every guide, in order, with the reader's own guide filled."""
+    items = []
+    for name, guide in GUIDES.items():
+        here = name == current
+        mark = ' aria-current="page"' if here else ""
+        note = guide["switch_here"] if here else guide["switch_go"]
+        items.append(
+            f'        <li><a href="{guide["home"]}.html"{mark}><span class="guide-state">{esc(guide["state"])}</span> '
+            f'<span class="guide-note">{esc(note)}</span></a></li>'
+        )
+    return (
+        '    <nav class="guide-switch" aria-labelledby="guide-switch-label">\n'
+        '      <p class="guide-switch-label" id="guide-switch-label">Pick your state</p>\n'
+        '      <ul>\n' + "\n".join(items) + "\n      </ul>\n"
+        "    </nav>"
+    )
+
+
 def render_page(meta, body, pages, by_id, doc_counts):
     slug = meta["slug"]
     section = SECTIONS[meta["section"]]
@@ -345,31 +484,34 @@ def render_page(meta, body, pages, by_id, doc_counts):
         current = ' aria-current="page"' if target == slug else ""
         nav_links.append(f'          <li><a href="{target}.html"{current}>{esc(label)}</a></li>')
 
-    # "All pages": every page of this guide, including its own copy of the
-    # shared pages, then one link to the other guide.
-    own = [p for p in pages if p["in_lists"] and p["section"] == meta["section"]]
-    footer_links = []
-    for page in own:
-        current = ' aria-current="page"' if page["slug"] == slug else ""
-        footer_links.append(
-            f'          <li><a href="{page["slug"]}.html"{current}>{esc(page["short_title"])}</a></li>'
-        )
-    if section["other_guide"]:
-        other_slug, other_label = section["other_guide"]
-        footer_links.append(f'          <li><a href="{other_slug}.html">{esc(other_label)}</a></li>')
+    # A guide's footer lists "All pages": every page of this guide, including
+    # its own copy of the shared pages, then the home page of each other guide.
+    # A page that belongs to no guide lists the guides.
+    other_guides = [
+        f'          <li><a href="{guide["home"]}.html">{esc(guide["guide_label"])}</a></li>'
+        for name, guide in GUIDES.items() if name != meta["section"]
+    ]
+    if meta["section"] in GUIDES:
+        footer_title = "All pages"
+        footer_links = []
+        for page in pages:
+            if not (page["in_lists"] and page["section"] == meta["section"]):
+                continue
+            current = ' aria-current="page"' if page["slug"] == slug else ""
+            footer_links.append(
+                f'          <li><a href="{page["slug"]}.html"{current}>{esc(page["short_title"])}</a></li>'
+            )
+        footer_links += other_guides
     else:
-        # Each guide already names the link to the other one; show both.
-        footer_links = [
-            f'          <li><a href="{guide_slug}.html">{esc(guide_label)}</a></li>'
-            for guide_slug, guide_label in sorted(guide["other_guide"] for guide in GUIDES.values())
-        ]
+        footer_title = section["footer_title"]
+        footer_links = other_guides
 
     scripts = "".join(
         f'\n  <script src="assets/js/{esc(name)}.js" defer></script>' for name in meta["scripts"]
     )
     sources_html = render_sources_section(meta["sources"], by_id) if meta["sources"] else ""
-    body = body.replace("{{STATE_DOC_COUNT}}", str(doc_counts["oregon"]))
-    body = body.replace("{{UTAH_DOC_COUNT}}", str(doc_counts["utah"]))
+    if "{{DOC_COUNT}}" in body:
+        body = body.replace("{{DOC_COUNT}}", str(doc_counts[meta["section"]]))
     body = body.replace("{{FACTS_CHECKED_TEXT}}", facts_text)
     body = body.replace("{{FACTS_CHECKED_ISO}}", facts_iso or "")
 
@@ -427,8 +569,8 @@ def render_page(meta, body, pages, by_id, doc_counts):
       <p><strong>Private.</strong> No accounts, ads, cookies, or tracking. <a href="privacy.html">How your privacy is protected</a>.</p>
       <p>{facts_line}Version {VERSION}. <a href="{PROJECT_REPO}">See how this site is made</a>.</p>
       <p>Words: <a href="{PROJECT_REPO}/blob/main/LICENSE">CC BY 4.0</a>. Code: <a href="{PROJECT_REPO}/blob/main/LICENSE-CODE">MIT</a>. <a href="about.html#license">Reuse this guide</a>.</p>
-      <nav class="footer-pages" aria-label="{"All pages" if section["other_guide"] else "Both guides"}">
-        <h2>{"All pages" if section["other_guide"] else "Both guides"}</h2>
+      <nav class="footer-pages" aria-label="{footer_title}">
+        <h2>{footer_title}</h2>
         <ul>
 {chr(10).join(footer_links)}
         </ul>
@@ -440,45 +582,37 @@ def render_page(meta, body, pages, by_id, doc_counts):
 """
 
 
-def is_utah_source(src) -> bool:
-    """Utah sources carry IDs that start with U (U01, U15S, and so on)."""
-    return src["id"].startswith("U")
-
-
 def foreign_source(section: str, src) -> bool:
-    """True if this source belongs to the other state's guide."""
-    if section == "utah":
-        return src["kind"] in OREGON_ONLY_KINDS
-    return is_utah_source(src)
+    """True if this source belongs to another state's guide."""
+    return src["guide"] not in (section, "all")
 
 
 def render_sources_page_table(registry, section, used):
     """Each guide's "Every source" page lists that guide's sources only.
 
-    The Utah page lists every Utah source, then the federal, court, and site
-    sources that a Utah page lists or links to ("used"). The Oregon page lists
-    every source that is not Utah's.
+    The guide's "source_groups" setting gives the headings and what goes
+    under each: its own sources, the sources every guide may use, or only
+    the shared ones that a page in this guide lists or links to ("used").
     """
-
-    def group(title, anchor, sources):
-        return (
+    picks = {
+        "own": lambda s: s["guide"] == section,
+        "own and shared": lambda s: s["guide"] in (section, "all"),
+        "shared, used": lambda s: s["guide"] == "all" and s["id"] in used,
+    }
+    table = ""
+    for title, anchor, which in SECTIONS[section]["source_groups"]:
+        sources = [s for s in registry["sources"] if picks[which](s)]
+        table += (
             f'      <h2 id="{anchor}">{title}</h2>\n'
             '      <ol class="all-sources">\n' + "\n".join(source_rows(sources)) + "\n      </ol>\n"
         )
-
-    if section == "utah":
-        utah = [s for s in registry["sources"] if is_utah_source(s)]
-        other = [s for s in registry["sources"] if not is_utah_source(s) and s["id"] in used]
-        return group("Utah sources", "utah-sources", utah) + group(
-            "Federal, court, and site sources", "other-sources", other
-        )
-    oregon = [s for s in registry["sources"] if not is_utah_source(s)]
     langs = registry["application_languages"]
-    return (
-        group("Oregon, federal, and site sources", "oregon-sources", oregon)
-        + f'      <p>We also link to the paper application in {len(langs["items"])} languages, '
-        'exactly as listed on OHA\'s how-to-apply page. See <a href="help.html#languages">Free help and other languages</a>.</p>\n'
-    )
+    if langs["guide"] == section:
+        table += (
+            f'      <p>We also link to the paper application in {len(langs["items"])} languages, '
+            'exactly as listed on OHA\'s how-to-apply page. See <a href="help.html#languages">Free help and other languages</a>.</p>\n'
+        )
+    return table
 
 
 def source_rows(sources):
@@ -523,7 +657,7 @@ def render_sitemap(pages):
         if not page["in_lists"]:
             continue
         loc = BASE_URL if page["slug"] == "index" else f"{BASE_URL}{page['slug']}"
-        lastmod = SECTIONS[page["section"]]["facts_iso"] or FACTS_CHECKED_ISO
+        lastmod = SECTIONS[page["section"]]["facts_iso"]
         entries.append(f"  <url><loc>{loc}</loc><lastmod>{lastmod}</lastmod></url>")
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -570,13 +704,13 @@ def render_sources_md(registry):
         "",
         f"Registry version {registry['registry_version']}. {registry['notes']}",
         "",
-        "| ID | Source | Kind | Date on it | Checked | Read by us | Notes |",
-        "|---|---|---|---|---|---|---|",
+        "| ID | Guide | Source | Kind | Date on it | Checked | Read by us | Notes |",
+        "|---|---|---|---|---|---|---|---|",
     ]
     for src in registry["sources"]:
         read = "Yes" if src["opened"] else f"No, address from {src.get('linked_from', 'another source')}"
         lines.append(
-            f"| {src['id']} | [{md_escape(src['title'])}]({src['url']}) ({md_escape(src['publisher'])}) | "
+            f"| {src['id']} | {src['guide']} | [{md_escape(src['title'])}]({src['url']}) ({md_escape(src['publisher'])}) | "
             f"{src['kind']} | {md_escape(src['date_on_document'])} | {src['checked']} | {md_escape(read)} | "
             f"{md_escape(src['notes'])} |"
         )
@@ -610,12 +744,12 @@ def render_claims_md(claims, by_id, usage):
     ]
     for key, label in kinds.items():
         lines.append(f"- **{key}**: {label}")
-    lines += ["", "| ID | Kind | Statement on the site | Sources | Pages | Notes |", "|---|---|---|---|---|---|"]
+    lines += ["", "| ID | Guide | Kind | Statement on the site | Sources | Pages | Notes |", "|---|---|---|---|---|---|---|"]
     for claim in claims["claims"]:
         srcs = ", ".join(f"[{sid}]({by_id[sid]['url']})" for sid in claim["sources"]) or "None (design)"
         pages = ", ".join(sorted(usage.get(claim["id"], []))) or "Not used"
         lines.append(
-            f"| {claim['id']} | {claim['kind']} | {md_escape(claim['statement'])} | {srcs} | {pages} | "
+            f"| {claim['id']} | {claim['guide']} | {claim['kind']} | {md_escape(claim['statement'])} | {srcs} | {pages} | "
             f"{md_escape(claim.get('note', ''))} |"
         )
     lines.append("")
@@ -642,45 +776,61 @@ def build():
     claim_by_id = {c["id"]: c for c in claims["claims"]}
     errors = []
 
+    for src in registry["sources"]:
+        if src.get("guide") not in owners():
+            errors.append(f"source {src['id']}: 'guide' must be one of {', '.join(sorted(owners()))}")
+        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", src.get("checked", "")):
+            errors.append(f"source {src['id']}: 'checked' must be a date like 2026-11-02")
+    forms_guide = registry["application_languages"].get("guide")
+    if forms_guide not in GUIDES:
+        errors.append("application_languages: 'guide' must name the guide whose paper forms these are")
+
     for claim in claims["claims"]:
+        if claim.get("guide") not in owners():
+            errors.append(f"claim {claim['id']}: 'guide' must be one of {', '.join(sorted(owners()))}")
         for sid in claim["sources"]:
             if sid not in by_id:
                 errors.append(f"claim {claim['id']}: unknown source {sid}")
+            elif by_id[sid].get("guide") not in (claim.get("guide"), "all"):
+                errors.append(
+                    f"claim {claim['id']}: relies on {sid}, a source that belongs to the {by_id[sid].get('guide')} guide"
+                )
         if claim["kind"] not in {"fact", "math", "inference", "design", "tip"}:
             errors.append(f"claim {claim['id']}: unknown kind {claim['kind']}")
         if claim["kind"] in {"fact", "math", "inference"} and not claim["sources"]:
             errors.append(f"claim {claim['id']}: kind {claim['kind']} needs at least one source")
+    if errors:
+        raise BuildError("Build stopped:\n  - " + "\n  - ".join(errors))
 
     doc_counts = {}
-    for name, section in GUIDES.items():
-        doc_counts[name] = sum(1 for s in registry["sources"] if s["kind"] == section["explainer_kind"])
+    for name in GUIDES:
+        doc_counts[name] = sum(1 for s in registry["sources"] if s["guide"] == name and s["kind"] == EXPLAINER_KIND)
         if doc_counts[name] <= 12:
             errors.append(
                 f"the {name} guide says 'more than a dozen' but the registry counts {doc_counts[name]} "
-                f"'{section['explainer_kind']}' entries"
+                f"'{EXPLAINER_KIND}' entries for it"
             )
 
-    for src in registry["sources"]:
-        if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", src.get("checked", "")):
-            errors.append(f"source {src['id']}: 'checked' must be a date like 2026-11-02")
-
-    parsed = [(path.name, *parse_page(path)) for path in sorted(SRC.glob("*.html"))]
-    shared_slugs = {meta["slug"] for _, meta, _ in parsed if meta["shared"]}
-    pages = []
-    for file_name, meta, body in parsed:
-        for page in variants(meta, body):
-            # Name both the file and the built page in error messages.
-            page["file"] = file_name if page["slug"] == meta["slug"] else f"{file_name} (as {page['slug']})"
-            page["body"] = localize_links(page["body"], page["section"], shared_slugs)
-            pages.append(page)
-    pages.sort(key=lambda p: p["order"])
+    pages, shared_slugs, not_found_parts = load_pages()
     slugs = {p["slug"] for p in pages}
     if len(slugs) != len(pages):
         errors.append("two pages share one slug")
+    if len({p["order"] for p in pages}) != len(pages):
+        errors.append("two pages share one 'order' number")
     section_of = {p["slug"]: p["section"] for p in pages}
     homes = {section["home"] for section in GUIDES.values()}
     by_url = {s["url"]: s for s in registry["sources"]}
-    oregon_form_urls = {item["url"] for item in registry["application_languages"]["items"]}
+    form_urls = {item["url"] for item in registry["application_languages"]["items"]}
+    for name, guide in GUIDES.items():
+        home = next((p for p in pages if p["slug"] == guide["home"] and p["section"] == name), None)
+        if home is None:
+            errors.append(f"the {name} guide has no home page with slug {guide['home']!r}")
+        elif "{{GUIDE_SWITCH}}" not in home["body"]:
+            errors.append(f"{home['file']}: a guide's home page needs {{{{GUIDE_SWITCH}}}}, the way to the other guides")
+        own_slugs = {p["slug"] for p in pages if p["section"] == name}
+        for target in [slug for slug, _ in guide["nav"]] + [guide["check"]]:
+            if target not in own_slugs:
+                errors.append(f"the {name} guide's settings name {target!r}, which is not one of its pages")
 
     # Which sources each guide lists or links to, for its "Every source" page.
     used: dict[str, set] = {name: set() for name in SECTIONS}
@@ -701,22 +851,32 @@ def build():
             body = body.replace("{{SOURCES_TABLE}}", render_sources_page_table(registry, name, used[name]))
         if "{{APPLICATION_LANGUAGES}}" in body:
             body = body.replace("{{APPLICATION_LANGUAGES}}", render_language_list(registry))
+        if "{{GUIDE_SWITCH}}" in body:
+            if name not in GUIDES:
+                errors.append(f"{page['file']}: {{{{GUIDE_SWITCH}}}} works only on a guide's page")
+            else:
+                body = body.replace("{{GUIDE_SWITCH}}", render_guide_switch(name))
+        if "{{GUIDE_START_LISTS}}" in body:
+            body = body.replace("{{GUIDE_START_LISTS}}", "\n\n".join(not_found_parts[g] for g in GUIDES))
+        if "{{DOC_COUNT}}" in body and name not in GUIDES:
+            errors.append(f"{page['file']}: {{{{DOC_COUNT}}}} works only on a guide's page")
+            body = body.replace("{{DOC_COUNT}}", "")
 
         for sid in page["sources"]:
             if sid not in by_id:
                 errors.append(f"{page['file']}: lists unknown source {sid}")
             elif foreign_source(name, by_id[sid]):
-                errors.append(f"{page['file']}: lists {sid}, a source that belongs to the other state's guide")
+                errors.append(f"{page['file']}: lists {sid}, a source that belongs to the {by_id[sid]['guide']} guide")
 
         for attr in CLAIM_RE.findall(body):
             for cid in attr.split():
                 usage.setdefault(cid, set()).add(page["slug"])
-                if cid.startswith("U-") and name != "utah":
-                    errors.append(f"{page['file']}: uses {cid}, a fact that belongs to the Utah guide")
                 claim = claim_by_id.get(cid)
                 if not claim:
                     errors.append(f"{page['file']}: uses unknown claim {cid}")
                     continue
+                if claim["guide"] not in (name, "all"):
+                    errors.append(f"{page['file']}: uses {cid}, a fact that belongs to the {claim['guide']} guide")
                 missing = [sid for sid in claim["sources"] if sid not in page["sources"]]
                 if missing:
                     errors.append(
@@ -732,9 +892,9 @@ def build():
                     errors.append(f"{page['file']}: link not in source registry: {href}")
                 elif not any_guide and (
                     (href in by_url and foreign_source(name, by_url[href]))
-                    or (name == "utah" and href in oregon_form_urls)
+                    or (href in form_urls and forms_guide != name)
                 ):
-                    errors.append(f"{page['file']}: links to the other state's source: {href}")
+                    errors.append(f"{page['file']}: links to another state's source: {href}")
             elif href.startswith(("mailto:", "tel:")):
                 continue
             elif href.startswith("#"):
@@ -746,8 +906,8 @@ def build():
                         errors.append(f"{page['file']}: link to missing page {href}")
                     elif not any_guide and section_of[target[:-5]] != name and target[:-5] not in homes:
                         errors.append(
-                            f"{page['file']}: links to {href}, a page in the other guide. "
-                            "Only the other guide's home page may be linked."
+                            f"{page['file']}: links to {href}, a page in another guide. "
+                            "Only another guide's home page may be linked."
                         )
                 elif not (SITE / target).exists():
                     errors.append(f"{page['file']}: link to missing file {href}")

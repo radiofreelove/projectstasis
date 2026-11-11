@@ -24,6 +24,12 @@ jobs:
       - name: Site matches its sources; every link registered; every fact logged
         run: python3 tools/build.py --check
 
+      - name: Tool tests (guide rules, a third guide, the link checker, release notes)
+        run: python3 -m unittest discover -s tools/tests
+
+      - name: The changelog has an entry for this version
+        run: python3 tools/release_notes.py --check
+
       - name: Structure, privacy, and accessibility lint
         run: python3 tools/check_structure.py
 

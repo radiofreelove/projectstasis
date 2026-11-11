@@ -37,7 +37,7 @@ Then:
 11. **One-page handouts** for clinics, libraries, food banks, and shelters, each with a short web address.
 12. **A partner kit** for community partners and clinic front desks: the same plain facts, formatted for a conversation.
 13. **A "what changed" page** generated from the changelog, for helpers who need to keep up.
-14. **A front door for both states**, if a third guide is added or the site gets its own address: today `/` is the Oregon home page, and a state switch above its headline leads to the Utah guide.
+14. **A front door for every state**, before a third guide is added or when the site gets its own address: today `/` is the Oregon home page, and a state switch above its headline leads to the Utah guide. The switch can show a third state ([decisions/0014-guide-list.md](decisions/0014-guide-list.md)), but on a phone it wraps to a second row. A Washington guide is planned ([adding-a-guide.md](adding-a-guide.md)).
 
 ## Engineering
 
