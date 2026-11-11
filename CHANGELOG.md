@@ -2,9 +2,9 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
-## 0.2.0 beta (2026-11-10)
+## 0.2.0 beta (2026-11-11)
 
-A second guide, for Utah Medicaid, and a re-check of the Oregon court note. Built on the `utah-section` branch.
+A second guide, for Utah Medicaid, and a re-check of the Oregon court note. Built and fact-checked on Nov. 10, 2026. Merged and published on Nov. 11, 2026, when decision 0013 became Accepted.
 
 ### New: the Utah Medicaid guide
 
@@ -38,7 +38,7 @@ A second guide, for Utah Medicaid, and a re-check of the Oregon court note. Buil
 - `data/review.json`: Utah checkpoints for 2026-11-24 (a person reads the Utah pages against their sources), 2027-03-01 (renewals), and 2027-06-15 (Targeted Adult Medicaid), and Utah work added to the Dec. 10, Dec. 13, Dec. 31, and Jan. 15 checkpoints.
 - Docs updated to match: README, methodology, style guide, boundaries, design, maintenance, roadmap, research log, and decision 0012 (a recorded difference from Strand).
 - The check's script is now one engine (`checker.js`) and one file of words for each state (`checker-oregon.js`, `checker-utah.js`). The Oregon words did not change. The browser tests run every path through both checks, pick every choice once to confirm each has words, and fail if a result names the other state or links to the other guide.
-- Checked on Nov. 10, 2026: build freshness, structure lint (35 pages), contrast, reading level (Utah pages grade 2.4 to 7.1), dated checkpoints, and the real-browser tests on all 35 pages. Not run: axe-core, the link check, and the live-site check, which need the GitHub workflows.
+- Checked on Nov. 10, 2026: build freshness, structure lint (35 pages), contrast, reading level (Utah pages grade 2.4 to 7.1), dated checkpoints, and the real-browser tests on all 35 pages. On Nov. 11, 2026, the GitHub workflows passed axe-core on all 35 pages before the merge, and the live-site check after it. Not run yet: the link check on the Utah links, which runs on Mondays.
 
 ## 0.1.3 beta (2026-11-03)
 
