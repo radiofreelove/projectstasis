@@ -1156,7 +1156,8 @@
       "checked": "2026-11-10",
       "opened": false,
       "linked_from": "U14",
-      "notes": "Address listed on U14. A login page, so it was not opened."
+      "notes": "Address listed on U14. A login page, so it was not opened. On 2026-11-11 U14's \"Apply Online\" link still pointed here, and the address showed myCase help text, but it answered 404 to the weekly link check. Check by hand.",
+      "link_check": "by hand"
     },
     {
       "id": "U33",

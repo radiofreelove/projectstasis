@@ -53,10 +53,11 @@ Optional and safe: **Enable access policy** (Settings, General) limits preview a
 
 For the Utah guide, in the same sitting:
 
-1. Re-read Utah Medicaid's H.R. 1 page (U02), its community engagement page (U01), its support page (U03), and DWS's page for adults (U04). None shows a date, so compare the wording with the notes in `data/sources.json`.
-2. Look for new Utah letters, toolkits, and forms on U02, and for form 742, the Medically Frail Exclusion Screener, and a new version of form 61MED.
-3. Search the Utah State Bulletin and the Utah Administrative Code (title R414) for filings that implement the community engagement requirement (unverified whether any exist).
-4. Check whether Utah's pages say anything about the court ruling.
+1. Open myCase, <https://jobs.utah.gov/mycase/> (registry U32), and confirm it still offers a way to sign in or apply. It is marked `"link_check": "by hand"` because it answers 404 to the link check. Confirm Utah Medicaid's apply page (U14) still sends people there.
+2. Re-read Utah Medicaid's H.R. 1 page (U02), its community engagement page (U01), its support page (U03), and DWS's page for adults (U04). None shows a date, so compare the wording with the notes in `data/sources.json`.
+3. Look for new Utah letters, toolkits, and forms on U02, and for form 742, the Medically Frail Exclusion Screener, and a new version of form 61MED.
+4. Search the Utah State Bulletin and the Utah Administrative Code (title R414) for filings that implement the community engagement requirement (unverified whether any exist).
+5. Check whether Utah's pages say anything about the court ruling.
 
 ### At each checkpoint in `data/review.json`
 
