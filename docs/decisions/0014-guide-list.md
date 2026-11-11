@@ -1,6 +1,6 @@
 # 0014. One list of guides, and a state field on every source and fact
 
-- Status: Proposed (built on a branch on 2026-11-11; becomes Accepted when the maintainer merges it)
+- Status: Accepted (the maintainer approved the merge on 2026-11-11)
 - Date: 2026-11-11
 
 ## Context
