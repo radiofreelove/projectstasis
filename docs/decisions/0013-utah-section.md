@@ -30,13 +30,14 @@ Utah is not Oregon with different phone numbers. Different agencies decide (the 
 | A second site and repository for Utah | Two copies of the build, the checks, and the privacy promises to keep in step, for one maintainer. |
 | A `/utah/` folder | Shorter page names, but every tool that walks `site/*.html`, the 404 page, and the asset paths would need folder support. Flat names carry no such risk. |
 | One copy of About, Privacy, Accessibility, and Every source for both guides | The first version did this. A Utah reader who followed a footer link landed on a page with the Oregon menu and Oregon sources. |
-| Turning the home page into a state chooser | It would change the address and purpose of the page Oregon readers already use. Each home page links to the other guide instead. |
+| Turning the home page into a state chooser | It would change the address and purpose of the page Oregon readers already use. Each home page has a state switch above its headline instead. |
 | A new color palette for Utah | Two palettes to hold at 7:1 contrast, and a visual split inside one site. |
 
 ## Consequences
 
 - The site's name and tagline no longer describe everything it covers. The Oregon pages still say "OHP, made plain"; the Utah pages say "Utah Medicaid, made plain."
-- The two guides meet in 3 places only: a line under the first lines of each home page, the last link in each footer, and the "Two guides" part of each About page.
+- The two guides meet in 3 places only: the state switch above the headline of each home page, the last link in each footer, and the "Two guides" part of each About page.
+- The first version joined the home pages with one line of text ("Live in Utah? Use the Utah Medicaid guide.") under the purpose line. On a phone it sat below the first screen and looked like any other link. On 2026-11-11 the maintainer asked for a button that is much easier to see and fits the design. The state switch ([design.md](../design.md)) replaced the line. It is the first thing under the menu, so a reader in the wrong guide sees it before the headline.
 - More to maintain: 17 more pages, 116 more claims, 40 more registry entries, a second check, and Utah checkpoints in [review.json](../../data/review.json).
 - A change to the shared words of the About, Privacy, Accessibility, or Every source pages changes both guides at once. A change inside a state block changes one.
 - The Utah research was done in one day through a tool that answers questions about a document instead of returning its text ([research-log.md](../research-log.md)). A person has not yet read the Utah documents end to end. Checkpoint 2026-11-24 exists for that, and the guide should not be promoted to Utah readers before it is done.

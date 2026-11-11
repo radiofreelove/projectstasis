@@ -11,7 +11,7 @@
 | Objective (COGA) | What this site does |
 |---|---|
 | 1. Help users understand what things are | Every page starts with a plain headline and a "purpose" line. Same header, menu, and footer on every page. Buttons look like buttons; links are underlined. |
-| 2. Help users find what they need | Four menu items only (Home, Check, Apply, Get help). "Go deeper" cards on the home page. A full page list in every footer. One topic per page. |
+| 2. Help users find what they need | Four menu items only (Home, Check, Apply, Get help). A state switch above the headline of each home page. "Go deeper" cards on the home page. A full page list in every footer. One topic per page. |
 | 3. Use clear content | Short sentences, plain words, literal language, no idioms. Bold labels on key bullets. Numbers as digits, with plain equivalents ("about $135 a week," "about 20 hours a week"). Reading level measured for every page ([reading-level.md](reading-level.md)). |
 | 4. Help users avoid mistakes | The check asks one step at a time, shows "Step 1 of 3," has Back buttons, keeps answers when going back, and gives plain error messages that say how to fix them. "Start over" is always offered. |
 | 5. Help users focus | No pop-ups, carousels, autoplay, animation, or ads. A "Just the key points" setting hides extra detail. |

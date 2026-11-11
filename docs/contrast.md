@@ -17,7 +17,7 @@ Text must reach 7.0:1 (WCAG 2.2 Level AAA). Borders and focus outlines must reac
 | warm | Warning box text | Ashland Charcoal `#414042` | Desert Sand `#eddfd4` | 7.91:1 | 7.0:1 | Pass |
 | warm | Primary button text | Primary White `#ffffff` | North Star Indigo `#2e3192` | 10.66:1 | 7.0:1 | Pass |
 | warm | Independent-guide banner | Primary White `#ffffff` | North Star Indigo `#2e3192` | 10.66:1 | 7.0:1 | Pass |
-| warm | Current page in menu | Fog Gray `#f4f2ed` | North Star Indigo `#2e3192` | 9.53:1 | 7.0:1 | Pass |
+| warm | Current page in menu; current guide in the state switch | Fog Gray `#f4f2ed` | North Star Indigo `#2e3192` | 9.53:1 | 7.0:1 | Pass |
 | warm | Footer text and links | Primary White `#ffffff` | Forest Green `#184e49` | 9.44:1 | 7.0:1 | Pass |
 | warm | Warning box edge against the box | Marionberry Red `#a91f50` | Desert Sand `#eddfd4` | 5.37:1 | 3.0:1 | Pass |
 | warm | Form control borders on cards | Ashland Charcoal `#414042` | Primary White `#ffffff` | 10.31:1 | 3.0:1 | Pass |
@@ -26,14 +26,14 @@ Text must reach 7.0:1 (WCAG 2.2 Level AAA). Borders and focus outlines must reac
 | white | Body text on page background | Ashland Charcoal `#414042` | Primary White `#ffffff` | 10.31:1 | 7.0:1 | Pass |
 | white | Body text on cards | Ashland Charcoal `#414042` | Fog Gray `#f4f2ed` | 9.22:1 | 7.0:1 | Pass |
 | white | Headings and links | North Star Indigo `#2e3192` | Primary White `#ffffff` | 10.66:1 | 7.0:1 | Pass |
-| white | Current page in menu | Primary White `#ffffff` | North Star Indigo `#2e3192` | 10.66:1 | 7.0:1 | Pass |
+| white | Current page in menu; current guide in the state switch | Primary White `#ffffff` | North Star Indigo `#2e3192` | 10.66:1 | 7.0:1 | Pass |
 | dark | Body text on page background | Fog Gray `#f4f2ed` | Primary Black `#000000` | 18.77:1 | 7.0:1 | Pass |
 | dark | Body text on cards and callouts | Fog Gray `#f4f2ed` | Ashland Charcoal `#414042` | 9.22:1 | 7.0:1 | Pass |
 | dark | Headings and links on page background | Glacial Blue `#b4dcf5` | Primary Black `#000000` | 14.50:1 | 7.0:1 | Pass |
 | dark | Headings and links on cards and callouts | Glacial Blue `#b4dcf5` | Ashland Charcoal `#414042` | 7.12:1 | 7.0:1 | Pass |
 | dark | Primary button text | Primary Black `#000000` | Glacial Blue `#b4dcf5` | 14.50:1 | 7.0:1 | Pass |
 | dark | Secondary button text | Glacial Blue `#b4dcf5` | Primary Black `#000000` | 14.50:1 | 7.0:1 | Pass |
-| dark | Current page in menu | Primary Black `#000000` | Glacial Blue `#b4dcf5` | 14.50:1 | 7.0:1 | Pass |
+| dark | Current page in menu; current guide in the state switch | Primary Black `#000000` | Glacial Blue `#b4dcf5` | 14.50:1 | 7.0:1 | Pass |
 | dark | Independent-guide banner | Primary White `#ffffff` | Ashland Charcoal `#414042` | 10.31:1 | 7.0:1 | Pass |
 | dark | Footer text and links | Primary White `#ffffff` | Forest Green `#184e49` | 9.44:1 | 7.0:1 | Pass |
 | dark | Warning box edge | Harvest Gold `#ecd263` | Ashland Charcoal `#414042` | 6.86:1 | 3.0:1 | Pass |

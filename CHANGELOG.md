@@ -27,7 +27,7 @@ A second guide, for Utah Medicaid, and a re-check of the Oregon court note. Buil
 ### Both guides
 
 - Every page's source list now shows the date each source was last checked, next to the date printed on it. Before, one line gave a single date for all of them, which stopped being true as soon as one source was re-read.
-- Each home page links to the other guide right under its first lines, and the link stays visible in "Just the key points" mode.
+- Each home page has a state switch above its headline: two big buttons under "Pick your state," Oregon first and Utah second. The guide you are in is filled and says so in words. The other is an outlined button that names the guide it opens. It replaces a one-line text link that sat below the first screen on a phone. It uses the menu's look and colors, stacks on narrow screens and at large text sizes, stays visible in "Just the key points" mode, and prints without the fill. The browser tests measure it as a tap target.
 - The footer's "All pages" list shows every page of the guide you are in, then one link to the other guide.
 - The "page not found" page belongs to neither guide. It shows both guides, with a menu and footer that name both states.
 - The Oregon About page no longer speaks for Utah. Its "not run by" and "only OHP decides" lines are back to their 0.1.3 wording.

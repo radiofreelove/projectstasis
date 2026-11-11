@@ -15,7 +15,7 @@ Flesch-Kincaid grade level of each page's main text. Target: grade 6 or lower. T
 | health.html | 6.6 | 238 | 30 | 7.9 | Above target |
 | help.html | 5.0 | 239 | 57 | 4.2 | On target |
 | immigration.html | 7.2 | 247 | 30 | 8.2 | Above target |
-| index.html | 3.7 | 405 | 54 | 7.5 | On target |
+| index.html | 3.7 | 413 | 55 | 7.5 | On target |
 | letter.html | 2.9 | 247 | 38 | 6.5 | On target |
 | log.html | 1.9 | 138 | 30 | 4.6 | On target |
 | privacy.html | 4.5 | 253 | 28 | 9.0 | On target |
@@ -37,5 +37,5 @@ Flesch-Kincaid grade level of each page's main text. Target: grade 6 or lower. T
 | utah-rules.html | 4.2 | 366 | 44 | 8.3 | On target |
 | utah-sources.html | 6.8 | 3569 | 350 | 10.2 | Above target |
 | utah-words.html | 5.7 | 294 | 45 | 6.5 | On target |
-| utah.html | 4.6 | 419 | 54 | 7.8 | On target |
+| utah.html | 4.6 | 428 | 55 | 7.8 | On target |
 | words.html | 4.9 | 274 | 49 | 5.6 | On target |

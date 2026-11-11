@@ -53,6 +53,7 @@ The site uses the ODHS **palette** only. It does not use the ODHS logo, brandmar
 | Warning box (sand, red edge) | Something that can cost coverage or money |
 | Steps | Numbered circles for things to do in order |
 | Cards | Big tap targets for "go deeper" links |
+| State switch | Two big buttons above the headline of each home page, under the words "Pick your state." Oregon is always first. The guide you are in is filled and says so in words ("This is the OHP guide."); the other is outlined and names the guide it opens. Same look as the menu, so it reads as part of the site. Side by side when both fit, stacked on narrow screens and at large text sizes. |
 | Choice rows | Radio buttons and checkboxes inside full-width bordered rows, at least 48 px tall |
 | Tag | "PDF" label after links to PDFs |
 

@@ -101,7 +101,7 @@ CONTRAST_JS = r"""
 
 TARGETS_JS = r"""
 () => {
-  const sel = 'button, .choice, .main-nav a, ul.cards a, summary, .skip-link';
+  const sel = 'button, .choice, .main-nav a, ul.cards a, .guide-switch a, summary, .skip-link';
   const out = [];
   document.querySelectorAll(sel).forEach(el => {
     const r = el.getBoundingClientRect();
