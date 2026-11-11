@@ -6,7 +6,7 @@ How facts get onto the site, how they are worded, and how they stay current.
 
 People applying for OHP in Oregon or for Medicaid in Utah, including people applying again after being turned down. Renewal guidance for current members is out of scope for this release (see [decisions/0006-applicants-first.md](decisions/0006-applicants-first.md)).
 
-The site holds two guides, one per state, built the same way (see [decisions/0013-utah-section.md](decisions/0013-utah-section.md)). Each guide has its own facts and sources. Utah claim IDs start with `U-` and Utah source IDs start with `U`.
+The site holds two guides, one per state, built the same way (see [decisions/0013-utah-section.md](decisions/0013-utah-section.md)). Each guide has its own facts and sources. Every source and every claim carries a `guide` field: `oregon`, `utah`, or `all` for what any guide may use (federal rules, court papers, standards, and what the site promises about itself). The build goes by that field, and a claim may rely only on its own guide's sources or on shared ones ([decisions/0014-guide-list.md](decisions/0014-guide-list.md)). By habit, Utah claim IDs start with `U-` and Utah source IDs start with `U`.
 
 ## 2. Where facts may come from
 

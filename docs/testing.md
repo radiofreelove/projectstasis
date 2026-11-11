@@ -7,6 +7,8 @@ Results are not kept in this file, so it cannot go out of date. Each run's log i
 | Check | Tool | When it runs |
 |---|---|---|
 | Built pages match their sources; every link registered; every fact logged; font files match their checksums | `tools/build.py --check` | Every push, in GitHub Actions and in the Cloudflare build |
+| The tools themselves: the rules that keep each guide whole, a made-up third guide, the link checker against local test servers, and the release notes | `python3 -m unittest discover -s tools/tests` | Every push |
+| The changelog has an entry for the version in the footer | `tools/release_notes.py --check` | Every push. After the checks pass on `main`, a new version is tagged and released |
 | Structure, privacy, and accessibility lint, including the security headers in `site/_headers` | `tools/check_structure.py` | Every push, in GitHub Actions and in the Cloudflare build |
 | Color contrast (7:1 text) | `tools/check_contrast.py` | Every push. Report: [contrast.md](contrast.md) |
 | Reading level (target grade 6, fails above 8) | `tools/check_reading_level.py` | Every push. Report: [reading-level.md](reading-level.md) |
@@ -34,6 +36,8 @@ These are the next priority. See [roadmap.md](roadmap.md).
 
 ```bash
 python3 tools/build.py --check
+python3 -m unittest discover -s tools/tests
+python3 tools/release_notes.py --check
 python3 tools/check_structure.py
 python3 tools/check_contrast.py --check
 python3 tools/check_reading_level.py --check

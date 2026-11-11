@@ -9,9 +9,9 @@ Issues and pull requests are public. Do not include anyone's name, case number, 
 ## Every fact needs an official source
 
 1. Find the official source (OHA or ODHS for Oregon; Utah Medicaid or DWS for Utah; the federal rule; or a court order). Read it, do not rely on a summary. A source from one state never supports a fact about the other.
-2. Add it to `data/sources.json` with today's date in `checked`, and `opened: true`.
-3. Add or change the claim in `data/claims.json`. Utah claims start with `U-`, and Utah pages say `section: utah` in their metadata.
-4. Mark the sentence in `src/pages/*.html` with `data-claim="ID"`, and list the source ID in that page's `sources:` line.
+2. Add it to `data/sources.json` with today's date in `checked`, `opened: true`, and a `guide`: `oregon`, `utah`, or `all` for a source any guide may use (a federal rule, a court order).
+3. Add or change the claim in `data/claims.json`, with the same kind of `guide`. By habit, Utah claims start with `U-`, but the build goes by `guide`.
+4. Mark the sentence in the page (`src/pages/oregon/`, `src/pages/utah/`, or `src/pages/shared/` for the 4 pages both guides have) with `data-claim="ID"`, and list the source ID in that page's `sources:` line.
 5. If official sources disagree, add an item to `docs/corrections.md`.
 
 The build refuses links that are not in the registry and facts that are not in the ledger.
@@ -24,6 +24,7 @@ Follow [docs/style-guide.md](docs/style-guide.md): purpose line, short version, 
 
 ```bash
 python3 tools/build.py
+python3 -m unittest discover -s tools/tests
 python3 tools/check_structure.py
 python3 tools/check_contrast.py
 python3 tools/check_reading_level.py

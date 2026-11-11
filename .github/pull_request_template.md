@@ -7,5 +7,5 @@
 - [ ] Any disagreement between official sources is logged in `docs/corrections.md`.
 - [ ] Wording follows `docs/style-guide.md` ("may" for anything OHP decides; plain word first).
 - [ ] I ran `python3 tools/build.py` and committed `site/` and the generated docs.
-- [ ] `check_structure`, `check_contrast`, and `check_reading_level` pass.
+- [ ] The tool tests (`python3 -m unittest discover -s tools/tests`), `check_structure`, `check_contrast`, and `check_reading_level` pass.
 - [ ] `CHANGELOG.md` has a line for this change.

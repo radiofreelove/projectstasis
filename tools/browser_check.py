@@ -36,6 +36,7 @@ from pathlib import Path
 
 from playwright.sync_api import sync_playwright
 
+import build
 import serve as pages_server
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -135,6 +136,12 @@ def settings_script(settings: dict) -> str:
 
 def run(shots: Path | None):
     pages = sorted(p.name for p in SITE.glob("*.html"))
+    guide_slugs = build.guide_slugs()
+    # Full-page screenshots when --shots is given: each guide's home page and
+    # check, plus three long Oregon pages.
+    shot_pages = {"reasons.html", "apply.html", "help.html"}
+    for guide_settings in build.GUIDES.values():
+        shot_pages |= {f"{guide_settings['home']}.html", f"{guide_settings['check']}.html"}
     server = pages_server.start(SITE)
     base = f"http://127.0.0.1:{server.server_address[1]}/"
     expected_csp = pages_server.headers_for(pages_server.read_headers(SITE / "_headers"), "/").get(
@@ -202,7 +209,7 @@ def run(shots: Path | None):
                     problems.append(f"{label}: {name} console errors: {real}")
                 if outside:
                     problems.append(f"{label}: {name} requests outside the site: {outside}")
-                if shots and name in {"index.html", "check.html", "reasons.html", "apply.html", "help.html", "utah.html", "utah-check.html"}:
+                if shots and name in shot_pages:
                     shots.mkdir(parents=True, exist_ok=True)
                     safe = label.split(",")[0].replace(" ", "-")
                     theme = settings.get("theme", "auto")
@@ -230,9 +237,12 @@ def run(shots: Path | None):
             problems.append(f"focus not visible on: {invisible}")
         context.close()
 
-        # The check: every path, in each guide
+        # The check: every path, in each guide. The guides, their check
+        # pages, and the words that belong to each come from tools/build.py.
         flow = []
-        for guide, check_address, care in (("Oregon", "check", "child"), ("Utah", "utah-check", "care")):
+        for guide_name, guide_settings in build.GUIDES.items():
+            guide = guide_settings["state"]
+            check_address, care = guide_settings["check"], guide_settings["check_care_reason"]
             context = browser.new_context(viewport={"width": 390, "height": 844})
             page = context.new_page()
             page.goto(base + check_address)
@@ -317,16 +327,18 @@ def run(shots: Path | None):
             if shown != len(reasons) + 3:
                 problems.append(f"{guide} check: {len(reasons) + 3} choices picked but {shown} shown in the result")
             flow.append(f"Every choice picked: {shown} of {len(reasons) + 3} shown in the result")
-            wrong = "OHP" if guide == "Utah" else "Utah"
-            if wrong in result_text():
-                problems.append(f"{guide} check: a result names {wrong}")
+            for other_name, other in build.GUIDES.items():
+                for wrong in other["own_words"] if other_name != guide_name else []:
+                    if wrong in result_text():
+                        problems.append(f"{guide} check: a result names {wrong}")
             bad_links = page.eval_on_selector_all(
                 "#checker-result a",
                 "els => els.map(el => el.getAttribute('href')).filter(h => !h.startsWith('https://'))",
             )
             for href in bad_links:
-                if (guide == "Utah") != href.startswith("utah-"):
-                    problems.append(f"{guide} check: a result links to the other guide: {href}")
+                target = href.split("#", 1)[0].removesuffix(".html")
+                if ("index" if target in ("./", "") else target) not in guide_slugs[guide_name]:
+                    problems.append(f"{guide} check: a result links to another guide: {href}")
 
             stored = page.evaluate("Object.keys(localStorage)")
             flow.append(f"Storage keys after the check: {stored or 'none'}")

@@ -4,7 +4,7 @@ Each guide has its own check, and both work the same way ([decisions/0013-utah-s
 
 | | Oregon | Utah |
 |---|---|---|
-| Page | [`src/pages/check.html`](../src/pages/check.html) | [`src/pages/utah-check.html`](../src/pages/utah-check.html) |
+| Page | [`src/pages/oregon/check.html`](../src/pages/oregon/check.html) | [`src/pages/utah/utah-check.html`](../src/pages/utah/utah-check.html) |
 | Words, links, and lists | [`checker-oregon.js`](../site/assets/js/checker-oregon.js) | [`checker-utah.js`](../site/assets/js/checker-utah.js) |
 | The script that runs it | [`checker.js`](../site/assets/js/checker.js) | the same file |
 
@@ -15,7 +15,7 @@ This page describes every input, every result, and the claim behind each line, s
 - **Nothing leaves the device.** Answers stay in page memory. Nothing is written to storage. The Content Security Policy sets `connect-src 'none'` and `form-action 'none'`, so the browser blocks any network request. `tools/browser_check.py` confirms no storage keys and no outside requests after a full run.
 - **No immigration questions.** `tools/check_structure.py` fails the build if any form label mentions immigration or citizenship.
 - **No decisions.** Results say "may" and "likely." Every result ends with "Only OHP decides. This check is not a decision." (Utah: "Only the state decides.")
-- **One state at a time.** `tools/browser_check.py` fails if a result in one check names the other state's program or links to the other guide.
+- **One state at a time.** `tools/browser_check.py` fails if a result in one check uses another guide's own words (its `own_words` in `tools/build.py`: "OHP" for Oregon, "Utah" for Utah) or links to another guide.
 - **No dead ends.** Every result names a next step and a link.
 
 ## Steps
@@ -122,6 +122,6 @@ Built on Nov. 10, 2026 from the lists on Utah's pages (U01, U04, U05) and the cl
 
 ## Changing a check
 
-1. Change the wording in that state's file (`checker-oregon.js` or `checker-utah.js`) and the labels in its page (`src/pages/check.html` or `src/pages/utah-check.html`). Change `checker.js` only to change how both checks work.
+1. Change the wording in that state's file (`checker-oregon.js` or `checker-utah.js`) and the labels in its page (`src/pages/oregon/check.html` or `src/pages/utah/utah-check.html`). Change `checker.js` only to change how both checks work.
 2. Update or add the matching claim in `data/claims.json`, and the tables on this page.
 3. Run `python3 tools/build.py` and `python3 tools/browser_check.py`. The browser check runs every result path in both checks and picks every choice once.

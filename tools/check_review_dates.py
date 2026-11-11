@@ -44,10 +44,10 @@ def main() -> int:
         else:
             upcoming.append(f"{point['review_by']}: {point['what']}")
 
-    for path in sorted((ROOT / "src" / "pages").glob("*.html")):
+    for path in sorted((ROOT / "src" / "pages").rglob("*.html")):
         for until in re.findall(r'data-show-until="(\d{4}-\d{2}-\d{2})"', path.read_text(encoding="utf-8")):
             if today > until:
-                problems.append(f"{path.name}: a note expired on {until}; retire or update it")
+                problems.append(f"{path.parent.name}/{path.name}: a note expired on {until}; retire or update it")
 
     if upcoming:
         print("Upcoming checkpoints:\n  " + "\n  ".join(upcoming))

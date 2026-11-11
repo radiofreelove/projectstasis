@@ -45,9 +45,9 @@ Everything behind the site is public and checkable.
 ## How it works
 
 ```text
-src/pages/*.html     page text, each with a short metadata header
-                     (utah*.html pages say "section: utah"; the 4 pages
-                     marked "shared: yes" are built once for each guide)
+src/pages/           page text, each with a short metadata header, in one
+                     folder per guide (oregon/, utah/) plus shared/: the
+                     4 pages marked "shared: yes", built once for each guide
 data/sources.json    every outside source and link (the registry)
 data/claims.json     every factual statement and what supports it (the fact log)
 data/palette.json    ODHS colors and every color pair the site uses
@@ -58,7 +58,8 @@ tools/build.py       wraps pages in their guide's header and footer, adds each
                      page's Sources list with the date each source was
                      checked, writes the HTTP headers file, and
                      refuses to build if a page uses an unregistered link or
-                     an unlogged fact, or reaches into the other guide
+                     an unlogged fact, or reaches into another guide. The
+                     list of guides lives here (docs/adding-a-guide.md)
         |
         v
 site/                plain HTML, CSS, three small scripts, and _headers.
@@ -83,6 +84,7 @@ python3 tools/serve.py    # serve it the way Cloudflare Pages does, then open ht
 | Command | What it proves |
 |---|---|
 | `python3 tools/build.py --check` | The site matches its sources; every link is registered; every fact is logged and sourced on its page |
+| `python3 -m unittest discover -s tools/tests` | The tools themselves: the rules that keep each guide whole, a made-up third guide, the link checker against local test servers, and the release notes |
 | `python3 tools/check_structure.py` | Language, titles, one h1, no skipped headings, skip link, landmarks, labels, unique IDs, valid ARIA references, CSP and referrer policy (in each page and in `site/_headers`), no new windows, no immigration questions, and every internal link points to a page or file that exists |
 | `python3 tools/check_contrast.py` | Every color pair meets 7:1 for text and 3:1 for borders and focus |
 | `python3 tools/check_reading_level.py` | Each page's estimated reading grade (target 6, fails above 8) |
@@ -91,7 +93,7 @@ python3 tools/serve.py    # serve it the way Cloudflare Pages does, then open ht
 | `python3 tools/browser_check.py` | Real-browser tests on a server that behaves like Cloudflare Pages: reflow at 320 px, contrast in every theme, target sizes, focus visibility, no outside requests, the policy header on every page, every path through the check, and axe-core when `AXE_JS` is set (needs the test tools in `test-tools/requirements.txt` and `test-tools/package.json`) |
 | `python3 tools/check_live.py` | The live site matches this repository byte for byte, with every header, the 404 page, and redirects from old `.html` addresses (needs internet) |
 
-GitHub Actions run the checks on every push ([checks.yml](.github/workflows/checks.yml)), confirm after every push to `main` that the live site matches the commit ([live.yml](.github/workflows/live.yml)), and every Monday check links, checkpoints, and the live site, opening an issue if a person is needed ([weekly.yml](.github/workflows/weekly.yml)). Cloudflare Pages publishes `site/` from `main` after its own freshness and structure check ([settings](docs/maintenance.md#cloudflare-pages-settings)).
+GitHub Actions run the checks on every push ([checks.yml](.github/workflows/checks.yml)), confirm after every push to `main` that the live site matches the commit ([live.yml](.github/workflows/live.yml)), and every Monday check links, checkpoints, and the live site, opening an issue if a person is needed ([weekly.yml](.github/workflows/weekly.yml)). When the version number changes, they tag the commit and publish a release once the checks pass ([release.yml](.github/workflows/release.yml)). Cloudflare Pages publishes `site/` from `main` after its own freshness and structure check ([settings](docs/maintenance.md#cloudflare-pages-settings)).
 
 ## Report a problem
 
