@@ -23,7 +23,7 @@ Flesch-Kincaid grade level of each page's main text. Target: grade 6 or lower. T
 | rules.html | 3.7 | 375 | 48 | 7.8 | On target |
 | utah-apply.html | 3.9 | 431 | 57 | 7.6 | On target |
 | utah-bills.html | 5.1 | 129 | 18 | 7.2 | On target |
-| utah-denied.html | 4.8 | 386 | 49 | 7.9 | On target |
+| utah-denied.html | 4.8 | 398 | 49 | 8.1 | On target |
 | utah-health.html | 3.9 | 300 | 39 | 7.7 | On target |
 | utah-help.html | 5.1 | 262 | 44 | 6.0 | On target |
 | utah-immigration.html | 7.1 | 276 | 36 | 7.7 | Above target |

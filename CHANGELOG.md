@@ -12,6 +12,7 @@ A second guide, for Utah Medicaid, and a re-check of the Oregon court note. Buil
 - 111 Utah claims in the fact log (IDs start with `U-`: 103 facts, 4 inferences, 2 math, 1 design promise, and 1 tip) and 40 Utah entries in the source registry (IDs start with `U`; 33 were read, and 18 are Utah documents that explain the changes).
 - 11 places where Utah's own pages disagree or are unclear, in a new Utah part of [docs/corrections.md](docs/corrections.md): the months a current member must meet, whose income counts toward $580, foster care wording, jail and treatment, two general phone numbers, a child's age, income numbers, fax numbers, where the paper form asks about the rules, whether Targeted Adult Medicaid ends, and document dates.
 - No Utah version of the 1-minute check yet. Why, and every other design choice: [docs/decisions/0013-utah-section.md](docs/decisions/0013-utah-section.md).
+- A second pass the same day fetched 17 of the Utah sources again and compared them with the fact log. Everything compared matched. Two changes came out of it: the turned-down page now says the 15 days to keep medical benefits run from the date on the notice, and the corrections log notes that Utah's glossary names a different hearing office than its hearings page. Details and what was not fetched again: [docs/research-log.md](docs/research-log.md).
 - **Read this before sharing the Utah guide.** It was researched in one day through a tool that answers questions about a document instead of returning its full text. No person has read the Utah documents end to end. Checkpoint 2026-11-24 covers that, and [docs/research-log.md](docs/research-log.md) lists what could not be checked.
 
 ### Oregon
@@ -23,6 +24,7 @@ A second guide, for Utah Medicaid, and a re-check of the Oregon court note. Buil
 ### Both guides
 
 - Every page's source list now shows the date each source was last checked, next to the date printed on it. Before, one line gave a single date for all of them, which stopped being true as soon as one source was re-read.
+- Each home page's link to the other guide now stays visible in "Just the key points" mode. Before, that mode hid it, and the footer was the only way across.
 - The footer's "All pages" list shows the pages of the guide you are in, the 4 shared pages, and a link to the other guide.
 - The "Every source" page lists Oregon, federal, and site sources first, then Utah sources.
 

@@ -120,6 +120,17 @@ What that means:
 | S27 Federal rule | Household income, community service definition, half-time, re-applying, notice period | Confirmed in sections I and II.C; sections II.E, II.H, and II.J were beyond what the tool read |
 | S28 Court order, S40 docket | The order's full text; docket entries 139 to 151 | Read in full through CourtListener's records. Utah is not among the plaintiffs. Judgment entered Oct. 29; no notice of appeal through the Nov. 6 entries |
 
+### Second pass on the Utah facts
+
+Done the same day, before the branch was offered to the maintainer. The assistant fetched the sources again, without relying on the first pass, and compared the answers with the fact log.
+
+- **Fetched again:** U01, U02, U03, U04, U05, U08, U14, U15, U16, U17, U18, U19, U20, U21, U22, U28, U29, the federal rule (S27, first 100,000 characters), OHA's federal changes page (S07), and the court record (docket entries 145 to 151, with the text of the Oct. 29 memorandum, order, and judgment).
+- **Result:** every date, number, phone number, fax number, address, and list that was compared matched the fact log. The disagreements in [corrections.md](corrections.md) items 1, 3, 4, 5, 8, and 9 showed up again the same way.
+- **Changed because of it:** the page for people who were turned down now says the 15 days to keep medical benefits run from the date on the notice (U19). The corrections log now notes that the glossary (U08) names a different hearing office than the hearings page (U17).
+- **Confirmed to load, not read:** the Spanish application (U15S), the Spanish hearing form (U19S), and the Emergency Medicaid page (U36). The two Spanish forms show the same form numbers and dates as the English ones.
+- **Not fetched again:** U06, U07, U09, U10, U11, U12, U13, U23, U24, U25, U26, U27, U30, U31, U33, and U37. Claims that rest only on those sources have had one pass.
+- **Same limit as the first pass:** the tool answers questions about a document. Two passes with it do not replace a person reading the documents. Checkpoint 2026-11-24 stands.
+
 ### Oregon re-check
 
 Done early, ahead of checkpoint 2026-11-16.

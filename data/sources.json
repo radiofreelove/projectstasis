@@ -914,11 +914,11 @@
       "url": "https://medicaid-documents.dhhs.utah.gov/Documents/pdfs/61MED_Spanish.pdf",
       "format": "PDF",
       "kind": "utah-form",
-      "date_on_document": "Not checked",
+      "date_on_document": "DHHS 61MED 04/01/2026",
       "checked": "2026-11-10",
       "opened": false,
       "linked_from": "U14",
-      "notes": "Address listed on U14."
+      "notes": "Address listed on U14. On 2026-11-10 the address loaded and the form showed the same number and date as the English form (U15). It was not read, and no Spanish reader has checked it."
     },
     {
       "id": "U16",
@@ -980,11 +980,11 @@
       "url": "https://jobs.utah.gov/appeals/490sp.pdf",
       "format": "PDF",
       "kind": "utah-form",
-      "date_on_document": "Not checked",
+      "date_on_document": "Rev. 03/2025",
       "checked": "2026-11-10",
       "opened": false,
       "linked_from": "U18",
-      "notes": "Address listed on U18."
+      "notes": "Address listed on U18. On 2026-11-10 the address loaded and the form showed DWS-ESD 490-SP, Rev. 03/2025, the same revision as the English form (U19). It was not read, and no Spanish reader has checked it."
     },
     {
       "id": "U20",
