@@ -1,18 +1,20 @@
-# The Stasis Project: OHP and Utah Medicaid, made plain
+# The Stasis Project: OHP, Apple Health, and Utah Medicaid, made plain
 
-A free, independent guide for people applying for the Oregon Health Plan (OHP), and now for Utah Medicaid, as new work or activity rules start on **Jan. 1, 2027**.
+A free, independent guide for people applying for the Oregon Health Plan (OHP), for Apple Health in Washington, and for Utah Medicaid, as new work or activity rules start on **Jan. 1, 2027**.
 
 **The site:** <https://projectstasis.pages.dev/>
 
-**Why it exists:** Each state explains the new rules across more than a dozen documents ([`data/sources.json`](data/sources.json) lists 22 from Oregon as of Nov. 2, 2026, and 18 from Utah as of Nov. 10, 2026). Many carry no date. Some were written before the latest federal rule and a federal court ruling, and a few disagree with each other. This site puts what applicants need on short pages, in plain words, and lists the official source behind every fact.
+**Why it exists:** Each state explains the new rules across more than a dozen documents ([`data/sources.json`](data/sources.json) lists 22 from Oregon as of Nov. 2, 2026, 18 from Utah as of Nov. 10, 2026, and 25 from Washington as of Nov. 12, 2026). Many carry no date. Some were written before the latest federal rule and a federal court ruling, and a few disagree with each other. This site puts what applicants need on short pages, in plain words, and lists the official source behind every fact.
 
 **Status:** Beta (current version in [CHANGELOG.md](CHANGELOG.md)). Not yet reviewed by a lawyer, a benefits advocate, or people who use assistive technology. See [docs/roadmap.md](docs/roadmap.md).
 
 **The Utah guide is newer and less checked.** It starts at <https://projectstasis.pages.dev/utah>. It was researched in one day, on Nov. 10, 2026, through a tool that answers questions about a document instead of returning its text, and no person has yet read the Utah documents end to end. See [docs/decisions/0013-utah-section.md](docs/decisions/0013-utah-section.md) and [docs/research-log.md](docs/research-log.md).
 
+**The Washington guide is the newest and the least checked.** It starts at <https://projectstasis.pages.dev/washington>. It was built on Nov. 12, 2026 from a research dossier, and no person has yet read its documents end to end; that read is checkpointed for Nov. 26, 2026. The Washington About page and its source list carry the same warning. See [docs/decisions/0015-front-door-with-three-guides.md](docs/decisions/0015-front-door-with-three-guides.md) and [docs/research-log.md](docs/research-log.md).
+
 ## What it is
 
-- Two complete guides built the same way, 17 pages for OHP applicants and 17 pages for Utah Medicaid applicants. Each guide has its own home page, 1-minute check, About, Privacy, Accessibility, and Every source pages, so a reader never lands in the other state's guide by accident. The build stops if a page in one guide links to a page in the other, other than its home page. Each page is written in a Smart Brevity style: a plain headline, one line on why the page exists, a few bold-labeled bullets, then details.
+- Three complete guides built the same way, 17 pages each for OHP applicants, Apple Health applicants, and Utah Medicaid applicants. Each guide has its own home page, 1-minute check, About, Privacy, Accessibility, and Every source pages, so a reader never lands in another state's guide by accident. The build stops if a page in one guide links to a page in another, other than its home page. Each page is written in a Smart Brevity style: a plain headline, one line on why the page exists, a few bold-labeled bullets, then details.
 - A 1-minute check ("Do the rules fit me?") for each state that runs in the browser. Answers are never stored or sent.
 - Links to each state's own forms, phone lines, and pages, including the paper OHP application in 17 languages and Utah's application in English and Spanish. Nothing is copied or re-hosted, so the forms are always the state's current versions.
 - Display settings for text size, spacing, an easy-to-read font (Atkinson Hyperlegible Next, the same option as The Strand Project), colors (warm, white, dark), and a "just the key points" mode.
@@ -21,6 +23,7 @@ A free, independent guide for people applying for the Oregon Health Plan (OHP), 
 
 - Not run by the State of Oregon, the Oregon Health Authority (OHA), or the Oregon Department of Human Services (ODHS).
 - Not run by the State of Utah, the Utah Department of Health and Human Services (DHHS), or the Utah Department of Workforce Services (DWS).
+- Not run by Washington, the Health Care Authority (HCA), or the Department of Social and Health Services (DSHS).
 - Not an application, not an eligibility decision, and not legal advice. Only the state decides who qualifies.
 
 ## How the sausage is made

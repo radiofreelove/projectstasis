@@ -4,6 +4,7 @@ This log lists places where official materials disagree with each other, with th
 
 - [Oregon](#oregon): as found on **Nov. 2, 2026**. Item 1 was re-checked on Nov. 10, 2026.
 - [Utah](#utah): as found on **Nov. 10, 2026**.
+- [Washington](#washington): as recorded in the research for the guide on **Nov. 12, 2026**. None of these is settled yet.
 
 ## Oregon
 
@@ -166,3 +167,81 @@ Found on **Nov. 10, 2026**. Utah's documents were read through a tool that answe
 - **The court ruling.** Utah was not a plaintiff in *Commonwealth of Massachusetts v. Oz* (S40). The order (S28) sets aside one clause of the federal rule and bars the federal government from applying it to the plaintiff states. The site says what the court did and that Utah was not in the case, and does not say what the ruling means in Utah. Utah's pages did not mention it.
 - **Utah's own waiver request.** U11 says Utah asked the federal government on July 3, 2025 for its own community engagement waiver. A federal letter of Sept. 25, 2026 (U30) changes Utah's demonstration to follow the federal requirement and does not approve a Utah-designed one. The site describes only the federal requirement as Utah's pages describe it.
 - **Utah rule text.** One web search on Nov. 10, 2026 found no Utah Administrative Code filing that implements the requirement; a March 26, 2026 rules summary from Utah Medicaid listed none. Unverified.
+
+## Washington
+
+These 12 points come from the research dossier the Washington guide was built from, dated Nov. 12, 2026. They keep the dossier's numbers, because notes in the fact log point here by number. **None is resolved.** Each waits for a person to read the sources end to end ([research-log.md](research-log.md), checkpoint 2026-11-26 in [review.json](../data/review.json)). "What the site does" is the reading the research directed for now, not an answer. "HCA" is the Health Care Authority. Nothing here has been reported to HCA.
+
+### 1. The age band
+
+- **HCA's client pages and the June 2026 fact sheet (WA05):** the rules apply at age 19 to 64.
+- **HCA's January 2026 deck (WA20) and a September 2025 deck, describing the federal law:** 19 to 65.
+- **What the site does:** 19 to 64, the client-facing wording and WAC 182-505-0250 (WA15). The deck wording is to be confirmed as loose drafting when WA20 is read.
+
+### 2. Paid work is not a way of its own on the fact sheet
+
+- **WA05:** lists five ways to meet the rule: at least $580 in monthly household income, school at least half-time, a work program at least 80 hours a month, community service at least 80 hours a month, or a mix of activities totaling at least 80 hours a month. Plain paid work for 80 hours is not one of the five; work appears only inside the mix.
+- **Other HCA text:** "work, train, or do community engagement 80 hours per month".
+- **Not known:** whether this is a drafting slip or a real reading of the income test. It must be settled against WA22 and the fact sheet's own text.
+- **What the site does:** the rules page and step 3 of the check list the fact sheet's five ways exactly, add no paid work way, and say in plain words that the fact sheet names work hours only as part of a mix.
+
+### 3. Exemption or exclusion
+
+- **WA05:** calls its whole list "exemptions".
+- **HCA's August 2026 training material (not found, not read):** is described as separating "current month exclusions" from "exemptions", which matches the federal rule's structure.
+- **What the site does:** one list, called exemptions, as WA05 has it. The reasons page and the check may need a new structure after the training material is read.
+
+### 4. The age of a child in a caregiver's care
+
+- **Sources derived from HCA** write it three ways: "under age 14", "age 13 or younger", and, in one training deck, under 14 through the month the child turns 14.
+- **What the site does:** "under age 14", the fact sheet's wording (WA05). Only HCA's own current text settles this.
+
+### 5. Counts differ
+
+- **WA04:** about 602,000 people in Apple Health for Adults in November 2025. **HCA impact decks:** "over 600,000" and "up to 620,000".
+- **Total Apple Health enrollment:** nearly 2 million (WA03); approximately 1.9 million (WA14).
+- **What the site does:** copies none of these counts onto a page. The only counts on the pages are HCA's 64 percent estimate (WA04) and its "more than 30,000" estimate for the noncitizen changes (WA20, a drafting claim).
+
+### 6. How the start date is framed
+
+- **Older HCA decks:** states must institute the rules by Dec. 31, 2026. **Client pages:** Jan. 1, 2027.
+- **What the site does:** Jan. 1, 2027, the client-facing date. Both can be true (a federal deadline and a state start date); the site does not blend them.
+
+### 7. Whether Washington will delay the rules
+
+- **Federal law:** allows a good-faith delay of the work rules to as late as Dec. 31, 2028. **WA03:** names the option. No HCA client source found says whether Washington has asked for it or received it.
+- **A news report of Nov. 12, 2026 (not an official source, not in the registry):** says Washington and three other states sued the federal government in Oregon over threatened funding withholding. Not confirmed from a docket, and it does not answer the delay question.
+- **What the site does:** says nothing about a delay, on any page, until an official source speaks.
+- **Related, also open:** WA05 lists "short-term hardship" as an exemption without saying which federal hardship kinds Washington has adopted. The reasons page lists the federal kinds (S27, WA24) and says HCA's client papers do not name which count.
+
+### 8. What the $580 counts
+
+- **WA05:** "monthly household income". **A nonprofit summary of the federal rule:** household MAGI. **CMS:** earnings of at least 80 times the federal minimum wage.
+- **Why it matters:** for a person with unpaid activity plus small earnings, the three framings give different answers.
+- **What the site does:** "your household has at least $580 in income a month", the fact sheet's wording. The site does not say which income counts.
+
+### 9. SNAP and TANF
+
+- **WA05:** exempts a "household member of SNAP or TANF". **The federal framing:** complying with SNAP or TANF work requirements. Those are different tests.
+- **What the site does:** uses WA05's wording.
+
+### 10. How far the court order reaches
+
+- **One national summary:** described the Oct. 29, 2026 ruling as applying nationwide.
+- **The order itself (S28):** vacates the clause and bars its use against the plaintiff states, with a 6-month bar on penalizing them.
+- **What the site does:** follows the order's own text, and says Washington is one of the states that sued (WA14, WA25; neither has been read in full, so those are drafting claims).
+
+### 11. Good cause
+
+- **A gap, not a disagreement.** No Washington client-facing text found explains good cause for missing the rules in a month. The federal rule has good cause concepts; Washington's process for asking is not stated in the sources read.
+- **What the site does:** says nothing about a Washington good cause process.
+
+### 12. Two sources that could not be read at their own addresses
+
+- **WA05:** HCA's address for the fact sheet answered 403 to the research tool. The text was read from an identical copy hosted by the hospital association.
+- **WA22:** HCA's main client page on the work requirements came back empty. Its wording has not been read.
+- **What the site does:** uses WA05 as read, and cites WA22 for no fact. Both are first on the list for the end-to-end read.
+
+### Left out on purpose
+
+- **How Washington checks medical frailty.** Secondary sources describe a screening question in Washington Healthplanfinder, self-attestation through 2027, and a state records check with a 12-month look-back from January 2028. HCA's memo (WA21) has not been opened. The dossier's claim WA-HLT-05 is marked "pending, do not publish", so it is in neither the fact log nor any page. The Washington health page says plainly that this part is missing.

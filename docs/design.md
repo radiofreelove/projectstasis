@@ -21,7 +21,7 @@ All colors come from the [ODHS Brand Guidelines](https://sharedsystems.dhsoha.st
 
 ### Brand boundary
 
-The Utah guide uses the same palette and components as the Oregon guide. The palette is the site's design system; it does not signal any tie to either state ([decisions/0013-utah-section.md](decisions/0013-utah-section.md)).
+The Washington and Utah guides use the same palette and components as the Oregon guide. The palette is the site's design system; it does not signal any tie to any state ([decisions/0013-utah-section.md](decisions/0013-utah-section.md)).
 
 The site uses the ODHS **palette** only. It does not use the ODHS logo, brandmark, name, or typeface as its brand, and every page says "Independent guide. Not run by the state." in a banner and again in the footer. The logo is an original mark: a still, six-sided crystal, lit from above, drawn only from palette colors. A light outer edge and a dark inner edge keep it visible on light and dark backgrounds. See [decisions/0004-odhs-palette-not-identity.md](decisions/0004-odhs-palette-not-identity.md).
 
@@ -53,7 +53,8 @@ The site uses the ODHS **palette** only. It does not use the ODHS logo, brandmar
 | Warning box (sand, red edge) | Something that can cost coverage or money |
 | Steps | Numbered circles for things to do in order |
 | Cards | Big tap targets for "go deeper" links |
-| State switch | Two big buttons above the headline of each home page, under the words "Pick your state." Oregon is always first. The guide you are in is filled and says so in words ("This is the OHP guide."); the other is outlined and names the guide it opens. Same look as the menu, so it reads as part of the site. Side by side when both fit, stacked on narrow screens and at large text sizes. Built from the guide list in `tools/build.py` (`{{GUIDE_SWITCH}}`), so a new guide appears on every home page at once. |
+| "How much to show" strip | A slim box at the top of every page, above the heading: the question "Still too much to take in?", one button ("Show just the key points"), and one line saying what it does. In key-points mode the same box is the banner ("You are seeing just the key points. Some details are hidden.") with a "Show everything" button. It is the same setting as "How much to show" in Display settings: one saved value, and each control follows the other. One button, so keyboard focus stays where it is. Hidden without JavaScript, and never printed; a printed page always shows everything. A link into hidden detail turns "Everything" back on first. Writers mark extra detail by hand with `class="more"`. |
+| State switch | One big button for each state above the headline of each home page, under the words "Pick your state." The order is Oregon, Washington, Utah ([decisions/0015-front-door-with-three-guides.md](decisions/0015-front-door-with-three-guides.md)). The guide you are in is filled and says so in words ("This is the OHP guide."); the others are outlined and name the guide they open. Same look as the menu, so it reads as part of the site. Side by side when they fit, stacked on narrow screens and at large text sizes: at 320 px each state has its own row. Built from the guide list in `tools/build.py` (`{{GUIDE_SWITCH}}`), so a new guide appears on every home page at once. |
 | Choice rows | Radio buttons and checkboxes inside full-width bordered rows, at least 48 px tall |
 | Tag | "PDF" label after links to PDFs |
 

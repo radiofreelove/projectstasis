@@ -7,24 +7,34 @@
       "claims": ["U-HEARING-90", "U-HEARING-15", "U-VERIFY-30", "U-READY-10", "U-AIAN-PROOF", "U-SEND-WAYS", "U-HEARING-HOW"]
     },
     {
+      "review_by": "2026-11-26",
+      "what": "Washington: a person reads Washington's sources end to end (the list is in docs/research-log.md). The guide merged on Nov. 12, 2026 ahead of this read, on the project owner's direction. The guide was built on Nov. 12, 2026 from a research dossier, and 14 of its 25 sources are marked 'opened': false. Read WA22 (the work requirements client page and its screener) first, then WA05 at its own HCA address, compared line by line with the copy the research read; then WA21 and its code list, WA12, WA13, the five WAC sections (WA15 to WA19), WA20, WA23, WA14 at item 62, and the WA25 caption. For each one read, set 'opened' to true and the 'checked' date, and remove 'Drafting claim' from the notes of the claims it supports. Then settle the open points in docs/corrections.md (Washington items 1 to 12), starting with whether hours at a paid job are a way to meet the rule by themselves (item 2), which decides step 3 of the check. When it is done, reword the 'This guide is new' box on the Washington About page, the 'Not finished' line on the Washington Every source page, and the two warning boxes on washington-denied.html and washington-health.html.",
+      "claims": ["WA-CHK-01", "WA-CHK-04", "WA-RULE-09", "WA-RSN-15", "WA-APP-08", "WA-APP-09", "WA-LTR-02", "WA-DEN-01", "WA-DEN-03", "WA-DEN-04", "WA-DEN-05", "WA-HLT-04", "WA-IMM-02", "WA-IMM-03", "WA-IMM-04", "WA-WRD-02", "WA-WRD-05", "WA-LOG-03"]
+    },
+    {
+      "review_by": "2026-12-09",
+      "what": "Washington, 30-day re-check: re-read HCA's client pages (WA01, WA02, WA22) and its stakeholder page (WA03) for any change to the Jan. 1, 2027 start, and for any word on a delay; the guide says nothing about a delay, and stays that way until an official source speaks. Re-read WA23: Apple Health Expansion enrollment was closed as of December 2025, and the immigration page must not send people to a closed program as if it were open. Check the Attorney General's tracker (WA14) and the docket (S40) for an appeal or a new order. Look for the sources not yet found: HCA's August 2026 eligibility training material, any WAC rulemaking for H.R. 1, any state plan amendment or waiver request, the work requirements notice HCA sends clients, and the list of fact sheet languages behind WA-HLP-03.",
+      "claims": ["WA-HOME-02", "WA-IMM-04", "WA-RSN-15", "WA-HLT-04", "WA-HLP-03"]
+    },
+    {
       "review_by": "2026-12-10",
-      "what": "30-day re-check for both guides. Oregon: re-check OHA's pages (S01, S03, S07, and S24 by hand) for any response to the Oct. 29, 2026 court ruling; they had none on Nov. 10. Utah: re-check U01, U02, U03, and U04 for the same, and for form 742 and the medically frail screener being posted. Court: check the docket (S40) for a notice of appeal or any new order after the Oct. 29, 2026 judgment; none appeared through the Nov. 6 entries. Update C-COURT and U-COURT and their 'As of' dates on reasons.html, health.html, utah-reasons.html, and utah-health.html.",
+      "what": "30-day re-check for Oregon and Utah (Washington's is the 2026-12-09 checkpoint). Oregon: re-check OHA's pages (S01, S03, S07, and S24 by hand) for any response to the Oct. 29, 2026 court ruling; they had none on Nov. 10. Utah: re-check U01, U02, U03, and U04 for the same, and for form 742 and the medically frail screener being posted. Court: check the docket (S40) for a notice of appeal or any new order after the Oct. 29, 2026 judgment; none appeared through the Nov. 6 entries. Update C-COURT and U-COURT and their 'As of' dates on reasons.html, health.html, utah-reasons.html, and utah-health.html.",
       "claims": ["C-COURT", "C-EX-HEALTH", "U-COURT", "U-EX-FRAIL", "U-742-NOLINK"]
     },
     {
       "review_by": "2026-12-13",
-      "what": "Before the Jan. 1, 2027 switch: re-read S01 (Oregon) and U02 (Utah) for any change to past medical bills (retroactive coverage). Then run python3 tools/check_review_dates.py --today 2027-01-02 and confirm the only expired notes it names are the Dec. 31 notes on index.html (2), bills.html (1), utah.html (2), and utah-bills.html (1).",
-      "claims": ["C-RETRO-NOW", "C-RETRO-2027", "U-RETRO-NOW", "U-RETRO-2027"]
+      "what": "Before the Jan. 1, 2027 switch: re-read S01 (Oregon) and U02 (Utah) for any change to past medical bills (retroactive coverage). Then run python3 tools/check_review_dates.py --today 2027-01-02 and confirm the only expired notes it names are the Dec. 31 notes on index.html (2), bills.html (1), washington.html (2), washington-bills.html (1), utah.html (2), and utah-bills.html (1). Washington: re-read WA01 and WA03 for the same.",
+      "claims": ["C-RETRO-NOW", "C-RETRO-2027", "U-RETRO-NOW", "U-RETRO-2027", "WA-BILL-01", "WA-BILL-02"]
     },
     {
       "review_by": "2026-12-31",
-      "what": "After Jan. 1, 2027: delete the elements marked data-show-until=\"2026-12-31\" on index.html, bills.html, utah.html, and utah-bills.html, so readers without JavaScript stop seeing them. Reword both home page titles and headlines ('New rules start Jan. 1, 2027') for a site read after the rules began. Utah: the letter on tribal status (U28) asked for proof by Jan. 1, 2027; check what Utah now says to people who have not sent it, and update U-AIAN-PROOF.",
-      "claims": ["C-RETRO-NOW", "C-RETRO-2027", "C-START", "U-RETRO-NOW", "U-RETRO-2027", "U-START", "U-AIAN-PROOF"]
+      "what": "After Jan. 1, 2027: delete the elements marked data-show-until=\"2026-12-31\" on index.html, bills.html, washington.html, washington-bills.html, utah.html, and utah-bills.html, so readers without JavaScript stop seeing them. Reword every guide's home page title and headline ('New rules start Jan. 1, 2027') for a site read after the rules began. Utah: the letter on tribal status (U28) asked for proof by Jan. 1, 2027; check what Utah now says to people who have not sent it, and update U-AIAN-PROOF.",
+      "claims": ["C-RETRO-NOW", "C-RETRO-2027", "C-START", "U-RETRO-NOW", "U-RETRO-2027", "U-START", "U-AIAN-PROOF", "WA-BILL-01", "WA-BILL-02", "WA-HOME-02", "WA-HOME-04"]
     },
     {
       "review_by": "2027-01-15",
-      "what": "First check after the rules start. Oregon: re-read S01 to S09 and S24 by hand. Look for new OHA notices, forms (including any new version of OHP 7210), and any change to the 35-day reply window. Utah: re-read U01 to U05 and U14 to U16. Look for a new 61MED that asks about the rules, form 742, the medically frail screener, and what Utah's denial and verification letters are called. If form 742 or the screener is posted, update the 'what to do' lines in site/assets/js/checker-utah.js, docs/checker-logic.md, and U-742-NOLINK.",
-      "claims": ["C-START", "C-LOOKBACK-APP", "C-RFI-35", "C-7210-NOQS", "U-START-APP", "U-LOOKBACK-APP", "U-VERIFY-30", "U-61MED-NOQS", "U-TELL-HOW"]
+      "what": "First check after the rules start. Oregon: re-read S01 to S09 and S24 by hand. Look for new OHA notices, forms (including any new version of OHP 7210), and any change to the 35-day reply window. Utah: re-read U01 to U05 and U14 to U16. Look for a new 61MED that asks about the rules, form 742, the medically frail screener, and what Utah's denial and verification letters are called. If form 742 or the screener is posted, update the 'what to do' lines in site/assets/js/checker-utah.js, docs/checker-logic.md, and U-742-NOLINK. Washington: re-read WA01, WA05, and WA22. HCA said in 2026 that there was nothing to do 'right now'; that line (WA-HOME-02) is out of date once HCA changes it, so reword every place the guide repeats it, including site/assets/js/checker-washington.js. The rules reach a person at their first renewal in 2027 (WA-HOME-03); decide whether the Washington guide needs renewal pages.",
+      "claims": ["C-START", "C-LOOKBACK-APP", "C-RFI-35", "C-7210-NOQS", "U-START-APP", "U-LOOKBACK-APP", "U-VERIFY-30", "U-61MED-NOQS", "U-TELL-HOW", "WA-HOME-02", "WA-HOME-03", "WA-RULE-08", "WA-CHK-04"]
     },
     {
       "review_by": "2027-03-01",
@@ -33,8 +43,8 @@
     },
     {
       "review_by": "2027-04-29",
-      "what": "End of the court's six-month bar on penalizing plaintiff states (S28). Re-check the health reason and the case docket for appeals or new orders.",
-      "claims": ["C-COURT", "C-EX-HEALTH", "C-W-FRAIL"]
+      "what": "End of the court's six-month bar on penalizing plaintiff states (S28). Re-check the health reason and the case docket for appeals or new orders. Washington is a plaintiff state too: re-check WA14 and the two court notes on washington-reasons.html and washington-health.html.",
+      "claims": ["C-COURT", "C-EX-HEALTH", "C-W-FRAIL", "WA-RSN-15", "WA-HLT-04"]
     },
     {
       "review_by": "2027-06-15",

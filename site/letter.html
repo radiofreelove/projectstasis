@@ -78,7 +78,12 @@
   </header>
   <main id="main" tabindex="-1">
     <div class="wrap">
-    <p class="fewer-note">Some details are hidden. To see everything, open Display settings at the top.</p>
+    <div class="detail-strip" data-detail-strip>
+      <p class="detail-ask when-all">Still too much to take in?</p>
+      <p class="fewer-note when-fewer">You are seeing just the key points. Some details are hidden.</p>
+      <button type="button" class="button-secondary" data-toggle-details aria-pressed="false"><span class="when-all">Show just the key points</span><span class="when-fewer">Show everything</span></button>
+      <p class="detail-hint when-all">This hides the extra details on this page. The main points, the steps, and the links you need stay here.</p>
+    </div>
     <h1>OHP sent me a letter. Now what?</h1>
     <p class="purpose">This page explains the letters and how to answer them on time.</p>
 
@@ -141,7 +146,7 @@
       <p>The state explains the new OHP rules across more than a dozen documents. This site puts what applicants need in one place, in plain words. Each page lists the official sources behind it.</p>
       <p><strong>Independent.</strong> Not run by the State of Oregon, the Oregon Health Authority (OHA), or the Oregon Department of Human Services (ODHS). Only OHP decides who qualifies.</p>
       <p><strong>Private.</strong> No accounts, ads, cookies, or tracking. <a href="privacy">How your privacy is protected</a>.</p>
-      <p>Facts last checked <time datetime="2026-11-02">Nov. 2, 2026</time>. Version 0.2.1 beta. <a href="https://github.com/radiofreelove/projectstasis">See how this site is made</a>.</p>
+      <p>Facts last checked <time datetime="2026-11-02">Nov. 2, 2026</time>. Version 0.3.0 beta. <a href="https://github.com/radiofreelove/projectstasis">See how this site is made</a>.</p>
       <p>Words: <a href="https://github.com/radiofreelove/projectstasis/blob/main/LICENSE">CC BY 4.0</a>. Code: <a href="https://github.com/radiofreelove/projectstasis/blob/main/LICENSE-CODE">MIT</a>. <a href="about#license">Reuse this guide</a>.</p>
       <nav class="footer-pages" aria-label="All pages">
         <h2>All pages</h2>
@@ -163,6 +168,7 @@
           <li><a href="privacy">Privacy</a></li>
           <li><a href="accessibility">Accessibility</a></li>
           <li><a href="sources">Every source</a></li>
+          <li><a href="washington">Apple Health guide</a></li>
           <li><a href="utah">Utah Medicaid guide</a></li>
         </ul>
       </nav>

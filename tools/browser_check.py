@@ -23,6 +23,11 @@ What it checks, on every page:
   - No console errors and no Content Security Policy violations.
   - No network requests leave the site.
   - Keyboard focus is visible on every focusable element on the home page.
+  - "How much to show": the strip is there, Enter turns key-points mode on
+    and hides every marked detail, the banner says so, Space brings
+    everything back, focus never moves, Display settings and the strip
+    agree, a link into hidden detail shows everything first, a printed
+    page is complete, and without JavaScript there is no strip.
 And on the check page, it runs every result path, the error messages,
 the "None of these" boxes, and "Start over".
 """
@@ -112,6 +117,39 @@ TARGETS_JS = r"""
     out.push({name: (el.innerText || el.getAttribute('aria-label') || el.tagName).trim().slice(0, 30), w: Math.round(r.width), h: Math.round(r.height)});
   });
   return out;
+}
+"""
+
+# What "How much to show" looks like right now: the strip, the panel, the
+# saved choice, and how many marked details are hidden.
+STRIP_JS = r"""
+() => {
+  const shown = el => !!el && getComputedStyle(el).display !== 'none' && el.getClientRects().length > 0;
+  const button = document.querySelector('[data-toggle-details]');
+  const more = Array.from(document.querySelectorAll('main .more'));
+  // An element is hidden by this setting when it, or a .more above it, has display none.
+  const hiddenByMode = el => { const m = el.closest('.more'); return getComputedStyle(m).display === 'none'; };
+  const note = document.querySelector('.detail-strip .fewer-note');
+  const picked = document.querySelector('input[name="details"]:checked');
+  const sources = document.querySelector('main .sources');
+  let saved = null;
+  try { saved = (JSON.parse(localStorage.getItem('stasis-display-v1') || '{}')).details || null; } catch (e) {}
+  const rect = button ? button.getBoundingClientRect() : {height: 0};
+  return {
+    strip: shown(button),
+    button: button ? button.innerText.trim() : '',
+    button_h: Math.round(rect.height),
+    pressed: button ? button.getAttribute('aria-pressed') : null,
+    focus_on_button: document.activeElement === button,
+    banner: shown(note) ? note.innerText.trim() : '',
+    details: document.documentElement.getAttribute('data-details'),
+    panel: picked ? picked.value : null,
+    saved: saved,
+    status: (document.getElementById('settings-status') || {textContent: ''}).textContent,
+    more: more.length,
+    hidden: more.filter(hiddenByMode).length,
+    sources_hidden: !!sources && getComputedStyle(sources).display === 'none',
+  };
 }
 """
 
@@ -236,6 +274,122 @@ def run(shots: Path | None):
         if invisible:
             problems.append(f"focus not visible on: {invisible}")
         context.close()
+
+        # "How much to show": the strip above each page's heading, and the
+        # same setting in Display settings. On every page.
+        strip_notes: list[str] = []
+        context = browser.new_context(viewport={"width": 390, "height": 844})
+        page = context.new_page()
+        nothing_marked = []
+        marked_total = 0
+        for name in pages:
+            page.goto(base + address(name), wait_until="load")
+            before = page.evaluate(STRIP_JS)
+            if not before["strip"]:
+                problems.append(f"how much to show: {name} has no visible strip button")
+                continue
+            if before["button"] != "Show just the key points" or before["pressed"] != "false":
+                problems.append(f"how much to show: {name} starts with button {before['button']!r}, pressed {before['pressed']}")
+            if before["button_h"] < 44:
+                problems.append(f"how much to show: {name} strip button is {before['button_h']}px tall, under 44")
+            if before["hidden"]:
+                problems.append(f"how much to show: {name} hides {before['hidden']} details before anything is chosen")
+            if before["more"] == 0:
+                nothing_marked.append(name)
+            marked_total += before["more"]
+
+            # On, with the keyboard: Enter. Focus must stay on the button.
+            page.focus("[data-toggle-details]")
+            page.keyboard.press("Enter")
+            page.wait_for_timeout(150)
+            on = page.evaluate(STRIP_JS)
+            if on["details"] != "fewer" or on["hidden"] != on["more"]:
+                problems.append(f"how much to show: {name} key-points mode hid {on['hidden']} of {on['more']} details")
+            if on["button"] != "Show everything" or on["pressed"] != "true":
+                problems.append(f"how much to show: {name} in key-points mode the button says {on['button']!r}, pressed {on['pressed']}")
+            if "Some details are hidden." not in on["banner"]:
+                problems.append(f"how much to show: {name} key-points mode shows no banner saying details are hidden")
+            if not on["focus_on_button"]:
+                problems.append(f"how much to show: {name} lost keyboard focus when the button was used")
+            if on["panel"] != "fewer":
+                problems.append(f"how much to show: {name} Display settings shows {on['panel']!r} while the strip says key points")
+            if on["saved"] != "fewer":
+                problems.append(f"how much to show: {name} saved {on['saved']!r}, expected 'fewer'")
+            if "now hidden" not in on["status"]:
+                problems.append(f"how much to show: {name} status line said {on['status']!r}")
+            if on["sources_hidden"]:
+                problems.append(f"how much to show: {name} key-points mode hides the source list")
+
+            # Print in key-points mode: everything shows, and no strip.
+            page.emulate_media(media="print")
+            printed = page.evaluate(STRIP_JS)
+            if printed["hidden"]:
+                problems.append(f"how much to show: {name} would print without {printed['hidden']} details")
+            if printed["strip"] or printed["banner"]:
+                problems.append(f"how much to show: {name} would print the strip or its banner")
+            page.emulate_media(media="screen")
+
+            # Print emulation drops keyboard focus to the page body in the
+            # test browser (verified 2026-11-12: focus is on the button in
+            # print, and on body after switching back, with no page code
+            # running in between). Put focus back where a reader would
+            # still have it, then turn the mode off.
+            page.focus("[data-toggle-details]")
+
+            # Off again, with the keyboard: Space.
+            page.keyboard.press("Space")
+            page.wait_for_timeout(150)
+            off = page.evaluate(STRIP_JS)
+            if off["details"] != "all" or off["hidden"] or off["button"] != "Show just the key points":
+                problems.append(f"how much to show: {name} 'Show everything' left {off['hidden']} details hidden")
+            if off["panel"] != "all" or off["pressed"] != "false" or not off["focus_on_button"]:
+                problems.append(f"how much to show: {name} controls disagree after 'Show everything'")
+            if "showing again" not in off["status"]:
+                problems.append(f"how much to show: {name} status line said {off['status']!r}")
+
+            # The panel drives the strip too.
+            page.evaluate("document.querySelector('input[name=details][value=fewer]').click()")
+            page.wait_for_timeout(50)
+            from_panel = page.evaluate(STRIP_JS)
+            if from_panel["button"] != "Show everything" or from_panel["hidden"] != from_panel["more"]:
+                problems.append(f"how much to show: {name} the strip did not follow Display settings")
+
+            # A link into hidden detail shows everything first, then goes there.
+            if from_panel["more"]:
+                page.evaluate(
+                    "document.querySelector('main .more').id = 'test-hidden-detail';"
+                    "window.location.hash = '#test-hidden-detail';"
+                )
+                page.wait_for_timeout(150)
+                linked = page.evaluate(STRIP_JS)
+                shown = page.evaluate(
+                    "getComputedStyle(document.getElementById('test-hidden-detail')).display !== 'none'"
+                )
+                if linked["details"] != "all" or not shown or linked["button"] != "Show just the key points":
+                    problems.append(f"how much to show: {name} a link into hidden detail left the reader with nothing")
+            page.evaluate("document.querySelector('[data-reset-settings]').click()")
+            page.evaluate("try { localStorage.clear(); } catch (e) {}")
+        context.close()
+        strip_notes.append(f"Pages with the strip, tested on and off by keyboard, in print, from Display settings, and by a link into hidden detail: {len(pages)}")
+        strip_notes.append(f"Details marked as extra, across all pages: {marked_total}")
+        strip_notes.append("Pages where the strip hides nothing yet: " + (", ".join(nothing_marked) or "none"))
+
+        # Without JavaScript: no strip, no dead button, and the full page.
+        context = browser.new_context(viewport={"width": 390, "height": 844}, java_script_enabled=False)
+        page = context.new_page()
+        without = 0
+        for name in pages:
+            page.goto(base + address(name), wait_until="load")
+            if page.locator("[data-toggle-details]").is_visible() or page.locator(".detail-strip").is_visible():
+                problems.append(f"how much to show: {name} shows the strip without JavaScript")
+            hidden = page.locator("main .more").evaluate_all(
+                "els => els.filter(el => el.getClientRects().length === 0 && !el.closest('[hidden]')).length"
+            )
+            if hidden:
+                problems.append(f"how much to show: {name} hides {hidden} details without JavaScript")
+            without += 1
+        context.close()
+        strip_notes.append(f"Pages checked without JavaScript (no strip, full page): {without}")
 
         # The check: every path, in each guide. The guides, their check
         # pages, and the words that belong to each come from tools/build.py.
@@ -366,14 +520,14 @@ def run(shots: Path | None):
             context.close()
         browser.close()
     server.shutdown()
-    return problems, notes, rows, flow, axe_summary, bool(axe_path)
+    return problems, notes, rows, flow, axe_summary, bool(axe_path), strip_notes
 
 
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--shots", type=Path)
     args = parser.parse_args()
-    problems, notes, rows, flow, axe_summary, axe_ran = run(args.shots)
+    problems, notes, rows, flow, axe_summary, axe_ran, strip_notes = run(args.shots)
     lines = [
         "# Browser test report",
         "",
@@ -384,6 +538,10 @@ def main() -> int:
         "| Setting | Pages | Text at AA but under AAA | Targets 24 to 43 px tall (allowed) |",
         "|---|---|---|---|",
         *rows,
+        "",
+        "## How much to show",
+        "",
+        *[f"- {line}" for line in strip_notes],
         "",
         "## The 1-minute check",
         "",

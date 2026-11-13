@@ -174,10 +174,35 @@ body {
 :root[data-spacing="roomy"] li,
 :root[data-spacing="roomy"] dd { margin-bottom: 1.25em; }
 
-/* Fewer details, chosen in Display settings */
-:root[data-details="fewer"] .more { display: none !important; }
-.fewer-note { display: none; }
-:root[data-details="fewer"] .fewer-note { display: block; }
+/* Fewer details ("Just the key points"), chosen in the strip above each
+   page's heading or in Display settings. On screens only: a printed page
+   always shows everything, because this rule does not apply in print. */
+@media not print {
+  :root[data-details="fewer"] .more { display: none !important; }
+}
+
+/* The strip: one question, one button, one line. In key-points mode it is
+   the banner that says details are hidden, with the way back in place.
+   It needs JavaScript, so it shows only after settings.js marks the page
+   (data-js). Without JavaScript there is no dead button and nothing hides. */
+.detail-strip { display: none; }
+:root[data-js] .detail-strip {
+  display: block;
+  margin: 1rem 0 0;
+  padding: 0.75rem 1rem;
+  border: 2px solid var(--border);
+  border-left: 8px solid var(--heading);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.detail-strip p { margin: 0 0 0.5rem; }
+.detail-strip .detail-ask,
+.detail-strip .fewer-note { font-weight: 700; }
+.detail-strip .detail-hint { margin: 0.5rem 0 0; font-size: 0.95rem; }
+.detail-strip .when-fewer,
+:root[data-details="fewer"] .detail-strip .when-all { display: none; }
+:root[data-details="fewer"] .detail-strip p.when-fewer { display: block; }
+:root[data-details="fewer"] .detail-strip span.when-fewer { display: inline; }
 
 h1, h2, h3 {
   color: var(--heading);
@@ -507,7 +532,9 @@ ul.cards a:focus-visible .card-note { color: var(--black); }
 /* State switch on each home page: the way from one guide to the other.
    Same pattern as the menu. The guide you are in is filled, and the other
    guide is an outlined button. The words say which is which, so the fill
-   is never the only sign. Oregon is always first and Utah second. */
+   is never the only sign. The order is Oregon, Washington, Utah
+   (docs/decisions/0015-front-door-with-three-guides.md). Three do not fit
+   on one row on a phone: at 320 px each state gets a full-width row. */
 .guide-switch { margin: 1.5rem 0; }
 .guide-switch-label {
   font-weight: 700;
@@ -660,7 +687,7 @@ dl.glossary dd { margin: 0.25rem 0 0; }
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }
 @media (forced-colors: active) {
-  .callout, .warn, .good, .promise, .choice, .button, .button-secondary, ul.cards a, .guide-switch a, .display-settings {
+  .callout, .warn, .good, .promise, .choice, .button, .button-secondary, ul.cards a, .guide-switch a, .display-settings, .detail-strip {
     border: 2px solid CanvasText;
   }
   /* Fills are replaced by system colors here, so the guide you are in gets a thicker edge */
@@ -677,7 +704,12 @@ dl.glossary dd { margin: 0.25rem 0 0; }
     --warn-bg: #ffffff; --footer-bg: #ffffff; --footer-text: #000000;
   }
   html, :root[data-text] { font-size: 12pt; }
-  .skip-link, .main-nav, .display-settings, .no-print, .footer-pages, .actions { display: none !important; }
+  .skip-link, .main-nav, .display-settings, .detail-strip, .no-print, .footer-pages, .actions { display: none !important; }
+  /* "Just the key points" never shortens a printed page: the rule that
+     hides .more sits inside "@media not print" (see "Fewer details" above),
+     so in print every .more element keeps its own display value. The strip
+     and its banner are hidden on the line above.
+     tools/browser_check.py tests both. */
   .independent-banner { background: #ffffff; color: #000000; border-bottom: 1px solid #000000; }
   .independent-banner a { color: #000000; }
   .log-table { min-width: 0; }

@@ -32,6 +32,10 @@ promise or standard it protects. Standard library only.
  16. site/_headers sends the same Content Security Policy as the pages,
      plus frame-ancestors 'none' (other sites cannot frame the pages), and
      Referrer-Policy: no-referrer (privacy page).
+ 17. Every page has the "How much to show" strip, once, inside <main> and
+     before the <h1>, with its exact words and a real button, and still has
+     the "How much to show" choices in Display settings. The two controls
+     are one setting (docs/design.md, "Components").
 """
 from __future__ import annotations
 
@@ -45,6 +49,40 @@ import serve
 ROOT = Path(__file__).resolve().parent.parent
 SITE = ROOT / "site"
 FORBIDDEN_WORDS = ("immigra", "citizen")
+
+# Rule 17. The strip's exact words, and the panel choices it must match.
+STRIP_PARTS = (
+    ('<div class="detail-strip" data-detail-strip>', "the strip itself"),
+    ("Still too much to take in?", "the strip's question"),
+    ('<button type="button" class="button-secondary" data-toggle-details aria-pressed="false">',
+     "the strip's button, with its state"),
+    ("Show just the key points", "the button's words when everything shows"),
+    ("This hides the extra details on this page. The main points, the steps, and the links you need stay here.",
+     "the line under the button"),
+    ("You are seeing just the key points. Some details are hidden.", "the banner's words"),
+    ("Show everything", "the button's words in key-points mode"),
+)
+PANEL_PARTS = (
+    ("<legend>How much to show</legend>", "the 'How much to show' choices in Display settings"),
+    ('<input type="radio" name="details" value="all" checked>', "the 'Everything' choice, picked by default"),
+    ('<input type="radio" name="details" value="fewer">', "the 'Just the key points' choice"),
+    ('id="settings-status"', "the status line that announces a change"),
+)
+
+
+def check_strip(text: str) -> list[str]:
+    errors = []
+    for needed, what in STRIP_PARTS + PANEL_PARTS:
+        if needed not in text:
+            errors.append(f"'How much to show' is missing {what}")
+    if text.count("data-toggle-details") != 1:
+        errors.append(f"expected one 'How much to show' strip button, found {text.count('data-toggle-details')}")
+    main_at, strip_at, h1_at = text.find("<main"), text.find("data-detail-strip"), text.find("<h1")
+    if strip_at != -1 and not (main_at != -1 and main_at < strip_at and (h1_at == -1 or strip_at < h1_at)):
+        errors.append("the 'How much to show' strip is not at the top of <main>, above the heading")
+    if "open Display settings at the top" in text:
+        errors.append("the old banner text, which sent readers into the menu, is still on the page")
+    return errors
 
 
 class Page(HTMLParser):
@@ -163,8 +201,9 @@ class Page(HTMLParser):
 
 def check(path: Path, titles: dict) -> list[str]:
     page = Page()
-    page.feed(path.read_text(encoding="utf-8"))
-    errors = list(page.errors)
+    text = path.read_text(encoding="utf-8")
+    page.feed(text)
+    errors = list(page.errors) + check_strip(text)
     if page.lang != "en":
         errors.append("html lang is not 'en'")
     title = " ".join(page.title.split())

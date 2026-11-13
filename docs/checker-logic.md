@@ -8,14 +8,14 @@ Each guide has its own check, and both work the same way ([decisions/0013-utah-s
 | Words, links, and lists | [`checker-oregon.js`](../site/assets/js/checker-oregon.js) | [`checker-utah.js`](../site/assets/js/checker-utah.js) |
 | The script that runs it | [`checker.js`](../site/assets/js/checker.js) | the same file |
 
-This page describes every input, every result, and the claim behind each line, so anyone can audit either check without reading code. The promises, steps, and result order below hold for both. The Oregon tables come first, then [the Utah tables](#the-utah-check).
+This page describes every input, every result, and the claim behind each line, so anyone can audit either check without reading code. The promises, steps, and result order below hold for both. The Oregon tables come first, then [the Utah tables](#the-utah-check), then [the Washington tables](#the-washington-check). Washington's check uses the same script with its own page and its own file of words.
 
 ## Promises
 
 - **Nothing leaves the device.** Answers stay in page memory. Nothing is written to storage. The Content Security Policy sets `connect-src 'none'` and `form-action 'none'`, so the browser blocks any network request. `tools/browser_check.py` confirms no storage keys and no outside requests after a full run.
 - **No immigration questions.** `tools/check_structure.py` fails the build if any form label mentions immigration or citizenship.
 - **No decisions.** Results say "may" and "likely." Every result ends with "Only OHP decides. This check is not a decision." (Utah: "Only the state decides.")
-- **One state at a time.** `tools/browser_check.py` fails if a result in one check uses another guide's own words (its `own_words` in `tools/build.py`: "OHP" for Oregon, "Utah" for Utah) or links to another guide.
+- **One state at a time.** `tools/browser_check.py` fails if a result in one check uses another guide's own words (its `own_words` in `tools/build.py`: "OHP" for Oregon, "Apple Health" and "Washington" for Washington, "Utah" for Utah) or links to another guide.
 - **No dead ends.** Every result names a next step and a link.
 
 ## Steps
@@ -120,8 +120,64 @@ Built on Nov. 10, 2026 from the lists on Utah's pages (U01, U04, U05) and the cl
 - **Other Medicaid groups besides SSI,** such as parents with low income. Utah's pages name the group but give no test a person can apply to themselves. The Utah reasons page lists it.
 - **What form 742 and the medically frail screener ask.** Utah has not posted them. The check says to ask DWS for form 742. Checkpoint 2027-01-15 covers updating it.
 
+## The Washington check
+
+Page: [`src/pages/washington/washington-check.html`](../src/pages/washington/washington-check.html). Words, links, and lists: [`checker-washington.js`](../site/assets/js/checker-washington.js). The script that runs it is the same `checker.js`, unchanged. The promises, steps, and result order above hold here too. The check's own words are "Apple Health" and "Washington"; they never show in another guide's results.
+
+Built on Nov. 12, 2026 from the check claims in the research dossier (WA-CHK-01 to WA-CHK-05) and the lists in HCA's June 2026 fact sheet (WA05). **It is a draft until a person has read HCA's work requirements page and its screener (WA22).** That page could not be read, and it is the one most likely to change these questions.
+
+### Results (Washington)
+
+| Condition | Heading shown | What it says | Claim |
+|---|---|---|---|
+| Age is not 19 to 64 | The new rules do not apply to your age group. | The work rules are only for Apple Health for Adults, ages 19 to 64. You can still apply. | WA-CHK-01, WA-RSN-02 |
+| Picked Medicare | The new rules likely do not apply to you. | The list of what was picked, then "What to do" | WA-RSN-08, WA-CHK-01 |
+| Picked any other reason | You may not have to meet the new rules. | The list of what was picked, then "What to do" | See table below |
+| Picked only ways to meet the rules | You may already meet the new rules. | The state checks its own data first. You may state your own income or work status. A letter may ask for proof, with 15 days to answer. | WA-RULE-06, WA-RULE-05, WA-APP-09 |
+| Picked nothing in steps 2 and 3 | The new rules may apply to you. | You can still apply. Enrollment is open all year. The rule looks at the month before you apply. | WA-APP-06, WA-RULE-08 |
+
+"What to do" after a reason: the state checks its own data first (WA-RULE-06); a person may state their own exemption status, and the state accepts it (WA-RULE-05); HCA says there is nothing to do right now (WA-HOME-02).
+
+### What each reason says (Washington)
+
+| Value | Label | What the check adds | Claim |
+|---|---|---|---|
+| pregnant | Pregnant, or in the 12 months after a pregnancy | Nothing | WA-RSN-01 |
+| care | Parent, caretaker, or guardian of a child under 14, or of a person with a disability | Nothing | WA-RSN-05, WA-RSN-07 |
+| health | Blind or a disability, a substance use disorder, a disabling mental health condition, or a serious or complex medical condition | HCA calls this medically frail. The list comes from federal law. | WA-RSN-10, WA-HLT-03 |
+| treatment | In treatment for alcohol or substance use | Nothing | WA-RSN-11 |
+| medicare | Medicare Part A or Part B | The work rules are only for Apple Health for Adults, a group for people with no Medicare. | WA-RSN-08, WA-CHK-01 |
+| snap | Household member of someone who gets SNAP food assistance or TANF cash assistance | Nothing | WA-RSN-06 |
+| aian | American Indian or Alaska Native | Also left out of the shorter 6-month coverage periods. | WA-RSN-04, WA-RSN-14 |
+| foster | Foster youth, or former foster youth under 26 | Nothing | WA-RSN-03 |
+| veteran | Disabled veteran with a 100 percent total disability rating | Nothing | WA-RSN-12 |
+| jail | Out of jail or prison in the last 90 days | Nothing | WA-RSN-09 |
+| hardship | A short-term hardship, like a hospital stay or travel for medical care | HCA lists short-term hardship as an exemption. Its papers for clients do not say which kinds count. Ask HCA. | WA-RSN-13, WA-RULE-09 |
+
+### Ways to meet the rules (Washington)
+
+Five choices, not three, because HCA's fact sheet lists five ways.
+
+| Value | Label | What the check adds | Claim |
+|---|---|---|---|
+| income | Your household has at least $580 in income a month | Seasonal workers may use an average of $580 a month over 6 months. | WA-CHK-02, WA-RULE-02 |
+| school | In an educational program at least half-time | Under the federal rule, this includes high school and GED programs. | WA-CHK-03, WA-RULE-03 |
+| program | In a work program at least 80 hours a month | Nothing | WA-CHK-04 |
+| service | Community service at least 80 hours a month | Nothing | WA-CHK-04 |
+| hours | A mix of activities that adds up to at least 80 hours a month | You may add up hours of work, community service, a work program, and school. You can print an hours log. | WA-CHK-04, WA-RULE-04 |
+
+### What the Washington check leaves out, and why
+
+- **Hours at a paid job as a way of its own.** HCA's fact sheet does not list one; it names work only inside the mix. The check follows the fact sheet's five ways exactly and adds nothing on anyone's judgment. The page says so under "How this check works". See [corrections.md](corrections.md), Washington item 2. If WA22 or the fact sheet's own text settles it, step 3 changes.
+- **How Washington checks medical frailty.** HCA's memo (WA21) has not been read. The "health" choice uses the federal list (S27, S29) and says nothing about a screening question or proof.
+- **County reasons** (high unemployment, or a federal emergency or disaster). A person cannot easily know them. The reasons page lists them as kinds federal law allows.
+- **"In jail or prison now."** A person using the check is asked only about getting out in the last 90 days.
+- **Under age 19.** Step 1 covers it.
+- **The other tests for Apple Health for Adults** (living in Washington, income under 138 percent of the federal poverty level). The check asks for no address and no income amount.
+- **Good cause.** No Washington source read explains it ([corrections.md](corrections.md), Washington item 11).
+
 ## Changing a check
 
-1. Change the wording in that state's file (`checker-oregon.js` or `checker-utah.js`) and the labels in its page (`src/pages/oregon/check.html` or `src/pages/utah/utah-check.html`). Change `checker.js` only to change how both checks work.
+1. Change the wording in that state's file (`checker-oregon.js`, `checker-washington.js`, or `checker-utah.js`) and the labels in its page (`src/pages/oregon/check.html`, `src/pages/washington/washington-check.html`, or `src/pages/utah/utah-check.html`). Change `checker.js` only to change how both checks work.
 2. Update or add the matching claim in `data/claims.json`, and the tables on this page.
 3. Run `python3 tools/build.py` and `python3 tools/browser_check.py`. The browser check runs every result path in both checks and picks every choice once.

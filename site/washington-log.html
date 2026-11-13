@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="en" data-theme="auto" data-text="m" data-spacing="normal" data-font="system" data-details="all">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
+  <meta name="referrer" content="no-referrer">
+  <title>Hours log you can print, for Apple Health | The Stasis Project</title>
+  <meta name="description" content="A printable log for work program, community service, school, and work hours, with a 6-month view for seasonal workers. For your own records.">
+  <link rel="canonical" href="https://projectstasis.pages.dev/washington-log">
+  <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/css/site.css">
+  <script src="assets/js/settings.js"></script>
+  <script src="assets/js/site.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to main content</a>
+  <header class="site-header">
+    <div class="independent-banner">
+      <div class="wrap">
+        <p><strong>Independent guide.</strong> Not run by the state. <a href="washington-about">Why this guide exists</a>. <a href="washington-about#report">Report a mistake</a>.</p>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="header-row">
+        <a class="brand" href="washington">
+          <img src="assets/img/logo.svg" alt="" width="40" height="40">
+          <span><span class="brand-name">The Stasis Project</span><span class="brand-tag">Apple Health, made plain</span></span>
+        </a>
+        <nav class="main-nav" aria-label="Main">
+        <ul>
+          <li><a href="washington">Washington home</a></li>
+          <li><a href="washington-check">Check</a></li>
+          <li><a href="washington-apply">Apply</a></li>
+          <li><a href="washington-help">Get help</a></li>
+        </ul>
+        </nav>
+      </div>
+    <details class="display-settings" data-settings>
+      <summary>Display settings</summary>
+      <div class="settings-body">
+        <fieldset>
+          <legend>Text size</legend>
+          <label class="choice"><input type="radio" name="text" value="m" checked> Standard</label>
+          <label class="choice"><input type="radio" name="text" value="l"> Large</label>
+          <label class="choice"><input type="radio" name="text" value="xl"> Extra large</label>
+        </fieldset>
+        <fieldset>
+          <legend>Spacing</legend>
+          <label class="choice"><input type="radio" name="spacing" value="normal" checked> Standard</label>
+          <label class="choice"><input type="radio" name="spacing" value="roomy"> More space between lines and letters</label>
+        </fieldset>
+        <fieldset>
+          <legend>Font</legend>
+          <label class="choice"><input type="radio" name="font" value="system" checked> Standard</label>
+          <label class="choice"><input type="radio" name="font" value="hyper"> Atkinson Hyperlegible, a font designed so letters are easy to tell apart</label>
+        </fieldset>
+        <fieldset>
+          <legend>Colors</legend>
+          <label class="choice"><input type="radio" name="theme" value="auto" checked> Match my device</label>
+          <label class="choice"><input type="radio" name="theme" value="warm"> Warm light</label>
+          <label class="choice"><input type="radio" name="theme" value="white"> Plain white</label>
+          <label class="choice"><input type="radio" name="theme" value="dark"> Dark</label>
+        </fieldset>
+        <fieldset>
+          <legend>How much to show</legend>
+          <label class="choice"><input type="radio" name="details" value="all" checked> Everything</label>
+          <label class="choice"><input type="radio" name="details" value="fewer"> Just the key points</label>
+        </fieldset>
+        <div class="settings-actions">
+          <button type="button" class="button-secondary" data-reset-settings>Reset to standard</button>
+          <p>Your choices are saved on this device only.</p>
+        </div>
+      </div>
+    </details>
+    <p id="settings-status" class="visually-hidden" role="status" aria-live="polite"></p>
+    </div>
+  </header>
+  <main id="main" tabindex="-1">
+    <div class="wrap">
+    <div class="detail-strip" data-detail-strip>
+      <p class="detail-ask when-all">Still too much to take in?</p>
+      <p class="fewer-note when-fewer">You are seeing just the key points. Some details are hidden.</p>
+      <button type="button" class="button-secondary" data-toggle-details aria-pressed="false"><span class="when-all">Show just the key points</span><span class="when-fewer">Show everything</span></button>
+      <p class="detail-hint when-all">This hides the extra details on this page. The main points, the steps, and the links you need stay here.</p>
+    </div>
+    <h1>Hours log you can print</h1>
+    <p class="purpose">Write down your hours. Keep the page in case the state asks.</p>
+
+    <div class="warn">
+      <h2>Please read</h2>
+      <ul>
+        <li>This is not an Apple Health form. It is for your own records.</li>
+        <li data-claim="WA-LOG-01">This log runs by month. Washington tests the month before a renewal date.</li>
+        <li data-claim="WA-RULE-08">When you apply, the rule looks at the month before you apply.</li>
+        <li data-claim="WA-CHK-04">The goal is at least 80 hours in a month.</li>
+        <li data-claim="WA-LOG-03">Keep pay stubs, school schedules, and community service records with this log. The Health Care Authority (HCA) may ask for proof after a renewal.</li>
+      </ul>
+    </div>
+
+    <div class="actions no-print">
+      <button type="button" class="button" data-print hidden>Print this page</button>
+    </div>
+
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Hours log table">
+      <table class="log-table">
+        <caption>My hours for the month of: ______________________</caption>
+        <thead>
+          <tr>
+            <th scope="col" class="col-date">Date</th>
+            <th scope="col" class="col-what">What I did (work program, community service, school, work)</th>
+            <th scope="col" class="col-hours">Hours</th>
+            <th scope="col" class="col-where">Where</th>
+            <th scope="col" class="col-contact">Contact name and phone</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+          <tr><td></td><td></td><td></td><td></td><td></td></tr>
+        </tbody>
+        <tfoot>
+          <tr><th scope="row" colspan="2">Total hours this month</th><td></td><td colspan="2">Goal: 80</td></tr>
+        </tfoot>
+      </table>
+    </div>
+
+    <h2>6-month view</h2>
+    <p data-claim="WA-LOG-02">Work only part of the year? Seasonal workers may average their income over 6 months. Use this table to see 6 months at once.</p>
+    <p class="more" data-claim="WA-RULE-02">The income test for seasonal workers is an average of $580 a month over a 6-month period.</p>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="6-month table">
+      <table class="log-table form-table">
+        <caption>My last 6 months</caption>
+        <thead>
+          <tr>
+            <th scope="col">Month</th>
+            <th scope="col">Income</th>
+            <th scope="col">Hours</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Month 1: ____________</th><td></td><td></td></tr>
+          <tr><th scope="row">Month 2: ____________</th><td></td><td></td></tr>
+          <tr><th scope="row">Month 3: ____________</th><td></td><td></td></tr>
+          <tr><th scope="row">Month 4: ____________</th><td></td><td></td></tr>
+          <tr><th scope="row">Month 5: ____________</th><td></td><td></td></tr>
+          <tr><th scope="row">Month 6: ____________</th><td></td><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <h2>Community service hours sheet</h2>
+    <p>You can ask the program to fill this out.</p>
+    <div class="table-scroll" tabindex="0" role="region" aria-label="Community service hours table">
+      <table class="log-table form-table">
+        <caption>Community service hours</caption>
+        <tbody>
+          <tr><th scope="row">My name</th><td></td></tr>
+          <tr><th scope="row">Program or organization</th><td></td></tr>
+          <tr><th scope="row">Contact person</th><td></td></tr>
+          <tr><th scope="row">Contact phone or email</th><td></td></tr>
+          <tr><th scope="row">Month</th><td></td></tr>
+          <tr><th scope="row">Total hours</th><td></td></tr>
+          <tr><th scope="row">Signature of contact person (optional)</th><td></td></tr>
+        </tbody>
+      </table>
+    </div>
+    <section class="sources" aria-labelledby="sources-title">
+      <h2 id="sources-title">Sources for this page</h2>
+      <p>Each source shows the date printed on it and the date we last checked it. Want every detail? See <a href="washington-sources">every source</a> and the public <a href="https://github.com/radiofreelove/projectstasis/blob/main/docs/claims.md">fact log</a>.</p>
+      <ol>
+      <li id="src-wa04"><a href="http://hca.wa.gov/assets/program/impacts-hr1-ah-eligibility-summary.pdf">Impacts of H.R.1 on Apple Health eligibility - Summary</a> <span class="tag">PDF</span><br>Health Care Authority. Date on it: Updated February 2026. Checked: <time datetime="2026-11-12">Nov. 12, 2026</time>.</li>
+      <li id="src-wa05"><a href="https://www.hca.wa.gov/assets/free-or-low-cost/hr1-work-requirements-and-renewals-fact-sheet.pdf">H.R.1 work requirements and renewals fact sheet</a> <span class="tag">PDF</span><br>Health Care Authority. Date on it: June 2026. Checked: <time datetime="2026-11-12">Nov. 12, 2026</time>.</li>
+      <li id="src-wa13"><a href="https://www.hca.wa.gov/free-or-low-cost-health-care/submit-my-verification">Submit my verification</a><br>Health Care Authority. Date on it: No date shown. Checked: <time datetime="2026-11-12">Nov. 12, 2026</time>.</li>
+      </ol>
+    </section>
+    </div>
+  </main>
+  <footer class="site-footer">
+    <div class="wrap">
+      <h2>Why this guide exists</h2>
+      <p>The facts about the new Apple Health rules are spread across many official pages and papers. This guide puts what applicants need in one place, in plain words. Each page lists the official sources behind it.</p>
+      <p><strong>Independent.</strong> Not run by Washington&#x27;s government, the Health Care Authority (HCA), or DSHS. Only Washington decides who meets the rules.</p>
+      <p><strong>Private.</strong> No accounts, ads, cookies, or tracking. <a href="washington-privacy">How your privacy is protected</a>.</p>
+      <p>Facts last checked <time datetime="2026-11-12">Nov. 12, 2026</time>. Version 0.3.0 beta. <a href="https://github.com/radiofreelove/projectstasis">See how this site is made</a>.</p>
+      <p>Words: <a href="https://github.com/radiofreelove/projectstasis/blob/main/LICENSE">CC BY 4.0</a>. Code: <a href="https://github.com/radiofreelove/projectstasis/blob/main/LICENSE-CODE">MIT</a>. <a href="washington-about#license">Reuse this guide</a>.</p>
+      <nav class="footer-pages" aria-label="All pages">
+        <h2>All pages</h2>
+        <ul>
+          <li><a href="washington">Washington home</a></li>
+          <li><a href="washington-check">Do the rules fit me?</a></li>
+          <li><a href="washington-rules">The new rules</a></li>
+          <li><a href="washington-reasons">Reasons you may not have to</a></li>
+          <li><a href="washington-apply">How to apply</a></li>
+          <li><a href="washington-letter">The state sent me a letter</a></li>
+          <li><a href="washington-denied">I was turned down</a></li>
+          <li><a href="washington-bills">Past medical bills</a></li>
+          <li><a href="washington-health">Health conditions</a></li>
+          <li><a href="washington-immigration">Immigration status</a></li>
+          <li><a href="washington-help">Free help and languages</a></li>
+          <li><a href="washington-words">Words on your letters</a></li>
+          <li><a href="washington-log" aria-current="page">Hours log</a></li>
+          <li><a href="washington-about">Why this guide exists</a></li>
+          <li><a href="washington-privacy">Privacy</a></li>
+          <li><a href="washington-accessibility">Accessibility</a></li>
+          <li><a href="washington-sources">Every source</a></li>
+          <li><a href="./">Oregon Health Plan guide</a></li>
+          <li><a href="utah">Utah Medicaid guide</a></li>
+        </ul>
+      </nav>
+    </div>
+  </footer>
+</body>
+</html>
