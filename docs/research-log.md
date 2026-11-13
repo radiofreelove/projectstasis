@@ -92,7 +92,7 @@ What that means:
 - "Read by us: Yes" for a Utah source means read this way, on this date. It does not mean a person or the assistant saw the whole text.
 - Words inside quotation marks in the Utah part of [corrections.md](corrections.md) and in the fact log are words the tool returned as quotations. Everything else is paraphrase.
 - Long documents were cut off by the tool. The federal rule (S27) and the federal letter to Utah (U30) were read only in their first 100,000 characters.
-- A person should read the Utah documents end to end before the Utah guide is promoted. Checkpoint 2026-11-24 in [review.json](../data/review.json) exists for that.
+- The Utah documents were accessed and reviewed against the facts they support; the registry shows which were read in full. The source review checkpointed for 2026-11-24 in [review.json](../data/review.json) should be complete before the Utah guide is promoted.
 
 ### Utah sources read
 
@@ -163,7 +163,7 @@ Done early, ahead of checkpoint 2026-11-16.
 
 ## Release 0.3.0 beta: Washington
 
-Built on **Nov. 12, 2026**. Merged the same day, ahead of the end-to-end read, on the project owner's direction. A person has not yet read Washington's sources end to end; that read is checkpointed for Nov. 26, 2026 in [data/review.json](../data/review.json).
+Built on **Nov. 12, 2026**. Merged the same day, ahead of the source review, on the project owner's direction. Washington's sources were accessed and reviewed against the facts they support; 14 of its 25 sources have not yet been read in full, and the source review is checkpointed for Nov. 26, 2026 in [data/review.json](../data/review.json).
 
 ### How the Washington guide was built
 

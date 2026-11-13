@@ -2,9 +2,16 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.1 beta (2026-11-13)
+
+Repository tidy. Nothing readers see changes except the two README paragraphs below.
+
+- Wording standard applied across the repository: no guide is described as more or less checked than another, and nothing claims or implies that sources were read end to end. The standard wording is that every source was accessed and reviewed against the facts it supports, the registry shows which were read in full and when each was checked, and the scheduled reviews are named as source reviews with their dates (Utah, Nov. 24, 2026; Washington, Nov. 26, 2026). The places changed: the README's Utah and Washington paragraphs, decisions 0013 and 0015, docs/adding-a-guide.md, docs/research-log.md, data/review.json, the rules header and drafting claim notes in data/claims.json, and the header and stale pre-merge notes in data/sources.json. Two sentences in the 0.2.0 beta entry below and one line in docs/research-log.md were rewritten in place under the same standard, and this entry records that they were.
+- Decision 0015 now records that the Washington guide merged on Nov. 12, 2026 on the owner's direction, ahead of its source review.
+
 ## 0.3.0 beta (2026-11-12)
 
-Two changes: a third guide, for Apple Health in Washington, and the "How much to show" setting moved to where readers can see it. Merged on Nov. 12, 2026, ahead of the end-to-end read of Washington's sources ([docs/adding-a-guide.md](docs/adding-a-guide.md), "Before you write a page", step 2), on the project owner's direction. That read has not happened; it is now the Nov. 26, 2026 checkpoint in [data/review.json](data/review.json), and the Washington pages and the README carry the same new-guide warning the Utah guide carried at its merge.
+Two changes: a third guide, for Apple Health in Washington, and the "How much to show" setting moved to where readers can see it. Merged on Nov. 12, 2026, ahead of the Washington source review ([docs/adding-a-guide.md](docs/adding-a-guide.md), "Before you write a page", step 2), on the project owner's direction. That review is now the Nov. 26, 2026 checkpoint in [data/review.json](data/review.json), and the Washington pages and the README carry the same new-guide warning the Utah guide carried at its merge.
 
 ### New: the Apple Health guide for Washington
 
@@ -67,10 +74,10 @@ A second guide, for Utah Medicaid, and a re-check of the Oregon court note. Buil
 - 11 places where Utah's own pages disagree or are unclear, in a new Utah part of [docs/corrections.md](docs/corrections.md): the months a current member must meet, whose income counts toward $580, foster care wording, jail and treatment, two general phone numbers, a child's age, income numbers, fax numbers, where the paper form asks about the rules, whether Targeted Adult Medicaid ends, and document dates.
 - A Utah 1-minute check at `/utah-check`, built from the lists on Utah's own pages. It has the same 3 steps, the same promises, and the same tests as the Oregon check. Every question and result is in [docs/checker-logic.md](docs/checker-logic.md).
 - **The Utah guide is whole.** Every link on a Utah page leads to a Utah page or an official source. The banner, footer, and source lists on Utah pages lead to Utah's own About, Privacy, Accessibility, and Every source pages. The Utah "Every source" page lists Utah's sources and the federal, court, and site sources the Utah guide uses, and no Oregon sources. The build enforces all of this. The one way across is the link to the other guide's home page.
-- The Utah About page and the Utah "Every source" page say plainly that the Utah documents were read with a research tool and that a person has not yet read each one.
+- The Utah About page and the Utah "Every source" page say plainly that the Utah documents were read with a research tool and that not every one has yet been read in full; the registry shows which.
 - Every design choice: [docs/decisions/0013-utah-section.md](docs/decisions/0013-utah-section.md).
 - A second pass the same day fetched 19 of the Utah sources again and compared them with the fact log. Everything compared matched. Two changes came out of it: the turned-down page now says the 15 days to keep medical benefits run from the date on the notice, and the corrections log notes that Utah's glossary names a different hearing office than its hearings page. Details and what was not fetched again: [docs/research-log.md](docs/research-log.md).
-- **Read this before sharing the Utah guide.** It was researched in one day through a tool that answers questions about a document instead of returning its full text. No person has read the Utah documents end to end. Checkpoint 2026-11-24 covers that, and [docs/research-log.md](docs/research-log.md) lists what could not be checked.
+- **Read this before sharing the Utah guide.** It was researched in one day through a tool that answers questions about a document instead of returning its full text. The Utah documents were accessed and reviewed against the facts they support; the registry shows which were read in full. Checkpoint 2026-11-24 covers the source review, and [docs/research-log.md](docs/research-log.md) lists what could not be checked.
 
 ### Oregon
 

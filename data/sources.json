@@ -1,7 +1,7 @@
 {
   "registry_version": "2026-11-12",
   "checked_by": "Project maintainer, with AI research assistance (see docs/research-log.md)",
-  "notes": "Every external link on the site must appear here. 'opened' means the document itself was read on the 'checked' date. 'linked_from' means the address came from another official source and was not opened by our tools. 'guide' says which guide may list or link to a source: a guide's name ('oregon', 'washington', 'utah'), or 'all' for sources any guide may use (federal rules, court papers, standards, national groups, the host). The build goes by 'guide', never by the ID. Kind 'state-explainer' entries are counted for each guide, on its About page, to support the claim that the state explains the rules across more than a dozen documents. The build checks the count only for a guide whose words make that claim; the Washington guide has 9 and does not make it. IDs that start with U are Utah sources, added on 2026-11-10; the letter is only a habit that keeps IDs easy to read. IDs that start with WA are Washington sources, added on 2026-11-12 from a research dossier. A Washington entry with 'opened': false is a real source that was read only in part, through search extracts, or not at all; its 'notes' say which. Until a person reads those end to end, the Washington claims that rest on them are drafting claims (see the 'rules' in data/claims.json and docs/research-log.md). Kind 'state-rule' is a section of a state's administrative code. 'link_check': 'by hand' marks an address whose site blocks automated tools: the weekly link check lists it for a person and does not request it.",
+  "notes": "Every external link on the site must appear here. 'opened' means the document itself was read on the 'checked' date. 'linked_from' means the address came from another official source and was not opened by our tools. 'guide' says which guide may list or link to a source: a guide's name ('oregon', 'washington', 'utah'), or 'all' for sources any guide may use (federal rules, court papers, standards, national groups, the host). The build goes by 'guide', never by the ID. Kind 'state-explainer' entries are counted for each guide, on its About page, to support the claim that the state explains the rules across more than a dozen documents. The build checks the count only for a guide whose words make that claim; the Washington guide has 9 and does not make it. IDs that start with U are Utah sources, added on 2026-11-10; the letter is only a habit that keeps IDs easy to read. IDs that start with WA are Washington sources, added on 2026-11-12 from a research dossier. A Washington entry with 'opened': false is a real source that was read only in part, through search extracts, or not at all; its 'notes' say which. Until the source review checkpointed for Nov. 26, 2026 is complete, the Washington claims that rest on them are drafting claims (see the 'rules' in data/claims.json and docs/research-log.md). Kind 'state-rule' is a section of a state's administrative code. 'link_check': 'by hand' marks an address whose site blocks automated tools: the weekly link check lists it for a person and does not request it.",
   "sources": [
     {
       "id": "S01",
@@ -1556,7 +1556,7 @@
       "date_on_document": "Effective September 6, 2025",
       "checked": "2026-11-12",
       "opened": false,
-      "notes": "Read through search extracts only. Also covers reconsideration without a new application when information arrives within 30 days of the termination notice. Must be read in full before merge."
+      "notes": "Read through search extracts only. Also covers reconsideration without a new application when information arrives within 30 days of the termination notice. To be read in full in the source review checkpointed for Nov. 26, 2026."
     },
     {
       "id": "WA17",
@@ -1570,7 +1570,7 @@
       "date_on_document": "Not checked",
       "checked": "2026-11-12",
       "opened": false,
-      "notes": "A deadline that falls on a weekend or designated holiday extends to 5:00 p.m. the next business day. Must be read in full before merge."
+      "notes": "A deadline that falls on a weekend or designated holiday extends to 5:00 p.m. the next business day. To be read in full in the source review checkpointed for Nov. 26, 2026."
     },
     {
       "id": "WA18",
@@ -1584,7 +1584,7 @@
       "date_on_document": "Not checked",
       "checked": "2026-11-12",
       "opened": false,
-      "notes": "Applies when the decision being challenged was made by a managed care organization rather than by HCA. Must be read in full before merge."
+      "notes": "Applies when the decision being challenged was made by a managed care organization rather than by HCA. To be read in full in the source review checkpointed for Nov. 26, 2026."
     },
     {
       "id": "WA19",
@@ -1598,7 +1598,7 @@
       "date_on_document": "Effective November 3, 2019",
       "checked": "2026-11-12",
       "opened": false,
-      "notes": "Read through search extracts only. Must be read in full before merge."
+      "notes": "Read through search extracts only. To be read in full in the source review checkpointed for Nov. 26, 2026."
     },
     {
       "id": "WA20",
@@ -1640,7 +1640,7 @@
       "date_on_document": "No date shown",
       "checked": "2026-11-12",
       "opened": false,
-      "notes": "The text fetch returned an empty page on 2026-11-12, so the page's own wording has not been read. This is the page most likely to change the checker design. A person must read it end to end before merge."
+      "notes": "The text fetch returned an empty page on 2026-11-12, so the page's own wording has not been read. This is the page most likely to change the checker design. It is to be read in full in the source review checkpointed for Nov. 26, 2026."
     },
     {
       "id": "WA23",
