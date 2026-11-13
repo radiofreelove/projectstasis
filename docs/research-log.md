@@ -163,7 +163,7 @@ Done early, ahead of checkpoint 2026-11-16.
 
 ## Release 0.3.0 beta: Washington
 
-Built on **Nov. 12, 2026**. Not merged. A person has not read Washington's sources end to end, and the guide does not merge until that is done.
+Built on **Nov. 12, 2026**. Merged the same day, ahead of the end-to-end read, on the project owner's direction. A person has not yet read Washington's sources end to end; that read is checkpointed for Nov. 26, 2026 in [data/review.json](../data/review.json).
 
 ### How the Washington guide was built
 
@@ -199,7 +199,7 @@ The assistant that built the pages did not read any Washington source. It worked
 
 Two unread sources support no claim and no page links to them. They are in the registry so the gap is visible: WA21 (the medically frail memo; its address is unverified) and WA22 (the work requirements client page).
 
-### What a person still has to read, before merge
+### What a person still has to read
 
 1. WA22, the HCA work requirements client page, in full, including the screener at hca.wa.gov/ah-work-req.
 2. WA05, the June 2026 fact sheet, re-opened at its own HCA address and compared line by line against the copy the dossier read.

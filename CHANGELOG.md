@@ -4,7 +4,7 @@ All notable changes. Dates are when facts were checked or changes were made.
 
 ## 0.3.0 beta (2026-11-12)
 
-Two changes: a third guide, for Apple Health in Washington, and the "How much to show" setting moved to where readers can see it. Proposed, not merged. **The Washington guide must not merge until a person has read its sources end to end** ([docs/adding-a-guide.md](docs/adding-a-guide.md), "Before you write a page", step 2). That read has not happened.
+Two changes: a third guide, for Apple Health in Washington, and the "How much to show" setting moved to where readers can see it. Merged on Nov. 12, 2026, ahead of the end-to-end read of Washington's sources ([docs/adding-a-guide.md](docs/adding-a-guide.md), "Before you write a page", step 2), on the project owner's direction. That read has not happened; it is now the Nov. 26, 2026 checkpoint in [data/review.json](data/review.json), and the Washington pages and the README carry the same new-guide warning the Utah guide carried at its merge.
 
 ### New: the Apple Health guide for Washington
 
@@ -16,7 +16,7 @@ Two changes: a third guide, for Apple Health in Washington, and the "How much to
 - **Oregon stays the front door.** `/` is still the Oregon home page, and the state switch on every home page reads Oregon, Washington, Utah. Decision: [0015](docs/decisions/0015-front-door-with-three-guides.md). The words that frame the "page not found" page now name all three states.
 - The Washington guide does not say the state explains the rules across "more than a dozen" documents, because the registry holds 9 such documents for it. The build now checks that count for a guide that makes the claim (Oregon and Utah still do) and not for one that does not.
 - The other guides change only where they list the guides: the state switch, the footers, the "page not found" page, and the "Three guides" part of each About page.
-- Washington checkpoints in [data/review.json](data/review.json) (the read before merge, a 30-day re-check, and Washington's part of the Jan. 1, 2027 checkpoints), and Washington hand-checks in [docs/maintenance.md](docs/maintenance.md).
+- Washington checkpoints in [data/review.json](data/review.json) (the end-to-end read, checkpointed for Nov. 26, 2026, a 30-day re-check, and Washington's part of the Jan. 1, 2027 checkpoints), and Washington hand-checks in [docs/maintenance.md](docs/maintenance.md).
 
 ### "How much to show," where readers can see it
 
