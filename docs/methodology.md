@@ -6,7 +6,9 @@ How facts get onto the site, how they are worded, and how they stay current.
 
 People applying for OHP in Oregon or for Medicaid in Utah, including people applying again after being turned down. Renewal guidance for current members is out of scope for this release (see [decisions/0006-applicants-first.md](decisions/0006-applicants-first.md)).
 
-The site holds two guides, one per state, built the same way (see [decisions/0013-utah-section.md](decisions/0013-utah-section.md)). Each guide has its own facts and sources. Every source and every claim carries a `guide` field: `oregon`, `utah`, or `all` for what any guide may use (federal rules, court papers, standards, and what the site promises about itself). The build goes by that field, and a claim may rely only on its own guide's sources or on shared ones ([decisions/0014-guide-list.md](decisions/0014-guide-list.md)). By habit, Utah claim IDs start with `U-` and Utah source IDs start with `U`.
+A third guide, for Apple Health in Washington, was built on Nov. 12, 2026 from a research dossier. Section 9 says how it differs from the rules below and what must happen before it merges.
+
+The site holds one guide per state, built the same way (see [decisions/0013-utah-section.md](decisions/0013-utah-section.md)). Each guide has its own facts and sources. Every source and every claim carries a `guide` field: `oregon`, `washington`, `utah`, or `all` for what any guide may use (federal rules, court papers, standards, and what the site promises about itself). The build goes by that field, and a claim may rely only on its own guide's sources or on shared ones ([decisions/0014-guide-list.md](decisions/0014-guide-list.md)). By habit, Utah claim IDs start with `U-` and Utah source IDs start with `U`; Washington's start with `WA-` and `WA`.
 
 ## 2. Where facts may come from
 
@@ -66,3 +68,15 @@ The site links to the state's own forms and pages instead of re-hosting them. Th
 Research, drafting, and code for release 0.1.0 were produced with an AI assistant (Claude, by Anthropic) working under the maintainer's direction on Nov. 2, 2026. Every source marked "read by us" was fetched and read in that session; quotes in [corrections.md](corrections.md) come from those reads. A person should still verify claims against sources before relying on them for anyone's case.
 
 The Utah guide and the Oregon re-check in release 0.2.0 were produced the same way on Nov. 10, 2026, with one difference that matters: in that session the assistant could read each source only through a tool that answers questions about a document, not as full text. [research-log.md](research-log.md) says what that means and what was left unread. No person has yet read the Utah documents end to end; checkpoint 2026-11-24 covers it.
+
+## 9. The Washington guide: a draft until a person reads its sources
+
+The Washington guide was built on Nov. 12, 2026 by an AI assistant from a research dossier, not from the sources themselves. The dossier was the only source of Washington facts: its 25 registry entries (WA01 to WA25) and its claims were copied in, and nothing was added from memory, the web, or another state's guide. That makes it different from section 2 in one way, on purpose and for a limited time:
+
+- **Some Washington claims rest on sources that were not read in full.** 14 of the 25 entries are marked `"opened": false`: read through search extracts, read in part, or not opened. A claim that rests on any of them has a note that starts "Drafting claim". They are on the pages so the guide can be reviewed as a whole. [research-log.md](research-log.md) lists every one.
+- **A person reads the sources end to end before the guide merges** ([adding-a-guide.md](adding-a-guide.md), "Before you write a page", step 2). Utah went live before that read; Washington does not. Checkpoint 2026-11-26 in [`data/review.json`](../data/review.json) holds the reading list.
+- **Open points stay open.** Where the dossier found a disagreement or a gap, the guide uses the client-facing reading the dossier directed and lists the point as unresolved in [corrections.md](corrections.md#washington). It says nothing on a delay of the rules or on a good cause process.
+- **One claim was left out.** The dossier marks its claim on how Washington checks medical frailty "pending, do not publish". It is in neither the ledger nor any page.
+- **The name.** The guide calls the state "Washington" and nothing longer. One registry entry (WA20) quotes a source's published title exactly.
+- **Only Washington decides.** The guide says "you may". HCA is the Health Care Authority, which runs Apple Health.
+- **No "more than a dozen" claim.** The registry holds 9 `state-explainer` entries for Washington, so the Washington guide's footer and pages do not say the state explains the rules across more than a dozen documents. The build checks the count for any guide that does say it.

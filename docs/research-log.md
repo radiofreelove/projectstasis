@@ -161,3 +161,61 @@ Done early, ahead of checkpoint 2026-11-16.
 - **Disability Law Center (Utah's protection and advocacy agency).** Its site says it does not help with applications for, or denials of, public benefits like Medicaid, so the Utah guide does not send people there for that.
 - Third-party summaries seen in search results (an insurance sales site, a news aggregator, an advocacy petition) were used only as leads, never as sources for claims.
 
+## Release 0.3.0 beta: Washington
+
+Built on **Nov. 12, 2026**. Not merged. A person has not read Washington's sources end to end, and the guide does not merge until that is done.
+
+### How the Washington guide was built
+
+The assistant that built the pages did not read any Washington source. It worked from a research dossier prepared the same day, which holds 25 proposed registry entries (WA01 to WA25), proposed claims grouped by page, 12 disagreements and gaps, and a reading list. The dossier was the only source of Washington facts. Nothing was added from memory, from the web, or from the Oregon or Utah guides.
+
+- **Sources.** All 25 entries were copied into `data/sources.json` with the dossier's wording, dates, and `opened` flags. Two fields were changed to fit the registry: `format` ("web page" became "Web page") and `kind`, which the dossier gave as "state agency guidance", "state rule", "federal agency guidance", and "court filing". The registry's kinds are: `state-explainer` for the 9 HCA documents about the H.R. 1 changes (WA01 to WA05, WA10, WA20, WA21, WA22); `state-page` for HCA's standing pages on applying, contact, appeals, booklets, the paper form, changes, verification, and Apple Health Expansion, and the Attorney General's tracker (WA06 to WA09, WA11 to WA14, WA23); `state-rule`, a new kind, for the 5 WAC sections (WA15 to WA19); `federal-page` for the CMS fact sheet (WA24); and `court` for the complaint (WA25).
+- **Claims.** 76 claims were copied into `data/claims.json` with the dossier's IDs and statements. The dossier's 77th, WA-HLT-05, is marked "pending, do not publish" and was left out.
+- **"Read by us."** For a Washington entry, "Yes" means the dossier says the document was read in full during its research. "No" means it was read through search extracts, read in part, or not opened; each entry's note says which. WA05 was read in full, but from a copy hosted by the hospital association, because HCA's own address answered 403.
+
+### Drafting claims: resting on a source nobody has read in full
+
+17 claims rest on at least one source marked `"opened": false`. Their notes in the fact log start "Drafting claim". All are pending the end-to-end read.
+
+| Claim | Unread source | Page |
+|---|---|---|
+| WA-CHK-01 | WA15 (also rests on WA05, read) | washington, washington-rules |
+| WA-WRD-02 | WA15 (also rests on WA05, read) | washington-words |
+| WA-RULE-09 | WA24 (also rests on S27) | washington-reasons |
+| WA-RSN-15 | WA14, WA25 (also rests on S28) | washington-reasons |
+| WA-HLT-04 | WA14 (also rests on S28) | washington-health |
+| WA-APP-08 | WA12 | washington-apply |
+| WA-APP-09 | WA13 | washington-apply, washington-letter |
+| WA-LTR-02 | WA13 | washington-letter |
+| WA-WRD-05 | WA13 | washington-words |
+| WA-LOG-03 | WA13 | washington-log |
+| WA-DEN-01 | WA16 | washington-denied |
+| WA-DEN-04 | WA17 | washington-denied |
+| WA-DEN-03 | WA18 | washington-denied |
+| WA-DEN-05 | WA19 | washington-denied |
+| WA-IMM-02 | WA20 | washington-immigration |
+| WA-IMM-03 | WA20, WA23 | washington-immigration |
+| WA-IMM-04 | WA23 | washington-immigration |
+
+Two unread sources support no claim and no page links to them. They are in the registry so the gap is visible: WA21 (the medically frail memo; its address is unverified) and WA22 (the work requirements client page).
+
+### What a person still has to read, before merge
+
+1. WA22, the HCA work requirements client page, in full, including the screener at hca.wa.gov/ah-work-req.
+2. WA05, the June 2026 fact sheet, re-opened at its own HCA address and compared line by line against the copy the dossier read.
+3. WA21, the medically frail memo of Aug. 21, 2026, and the medically frail code list, in full.
+4. WA12 and WA13, in full.
+5. The WAC texts WA15 to WA19, in full, on the Legislature's site.
+6. WA20 and HCA's Sept. 23, 2025 provider presentation, in full; WA23 in full on the same pass.
+7. WA14 at item 62 and the WA25 complaint caption first-hand, plus a fresh look at S28, S29, and S40 for any later order.
+8. Sources not yet found: HCA's August 2026 eligibility training material; any HCA rulemaking amending the WAC for H.R. 1; any state plan amendment or waiver request, including any good-faith delay request; the work requirements notice HCA sends clients; and the fact sheet language list behind WA-HLP-03.
+
+### Not settled
+
+The 12 points in [corrections.md](corrections.md#washington), all open.
+
+### Washington: not used
+
+- A news report of Nov. 12, 2026 about a new lawsuit over funding. Secondary, not confirmed from a docket.
+- The hospital association's copy of the fact sheet is not in the registry and is not linked. The registry points to HCA's own address (WA05).
+

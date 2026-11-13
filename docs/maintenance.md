@@ -59,13 +59,24 @@ For the Utah guide, in the same sitting:
 4. Search the Utah State Bulletin and the Utah Administrative Code (title R414) for filings that implement the community engagement requirement (unverified whether any exist).
 5. Check whether Utah's pages say anything about the court ruling.
 
+For the Washington guide, in the same sitting:
+
+1. Open HCA's work requirements page, <https://www.hca.wa.gov/free-or-low-cost-health-care/i-need-medical-dental-or-vision-care/apple-health-medicaid-work-requirements> (registry WA22), in a browser, and its screener at hca.wa.gov/ah-work-req. An automated fetch returned an empty page on Nov. 12, 2026, so only a person can read it. Compare its list of ways to meet the rule with step 3 of the Washington check.
+2. Open the June 2026 fact sheet at its own HCA address (WA05). It answered 403 to an automated fetch on Nov. 12, 2026. Confirm the 5 ways to meet the rule and the exemption list still match `src/pages/washington/washington-rules.html` and `washington-reasons.html`.
+3. Re-read HCA's two client pages on the changes (WA01, WA02) and its stakeholder page (WA03). None shows a date, so compare the wording with the notes in `data/sources.json`. Look for any change to the Jan. 1, 2027 start and for any word on a delay. The guide says nothing about a delay until an official source does.
+4. Re-read the Apple Health Expansion page (WA23) and note whether enrollment is open or closed. Update `washington-immigration.html` to match.
+5. Check HCA's contact, apply, and appeal pages (WA06, WA07, WA08, WA11) for a changed phone number, fax number, or hours. The numbers on the Washington pages are copied from them.
+6. Check the Attorney General's litigation tracker (WA14) and the docket (S40) for an appeal or a new order in *Commonwealth of Massachusetts v. Oz*, and for any other case about the work rules that names Washington.
+7. Search the Washington Register and HCA's rulemaking pages for filings that amend chapter 182 of the Washington Administrative Code for H.R. 1, and re-read the five sections the guide relies on (WA15 to WA19) on the Legislature's site.
+8. Look for what the research did not find: HCA's August 2026 eligibility training material, any state plan amendment or waiver request (including a good-faith delay request), the work requirements notice HCA sends clients, and the list of fact sheet languages. Add what you find to the registry, with `opened` set honestly.
+
 ### At each checkpoint in `data/review.json`
 
 Do the listed work, then move or remove the checkpoint and say what you did in [CHANGELOG.md](../CHANGELOG.md).
 
 ## How to change a fact
 
-1. Edit the page in its guide's folder: `src/pages/oregon/`, `src/pages/utah/`, or `src/pages/shared/` for the 4 pages both guides have.
+1. Edit the page in its guide's folder: `src/pages/oregon/`, `src/pages/washington/`, `src/pages/utah/`, or `src/pages/shared/` for the 4 pages every guide has.
 2. Update the claim in `data/claims.json` (statement, sources, kind, note).
 3. If there is a new source, add it to `data/sources.json` with `checked` set to today and `opened` set honestly.
 4. If official sources disagree, add an item to [corrections.md](corrections.md).

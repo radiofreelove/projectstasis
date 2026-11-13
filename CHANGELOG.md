@@ -2,6 +2,38 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.0 beta (2026-11-12)
+
+Two changes: a third guide, for Apple Health in Washington, and the "How much to show" setting moved to where readers can see it. Proposed, not merged. **The Washington guide must not merge until a person has read its sources end to end** ([docs/adding-a-guide.md](docs/adding-a-guide.md), "Before you write a page", step 2). That read has not happened.
+
+### New: the Apple Health guide for Washington
+
+- 17 pages for people applying for Apple Health, starting at `/washington`, the same set the other guides have: home, a 1-minute check, the rules, reasons you may not have to meet them, how to apply, letters, being turned down, past medical bills, health conditions, immigration status, free help and languages, words on letters, a printable hours log, why the guide exists, privacy, accessibility, and every source.
+- Built from a research dossier dated Nov. 12, 2026, and from nothing else. 25 Washington entries in the source registry (IDs start with `WA`) and 76 Washington claims in the fact log (IDs start with `WA-`). 14 of the 25 sources are marked as not read in full, and the 17 claims that rest on any of them are marked "Drafting claim" in the fact log. [docs/research-log.md](docs/research-log.md) lists them and the reading list. One claim in the dossier, on how Washington checks medical frailty, is marked "pending, do not publish" and is in neither the fact log nor any page.
+- The guide calls the state "Washington". It names the Health Care Authority (HCA), Washington Healthplanfinder, DSHS, MEDS, the Office of Administrative Hearings, and the WAC sections the dossier gives. Nothing was carried over from Oregon or Utah.
+- A Washington 1-minute check at `/washington-check`, with the same 3 steps and the same promises. Step 3 lists the 5 ways to meet the rule on HCA's June 2026 fact sheet, as that sheet lists them. The sheet has no way for hours at a paid job by themselves, so the check has none, and the page says so. Every question and result: [docs/checker-logic.md](docs/checker-logic.md).
+- 12 open points, none resolved, in a new Washington part of [docs/corrections.md](docs/corrections.md): the 19 to 64 or 19 to 65 age band; paid work as a way of its own; "exemptions" or "exclusions"; three wordings of a child's age; differing counts; how the start date is framed; whether Washington will delay the rules (the guide says nothing); what the $580 counts; SNAP and TANF wording; how far the court order reaches; good cause (the guide says nothing); and two sources that could not be read at their own addresses.
+- **Oregon stays the front door.** `/` is still the Oregon home page, and the state switch on every home page reads Oregon, Washington, Utah. Decision: [0015](docs/decisions/0015-front-door-with-three-guides.md). The words that frame the "page not found" page now name all three states.
+- The Washington guide does not say the state explains the rules across "more than a dozen" documents, because the registry holds 9 such documents for it. The build now checks that count for a guide that makes the claim (Oregon and Utah still do) and not for one that does not.
+- The other guides change only where they list the guides: the state switch, the footers, the "page not found" page, and the "Three guides" part of each About page.
+- Washington checkpoints in [data/review.json](data/review.json) (the read before merge, a 30-day re-check, and Washington's part of the Jan. 1, 2027 checkpoints), and Washington hand-checks in [docs/maintenance.md](docs/maintenance.md).
+
+### "How much to show," where readers can see it
+
+- Every page now starts with a slim strip above the heading: "Still too much to take in?", a "Show just the key points" button, and one line saying what it does. Before, the setting was the fifth group inside Display settings, and nothing on the page said it existed.
+- In key-points mode the strip is the banner: "You are seeing just the key points. Some details are hidden." with a "Show everything" button. The old banner sent readers back into the menu.
+- It is the same setting, saved in the same place (`stasis-display-v1`). The strip and Display settings always agree, and nothing new is stored. The status line now says what happened ("Just the key points. Extra details on this page are now hidden.").
+- One real button: Tab reaches it, Enter or Space works it, and focus stays on it. Without JavaScript the strip does not show and the full page does.
+- A link that points into hidden detail turns "Everything" back on first, then goes there.
+- Printing always shows everything. Before, a page printed in key-points mode printed short. The strip does not print.
+- Presentation only: no claim, source list, or legal wording changed on any page.
+- New checks: `tools/check_structure.py` fails if any page lacks the strip or its exact words, and `tools/browser_check.py` turns the mode on and off by keyboard on every page, in print, from Display settings, through a link into hidden detail, and without JavaScript.
+- Extra detail is still marked by hand. The Washington pages are marked. The Oregon and Utah pages keep the marks they had, so on some of them, including both home pages, the strip hides nothing yet; the browser report lists those pages.
+
+### Tools
+
+- The test with a made-up extra guide now adds a fourth state, since Washington is real, and two new tests cover the "more than a dozen" rule.
+
 ## 0.2.1 beta (2026-11-11)
 
 Groundwork for a third guide, and upkeep. Readers see 2 changes: the version number in each footer, and a longer note about myCase on the Utah "Every source" page, live since Nov. 11, 2026. The rework itself changes nothing they see: before the version number changed, the rebuilt site matched the published one byte for byte. Decision: [0014](docs/decisions/0014-guide-list.md). Steps for the next state: [docs/adding-a-guide.md](docs/adding-a-guide.md).

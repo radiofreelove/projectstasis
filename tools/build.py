@@ -12,8 +12,9 @@ Inputs
     src/pages/<guide>/*.html
                         Page bodies, each starting with a metadata comment.
                         The folder says which guide a page belongs to:
-                        src/pages/oregon/ and src/pages/utah/ today. The
-                        guides themselves are listed in SECTIONS below.
+                        src/pages/oregon/, src/pages/washington/, and
+                        src/pages/utah/ today. The guides themselves are
+                        listed in SECTIONS below.
     src/pages/<guide>/_not-found.html
                         That guide's part of the "page not found" page: a
                         heading and its main links. No metadata comment.
@@ -21,8 +22,8 @@ Inputs
                         Pages every guide needs (About, Privacy,
                         Accessibility, Every source), marked "shared: yes".
                         A shared page is built once for each guide, as
-                        "about" and "utah-about", so a reader never leaves
-                        the guide they are in. Text between <!-- oregon -->
+                        "about", "washington-about", and "utah-about", so a
+                        reader never leaves the guide they are in. Text between <!-- oregon -->
                         and <!-- /oregon --> (or any guide's name) appears
                         only in that guide's copy, and "<guide>_title",
                         "<guide>_description", and "<guide>_sources" (for
@@ -85,7 +86,7 @@ FONTS_LOCK = ROOT / "fonts.lock.json"
 SITE_NAME = "The Stasis Project"
 BASE_URL = "https://projectstasis.pages.dev/"
 PROJECT_REPO = "https://github.com/radiofreelove/projectstasis"
-VERSION = "0.2.1 beta"
+VERSION = "0.3.0 beta"
 
 AP_MONTHS = ["Jan.", "Feb.", "March", "April", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."]
 
@@ -102,7 +103,9 @@ def ap_date(iso: str) -> str:
 # page belongs to one section, which sets its tagline, menu, footer text,
 # and "facts last checked" date. Order here is the order readers see.
 # To add a state, follow docs/adding-a-guide.md. See also
-# docs/decisions/0013-utah-section.md and docs/decisions/0014-guide-list.md.
+# docs/decisions/0013-utah-section.md, docs/decisions/0014-guide-list.md,
+# and docs/decisions/0015-front-door-with-three-guides.md (why the order
+# is Oregon, Washington, Utah, and why Oregon keeps the address "/").
 SECTIONS = {
     "oregon": {
         "state": "Oregon",
@@ -141,6 +144,44 @@ SECTIONS = {
         "check_care_reason": "child",
         "own_words": ["OHP"],
     },
+    "washington": {
+        "state": "Washington",
+        "tagline": "Apple Health, made plain",
+        "prefix": "washington-",
+        "shared_order": 60,
+        "home": "washington",
+        "nav": [
+            ("washington", "Washington home"), ("washington-check", "Check"),
+            ("washington-apply", "Apply"), ("washington-help", "Get help"),
+        ],
+        "facts_iso": "2026-11-12",
+        # No "more than a dozen" here: the registry holds 9 'state-explainer'
+        # entries for this guide, so the guide does not make that claim.
+        "footer_why": (
+            "The facts about the new Apple Health rules are spread across many official pages and papers. "
+            "This guide puts what applicants need in one place, in plain words. Each page lists the official "
+            "sources behind it."
+        ),
+        "footer_independent": (
+            "Not run by Washington's government, the Health Care Authority (HCA), or DSHS. "
+            "Only Washington decides who meets the rules."
+        ),
+        "about_label": "Why this guide exists",
+        "guide_label": "Apple Health guide",
+        "switch_here": "This is the Apple Health guide.",
+        "switch_go": "Go to the Apple Health guide",
+        "source_groups": [
+            ("Washington sources", "washington-sources", "own"),
+            ("Federal, court, and site sources", "other-sources", "shared, used"),
+        ],
+        # Shown on "Every source" for a source marked "opened": false. The
+        # Washington entries came from research notes, and their "notes" say
+        # how far each one was read.
+        "unread_note": "read in part or not at all; see the note",
+        "check": "washington-check",
+        "check_care_reason": "care",
+        "own_words": ["Apple Health", "Washington"],
+    },
     "utah": {
         "state": "Utah",
         "tagline": "Utah Medicaid, made plain",
@@ -178,27 +219,32 @@ SECTIONS = {
     # words name every state, so a person rewrites them when a guide is added.
     "both": {
         "guide": False,
-        "tagline": "OHP and Utah Medicaid, made plain",
+        "tagline": "OHP, Apple Health, and Utah Medicaid, made plain",
         "prefix": "",
         "home": "index",
-        "nav": [("index", "Oregon guide"), ("utah", "Utah guide")],
+        "nav": [("index", "Oregon guide"), ("washington", "Washington guide"), ("utah", "Utah guide")],
         "facts_iso": None,
         "footer_why": (
-            "Oregon and Utah each explain their new Medicaid rules across more than a dozen documents. "
+            "Oregon, Washington, and Utah each explain their new Medicaid rules across many pages and papers. "
             "This site puts what applicants need in one place, in plain words, with one guide for each state."
         ),
         "footer_independent": (
-            "Not run by the State of Oregon, the State of Utah, or any of their agencies. "
+            "Not run by Oregon, Washington, or Utah, or by any of their agencies. "
             "Only the state decides who qualifies."
         ),
         "about_label": "Why this site exists",
-        "footer_title": "Both guides",
+        "footer_title": "All guides",
     },
 }
 GUIDES = {name: section for name, section in SECTIONS.items() if section.get("guide", True)}
 
 # The registry kind that counts toward "more than a dozen documents."
 EXPLAINER_KIND = "state-explainer"
+# The words that count must back up. A guide that says them, in its footer
+# or on any of its pages, needs more than 12 entries of that kind. A guide
+# that does not say them makes no such claim, and its count is only shown
+# where a page asks for {{DOC_COUNT}}.
+DOZEN_WORDS = "more than a dozen"
 # Files in a guide's folder that are parts of a page, not pages.
 NOT_FOUND_PART = "_not-found.html"
 
@@ -448,6 +494,25 @@ SETTINGS_PANEL = """    <details class="display-settings" data-settings>
 """
 
 
+# The same setting as the "How much to show" choices in SETTINGS_PANEL,
+# where a reader can see it: a slim strip at the top of every page's main
+# content, above the heading. One button, so keyboard focus stays put when
+# it is used. The style sheet shows the words that match the html element's
+# data-details value ("all" or "fewer"), so the strip is right from the
+# first paint, and assets/js/settings.js keeps it and the panel in step.
+# Without JavaScript the strip is not shown (the style sheet waits for the
+# data-js mark that settings.js sets), and the full page shows.
+# aria-pressed says whether key-points mode is on; settings.js sets it.
+# The wording is fixed; tools/check_structure.py checks it on every page.
+DETAIL_STRIP = """    <div class="detail-strip" data-detail-strip>
+      <p class="detail-ask when-all">Still too much to take in?</p>
+      <p class="fewer-note when-fewer">You are seeing just the key points. Some details are hidden.</p>
+      <button type="button" class="button-secondary" data-toggle-details aria-pressed="false"><span class="when-all">Show just the key points</span><span class="when-fewer">Show everything</span></button>
+      <p class="detail-hint when-all">This hides the extra details on this page. The main points, the steps, and the links you need stay here.</p>
+    </div>
+"""
+
+
 def render_guide_switch(current: str) -> str:
     """The "Pick your state" buttons: every guide, in order, with the reader's own guide filled."""
     items = []
@@ -557,8 +622,7 @@ def render_page(meta, body, pages, by_id, doc_counts):
   </header>
   <main id="main" tabindex="-1">
     <div class="wrap">
-    <p class="fewer-note">Some details are hidden. To see everything, open Display settings at the top.</p>
-{body.rstrip()}
+{DETAIL_STRIP}{body.rstrip()}
 {sources_html}    </div>
   </main>
   <footer class="site-footer">
@@ -615,12 +679,22 @@ def render_sources_page_table(registry, section, used):
     return table
 
 
+def unread_words(src):
+    """What to say for a source marked "opened": false that names no
+    "linked_from": the words its guide sets ("unread_note"), if any."""
+    if "linked_from" in src:
+        return None
+    return GUIDES.get(src["guide"], {}).get("unread_note")
+
+
 def source_rows(sources):
     rows = []
     pdf_tag = ' <span class="tag">PDF</span>'
     for src in sources:
         if src["opened"]:
             opened = "Yes"
+        elif unread_words(src):
+            opened = "No (" + unread_words(src) + ")"
         else:
             opened = "No (address from " + src.get("linked_from", "another official source") + ")"
         tag = pdf_tag if src["format"] == "PDF" else ""
@@ -708,7 +782,12 @@ def render_sources_md(registry):
         "|---|---|---|---|---|---|---|---|",
     ]
     for src in registry["sources"]:
-        read = "Yes" if src["opened"] else f"No, address from {src.get('linked_from', 'another source')}"
+        if src["opened"]:
+            read = "Yes"
+        elif unread_words(src):
+            read = f"No, {unread_words(src)}"
+        else:
+            read = f"No, address from {src.get('linked_from', 'another source')}"
         lines.append(
             f"| {src['id']} | {src['guide']} | [{md_escape(src['title'])}]({src['url']}) ({md_escape(src['publisher'])}) | "
             f"{src['kind']} | {md_escape(src['date_on_document'])} | {src['checked']} | {md_escape(read)} | "
@@ -802,16 +881,18 @@ def build():
     if errors:
         raise BuildError("Build stopped:\n  - " + "\n  - ".join(errors))
 
+    pages, shared_slugs, not_found_parts = load_pages()
     doc_counts = {}
-    for name in GUIDES:
+    for name, guide in GUIDES.items():
         doc_counts[name] = sum(1 for s in registry["sources"] if s["guide"] == name and s["kind"] == EXPLAINER_KIND)
-        if doc_counts[name] <= 12:
+        says_dozen = DOZEN_WORDS in guide["footer_why"] or any(
+            DOZEN_WORDS in p["body"] for p in pages if p["section"] == name
+        )
+        if says_dozen and doc_counts[name] <= 12:
             errors.append(
                 f"the {name} guide says 'more than a dozen' but the registry counts {doc_counts[name]} "
                 f"'{EXPLAINER_KIND}' entries for it"
             )
-
-    pages, shared_slugs, not_found_parts = load_pages()
     slugs = {p["slug"] for p in pages}
     if len(slugs) != len(pages):
         errors.append("two pages share one slug")
