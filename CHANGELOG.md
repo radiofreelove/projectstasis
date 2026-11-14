@@ -2,6 +2,16 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.5 beta (2026-11-14)
+
+Oregon source reads on Nov. 14, 2026. The reads were done by the AI assistant. A read by the AI assistant is not a source review by a person.
+
+- Read in full on Nov. 14, 2026, and marked so in the source registry with that checked date: S16, S17, S19, S21, S22, S24, S26B, S38, K01, K03, K04, K05, K06, K07, K08, K09, K10, K11, K12, and K13. For a web page, that means the page's own content, not the site's menus. S22 and S38 are the home page at each address only. S16 and S26B each hold a search tool or a form; the page around it was read, no search was run, and no form was filled in. K10 is in Spanish, and no fluent Spanish reader on the project has checked it.
+- Still marked as not read in full: S15, S18, S20, S23, S36, and S37. Each registry note says what was read on Nov. 14, 2026 and what was not: S15, S36, and S37 are search tools, and no search was run; S18 gave an empty reply to three requests, so the file was not retrieved; S20's home page text was read, but not the backs of its 4 flip cards; S23 forwarded to OHA's general OHP page, which has no list of job or volunteer resources.
+- No claim changed, because no claim in the fact log cites any of these 26 sources. No page wording changed. The pages that show source data (read or not read, dates checked, and dates on documents) were rebuilt from the registry.
+- Three addresses forward: benefits.oregon.gov (S19) to ODHS's benefits page, OHP.Oregon.gov/HR1 (S24) to OHA's federal changes page (the same address as S07), and the health center short link (S21) to a page of the Oregon Primary Care Association. The registry notes say so.
+- Found and not acted on, waiting for the owner's ruling: five items listed in [docs/research-log.md](docs/research-log.md) under "Release 0.3.5 beta: Oregon source reads". One is that the ONE language lines sheet (S17) and OHA's how-to-apply page (S09) give different Spanish phone numbers; the guide still uses the S09 number.
+
 ## 0.3.4 beta (2026-11-14)
 
 Extra detail is now marked on 21 more pages, so "Show just the key points" hides something on them. Marking only: no wording, fact, link, or source list changed, and the strip itself did not change. Before this, the browser report listed 26 pages where the strip hid nothing. It now lists 5.
