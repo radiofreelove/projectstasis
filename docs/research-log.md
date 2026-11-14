@@ -4,6 +4,7 @@ Registry IDs refer to [sources.md](sources.md).
 
 - [Release 0.1.0 beta](#release-010-beta-oregon): Oregon content research on **Nov. 2, 2026**, and hosting research on **Nov. 3, 2026**.
 - [Release 0.2.0 beta](#release-020-beta-utah-and-an-oregon-re-check): Utah content research and an Oregon re-check on **Nov. 10, 2026**.
+- [Release 0.3.3 beta](#release-033-beta-the-federal-hold-harmless-letter): one federal letter, and a search of each state's pages for its choice, on **Nov. 14, 2026**.
 
 All of it was done with an AI research assistant (Claude, by Anthropic) working under the maintainer's direction.
 
@@ -163,7 +164,7 @@ Done early, ahead of checkpoint 2026-11-16.
 
 ## Release 0.3.0 beta: Washington
 
-Built on **Nov. 12, 2026**. Merged the same day, ahead of the source review, on the project owner's direction. Washington's sources were accessed and reviewed against the facts they support; at the merge, 14 of its 25 sources had not been read in full (see "Reads on Nov. 13, 2026" below for what has changed), and the source review is checkpointed for Nov. 26, 2026 in [data/review.json](../data/review.json).
+Built on **Nov. 12, 2026**. Merged the same day, ahead of the source review, on the project owner's direction. Washington's sources were accessed and reviewed against the facts they support; 14 of its 25 sources have not yet been read in full, and the source review is checkpointed for Nov. 26, 2026 in [data/review.json](../data/review.json).
 
 ### How the Washington guide was built
 
@@ -175,7 +176,7 @@ The assistant that built the pages did not read any Washington source. It worked
 
 ### Drafting claims: resting on a source nobody has read in full
 
-At the merge on Nov. 12, 2026, 17 claims rested on at least one source marked `"opened": false`, and their notes in the fact log started "Drafting claim". The table shows that starting state. "Reads on Nov. 13, 2026", below, says which of them are settled and which are still drafting claims.
+17 claims rest on at least one source marked `"opened": false`. Their notes in the fact log start "Drafting claim". All are pending the end-to-end read.
 
 | Claim | Unread source | Page |
 |---|---|---|
@@ -197,18 +198,7 @@ At the merge on Nov. 12, 2026, 17 claims rested on at least one source marked `"
 | WA-IMM-03 | WA20, WA23 | washington-immigration |
 | WA-IMM-04 | WA23 | washington-immigration |
 
-At the merge, two unread sources supported no claim and no page linked to them: WA21 (the medically frail memo) and WA22 (the work requirements client page). Both were read in full on Nov. 13, 2026; they still support no claim.
-
-### Reads on Nov. 13, 2026
-
-On Nov. 13, 2026 the AI assistant fetched each registry address below and read the document or page there. This is not the source review by a person, which stays checkpointed for Nov. 26, 2026 (Washington) and Nov. 24, 2026 (Utah).
-
-- **Read in full, Washington (13):** WA12, WA13, WA14, WA15, WA16, WA17, WA18, WA19, WA20, WA21, WA22, WA23, WA24. For a web page, "in full" means the page's own content, not the site's menus. For WA20, the text of all 46 slides; charts and maps that are images were not read. WA05 was also read at HCA's own address, which answered this time.
-- **Read in full, Utah (5):** U15S and U19S (in Spanish, by the AI assistant; no fluent Spanish reader on the project has checked them), U34 and U35 (the home page at each address only), U36.
-- **Not read in full (3):** WA25 (its address answered 403 twice; the text of the same filed complaint was read from the copy the Washington Attorney General links, and the entry stays `"opened": false` until a person opens the address or the owner rules that copy counts); U32 (a sign-in site that answered 404); U38 (a 514-page code list; the title page, definitions, section headings, first two pages, and last page were read).
-- **Drafting claims settled (14 of 17):** 13 confirmed as written by the read of every source they rest on: WA-RULE-09, WA-APP-08, WA-APP-09, WA-LTR-02, WA-DEN-03, WA-DEN-04, WA-DEN-05, WA-HLT-04, WA-IMM-02, WA-IMM-03, WA-WRD-02, WA-WRD-05, WA-LOG-03. One corrected: WA-DEN-01, because the version of WAC 182-504-0035 that takes effect Jan. 1, 2027 no longer says coverage is restored without a gap.
-- **Still drafting claims (3):** WA-CHK-01 (WAC 182-505-0250 states the income test as at or below 133 percent, not under 138 percent as HCA's fact sheet does); WA-IMM-04 (WA23 confirms the enrollment cap is met but not "state-funded" or "December 2025", which are on an HCA announcement not in the registry); WA-RSN-15 (WA25 is still marked as not read in full). Each waits for the owner's ruling.
-- **Found and not acted on:** HCA's work requirements page (WA22) differs from the guide on several of the 12 open points in [corrections.md](corrections.md), including a sixth way to meet the rule (working at least 80 hours a month). No claim cites WA22 yet, and the open points are unchanged.
+Two unread sources support no claim and no page links to them. They are in the registry so the gap is visible: WA21 (the medically frail memo; its address is unverified) and WA22 (the work requirements client page).
 
 ### What a person still has to read
 
@@ -230,3 +220,34 @@ The 12 points in [corrections.md](corrections.md#washington), all open.
 - A news report of Nov. 12, 2026 about a new lawsuit over funding. Secondary, not confirmed from a docket.
 - The hospital association's copy of the fact sheet is not in the registry and is not linked. The registry points to HCA's own address (WA05).
 
+## Release 0.3.3 beta: the federal hold harmless letter
+
+Done on **Nov. 14, 2026**, over two working sessions. The first registered the source and wrote the claims. The second wrote the pages from those claims and did not fetch the letter or the state pages again.
+
+### Read
+
+| Source | What was read | Result |
+|---|---|---|
+| S41 CMS letter SMD# 26-006 (Nov. 13, 2026) | Whole letter: 4 pages, 3 footnotes. medicaid.gov answered 403 to a plain automated request; the PDF was fetched with a web fetch tool and its text extracted with pdftotext. | The optional hold harmless period through June 30, 2027; the duty to keep checking; the limit to community engagement; how a state asks; the Dec. 11, 2026 notice date. It names no state. |
+
+### Searched for one subject, not re-read
+
+Each page below was fetched from the agency's own site and searched for "hold harmless", "June 30, 2027", "SMD", "mitigation plan", and any word of a pause, delay, or suspension of denials or of ending coverage under the rules. None appeared. The registry "checked" dates of these sources did not change, because a search for one subject is not a new read of the page.
+
+| Guide | Pages searched | Could not be read |
+|---|---|---|
+| Oregon | S07 (OHA's federal changes page, still showing "Last updated Sept. 18, 2026"); the address in S24, which returned the same page; K13 (ODHS partner updates) | OHA's news release list loads by script. A news release is not ruled out. |
+| Utah | U01, U02, U04, U24, and the medicaid.utah.gov home page | Utah Medicaid's news page did not load. A news item is not ruled out. |
+| Washington | WA01, WA03, and WA22 (which answered that day; it is still not marked as read in full, so it supports no claim) | HCA's news list loads by script. A news release is not ruled out. |
+
+The result is recorded as what the pages said on that day (claims C-HH-STATE, U-HH-STATE, WA-HH-05), not as what any state has decided. No election by Oregon, Utah, or Washington, and no decision against one, is verified.
+
+### Not used
+
+- The CMS press release of Nov. 13, 2026 about the letter. The letter is the primary source, and no page links to the release, so it is not in the registry.
+- A secondary news report of Nov. 13, 2026 that names governors who asked for more time in October 2026. Not an official source, and not an election by any state.
+
+### Open
+
+- Footnote 3 of the letter cites *Massachusetts v. Oz* as No. 26-12692-RGS. The order in the registry (S28) carries No. 1:26-cv-12962. The site quotes neither number on a page. Not resolved.
+- Each state's choice. Checkpoint 2026-12-11 in [data/review.json](../data/review.json).

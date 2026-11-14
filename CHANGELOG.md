@@ -2,6 +2,20 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.5 beta (2026-11-14)
+
+
+A federal letter of Nov. 13, 2026 gives each state a new choice about the work or activity rules. All three guides now say so, near the top of each home page.
+
+- **New source.** S41: CMS letter SMD# 26-006, "Optional Hold Harmless Period for Community Engagement Implementation," dated Nov. 13, 2026. It is a shared source (guide `all`). The registry entry records that the letter, 4 pages with 3 footnotes, was read on Nov. 14, 2026, and how it was fetched. The CMS press release of the same day is not in the registry: the letter is the primary source and no page links to the release.
+- **15 new claims,** 5 for each guide: the rules and the checking still start Jan. 1, 2027 (C-HH-START, U-HH-START, WA-HH-01); through June 30, 2027 a state may choose not to turn anyone down, and not to end anyone's coverage, only for not meeting the rules, while it still checks each person (C-HH-OPTION, U-HH-OPTION, WA-HH-02); the choice does not cover other reasons, such as income (C-HH-LIMIT, U-HH-LIMIT, WA-HH-03); how a state asks, and the Dec. 11, 2026 date for telling the federal agency (C-HH-HOW, U-HH-HOW, WA-HH-04); and what each state's own pages said on Nov. 14, 2026 (C-HH-STATE, U-HH-STATE, WA-HH-05).
+- **No guide says a state has chosen the period, or has not.** On Nov. 14, 2026, OHA's federal changes page (S07), Utah's pages (U01, U02, U04), and HCA's pages (WA01, WA03) were searched for the subject and said nothing about it. The pages say that, with the date. Each state's news list could not be read that day, so a news release is not ruled out. The claim notes and [docs/research-log.md](docs/research-log.md) list what was searched.
+- **Update boxes.** Each guide's home page has a new box, "Update, Nov. 13, 2026: A new choice for states," above the medical bills box. Each guide's rules page and turned-down page has a short part with the same heading. Pages changed: `index`, `rules`, `denied`, `utah`, `utah-rules`, `utah-denied`, `washington`, `washington-rules`, `washington-denied`. Each now lists S41 in its sources.
+- **Nine existing claims keep their wording and gain a note** that says why: C-START, C-NO-PROOF-DENY, U-START, U-START-APP, U-START-MEMBER, U-VERIFY-30, U-LOSE-FORMS, WA-HOME-02, and WA-APP-09. The start date does not move, and no state's choice is known, so no start or coverage-loss sentence on the site changed. They are to be reworded if a state chooses the period.
+- **Two new checkpoints** in [data/review.json](data/review.json): Dec. 11, 2026, to search each state's pages again for its choice and update the "As of" dates; and June 30, 2027, the last day a state's period can cover, to reword or remove the boxes. The Dec. 9, 2026 Washington checkpoint and the Washington hand-check in [docs/maintenance.md](docs/maintenance.md) now point to the new one.
+- **Washington open point 7** in [docs/corrections.md](docs/corrections.md), whether Washington will delay the rules, now records the federal half of the answer from S41: the start date does not move, and the new option is a limit on denials and on ending coverage, not a delay. The state half stays open.
+- **Federal words.** The letter calls the requirement "community engagement," which is the federal name the guides already give, so no page wording changed. The letter says CMS refers to the 2025 law as the "Working Families Tax Cut" legislation; no page names that law, and [docs/methodology.md](docs/methodology.md) now records the name next to the Public Law number. Words the states use on their own pages are unchanged.
+
 ## 0.3.4 beta (2026-11-14)
 
 Extra detail is now marked on 21 more pages, so "Show just the key points" hides something on them. Marking only: no wording, fact, link, or source list changed, and the strip itself did not change. Before this, the browser report listed 26 pages where the strip hid nothing. It now lists 5.
@@ -14,9 +28,6 @@ Extra detail is now marked on 21 more pages, so "Show just the key points" hides
 - Details marked as extra across all pages went from 43 to 88. The count is in [docs/testing-browser.md](docs/testing-browser.md).
 
 ## 0.3.3 beta (2026-11-13)
-
-Source reads on Nov. 13, 2026. The reads were done by the AI assistant; the source review by a person is still checkpointed for Nov. 26, 2026 (Washington) and Nov. 24, 2026 (Utah).
-
 - Read in full on Nov. 13, 2026, and marked so in the source registry with that checked date: Washington WA12, WA13, WA14, WA15, WA16, WA17, WA18, WA19, WA20, WA21, WA22, WA23, and WA24. WA05 was also read at HCA's own address that day. Utah: U15S, U19S, U34, U35, and U36.
 - Still marked as not read in full: WA25, U32, and U38. Each registry note says what was read on Nov. 13, 2026 and what was not: WA25's own address refused the request and the filed complaint was read from the copy the Washington Attorney General links; U32 is a sign-in site that answered 404; U38 is a 514-page code list of which the title page, definitions, section headings, first two pages, and last page were read.
 - Drafting claims settled: 14 of the 17 Washington drafting claims. 13 were confirmed as written by the read of every source they rest on: WA-RULE-09, WA-APP-08, WA-APP-09, WA-LTR-02, WA-DEN-03, WA-DEN-04, WA-DEN-05, WA-HLT-04, WA-IMM-02, WA-IMM-03, WA-WRD-02, WA-WRD-05, and WA-LOG-03. One was corrected: WA-DEN-01.
