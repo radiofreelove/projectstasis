@@ -4,10 +4,11 @@ All notable changes. Dates are when facts were checked or changes were made.
 
 ## 0.3.1 beta (2026-11-13)
 
-Repository tidy. Nothing readers see changes except the two README paragraphs below.
+Repository tidy, plus four repaired Washington source addresses. Nothing readers see changes except the two README paragraphs below and the source addresses.
 
 - Wording standard applied across the repository: no guide is described as more or less checked than another, and nothing claims or implies that sources were read end to end. The standard wording is that every source was accessed and reviewed against the facts it supports, the registry shows which were read in full and when each was checked, and the scheduled reviews are named as source reviews with their dates (Utah, Nov. 24, 2026; Washington, Nov. 26, 2026). The places changed: the README's Utah and Washington paragraphs, decisions 0013 and 0015, docs/adding-a-guide.md, docs/research-log.md, data/review.json, the rules header and drafting claim notes in data/claims.json, and the header and stale pre-merge notes in data/sources.json. Two sentences in the 0.2.0 beta entry below and one line in docs/research-log.md were rewritten in place under the same standard, and this entry records that they were.
 - Decision 0015 now records that the Washington guide merged on Nov. 12, 2026 on the owner's direction, ahead of its source review.
+- Four Washington source addresses that had gone dead were replaced with the addresses the agencies now publish, each verified on Nov. 13, 2026 against the facts it supports: WA11 (HCA, Filing an application) and WA23 (HCA, Apple Health Expansion) moved in HCA's site restructure, and WA16 (WAC 182-504-0035) and WA17 (WAC 182-504-0130) now point to the legislature's current WAC address, the same form the registry already uses for WAC 182-505-0250. The WA11 registry note no longer says the page states the Apple Health for Adults test, because the moved page does not state it; the facts WA11 supports are unchanged.
 
 ## 0.3.0 beta (2026-11-12)
 
