@@ -35,7 +35,7 @@ Flesch-Kincaid grade level of each page's main text. Target: grade 6 or lower. T
 | utah-privacy.html | 4.2 | 285 | 32 | 8.9 | On target |
 | utah-reasons.html | 5.1 | 668 | 69 | 9.7 | On target |
 | utah-rules.html | 4.0 | 398 | 48 | 8.3 | On target |
-| utah-sources.html | 6.7 | 3629 | 356 | 10.2 | Above target |
+| utah-sources.html | 6.8 | 4052 | 385 | 10.5 | Above target |
 | utah-words.html | 5.3 | 326 | 49 | 6.7 | On target |
 | utah.html | 4.3 | 467 | 60 | 7.8 | On target |
 | washington-about.html | 3.4 | 565 | 68 | 8.3 | On target |
@@ -43,8 +43,8 @@ Flesch-Kincaid grade level of each page's main text. Target: grade 6 or lower. T
 | washington-apply.html | 4.7 | 345 | 50 | 6.9 | On target |
 | washington-bills.html | 2.8 | 147 | 22 | 6.7 | On target |
 | washington-check.html | 3.4 | 520 | 66 | 7.9 | On target |
-| washington-denied.html | 4.7 | 385 | 44 | 8.8 | On target |
-| washington-health.html | 4.9 | 253 | 29 | 8.7 | On target |
+| washington-denied.html | 4.5 | 426 | 50 | 8.5 | On target |
+| washington-health.html | 4.8 | 262 | 31 | 8.5 | On target |
 | washington-help.html | 5.9 | 312 | 44 | 7.1 | On target |
 | washington-immigration.html | 5.8 | 249 | 33 | 7.5 | On target |
 | washington-letter.html | 3.2 | 275 | 34 | 8.1 | On target |
@@ -52,7 +52,7 @@ Flesch-Kincaid grade level of each page's main text. Target: grade 6 or lower. T
 | washington-privacy.html | 4.2 | 285 | 32 | 8.9 | On target |
 | washington-reasons.html | 5.2 | 456 | 54 | 8.4 | On target |
 | washington-rules.html | 3.6 | 472 | 64 | 7.4 | On target |
-| washington-sources.html | 6.7 | 2274 | 223 | 10.2 | Above target |
+| washington-sources.html | 8.0 | 3749 | 315 | 11.9 | Above target |
 | washington-words.html | 5.1 | 280 | 44 | 6.4 | On target |
 | washington.html | 4.0 | 540 | 68 | 7.9 | On target |
 | words.html | 4.5 | 306 | 53 | 5.8 | On target |

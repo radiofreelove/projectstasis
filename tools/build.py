@@ -86,7 +86,7 @@ FONTS_LOCK = ROOT / "fonts.lock.json"
 SITE_NAME = "The Stasis Project"
 BASE_URL = "https://projectstasis.pages.dev/"
 PROJECT_REPO = "https://github.com/radiofreelove/projectstasis"
-VERSION = "0.3.2 beta"
+VERSION = "0.3.3 beta"
 
 AP_MONTHS = ["Jan.", "Feb.", "March", "April", "May", "June", "July", "Aug.", "Sept.", "Oct.", "Nov.", "Dec."]
 
