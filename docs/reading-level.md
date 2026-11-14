@@ -35,7 +35,7 @@ Flesch-Kincaid grade level of each page's main text. Target: grade 6 or lower. T
 | utah-privacy.html | 4.2 | 285 | 32 | 8.9 | On target |
 | utah-reasons.html | 5.1 | 668 | 69 | 9.7 | On target |
 | utah-rules.html | 4.0 | 398 | 48 | 8.3 | On target |
-| utah-sources.html | 6.8 | 4052 | 385 | 10.5 | Above target |
+| utah-sources.html | 6.8 | 4112 | 389 | 10.6 | Above target |
 | utah-words.html | 5.3 | 326 | 49 | 6.7 | On target |
 | utah.html | 4.3 | 467 | 60 | 7.8 | On target |
 | washington-about.html | 3.4 | 565 | 68 | 8.3 | On target |
