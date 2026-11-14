@@ -13,13 +13,18 @@
     },
     {
       "review_by": "2026-12-09",
-      "what": "Washington, 30-day re-check: re-read HCA's client pages (WA01, WA02, WA22) and its stakeholder page (WA03) for any change to the Jan. 1, 2027 start, and for any word on a delay; the guide says nothing about a delay, and stays that way until an official source speaks. Re-read WA23: Apple Health Expansion enrollment was closed as of December 2025, and the immigration page must not send people to a closed program as if it were open. Check the Attorney General's tracker (WA14) and the docket (S40) for an appeal or a new order. Look for the sources not yet found: HCA's August 2026 eligibility training material, any WAC rulemaking for H.R. 1, any state plan amendment or waiver request, the work requirements notice HCA sends clients, and the list of fact sheet languages behind WA-HLP-03.",
+      "what": "Washington, 30-day re-check: re-read HCA's client pages (WA01, WA02, WA22) and its stakeholder page (WA03) for any change to the Jan. 1, 2027 start, and for any word on a delay; the guide says nothing about a delay of the start, and stays that way until an official source speaks (the federal hold harmless option of Nov. 13, 2026 is not a delay of the start and has its own checkpoint, 2026-12-11). Re-read WA23: Apple Health Expansion enrollment was closed as of December 2025, and the immigration page must not send people to a closed program as if it were open. Check the Attorney General's tracker (WA14) and the docket (S40) for an appeal or a new order. Look for the sources not yet found: HCA's August 2026 eligibility training material, any WAC rulemaking for H.R. 1, any state plan amendment or waiver request, the work requirements notice HCA sends clients, and the list of fact sheet languages behind WA-HLP-03.",
       "claims": ["WA-HOME-02", "WA-IMM-04", "WA-RSN-15", "WA-HLT-04", "WA-HLP-03"]
     },
     {
       "review_by": "2026-12-10",
       "what": "30-day re-check for Oregon and Utah (Washington's is the 2026-12-09 checkpoint). Oregon: re-check OHA's pages (S01, S03, S07, and S24 by hand) for any response to the Oct. 29, 2026 court ruling; they had none on Nov. 10. Utah: re-check U01, U02, U03, and U04 for the same, and for form 742 and the medically frail screener being posted. Court: check the docket (S40) for a notice of appeal or any new order after the Oct. 29, 2026 judgment; none appeared through the Nov. 6 entries. Update C-COURT and U-COURT and their 'As of' dates on reasons.html, health.html, utah-reasons.html, and utah-health.html.",
       "claims": ["C-COURT", "C-EX-HEALTH", "U-COURT", "U-EX-FRAIL", "U-742-NOLINK"]
+    },
+    {
+      "review_by": "2026-12-11",
+      "what": "Hold harmless period (S41, SMD# 26-006): Dec. 11, 2026 is the date by which a state that intends to use the period from Jan. 1, 2027 was asked to notify CMS. It is not a date for a public announcement. Search each state's pages again for its choice: Oregon S07 (and S24 by hand), K13, and OHA's news releases; Utah U01, U02, U04, U24, and Utah Medicaid's news page; Washington WA01, WA03, WA22, and HCA's news list. Check medicaid.gov for a later letter or a list of states. If nothing has changed, update the 'As of' date in C-HH-STATE, U-HH-STATE, and WA-HH-05 and on each guide's home, rules, and turned-down pages, and set a new checkpoint. If a state has announced its choice from an official source, register that source, reword that state's claims and pages, and reword the start and coverage-loss claims listed here. Update Washington item 7 in docs/corrections.md either way.",
+      "claims": ["C-HH-STATE", "U-HH-STATE", "WA-HH-05", "C-HH-OPTION", "U-HH-OPTION", "WA-HH-02", "C-START", "C-NO-PROOF-DENY", "U-START", "U-START-APP", "U-VERIFY-30", "WA-HOME-02", "WA-APP-09"]
     },
     {
       "review_by": "2026-12-13",
@@ -50,6 +55,11 @@
       "review_by": "2027-06-15",
       "what": "Utah: the glossary (U08) says Targeted Adult Medicaid ends June 30, 2027 and its members move to Adult Expansion Medicaid. Re-read U08, U25, and U26, and update every Utah page that names TAM.",
       "claims": ["U-W-TAM", "U-WHO-PROGRAMS"]
+    },
+    {
+      "review_by": "2027-06-30",
+      "what": "June 30, 2027 is the last day a state's hold harmless period can cover (S41). Reword or remove the 'A new choice for states' update box on each guide's home page and the matching parts of the rules and turned-down pages, for a site read after the period. A state may have picked a shorter time; if so, do this at that state's end date instead.",
+      "claims": ["C-HH-START", "C-HH-OPTION", "C-HH-LIMIT", "C-HH-HOW", "C-HH-STATE", "U-HH-START", "U-HH-OPTION", "U-HH-LIMIT", "U-HH-HOW", "U-HH-STATE", "WA-HH-01", "WA-HH-02", "WA-HH-03", "WA-HH-04", "WA-HH-05"]
     },
     {
       "review_by": "2027-08-01",

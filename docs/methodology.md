@@ -23,7 +23,7 @@ When sources disagree, the site follows this order and discloses the disagreemen
 5. State agency guidance: web pages, fact sheets, notices, letters, and presentations from OHA and ODHS in Oregon, and from DHHS (Utah Medicaid) and DWS in Utah. Newer and more specific beats older and more general. One state's guidance never supports a claim about the other state.
 6. Other organizations (legal aid, advocacy groups), only for their own services and phone numbers.
 
-The federal statute itself (Public Law 119-21, sections 71119 and others) was not opened for this release. Statements about federal requirements rest on the federal rule (S27), which quotes and implements the statute. That is a gap to close in a future review.
+The federal statute itself (Public Law 119-21, sections 71119 and others) was not opened for this release. A federal letter of Nov. 13, 2026 (S41) says CMS refers to this law as the "Working Families Tax Cut" legislation, and it calls the requirement "community engagement"; the site's pages do not name the law. Statements about federal requirements rest on the federal rule (S27), which quotes and implements the statute. That is a gap to close in a future review.
 
 ## 3. Kinds of claims
 

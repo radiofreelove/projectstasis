@@ -4,6 +4,7 @@ Registry IDs refer to [sources.md](sources.md).
 
 - [Release 0.1.0 beta](#release-010-beta-oregon): Oregon content research on **Nov. 2, 2026**, and hosting research on **Nov. 3, 2026**.
 - [Release 0.2.0 beta](#release-020-beta-utah-and-an-oregon-re-check): Utah content research and an Oregon re-check on **Nov. 10, 2026**.
+- [Release 0.3.3 beta](#release-033-beta-the-federal-hold-harmless-letter): one federal letter, and a search of each state's pages for its choice, on **Nov. 14, 2026**.
 
 All of it was done with an AI research assistant (Claude, by Anthropic) working under the maintainer's direction.
 
@@ -219,3 +220,34 @@ The 12 points in [corrections.md](corrections.md#washington), all open.
 - A news report of Nov. 12, 2026 about a new lawsuit over funding. Secondary, not confirmed from a docket.
 - The hospital association's copy of the fact sheet is not in the registry and is not linked. The registry points to HCA's own address (WA05).
 
+## Release 0.3.3 beta: the federal hold harmless letter
+
+Done on **Nov. 14, 2026**, over two working sessions. The first registered the source and wrote the claims. The second wrote the pages from those claims and did not fetch the letter or the state pages again.
+
+### Read
+
+| Source | What was read | Result |
+|---|---|---|
+| S41 CMS letter SMD# 26-006 (Nov. 13, 2026) | Whole letter: 4 pages, 3 footnotes. medicaid.gov answered 403 to a plain automated request; the PDF was fetched with a web fetch tool and its text extracted with pdftotext. | The optional hold harmless period through June 30, 2027; the duty to keep checking; the limit to community engagement; how a state asks; the Dec. 11, 2026 notice date. It names no state. |
+
+### Searched for one subject, not re-read
+
+Each page below was fetched from the agency's own site and searched for "hold harmless", "June 30, 2027", "SMD", "mitigation plan", and any word of a pause, delay, or suspension of denials or of ending coverage under the rules. None appeared. The registry "checked" dates of these sources did not change, because a search for one subject is not a new read of the page.
+
+| Guide | Pages searched | Could not be read |
+|---|---|---|
+| Oregon | S07 (OHA's federal changes page, still showing "Last updated Sept. 18, 2026"); the address in S24, which returned the same page; K13 (ODHS partner updates) | OHA's news release list loads by script. A news release is not ruled out. |
+| Utah | U01, U02, U04, U24, and the medicaid.utah.gov home page | Utah Medicaid's news page did not load. A news item is not ruled out. |
+| Washington | WA01, WA03, and WA22 (which answered that day; it is still not marked as read in full, so it supports no claim) | HCA's news list loads by script. A news release is not ruled out. |
+
+The result is recorded as what the pages said on that day (claims C-HH-STATE, U-HH-STATE, WA-HH-05), not as what any state has decided. No election by Oregon, Utah, or Washington, and no decision against one, is verified.
+
+### Not used
+
+- The CMS press release of Nov. 13, 2026 about the letter. The letter is the primary source, and no page links to the release, so it is not in the registry.
+- A secondary news report of Nov. 13, 2026 that names governors who asked for more time in October 2026. Not an official source, and not an election by any state.
+
+### Open
+
+- Footnote 3 of the letter cites *Massachusetts v. Oz* as No. 26-12692-RGS. The order in the registry (S28) carries No. 1:26-cv-12962. The site quotes neither number on a page. Not resolved.
+- Each state's choice. Checkpoint 2026-12-11 in [data/review.json](../data/review.json).
