@@ -1,7 +1,7 @@
 {
   "registry_version": "2026-11-14",
   "checked_by": "Project maintainer, with AI research assistance (see docs/research-log.md)",
-  "notes": "Every external link on the site must appear here. 'opened' means the document itself was read on the 'checked' date. 'linked_from' means the address came from another official source and was not opened by our tools. 'guide' says which guide may list or link to a source: a guide's name ('oregon', 'washington', 'utah'), or 'all' for sources any guide may use (federal rules, court papers, standards, national groups, the host). The build goes by 'guide', never by the ID. Kind 'state-explainer' entries are counted for each guide, on its About page, to support the claim that the state explains the rules across more than a dozen documents. The build checks the count only for a guide whose words make that claim; the Washington guide has 9 and does not make it. IDs that start with U are Utah sources, added on 2026-11-10; the letter is only a habit that keeps IDs easy to read. IDs that start with WA are Washington sources, added on 2026-11-12 from a research dossier. A Washington entry with 'opened': false is a real source that was read only in part, through search extracts, or not at all; its 'notes' say which. Until the source review checkpointed for Nov. 26, 2026 is complete, the Washington claims that rest on them are drafting claims (see the 'rules' in data/claims.json and docs/research-log.md). Kind 'state-rule' is a section of a state's administrative code. 'link_check': 'by hand' marks an address whose site blocks automated tools: the weekly link check lists it for a person and does not request it.",
+  "notes": "Every external link on the site must appear here. 'opened' means the document itself was read on the 'checked' date. 'linked_from' means the address came from another official source and was not opened by our tools. 'guide' says which guide may list or link to a source: a guide's name ('oregon', 'washington', 'utah'), or 'all' for sources any guide may use (federal rules, court papers, standards, national groups, the host). The build goes by 'guide', never by the ID. Kind 'state-explainer' entries are counted for each guide, on its About page, to support the claim that the state explains the rules across more than a dozen documents. The build checks the count only for a guide whose words make that claim; the Washington guide has 9 and does not make it. IDs that start with U are Utah sources, added on 2026-11-10; the letter is only a habit that keeps IDs easy to read. IDs that start with WA are Washington sources, added on 2026-11-12 from a research dossier. A Washington entry with 'opened': false is a real source that was read only in part, through search extracts, or not at all; its 'notes' say which. Until the source review checkpointed for Nov. 26, 2026 is complete, the Washington claims that rest on them are drafting claims (see the 'rules' in data/claims.json and docs/research-log.md). On 2026-11-13 the AI assistant read WA12 to WA24 each in full, and the Utah entries U15S, U19S, U34, U35, and U36 each in full; each entry's 'checked' date and 'notes' record that read and what it covered (for a web page, the page's own content, not the site's menus). WA25, U32, and U38 stay 'opened': false, and their notes say what was and was not read. On 2026-11-14 the AI assistant read these Oregon entries each in full: S16, S17, S19, S21, S22, S24, S26B, S38, K01, and K03 to K13; each entry's 'checked' date and 'notes' record that read and what it covered. S15, S18, S20, S23, S36, and S37 stay 'opened': false with their earlier 'checked' date, and their notes say what was and was not read on 2026-11-14. An entry that is marked 'opened': true and still names 'linked_from' was first listed as a link only and was read later, on its 'checked' date. A read by the AI assistant is not the source review by a person, which is still checkpointed. Kind 'state-rule' is a section of a state's administrative code. 'link_check': 'by hand' marks an address whose site blocks automated tools: the weekly link check lists it for a person and does not request it.",
   "sources": [
     {
       "id": "S01",
@@ -208,11 +208,11 @@
       "url": "https://www.oregon.gov/odhs/Pages/office-finder.aspx",
       "format": "Web page",
       "kind": "state-page",
-      "date_on_document": "Not checked",
+      "date_on_document": "No date shown",
       "checked": "2026-11-02",
       "opened": false,
       "linked_from": "S09",
-      "notes": "Address taken from OHA's how-to-apply page."
+      "notes": "Address taken from OHA's how-to-apply page. Not read in full: it is a search tool, not a document. On 2026-11-14 the address answered and landed on ODHS's Find an Office tool. The tool offers a choice of service and distance, and it said it holds 264 listings. The first 10 listings were seen. No search was run. The page footer gives 800-699-9075 for benefits and 855-673-2372 for the Aging and Disability Resource Connection."
     },
     {
       "id": "S16",
@@ -223,11 +223,11 @@
       "url": "https://healthcare.oregon.gov/Pages/find-help.aspx",
       "format": "Web page",
       "kind": "state-page",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
+      "date_on_document": "No date shown",
+      "checked": "2026-11-14",
+      "opened": true,
       "linked_from": "S09",
-      "notes": "Address taken from OHA's how-to-apply page. Notices call this OregonHealthCare.gov/GetHelp."
+      "notes": "Address taken from OHA's how-to-apply page. Notices call this OregonHealthCare.gov/GetHelp, and that address forwarded here on 2026-11-14. The page's own content was read in full on 2026-11-14. It says help is free. It gives 800-699-9075 for OHP questions and 855-268-3767 for the Marketplace, which it calls Explore Health. It holds a search tool for local help, with a choice for Oregon Health Plan. The tool's form was seen. No search was run, and no listing was read. The page says the tool no longer finds Marketplace or small business help. No claim cites this source."
     },
     {
       "id": "S17",
@@ -238,11 +238,11 @@
       "url": "https://www.oregon.gov/odhs/benefits/Documents/one-language-lines-translation.pdf",
       "format": "PDF",
       "kind": "state-page",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
+      "date_on_document": "DHS 2844 (05/2022)",
+      "checked": "2026-11-14",
+      "opened": true,
       "linked_from": "S09",
-      "notes": "Address taken from OHA's how-to-apply page."
+      "notes": "Address taken from OHA's how-to-apply page. Read in full on 2026-11-14 (2 pages). It is form DHS 2844, titled ONE Customer Service Center, Connect to Interpreter Instructions. It lists a phone line for each of 16 languages and says to call Monday through Friday, 7 a.m. to 6 p.m. The English wording was read. The wording in the other languages was not checked by a fluent reader. It gives the Spanish line as (833) 743-9182. OHA's how-to-apply page (S09) gives 800-743-9182, and the guide uses the number on S09. The Russian line, (833) 687-1508, is the same on both. No claim cites this source."
     },
     {
       "id": "S18",
@@ -257,7 +257,7 @@
       "checked": "2026-11-02",
       "opened": false,
       "linked_from": "S09",
-      "notes": "Linked instead of copying income numbers, which change."
+      "notes": "Linked instead of copying income numbers, which change. Not read. On 2026-11-14 the address gave an empty reply to three requests, so the file was not retrieved. A person needs to open it in a browser."
     },
     {
       "id": "S19",
@@ -268,11 +268,11 @@
       "url": "https://benefits.oregon.gov/",
       "format": "Web site",
       "kind": "state-page",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
+      "date_on_document": "No date shown",
+      "checked": "2026-11-14",
+      "opened": true,
       "linked_from": "S03, S05, S11",
-      "notes": "Named as the online application and account site in OHA's newer materials."
+      "notes": "Named as the online application and account site in OHA's newer materials. On 2026-11-14 this address forwarded to ODHS's benefits page, www.oregon.gov/odhs/benefits/pages/default.aspx. That page was read in full on 2026-11-14. The ONE sign-in site it links to was not opened. The page links to one.oregon.gov to apply online or to log in to a ONE Online account. It gives 800-699-9075 for the ONE Customer Service Center, Monday to Friday, 7 a.m. to 6 p.m. It gives 833-978-1073 for help with a ONE Online account or the mobile app. It lists a paper application for OHP with 12 translations. No claim cites this source."
     },
     {
       "id": "S20",
@@ -283,26 +283,26 @@
       "url": "https://oregonhealthcare.gov/",
       "format": "Web site",
       "kind": "state-page",
-      "date_on_document": "Not checked",
+      "date_on_document": "No date shown",
       "checked": "2026-11-02",
       "opened": false,
       "linked_from": "S04, S06",
-      "notes": "Phone 855-268-3767 per S04."
+      "notes": "Phone 855-268-3767 per S04. Not read in full. On 2026-11-14 the address forwarded to healthcare.oregon.gov/Pages/index.aspx, the OregonHealthCare.gov home page. The text shown on that page was read. The backs of its 4 flip cards were not opened, and no other page of the site was read. The page gives 855-268-3767 for the Oregon Health Insurance Marketplace and 800-699-9075 for OHP application questions."
     },
     {
       "id": "S21",
       "guide": "oregon",
       "title": "Find a Federally Qualified Health Center (FQHC)",
       "short": "FQHC finder",
-      "publisher": "Oregon Health Insurance Marketplace (short link)",
+      "publisher": "Oregon Primary Care Association (reached by the Marketplace's short link)",
       "url": "https://orhim.info/FQHC",
       "format": "Web page",
       "kind": "state-page",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
+      "date_on_document": "No date shown",
+      "checked": "2026-11-14",
+      "opened": true,
       "linked_from": "S04",
-      "notes": "Short link printed in OHA's journey maps."
+      "notes": "Short link printed in OHA's journey maps. On 2026-11-14 the short link forwarded to orpca.org/find-a-community-health-center/. That is a page of the Oregon Primary Care Association, not of the Marketplace. The page was read in full on 2026-11-14. It says Oregon has 33 Federally Qualified Health Centers, including two look-alikes, with more than 270 sites. It lists each one with an address, a phone number, and its towns. It does not say what the centers charge. The page's data carries the date 2026-03-04. No claim cites this source."
     },
     {
       "id": "S22",
@@ -313,27 +313,26 @@
       "url": "https://ohpopencard.org/",
       "format": "Web site",
       "kind": "state-page",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
+      "date_on_document": "No date shown",
+      "checked": "2026-11-14",
+      "opened": true,
       "linked_from": "S01",
-      "notes": "Open Card phone line 800-562-4620 starting Jan. 1, 2027, per S01."
+      "notes": "Open Card phone line 800-562-4620 starting Jan. 1, 2027, per S01. The home page at this address was read in full on 2026-11-14. No other page of the site was read, and the provider search was not opened. The site is the OHP Open Card Care Coordination Program, and it carries the Acentra Health name. The page already gives 800-562-4620 as the OHP Open Card help line, open 7 a.m. to 7 p.m. It gives 844-847-9320 for American Indian and Alaska Native members and 800-273-0557 for OHP Client Services. Its Find a Provider link goes to a search tool at another address, opl.kepro.com. No claim cites this source."
     },
     {
       "id": "S23",
       "guide": "oregon",
-      "title": "OHP job and volunteer resources",
-      "short": "OHP.Oregon.gov/Resources",
+      "title": "Oregon Health Plan (OHP) Community Resources",
+      "short": "OHA Community Resources page",
       "publisher": "Oregon Health Authority",
-      "url": "https://ohp.oregon.gov/Resources",
+      "url": "https://www.oregon.gov/oha/hsd/ohp/pages/community-resources.aspx",
       "format": "Web page",
       "kind": "state-page",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
+      "date_on_document": "No date shown",
+      "checked": "2026-11-14",
+      "opened": true,
       "linked_from": "S08",
-      "notes": "The OHP.Oregon.gov short-link domain blocks automated access, so this was not opened. Check by hand.",
-      "link_check": "by hand"
+      "notes": "OHA's federal changes page (S07) and its sample notices (S08, K10) print the short address OHP.Oregon.gov/Resources for help finding a job or volunteer work. On 2026-11-14 that address forwarded to OHA's general OHP page (www.oregon.gov/oha/hsd/ohp/pages/splash.aspx), which has no list of job or volunteer resources; the project owner confirmed the same in her own browser that day. OHA's Community Resources page is the page that carries the resources: read in full on 2026-11-14, its first line is 'Find resources for employees, employers and unemployment.' The registry address was corrected to that page on 2026-11-14, and the short address is kept in this note so the printed notices can still be traced."
     },
     {
       "id": "S24",
@@ -344,11 +343,11 @@
       "url": "https://ohp.oregon.gov/HR1",
       "format": "Web page",
       "kind": "state-page",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
+      "date_on_document": "Last updated Sept. 18, 2026",
+      "checked": "2026-11-14",
+      "opened": true,
       "linked_from": "S01, S02, S03, S08",
-      "notes": "Blocks automated access. OHA's official update page per its own materials. Check by hand.",
+      "notes": "OHA's official update page per its own materials. It blocked automated access on 2026-11-02. On 2026-11-14 the address answered an automated request, and the host served no robots.txt file. The address forwarded to OHA's federal changes page, the same address as S07. That page was read in full on 2026-11-14. It still says last updated Sept. 18, 2026, and does not mention the Oct. 29, 2026 court ruling. No claim cites this source; claims cite S07.",
       "link_check": "by hand"
     },
     {
@@ -388,11 +387,11 @@
       "url": "https://www.droregon.org/request-help",
       "format": "Web page",
       "kind": "advocacy",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
+      "date_on_document": "No date shown",
+      "checked": "2026-11-14",
+      "opened": true,
       "linked_from": "S26",
-      "notes": "Address printed on S26."
+      "notes": "Address printed on S26. The page's own content was read in full on 2026-11-14. It says Disability Rights Oregon helps people with disabilities with disability-related legal issues in Oregon. It lists what the group does and what it cannot help with. It says a person can ask for help with the intake request form on the page or by letter, and that the group does not promise a reply to every request. The first step of the form was seen. The form was not filled in, and its later steps were not seen. No claim cites this source."
     },
     {
       "id": "S27",
@@ -529,11 +528,11 @@
       "url": "https://www.ailalawyer.com/",
       "format": "Web site",
       "kind": "legal-aid",
-      "date_on_document": "Not checked",
+      "date_on_document": "No date shown",
       "checked": "2026-11-02",
       "opened": false,
       "linked_from": "S12",
-      "notes": "Listed by OHA on its public charge page."
+      "notes": "Listed by OHA on its public charge page. Not read in full: it is a search tool, not a document. On 2026-11-14 the address answered and landed on AILA's Immigration Lawyer Search. The tool asks for a type of lawyer, a language, a city, and a state or province. Oregon is one of the choices. No search was run. The page says the site is not a lawyer referral service."
     },
     {
       "id": "S37",
@@ -544,11 +543,11 @@
       "url": "https://www.immigrationadvocates.org/",
       "format": "Web site",
       "kind": "legal-aid",
-      "date_on_document": "Not checked",
+      "date_on_document": "No date shown",
       "checked": "2026-11-02",
       "opened": false,
       "linked_from": "S12",
-      "notes": "Listed by OHA on its public charge page (filter by Oregon)."
+      "notes": "Listed by OHA on its public charge page (filter by Oregon). Not read in full: the directory is a search tool, not a document. On 2026-11-14 the address answered and landed on the Immigration Advocates Network home page, not on the directory itself. The home page has a Find Help link and says to enter an address or zip code to see a list of organizations. No search was run."
     },
     {
       "id": "S38",
@@ -559,11 +558,11 @@
       "url": "https://equitycorps.org/",
       "format": "Web site",
       "kind": "legal-aid",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
+      "date_on_document": "No date shown",
+      "checked": "2026-11-14",
+      "opened": true,
       "linked_from": "S12",
-      "notes": "Listed by OHA on its public charge page for possible free representation at Portland Immigration Court."
+      "notes": "Listed by OHA on its public charge page for possible free representation at Portland Immigration Court. The home page at this address was read in full on 2026-11-14. No other page of the site was read. It has parts for lawyers, for people seeking legal help, and for community groups, with a Get Help link. It gives the phone number 1-888-274-7292 and call center hours of Monday to Friday, 9 a.m. to 6 p.m. The home page does not mention Portland Immigration Court. No claim cites this source."
     },
     {
       "id": "K01",
@@ -574,10 +573,10 @@
       "url": "https://www.oregon.gov/oha/HSD/OHP/Documents/HR1-Key-Changes-EN.pdf",
       "format": "PDF",
       "kind": "state-explainer",
-      "date_on_document": "Last updated June 10, 2026 (per search result)",
-      "checked": "2026-11-02",
-      "opened": false,
-      "notes": "Counted only. Not used for claims."
+      "date_on_document": "Last updated June 10, 2026",
+      "checked": "2026-11-14",
+      "opened": true,
+      "notes": "Counted only. Not used for claims. Read in full on 2026-11-14 (2 pages). It says work and other activity rules take effect in 2027 and apply to adults ages 19 to 64 who do not meet an exemption. It lists 11 groups who may need to give proof of an exemption. It says many adults will renew every six months starting in late 2027. It names ONE.Oregon.gov as the place to apply. No claim cites this source."
     },
     {
       "id": "K02",
@@ -596,16 +595,16 @@
     {
       "id": "K03",
       "guide": "oregon",
-      "title": "HR1 patient conversation guide",
-      "short": "OHA patient conversation guide",
+      "title": "Federal Changes to Oregon Health Plan (OHP): A Quick Reference Guide for Providers and Clinic Staff",
+      "short": "OHA provider quick reference guide",
       "publisher": "Oregon Health Authority",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Tools/HR1-Patient-Conversation-Guide-EN.pdf",
       "format": "PDF",
       "kind": "state-explainer",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
-      "notes": "Counted only."
+      "date_on_document": "No date shown",
+      "checked": "2026-11-14",
+      "opened": true,
+      "notes": "Counted only. Read in full on 2026-11-14 (7 pages). The document's own title is Federal Changes to Oregon Health Plan (OHP): A Quick Reference Guide for Providers and Clinic Staff. It has a timeline, talking points for clinic staff, referral lists, and a badge card. It gives the ways to meet the rules as income over $580 a month, school at least half-time, or 80 hours a month. It says medical exemptions are based on function, and that a condition qualifies only if it significantly limits a person's ability to work. That sentence tracks the clause a federal court vacated on Oct. 29, 2026 (see docs/corrections.md, item 1). The document does not mention the ruling. No claim cites this source."
     },
     {
       "id": "K04",
@@ -616,10 +615,10 @@
       "url": "https://www.oregon.gov/oha/HSD/OHP/Documents/Gig-Workers-Guide.pdf",
       "format": "PDF",
       "kind": "state-explainer",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
-      "notes": "Counted only. Candidate for a future page for gig and self-employed workers."
+      "date_on_document": "No date shown",
+      "checked": "2026-11-14",
+      "opened": true,
+      "notes": "Counted only. Candidate for a future page for gig and self-employed workers. Read in full on 2026-11-14 (3 pages). It says OHP checks household income first, and that $580 a month or more before taxes and deductions meets the rules. Its summary box says more than $580. It says OHP uses a business's net income before taxes. It says seasonal workers can send proof for the last six months to show an average of $580 a month. It lists papers that show income and hours. No claim cites this source."
     },
     {
       "id": "K05",
@@ -630,10 +629,10 @@
       "url": "https://www.oregon.gov/oha/HSD/OHP/Documents/People-with-Disabilities-Guide-EN.pdf",
       "format": "PDF",
       "kind": "state-explainer",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
-      "notes": "Counted only."
+      "date_on_document": "No date shown",
+      "checked": "2026-11-14",
+      "opened": true,
+      "notes": "Counted only. Read in full on 2026-11-14 (3 pages). It lists reasons a person with a disability or serious health condition may be exempt, including SSI, Medicare, and a hospital stay of at least one night. It says a person does not need a Social Security disability decision to get an exemption. It says getting long-term services and supports does not decide whether the rules apply. No claim cites this source."
     },
     {
       "id": "K06",
@@ -644,10 +643,10 @@
       "url": "https://www.oregon.gov/oha/HSD/OHP/Documents/Houseless-Guide.pdf",
       "format": "PDF",
       "kind": "state-explainer",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
-      "notes": "Counted only."
+      "date_on_document": "No date shown",
+      "checked": "2026-11-14",
+      "opened": true,
+      "notes": "Counted only. Read in full on 2026-11-14 (3 pages). It lists exemptions, 3 ways to meet the rules, and ways to stay in touch with OHP. It says a person does not need a permanent address to get or keep OHP. No claim cites this source."
     },
     {
       "id": "K07",
@@ -658,11 +657,11 @@
       "url": "https://www.oregon.gov/oha/HSD/OHP/Tools/More-Frequent-Renewals-EN.pdf",
       "format": "PDF",
       "kind": "state-explainer",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
+      "date_on_document": "Updated June 1, 2026",
+      "checked": "2026-11-14",
+      "opened": true,
       "linked_from": "S07",
-      "notes": "Counted only."
+      "notes": "Counted only. Read in full on 2026-11-14 (2 pages). It says most adults ages 19 through 64 will renew every six months and everyone else once a year. It expects the change to start in late 2027. It says six-month renewals will not apply to American Indian and Alaska Native members, people with Medicare or OHP based on a disability, or OHP Bridge members. No claim cites this source."
     },
     {
       "id": "K08",
@@ -673,11 +672,11 @@
       "url": "https://www.oregon.gov/oha/HSD/OHP/Documents/Open-Card-Transition-EN.pdf",
       "format": "PDF",
       "kind": "state-explainer",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
+      "date_on_document": "Updated Aug. 7, 2026",
+      "checked": "2026-11-14",
+      "opened": true,
       "linked_from": "S07",
-      "notes": "Counted only."
+      "notes": "Counted only. Read in full on 2026-11-14 (2 pages). It says all Healthier Oregon members move to OHP Open Card in January 2027, and that Open Card offers full OHP benefits. It says to ask current providers if they take Open Card. It says to use the search tool at OHPOpenCard.org before Jan. 1, 2027, and to call 800-562-4620 after that date. No claim cites this source."
     },
     {
       "id": "K09",
@@ -688,11 +687,11 @@
       "url": "https://www.oregon.gov/oha/HSD/OHP/Tools/Non-Citizen-Changes-EN.pdf",
       "format": "PDF",
       "kind": "state-explainer",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
+      "date_on_document": "Updated Sept. 1, 2026",
+      "checked": "2026-11-14",
+      "opened": true,
       "linked_from": "S07",
-      "notes": "Counted only."
+      "notes": "Counted only. Read in full on 2026-11-14 (2 pages). It says about 7,000 adults with certain immigration statuses move to Healthier Oregon on Oct. 1, 2026, and it lists the statuses. It says people will not lose OHP due to this change. It says all Healthier Oregon members move to OHP Open Card on Jan. 1, 2027. No claim cites this source."
     },
     {
       "id": "K10",
@@ -703,11 +702,11 @@
       "url": "https://www.oregon.gov/oha/HSD/OHP/OHPLetters/ONE-Outreach-Notice-ES.pdf",
       "format": "PDF",
       "kind": "state-explainer",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
+      "date_on_document": "Sample notice dated 08/10/2026; form MED-131 SP",
+      "checked": "2026-11-14",
+      "opened": true,
       "linked_from": "S07",
-      "notes": "Counted only."
+      "notes": "Counted only. Read in full on 2026-11-14 by the AI assistant, in Spanish (3 pages), from the file's text and from an image of each page. No fluent Spanish reader on the project has checked it, and it was not compared line by line with the English notice (S08). It gives the same ways to send information that the guide lists from S08: online, by phone at 800-699-9075, at an ODHS office, by fax at 503-378-5628, by mail to PO Box 14015, Salem, OR 97309, or with a community partner. As the AI assistant reads it, it describes the school way as being a student part-time or more. It prints the community partner address with a typing error (OregonHealthCare.go). No claim cites this source."
     },
     {
       "id": "K11",
@@ -718,10 +717,10 @@
       "url": "https://www.oregon.gov/odhs/news/Documents/hr1-dual-eligible-info-sheet-en.pdf",
       "format": "PDF",
       "kind": "state-explainer",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
-      "notes": "Counted only."
+      "date_on_document": "No date shown",
+      "checked": "2026-11-14",
+      "opened": true,
+      "notes": "Counted only. Read in full on 2026-11-14 (2 pages). It says the OHP work or activity rules do not apply while a person has Medicare, and that SNAP has different rules. It gives 833-947-1694 for questions about SNAP work or activity rules and 855-673-2372 for the Aging and Disability Resource Connection. No claim cites this source."
     },
     {
       "id": "K12",
@@ -732,25 +731,25 @@
       "url": "https://www.oregon.gov/odhs/news/Documents/hr1-disabilities-work-info-sheet-en.pdf",
       "format": "PDF",
       "kind": "state-explainer",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
-      "notes": "Counted only."
+      "date_on_document": "No date shown",
+      "checked": "2026-11-14",
+      "opened": true,
+      "notes": "Counted only. Read in full on 2026-11-14 (3 pages). It says the rules do not apply to people who get OHP through a program based on disability, who get SSI, or who have both Medicare and OHP. It says OHP will use information it already has, including from Social Security. It says the rules do not decide which disability services a person gets. No claim cites this source."
     },
     {
       "id": "K13",
       "guide": "oregon",
-      "title": "SNAP and HR1 partner updates",
+      "title": "H.R. 1 Information for ODHS and OHA Partners",
       "short": "ODHS HR1 partner updates page",
       "publisher": "Oregon Department of Human Services",
       "url": "https://www.oregon.gov/odhs/news/pages/hr1-partner-updates.aspx",
       "format": "Web page",
       "kind": "state-explainer",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
+      "date_on_document": "No date shown; the newest update it lists is Oct. 29, 2026",
+      "checked": "2026-11-14",
+      "opened": true,
       "linked_from": "S07",
-      "notes": "Counted only."
+      "notes": "Counted only. Read in full on 2026-11-14. The page's own title is H.R. 1 Information for ODHS and OHA Partners. It covers federal changes to SNAP and OHP for partner groups. It links to info sheets in 10 languages, a timeline, and toolkits. The pages and files it links to were not read as part of this entry. No claim cites this source."
     },
     {
       "id": "S40",
@@ -1704,23 +1703,108 @@
     "source": "S09",
     "notes": "Paper OHP application (form 7210) links as listed on OHA's how-to-apply page on 2026-11-02. 'native' is OHA's own label in that language where OHA gave one; it is marked up with the matching lang attribute. 'english' is the language name in English. 'hreflang' describes the linked document.",
     "items": [
-      {"hreflang": "en", "native": null, "english": "English", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/he7210.pdf"},
-      {"hreflang": "es", "native": "Solicitud de Cobertura de Salud", "english": "Spanish", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hs7210.pdf"},
-      {"hreflang": "ru", "native": "Заявление на русском языке", "english": "Russian", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hr7210.pdf"},
-      {"hreflang": "vi", "native": "Đơn bằng tiếng Việt", "english": "Vietnamese", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hv7210.pdf"},
-      {"hreflang": "zh-Hans", "native": "简体中文申请表", "english": "Simplified Chinese", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hn7210.pdf"},
-      {"hreflang": "zh-Hant", "native": "俄勒岡州健康計劃福利申請表", "english": "Traditional Chinese", "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/h47210.pdf"},
-      {"hreflang": "so", "native": null, "english": "Somali", "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/hi7210.pdf"},
-      {"hreflang": "ar", "native": null, "english": "Arabic", "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/ha7210.pdf"},
-      {"hreflang": "fa", "native": null, "english": "Farsi", "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/hf7210.pdf"},
-      {"hreflang": "prs", "native": null, "english": "Dari", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h347210.pdf"},
-      {"hreflang": "ps", "native": null, "english": "Pashto", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h167210.pdf"},
-      {"hreflang": "ko", "native": null, "english": "Korean", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hk7210.pdf"},
-      {"hreflang": "kos", "native": null, "english": "Kosraean", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h417210.pdf"},
-      {"hreflang": "pau", "native": null, "english": "Palauan", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h407210.pdf"},
-      {"hreflang": "pon", "native": null, "english": "Pohnpeian", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h267210.pdf"},
-      {"hreflang": "chk", "native": null, "english": "Chuukese", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h277210.pdf"},
-      {"hreflang": "mh", "native": null, "english": "Marshallese", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h337210.pdf"}
+      {
+        "hreflang": "en",
+        "native": null,
+        "english": "English",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/he7210.pdf"
+      },
+      {
+        "hreflang": "es",
+        "native": "Solicitud de Cobertura de Salud",
+        "english": "Spanish",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hs7210.pdf"
+      },
+      {
+        "hreflang": "ru",
+        "native": "Заявление на русском языке",
+        "english": "Russian",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hr7210.pdf"
+      },
+      {
+        "hreflang": "vi",
+        "native": "Đơn bằng tiếng Việt",
+        "english": "Vietnamese",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hv7210.pdf"
+      },
+      {
+        "hreflang": "zh-Hans",
+        "native": "简体中文申请表",
+        "english": "Simplified Chinese",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hn7210.pdf"
+      },
+      {
+        "hreflang": "zh-Hant",
+        "native": "俄勒岡州健康計劃福利申請表",
+        "english": "Traditional Chinese",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/h47210.pdf"
+      },
+      {
+        "hreflang": "so",
+        "native": null,
+        "english": "Somali",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/hi7210.pdf"
+      },
+      {
+        "hreflang": "ar",
+        "native": null,
+        "english": "Arabic",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/ha7210.pdf"
+      },
+      {
+        "hreflang": "fa",
+        "native": null,
+        "english": "Farsi",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/hf7210.pdf"
+      },
+      {
+        "hreflang": "prs",
+        "native": null,
+        "english": "Dari",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h347210.pdf"
+      },
+      {
+        "hreflang": "ps",
+        "native": null,
+        "english": "Pashto",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h167210.pdf"
+      },
+      {
+        "hreflang": "ko",
+        "native": null,
+        "english": "Korean",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hk7210.pdf"
+      },
+      {
+        "hreflang": "kos",
+        "native": null,
+        "english": "Kosraean",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h417210.pdf"
+      },
+      {
+        "hreflang": "pau",
+        "native": null,
+        "english": "Palauan",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h407210.pdf"
+      },
+      {
+        "hreflang": "pon",
+        "native": null,
+        "english": "Pohnpeian",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h267210.pdf"
+      },
+      {
+        "hreflang": "chk",
+        "native": null,
+        "english": "Chuukese",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h277210.pdf"
+      },
+      {
+        "hreflang": "mh",
+        "native": null,
+        "english": "Marshallese",
+        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h337210.pdf"
+      }
     ]
   }
 }
