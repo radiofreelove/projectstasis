@@ -2,6 +2,23 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.6 beta (2026-11-14)
+
+19 topic pages now show where to go next within one screen of the headline. Before this, a reader had to scroll to the end of those pages to find the next step. No fact, source, or existing link changed, and no existing sentence was reworded.
+
+- **The test.** Every topic page in the three guides, 36 in all, was checked in a browser. Within one screen of the headline, can a reader tell what the page is for, the most important thing to do or know (with its date, if it has one), and where to go next? The screen sizes were a 390 by 844 phone and a 1280 by 900 desktop. 16 pages passed. 20 did not show where to go next.
+- **The new rules** (`rules`, `utah-rules`, `washington-rules`): a link to the 1-minute check now sits under the purpose line. The "Next step" box at the end of each page stays.
+- **Reasons you may not have to** (`reasons`, `utah-reasons`, `washington-reasons`): the short version now ends with a link to the 1-minute check.
+- **The state sent me a letter** (`letter`, `utah-letter`, `washington-letter`): the short version now ends with "Missed the due date?" and a link to the turned-down page. The box at the end of each page stays.
+- **I was turned down** (`denied`, `utah-denied`, `washington-denied`): the short version now ends with links to How to apply and to free help and phone numbers.
+- **Health conditions** (`health`, `utah-health`, `washington-health`): the short version now ends with a link to every reason and how to tell the state.
+- **Immigration status:** Oregon's short version (`immigration`) now ends with a link to free help. The Utah and Washington short versions (`utah-immigration`, `washington-immigration`) now repeat the hearing sentence that is already lower on each page, with its link to the turned-down page. The Utah sentence carries the 90-day deadline. Each repeated sentence carries the same claim as the original (U-HEARING-90, WA-DEN-02), and the original stays in place.
+- **Past medical bills, Oregon** (`bills`): the "What this means for you" box, with its link to How to apply, moved up. It now sits above the list of who gets up to 2 months.
+- **Not changed: Past medical bills, Utah** (`utah-bills`). On the 390 by 844 phone its link to How to apply starts 10 px below one screen. The box that holds the link is already the first thing after the short version, and its heading is in view. It passes on the desktop size.
+- **Passed, and not changed:** the three How to apply pages, the three 1-minute checks, the three hours logs, the three Free help pages, the three Words on your letters pages, and Washington's Past medical bills page.
+- **What the test could not fix.** On a 390 by 844 phone the site header, the menu, and the "How much to show" strip fill about 600 px, so the headline starts near the bottom of the first screen on every page. That is why the test measures from the headline. The header and the strip did not change.
+- [docs/reading-level.md](docs/reading-level.md) and [docs/testing-browser.md](docs/testing-browser.md) are regenerated. No page's reading grade went up. The browser report in the repository was older than 0.3.4 beta; its counts now match the 0.3.4 and 0.3.5 entries below.
+
 ## 0.3.5 beta (2026-11-14)
 
 
