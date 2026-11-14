@@ -1,7 +1,7 @@
 {
-  "registry_version": "2026-11-13",
+  "registry_version": "2026-11-14",
   "checked_by": "Project maintainer, with AI research assistance (see docs/research-log.md)",
-  "notes": "Every external link on the site must appear here. 'opened' means the document itself was read on the 'checked' date. 'linked_from' means the address came from another official source and was not opened by our tools. 'guide' says which guide may list or link to a source: a guide's name ('oregon', 'washington', 'utah'), or 'all' for sources any guide may use (federal rules, court papers, standards, national groups, the host). The build goes by 'guide', never by the ID. Kind 'state-explainer' entries are counted for each guide, on its About page, to support the claim that the state explains the rules across more than a dozen documents. The build checks the count only for a guide whose words make that claim; the Washington guide has 9 and does not make it. IDs that start with U are Utah sources, added on 2026-11-10; the letter is only a habit that keeps IDs easy to read. IDs that start with WA are Washington sources, added on 2026-11-12 from a research dossier. A Washington entry with 'opened': false is a real source that was read only in part, through search extracts, or not at all; its 'notes' say which. Until the source review checkpointed for Nov. 26, 2026 is complete, the Washington claims that rest on them are drafting claims (see the 'rules' in data/claims.json and docs/research-log.md). On 2026-11-13 the AI assistant read WA12 to WA24 each in full, and the Utah entries U15S, U19S, U34, U35, and U36 each in full; each entry's 'checked' date and 'notes' record that read and what it covered (for a web page, the page's own content, not the site's menus). WA25, U32, and U38 stay 'opened': false, and their notes say what was and was not read. A read by the AI assistant is not the source review by a person, which is still checkpointed. Kind 'state-rule' is a section of a state's administrative code. 'link_check': 'by hand' marks an address whose site blocks automated tools: the weekly link check lists it for a person and does not request it.",
+  "notes": "Every external link on the site must appear here. 'opened' means the document itself was read on the 'checked' date. 'linked_from' means the address came from another official source and was not opened by our tools. 'guide' says which guide may list or link to a source: a guide's name ('oregon', 'washington', 'utah'), or 'all' for sources any guide may use (federal rules, court papers, standards, national groups, the host). The build goes by 'guide', never by the ID. Kind 'state-explainer' entries are counted for each guide, on its About page, to support the claim that the state explains the rules across more than a dozen documents. The build checks the count only for a guide whose words make that claim; the Washington guide has 9 and does not make it. IDs that start with U are Utah sources, added on 2026-11-10; the letter is only a habit that keeps IDs easy to read. IDs that start with WA are Washington sources, added on 2026-11-12 from a research dossier. A Washington entry with 'opened': false is a real source that was read only in part, through search extracts, or not at all; its 'notes' say which. Until the source review checkpointed for Nov. 26, 2026 is complete, the Washington claims that rest on them are drafting claims (see the 'rules' in data/claims.json and docs/research-log.md). Kind 'state-rule' is a section of a state's administrative code. 'link_check': 'by hand' marks an address whose site blocks automated tools: the weekly link check lists it for a person and does not request it.",
   "sources": [
     {
       "id": "S01",
@@ -767,6 +767,20 @@
       "notes": "Read through CourtListener's records (its search service, not this web page, which tells automated tools not to load it) on 2026-11-10: entries 139 to 151. Entry 149 (Oct. 29, 2026) enters judgment and dismisses the case. Entries 150 and 151 (Nov. 6, 2026) are a hearing transcript and its notice. No notice of appeal appeared. The plaintiffs named in entry 140 include Oregon and do not include Utah. CourtListener can lag the court's own system (PACER)."
     },
     {
+      "id": "S41",
+      "guide": "all",
+      "title": "SMD# 26-006, Optional Hold Harmless Period for Community Engagement Implementation (State Medicaid Director letter)",
+      "short": "Federal letter to state Medicaid directors, Nov. 13, 2026 (SMD# 26-006)",
+      "publisher": "Centers for Medicare & Medicaid Services",
+      "url": "https://www.medicaid.gov/Federal-Policy-Guidance/Downloads/smd26006.pdf",
+      "format": "PDF",
+      "kind": "federal-letter",
+      "date_on_document": "Nov. 13, 2026",
+      "checked": "2026-11-14",
+      "opened": true,
+      "notes": "Read in full on 2026-11-14: 4 pages, 3 footnotes, signed by Daniel Brillman, Deputy Administrator and Director. Offers every state an optional hold harmless period through June 30, 2027. A state that elects it may suspend denials of eligibility and disenrollments when an applicable individual does not demonstrate compliance with community engagement, for applications received and renewals initiated through and including June 30, 2027, or a shorter period the state implements. A state may use the period only if it assesses whether each individual meets the requirement (including deemed compliance) or is excluded, for all relevant applications and renewals in the period. The period covers only conditioning eligibility on community engagement (section 1902(xx)(1) of the Act, 42 C.F.R. 435.559); it does not apply to any other part of implementing community engagement by Jan. 1, 2027, or to denials and disenrollments on other eligibility criteria, such as age or household income. A state requests the period in its mitigation plan and must have CMS approval before using it; a state that intends to use it from Jan. 1, 2027 is asked to notify CMS by Dec. 11, 2026. For applications submitted and renewals initiated after the period ends in a state, the state must deny or terminate eligibility for not meeting the requirement, after the noncompliance procedures at 42 C.F.R. 435.558. The letter does not name any state that has elected the period. Terms: the letter calls the requirement 'community engagement' and says CMS refers to Public Law No. 119-21 as the 'Working Families Tax Cut' (WFTC) legislation. Footnote 3 cites Massachusetts v. Oz as No. 26-12692-RGS; the order in this registry (S28) carries No. 1:26-cv-12962. medicaid.gov answered 403 to a plain automated request on 2026-11-14; the PDF was fetched with a web fetch tool and its text extracted with pdftotext. The CMS press release of the same day is not registered: the letter is the primary source and no page links to the release."
+    },
+    {
       "id": "U01",
       "guide": "utah",
       "title": "Community Engagement Requirement",
@@ -986,10 +1000,10 @@
       "format": "PDF",
       "kind": "state-form",
       "date_on_document": "DHHS 61MED 04/01/2026",
-      "checked": "2026-11-13",
-      "opened": true,
+      "checked": "2026-11-10",
+      "opened": false,
       "linked_from": "U14",
-      "notes": "Address listed on U14. Read in full on 2026-11-13 by the AI assistant, in Spanish: the text of all 27 pages, including the cover sheet, the application (sections A to O), the page on what happens next, rights and responsibilities, changes to report, and attachments A to D. Four of the pages are printed as intentionally blank. Images in the file were not viewed, and attachment C is in English. No fluent Spanish reader on the project has checked it, and it was not compared line by line with the English form (U15). It shows the same form number and date as U15. No section asks about the work or activity rules. The cover sheet gives fax number 1-877-313-4717 and the return page gives 1-888-522-9505. The rights page says a person has 90 days to ask for a hearing, and that benefits may continue if the request is made within 10 days of the notice date. No claim cites this source."
+      "notes": "Address listed on U14. On 2026-11-10 the address loaded and the form showed the same number and date as the English form (U15). It was not read, and no Spanish reader has checked it."
     },
     {
       "id": "U16",
@@ -1057,10 +1071,10 @@
       "format": "PDF",
       "kind": "state-form",
       "date_on_document": "Rev. 03/2025",
-      "checked": "2026-11-13",
-      "opened": true,
+      "checked": "2026-11-10",
+      "opened": false,
       "linked_from": "U18",
-      "notes": "Address listed on U18. Read in full on 2026-11-13 by the AI assistant, in Spanish (3 pages). No fluent Spanish reader on the project has checked it. It shows DWS-ESD 490-SP, Rev. 03/2025, the same revision as the English form (U19). It gives 90 days from the notice date to ask for a hearing; for medical assistance, benefits may continue if the request is made within 15 days of the notice date; phone 1-877-837-3247, fax 877-824-6534, and the mailing address PO Box 143245, Salt Lake City, UT 84114-3245; and it says not to send the request through myCase. No claim cites this source."
+      "notes": "Address listed on U18. On 2026-11-10 the address loaded and the form showed DWS-ESD 490-SP, Rev. 03/2025, the same revision as the English form (U19). It was not read, and no Spanish reader has checked it."
     },
     {
       "id": "U20",
@@ -1243,7 +1257,7 @@
       "checked": "2026-11-10",
       "opened": false,
       "linked_from": "U14",
-      "notes": "Address listed on U14. Not read. On 2026-11-13 the address answered 404 with a page that only forwards the browser to another myCase address, which was not requested. It is a sign-in site, not a document. On 2026-11-11 U14's \"Apply Online\" link still pointed here. Check by hand.",
+      "notes": "Address listed on U14. A login page, so it was not opened. On 2026-11-11 U14's \"Apply Online\" link still pointed here, and the address showed myCase help text, but it answered 404 to the weekly link check. Check by hand.",
       "link_check": "by hand"
     },
     {
@@ -1269,11 +1283,11 @@
       "url": "https://www.healthcare.gov/",
       "format": "Web site",
       "kind": "federal-page",
-      "date_on_document": "No date shown",
-      "checked": "2026-11-13",
-      "opened": true,
+      "date_on_document": "Not checked",
+      "checked": "2026-11-10",
+      "opened": false,
       "linked_from": "U14",
-      "notes": "Named on U14 as the place for private plans. The home page at this address was read in full on 2026-11-13. No other page of the site was read. It offers ways to apply for coverage, log in, browse plans, and find local help, and gives the phone number 1-800-318-2596. No claim cites this source."
+      "notes": "Named on U14 as the place for private plans."
     },
     {
       "id": "U35",
@@ -1284,11 +1298,11 @@
       "url": "https://211utah.org/",
       "format": "Web site",
       "kind": "helper",
-      "date_on_document": "No date shown",
-      "checked": "2026-11-13",
-      "opened": true,
+      "date_on_document": "Not checked",
+      "checked": "2026-11-10",
+      "opened": false,
       "linked_from": "U21",
-      "notes": "Address listed on U21. The home page at this address was read in full on 2026-11-13. No other page of the site was read. It says 211 Utah is free and confidential, a service of the United Ways of Utah; dial 211 or 888-826-9790, Monday to Sunday, 8:30 a.m. to 4:45 p.m.; text a zip code to 801-845-2211 on weekdays. No claim cites this source."
+      "notes": "Address listed on U21."
     },
     {
       "id": "U36",
@@ -1299,11 +1313,11 @@
       "url": "https://medicaid.utah.gov/emergency-medicaid/",
       "format": "Web page",
       "kind": "state-page",
-      "date_on_document": "No date shown",
-      "checked": "2026-11-13",
-      "opened": true,
+      "date_on_document": "Not checked",
+      "checked": "2026-11-10",
+      "opened": false,
       "linked_from": "U21",
-      "notes": "Address listed on U21. Read in full on 2026-11-13. The page says the Emergency Medical Program for non-citizens covers only a specific range of emergency services for a life-threatening condition, including delivery of a child but not post-natal care; applicants must be Utah residents; neither U.S. citizenship nor a Social Security number is required; and coverage is limited to the month in which the emergency occurred. No claim cites this source."
+      "notes": "Address listed on U21."
     },
     {
       "id": "U37",
@@ -1328,11 +1342,11 @@
       "url": "https://obbba-support.medicaid.utah.gov/wp-content/uploads/2026/10/DiagnosesforMedicallyFrail_10.2026-1.pdf",
       "format": "PDF",
       "kind": "state-explainer",
-      "date_on_document": "October 8, 2026",
+      "date_on_document": "Not checked (file name says 10.2026)",
       "checked": "2026-11-10",
       "opened": false,
       "linked_from": "U03",
-      "notes": "Address listed on U03. Counted only. Not used for claims. Not read in full. On 2026-11-13 the file was downloaded (514 pages, about 23,800 lines of text). Read: the title page (\"Medically Frail Codeset, Utah Medicaid, October 8, 2026\"), the definitions of Tier 1 and Tier 2 and of the service code types, the section headings, the first two pages, and the last page. The code rows themselves were not read line by line."
+      "notes": "Address listed on U03. Counted only. Not used for claims."
     },
     {
       "id": "WA01",
@@ -1400,9 +1414,9 @@
       "format": "PDF",
       "kind": "state-explainer",
       "date_on_document": "June 2026",
-      "checked": "2026-11-13",
+      "checked": "2026-11-12",
       "opened": true,
-      "notes": "Read in full on 2026-11-12 from an identical copy hosted by the hospital association after the HCA address answered 403. On 2026-11-13 the HCA address answered, and the PDF there (3 pages, dated June 2026) was read in full. It lists the same eligibility test, the same 13 exemptions, and the same five ways to meet the rule as this registry and the guide record. It was not compared line by line with the hospital association copy, which was not fetched again. HCA's work requirements page (WA22) lists six ways, adding work of at least 80 hours a month; see docs/corrections.md, Washington item 2. This is the single most load-bearing Washington source."
+      "notes": "Read in full from an identical copy hosted by the hospital association after the canonical HCA URL returned HTTP 403 to the crawler. A person must re-open the canonical HCA PDF and confirm the text matches before merge (section 5). This is the single most load-bearing Washington source in the dossier."
     },
     {
       "id": "WA06",
@@ -1498,9 +1512,9 @@
       "format": "Web page",
       "kind": "state-page",
       "date_on_document": "Revised April 8, 2026",
-      "checked": "2026-11-13",
-      "opened": true,
-      "notes": "Read in full on 2026-11-13: the page's main content, which reprints WAC 182-504-0120 and WAC 182-504-0125 and gives clarifying information in two tabs (MAGI cases and Classic cases). The page shows a revised date of April 8, 2026. A person reports a change in Healthplanfinder under Quick Links, \"Report a Change in Income or Household\". By phone to the Healthplanfinder Customer Support Center at 1-855-923-4633 or to MEDS at 1-800-562-3022. By mail to PO Box 946, Olympia WA 98507. Or by fax to 360-841-7620. Classic cases report in Washington Connection, at 1-877-501-2233, by mail to DSHS, or by fax to 1-888-338-7410. The read confirms claim WA-APP-08."
+      "checked": "2026-11-12",
+      "opened": false,
+      "notes": "Read through search extracts only. Report a change in Healthplanfinder under Quick Links, by phone to the Healthplanfinder Customer Support Center at 1-855-923-4633 or to MEDS at 1-800-562-3022, by mail to PO Box 946, Olympia WA 98507, or by fax to 360-841-7620. Classic cases report in Washington Connection or at 1-877-501-2233. Must be read in full before the how to apply claims that cite it are published."
     },
     {
       "id": "WA13",
@@ -1512,9 +1526,9 @@
       "format": "Web page",
       "kind": "state-page",
       "date_on_document": "No date shown",
-      "checked": "2026-11-13",
-      "opened": true,
-      "notes": "Read in full on 2026-11-13. Key points: after an application or renewal, a letter may ask for more information (a Post Eligibility Review, or PER); HCA staff confirm eligibility based on income, citizenship, or lawful presence. A person has 15 days from the date the letter was mailed, and may ask for more time by email or at 1-800-562-3022. A person must answer even if they just updated their information. Coverage may close if they do not. Documents can be uploaded in the Healthplanfinder document center, emailed, faxed to 1-855-867-4467, or mailed. The read confirms claims WA-APP-09, WA-LTR-02, WA-WRD-05, and WA-LOG-03."
+      "checked": "2026-11-12",
+      "opened": false,
+      "notes": "Read through search extracts only. Key points: a person must answer a verification letter even if they just updated their information, coverage may close if they do not, and documents can be uploaded in the Healthplanfinder document center."
     },
     {
       "id": "WA14",
@@ -1525,80 +1539,80 @@
       "url": "https://www.atg.wa.gov/washington-attorney-generals-federal-litigation-tracker",
       "format": "Web page",
       "kind": "state-page",
-      "date_on_document": "Says \"As of Nov. 5, 2026\"",
-      "checked": "2026-11-13",
-      "opened": true,
-      "notes": "Read in full on 2026-11-13 (the introduction and all 85 case entries). Item 62 confirms Washington joined Commonwealth of Massachusetts v. Oz on June 29, 2026 with 23 other attorneys general and two governors, and links the filed complaint and the Attorney General's news release on the ruling. Together with shared sources S28 and S40, this supports the statement that Washington is one of the plaintiff states. Also on the page, and not on any guide page: item 85, State of Oregon v. Oz (D. Or., filed Nov. 5, 2026 with three other states), a challenge to the work requirements themselves; and item 83, a motion to intervene filed Oct. 16, 2026 in Neighborhood House v. Department of Health and Human Services, where a Sept. 30, 2026 order requires continued Medicaid funding for certain noncitizens who get SSI."
+      "date_on_document": "Updated through October 27, 2026 (as crawled)",
+      "checked": "2026-11-12",
+      "opened": false,
+      "notes": "Confirms Washington joined the case on June 29, 2026 with 23 other attorneys general and two governors. Together with the complaint caption (which names Washington as a plaintiff) and shared sources S28 and S40, this establishes that Washington is one of the plaintiff states for the guide's court pages."
     },
     {
       "id": "WA15",
       "guide": "washington",
-      "title": "WAC 182-505-0250, Washington apple health: MAGI-based adult medical",
-      "short": "The state rule for MAGI-based adult coverage, which HCA calls Apple Health for Adults: age 19 to 64, no Medicare, and income at or below 133 percent of the federal poverty level. A version that takes effect January 1, 2027 adds 6-month coverage periods.",
+      "title": "WAC 182-505-0250, Apple Health for Adults",
+      "short": "The state rule defining the Apple Health for Adults group: age 19 to 64, no Medicare, Washington resident, income under 138 percent of the federal poverty level.",
       "publisher": "Legislature",
       "url": "https://app.leg.wa.gov/wac/default.aspx?cite=182-505-0250",
       "format": "Web page",
       "kind": "state-rule",
-      "date_on_document": "Two versions shown: effective until January 1, 2027 (filed July 29, 2014), and effective January 1, 2027 (WSR 26-19-026, filed September 8, 2026)",
-      "checked": "2026-11-13",
-      "opened": true,
-      "notes": "Read in full on 2026-11-13 on the Legislature's site, both versions shown there. Both say: age 19 or older and under 65. Not entitled to or enrolled in Medicare Part A or B. Not eligible for certain mandatory coverage. Meets the citizenship and immigration rule (WAC 182-503-0535) and the general eligibility rule (WAC 182-503-0505). Net countable income at or below 133 percent of the federal poverty level. The section does not use the figure 138 percent that HCA's fact sheet (WA05) uses, and it reaches residency only through the general eligibility rule. The version effective January 1, 2027 adds a 6-month certification period, 12 months for American Indians and Alaska Natives. The registry title was corrected to the rule's own caption on 2026-11-13. The caption has a dash where the title has a colon. The read confirms claim WA-WRD-02. It does not confirm the 138 percent figure in claim WA-CHK-01 as written."
+      "date_on_document": "Not checked",
+      "checked": "2026-11-12",
+      "opened": false,
+      "notes": "The eligibility list is quoted in WA05. The rule text itself must be read on the Legislature's site before merge."
     },
     {
       "id": "WA16",
       "guide": "washington",
-      "title": "WAC 182-504-0035, Washington apple health: Renewals",
-      "short": "The state rule on renewals. A person whose coverage ends for not renewing has 90 days from the termination date to send a completed renewal. Until January 1, 2027 the rule says coverage is then restored without a gap if the person is still eligible. The version that takes effect January 1, 2027 says no new application is needed and no longer says \"without a gap\".",
+      "title": "WAC 182-504-0035, Washington Apple Health renewal reconsideration",
+      "short": "The state rule giving a person 90 days after a renewal termination to send a completed renewal and get coverage back without a gap, if still eligible.",
       "publisher": "Legislature",
       "url": "https://app.leg.wa.gov/wac/default.aspx?cite=182-504-0035",
       "format": "Web page",
       "kind": "state-rule",
-      "date_on_document": "Two versions shown: effective September 6, 2025 until January 1, 2027, and effective January 1, 2027 (WSR 26-19-026, filed September 8, 2026)",
+      "date_on_document": "Effective September 6, 2025",
       "checked": "2026-11-13",
-      "opened": true,
-      "notes": "Read in full on 2026-11-13 on the Legislature's site, both versions shown there. Subsection (2)(b), for MAGI programs, until January 1, 2027: \"you have 90 days from the termination date to give us a completed renewal. If we decide you are still eligible to get apple health coverage, we will restore your apple health without a gap in coverage.\" The same subsection effective January 1, 2027: \"you have 90 days from the termination date to give us a completed renewal without requiring a new application.\" The sentence on restoring coverage without a gap is not in the 2027 version for MAGI programs. Both versions: the agency reconsiders without a new application when it gets the needed information within 30 days of the date on the termination notice, or when a hearing is requested within 90 days of the date on the renewal denial letter and a judge finds the decision wrong. The 2027 version adds renewals every six months for Apple Health for Adults, every 12 months for American Indians and Alaska Natives. The registry title was corrected to the rule's own caption on 2026-11-13. Claim WA-DEN-01 and the page text it feeds were corrected on 2026-11-13 to match both versions."
+      "opened": false,
+      "notes": "Read through search extracts only. Also covers reconsideration without a new application when information arrives within 30 days of the termination notice. To be read in full in the source review checkpointed for Nov. 26, 2026."
     },
     {
       "id": "WA17",
       "guide": "washington",
-      "title": "WAC 182-504-0130, Washington apple health: Continued coverage pending an appeal",
+      "title": "WAC 182-504-0130, Continued coverage pending a hearing",
       "short": "The state rule on keeping coverage while an appeal runs: ask for the hearing by the tenth day after the notice was sent or the last day of the month before the action takes effect.",
       "publisher": "Legislature",
       "url": "https://app.leg.wa.gov/wac/default.aspx?cite=182-504-0130",
       "format": "Web page",
       "kind": "state-rule",
-      "date_on_document": "Effective December 1, 2016 (WSR 16-22-060)",
+      "date_on_document": "Not checked",
       "checked": "2026-11-13",
-      "opened": true,
-      "notes": "Read in full on 2026-11-13 on the Legislature's site. To qualify for continued coverage, a person must request a hearing no later than the tenth day after the agency sent the notice, or the last day of the month before the action takes effect. A deadline that falls on a Saturday, Sunday, or designated holiday extends to 5:00 p.m. the next business day. Subsection (5), which no guide page states: a person cannot receive continued coverage if the action was due solely to a change in statute, federal regulation, or administrative rule, unless there is a question about whether the person is in the class of people affected by the change. The registry title was corrected to the rule's own caption on 2026-11-13. The read confirms claim WA-DEN-04."
+      "opened": false,
+      "notes": "A deadline that falls on a weekend or designated holiday extends to 5:00 p.m. the next business day. To be read in full in the source review checkpointed for Nov. 26, 2026."
     },
     {
       "id": "WA18",
       "guide": "washington",
-      "title": "WAC 182-526-0200, Enrollee appeals of a managed care organization action",
+      "title": "WAC 182-526-0200, Managed care organization hearing timelines",
       "short": "The state rule requiring a person to finish the health plan's grievance and appeal process first, then ask for a hearing within 120 calendar days of the plan's notice of resolution.",
       "publisher": "Legislature",
       "url": "https://app.leg.wa.gov/wac/default.aspx?cite=182-526-0200",
       "format": "Web page",
       "kind": "state-rule",
-      "date_on_document": "Effective December 23, 2017 (WSR 17-23-201)",
-      "checked": "2026-11-13",
-      "opened": true,
-      "notes": "Read in full on 2026-11-13 on the Legislature's site. An enrollee must exhaust the managed care organization's grievance and appeal process before requesting a hearing, and must request the hearing within 120 calendar days of the date of receipt of the organization's notice of resolution. To keep services going during the hearing, the request must be made within ten days of the date of that notice. Applies when the decision being challenged was made by a managed care organization rather than by HCA. The registry title was corrected to the rule's own caption on 2026-11-13. The read confirms claim WA-DEN-03; the rule counts the 120 days from receipt of the notice."
+      "date_on_document": "Not checked",
+      "checked": "2026-11-12",
+      "opened": false,
+      "notes": "Applies when the decision being challenged was made by a managed care organization rather than by HCA. To be read in full in the source review checkpointed for Nov. 26, 2026."
     },
     {
       "id": "WA19",
       "guide": "washington",
-      "title": "WAC 182-503-0080, Washington apple health: Application denials and withdrawals",
-      "short": "The state rule on application denials. The agency reconsiders a denial without a new application when a person asks for a hearing within 90 days of the date on the denial letter and a judge finds the denial wrong, or when the needed information arrives within 30 days of the date on the denial notice.",
+      "title": "WAC 182-503-0080, Hearing rights for application denials",
+      "short": "The state rule giving a person 90 days from a denial to ask for a hearing, with reconsideration if the agency was wrong.",
       "publisher": "Legislature",
       "url": "https://app.leg.wa.gov/wac/default.aspx?cite=182-503-0080",
       "format": "Web page",
       "kind": "state-rule",
       "date_on_document": "Effective November 3, 2019",
-      "checked": "2026-11-13",
-      "opened": true,
-      "notes": "Read in full on 2026-11-13 on the Legislature's site. The 90 days appears in subsection (4)(c): the agency reconsiders a denial without a new application when the person requests a hearing within ninety days of the date on the denial letter and an administrative law judge or HCA review judge decides the denial was wrong. Subsection (5) says a person who disagrees can ask for a hearing. The registry title was corrected to the rule's own caption on 2026-11-13. The read confirms claim WA-DEN-05; the 90 days run from the date on the denial letter."
+      "checked": "2026-11-12",
+      "opened": false,
+      "notes": "Read through search extracts only. To be read in full in the source review checkpointed for Nov. 26, 2026."
     },
     {
       "id": "WA20",
@@ -1610,23 +1624,23 @@
       "format": "PDF",
       "kind": "state-explainer",
       "date_on_document": "January 2026",
-      "checked": "2026-11-13",
-      "opened": true,
-      "notes": "FLAG, naming rule exception: the document's own published title contains the longer form of the state name. It is quoted exactly here because it is a source title. Guide wording must not copy it. Read in full on 2026-11-13: the text of all 46 slides. Charts and maps that are images were not read. The address is verified: it answered and served the deck on 2026-11-13. The first slide is headed \"Impact of federal budget on Medicaid in Washington State, January 2026\". Slide 8 says HCA anticipates the noncitizen eligibility changes, effective Oct. 1, 2026, could impact over 30,000 people currently enrolled in Apple Health, and lists four other programs: Apple Health Expansion, 1332 waiver coverage on the Exchange, Emergency Medical, and Pregnancy or After-Pregnancy Coverage. The deck describes the federal work requirements as applying to adults aged 19-65 and as due by December 31, 2026, and says over 620,000 people will be impacted by work requirements and changes to redeterminations. The read confirms claims WA-IMM-02 and WA-IMM-03."
+      "checked": "2026-11-12",
+      "opened": false,
+      "notes": "FLAG, naming rule exception: the document's own published title contains the longer form of the state name. It is quoted exactly here because it is a source title. Guide wording must not copy it. Read through search extracts only. The URL is as found in HCA's site index and must be re-verified when the deck is read in full."
     },
     {
       "id": "WA21",
       "guide": "washington",
-      "title": "Medically Frail Exclusion from Community Engagement Requirements (memo to health care providers)",
-      "short": "HCA's August 21, 2026 memo to providers on how medical frailty will be decided for the work rules. The code list is a separate file and is not part of this memo.",
+      "title": "H.R.1 medically frail memo to providers, with medically frail code list",
+      "short": "HCA's August 21, 2026 memo to providers on how medical frailty is decided for the work rules, with a published list of qualifying codes.",
       "publisher": "Health Care Authority",
       "url": "https://www.hca.wa.gov/assets/program/hr1-medical-frailty-memo.pdf",
       "format": "PDF",
       "kind": "state-explainer",
       "date_on_document": "August 21, 2026",
-      "checked": "2026-11-13",
-      "opened": true,
-      "notes": "Read in full on 2026-11-13 (4 pages). The address is verified: it answered and served the memo on 2026-11-13. The memo says: the Washington Healthplanfinder application will include a medical screener where a person can attest, under penalty of perjury, that they are medically frail. A code set is used in the background to verify the attestation. Self-declaration is allowed for eligibility decisions through 2027. Beginning in 2028, people may need to provide documentation when data sources cannot confirm their medical frailty. The memo names a diagnosis code list and method from the Harvard School of Public Health and lists ten Z codes. It does not state a 12-month look-back. The memo was written after the federal rule of June 1, 2026 and before the court order of Oct. 29, 2026 (S28). The medically frail code list is a separate spreadsheet on HCA's site, linked from WA22. It is not in this registry and was not read. No claim cites this source. Nothing from it is on a page."
+      "checked": "2026-11-12",
+      "opened": false,
+      "notes": "Not opened. The URL was seen in a secondary source and is unverified. Secondary descriptions say a screening question is answered in Washington Healthplanfinder, self-attestation is accepted through 2027, and the state checks its own records first from January 2028 with a 12-month look-back. None of that may be published until this memo and the code list are read in full."
     },
     {
       "id": "WA22",
@@ -1638,9 +1652,9 @@
       "format": "Web page",
       "kind": "state-explainer",
       "date_on_document": "No date shown",
-      "checked": "2026-11-13",
-      "opened": true,
-      "notes": "Read in full on 2026-11-13. The fetch returned the whole page this time. The page lists six ways to meet the rule: at least $580 in monthly household income. Working at least 80 hours a month. School at least half-time. A work program at least 80 hours a month. Community service at least 80 hours a month. Or a mix totaling at least 80 hours a month. It says the $580 is monthly household MAGI income. It separates \"exemptions\" (under 19, enrolled in Medicare Part A or B, enrolled in another Apple Health program, and four short-term hardships) from nine \"current-month exclusions\". It says a dependent child is under 14 through the month they turn 14, that the SNAP and TANF reasons depend on meeting those programs' work requirements, and that self-attestation of medical frailty is accepted through 2027. It words the medical frailty reason as \"medically frail and are unable to work\". It names one unemployment test for the hardship (1.5 times the national rate) and does not name 8 percent. At renewal it says a person must meet a requirement option in \"any one month during your certification period\". The screener survey it links to is a separate form and was not opened. The sample client notice and the fact sheet it links to were opened on the same day. No claim cites this source yet. Several of these points differ from what the guide now says. See docs/corrections.md, Washington items 2, 3, 4, 8, and 9."
+      "checked": "2026-11-12",
+      "opened": false,
+      "notes": "The text fetch returned an empty page on 2026-11-12, so the page's own wording has not been read. This is the page most likely to change the checker design. It is to be read in full in the source review checkpointed for Nov. 26, 2026."
     },
     {
       "id": "WA23",
@@ -1651,10 +1665,10 @@
       "url": "https://www.hca.wa.gov/about-hca/programs-and-initiatives/apple-health-medicaid/apple-health-expansion",
       "format": "Web page",
       "kind": "state-page",
-      "date_on_document": "No date shown on the page",
+      "date_on_document": "Updated December 2025",
       "checked": "2026-11-13",
-      "opened": true,
-      "notes": "Read in full on 2026-11-13. The page says: \"Enrollment is limited and the enrollment cap has been met.\" It links to an HCA announcement for updates. It says that from January 1, 2027 the program moves from managed care to coverage without managed care. It lists other coverage to check: Apple Health for Kids, Apple Health for pregnant individuals, After-Pregnancy Coverage, Alien Emergency Medical, Medical Care Services, and Family Planning Only. The page itself does not say the program is state-funded and does not show a December 2025 date. Its privacy section lists Apple Health Expansion among \"Apple Health programs that get federal funding\". Those two points are on the linked announcement (\"Apple Health Expansion enrollment cap\", dated Feb. 20, 2026, with an update headed December 2025, which says enrollment is closed and that the budget proposal continues state funds for the program). The announcement was read on 2026-11-13 and is not in this registry. The read confirms that enrollment is closed; it does not confirm claim WA-IMM-04 as written."
+      "opened": false,
+      "notes": "Read through search extracts only. As of the December 2025 update, enrollment was closed because the enrollment limit was met. Must be re-read before the immigration page is built, because closed enrollment changes what the guide may suggest."
     },
     {
       "id": "WA24",
@@ -1666,9 +1680,9 @@
       "format": "Web page",
       "kind": "federal-page",
       "date_on_document": "June 1, 2026",
-      "checked": "2026-11-13",
-      "opened": true,
-      "notes": "Read in full on 2026-11-13. The registry address redirects to the same page at https. The fact sheet lists the short-term hardship kinds a state may offer: inpatient or certain other medical services. Travel outside the community for certain care not available at home, for the person or a dependent. A county with an unemployment rate at or above 8 percent or 1.5 times the national average. And a county where certain national emergencies or disasters exist. The rule itself is in the registry as shared source S27 and stays the primary federal source. The read confirms claim WA-RULE-09."
+      "checked": "2026-11-12",
+      "opened": false,
+      "notes": "Read in part through search extracts. The rule itself is already in the registry as shared source S27 and stays the primary federal source. This fact sheet is proposed for the hardship category list only. The build may prefer to cite S27 alone."
     },
     {
       "id": "WA25",
@@ -1682,7 +1696,7 @@
       "date_on_document": "Filed June 29, 2026",
       "checked": "2026-11-12",
       "opened": false,
-      "notes": "Not read at this address. On 2026-11-13 the address answered 403 to two automated requests, and no further attempt was made. On the same day the text of the filed complaint (Document 1, filed 06/29/26, 74 pages, case 1:26-cv-12962) was read in full by the AI assistant from the copy the Washington Attorney General links at item 62 of its litigation tracker (WA14). That copy carries the court's filing stamp on every page. Its caption, paragraph 6, and paragraph 33 name the State of Washington as a plaintiff, and Washington's Attorney General signs it. One slide reproduced as an image in paragraph 79 came through as poor text. The exhibits are not part of that file and were not read. This entry stays 'opened': false until a person opens this address in a browser and confirms it serves the same filing, or the owner rules that the Attorney General's copy counts. The judgment, order, and docket are tracked as shared sources S28, S29, and S40. This entry exists so Washington claims can cite Washington's own plaintiff status without relying on another guide's sources."
+      "notes": "Read through search extracts, including the caption and plaintiff list. The judgment, order, and docket are already tracked as shared sources S28, S29, and S40. This entry exists so Washington claims can cite Washington's own plaintiff status without relying on another guide's sources."
     }
   ],
   "application_languages": {
@@ -1690,108 +1704,23 @@
     "source": "S09",
     "notes": "Paper OHP application (form 7210) links as listed on OHA's how-to-apply page on 2026-11-02. 'native' is OHA's own label in that language where OHA gave one; it is marked up with the matching lang attribute. 'english' is the language name in English. 'hreflang' describes the linked document.",
     "items": [
-      {
-        "hreflang": "en",
-        "native": null,
-        "english": "English",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/he7210.pdf"
-      },
-      {
-        "hreflang": "es",
-        "native": "Solicitud de Cobertura de Salud",
-        "english": "Spanish",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hs7210.pdf"
-      },
-      {
-        "hreflang": "ru",
-        "native": "Заявление на русском языке",
-        "english": "Russian",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hr7210.pdf"
-      },
-      {
-        "hreflang": "vi",
-        "native": "Đơn bằng tiếng Việt",
-        "english": "Vietnamese",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hv7210.pdf"
-      },
-      {
-        "hreflang": "zh-Hans",
-        "native": "简体中文申请表",
-        "english": "Simplified Chinese",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hn7210.pdf"
-      },
-      {
-        "hreflang": "zh-Hant",
-        "native": "俄勒岡州健康計劃福利申請表",
-        "english": "Traditional Chinese",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/h47210.pdf"
-      },
-      {
-        "hreflang": "so",
-        "native": null,
-        "english": "Somali",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/hi7210.pdf"
-      },
-      {
-        "hreflang": "ar",
-        "native": null,
-        "english": "Arabic",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/ha7210.pdf"
-      },
-      {
-        "hreflang": "fa",
-        "native": null,
-        "english": "Farsi",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/hf7210.pdf"
-      },
-      {
-        "hreflang": "prs",
-        "native": null,
-        "english": "Dari",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h347210.pdf"
-      },
-      {
-        "hreflang": "ps",
-        "native": null,
-        "english": "Pashto",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h167210.pdf"
-      },
-      {
-        "hreflang": "ko",
-        "native": null,
-        "english": "Korean",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hk7210.pdf"
-      },
-      {
-        "hreflang": "kos",
-        "native": null,
-        "english": "Kosraean",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h417210.pdf"
-      },
-      {
-        "hreflang": "pau",
-        "native": null,
-        "english": "Palauan",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h407210.pdf"
-      },
-      {
-        "hreflang": "pon",
-        "native": null,
-        "english": "Pohnpeian",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h267210.pdf"
-      },
-      {
-        "hreflang": "chk",
-        "native": null,
-        "english": "Chuukese",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h277210.pdf"
-      },
-      {
-        "hreflang": "mh",
-        "native": null,
-        "english": "Marshallese",
-        "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h337210.pdf"
-      }
+      {"hreflang": "en", "native": null, "english": "English", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/he7210.pdf"},
+      {"hreflang": "es", "native": "Solicitud de Cobertura de Salud", "english": "Spanish", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hs7210.pdf"},
+      {"hreflang": "ru", "native": "Заявление на русском языке", "english": "Russian", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hr7210.pdf"},
+      {"hreflang": "vi", "native": "Đơn bằng tiếng Việt", "english": "Vietnamese", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hv7210.pdf"},
+      {"hreflang": "zh-Hans", "native": "简体中文申请表", "english": "Simplified Chinese", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hn7210.pdf"},
+      {"hreflang": "zh-Hant", "native": "俄勒岡州健康計劃福利申請表", "english": "Traditional Chinese", "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/h47210.pdf"},
+      {"hreflang": "so", "native": null, "english": "Somali", "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/hi7210.pdf"},
+      {"hreflang": "ar", "native": null, "english": "Arabic", "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/ha7210.pdf"},
+      {"hreflang": "fa", "native": null, "english": "Farsi", "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/hf7210.pdf"},
+      {"hreflang": "prs", "native": null, "english": "Dari", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h347210.pdf"},
+      {"hreflang": "ps", "native": null, "english": "Pashto", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h167210.pdf"},
+      {"hreflang": "ko", "native": null, "english": "Korean", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/hk7210.pdf"},
+      {"hreflang": "kos", "native": null, "english": "Kosraean", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h417210.pdf"},
+      {"hreflang": "pau", "native": null, "english": "Palauan", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h407210.pdf"},
+      {"hreflang": "pon", "native": null, "english": "Pohnpeian", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h267210.pdf"},
+      {"hreflang": "chk", "native": null, "english": "Chuukese", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h277210.pdf"},
+      {"hreflang": "mh", "native": null, "english": "Marshallese", "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/h337210.pdf"}
     ]
   }
 }
