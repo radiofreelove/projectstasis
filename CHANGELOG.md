@@ -2,6 +2,17 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.3 beta (2026-11-14)
+
+Extra detail is now marked on 21 more pages, so "Show just the key points" hides something on them. Marking only: no wording, fact, link, or source list changed, and the strip itself did not change. Before this, the browser report listed 26 pages where the strip hid nothing. It now lists 5.
+
+- **Oregon:** the home page, Past medical bills, Free help, OHP sent me a letter, Why this site exists, and Every source.
+- **Utah:** the home page, Past medical bills, Turned down, Free help, Immigration status, Utah sent me a letter, Words on your letters, Why this guide exists, and Every source.
+- **Washington:** Past medical bills, Turned down, Free help, Words on your letters, Why this guide exists, and Every source. The 0.3.0 beta entry below says the Washington pages are marked; these 6 had no marks.
+- **What was marked:** names the state uses for things, where a fact comes from, notes that state pages differ, office hours, pointers to an agency page for more, and, on the About and Every source pages, how the guide is made and how to reuse it. Steps, deadlines, phone numbers, warnings, and the links a reader needs to act stay in key-points mode.
+- **Still hiding nothing, on purpose:** the "page not found" page, Oregon's Immigration status page, Oregon's Words on your letters page, and the Oregon and Utah hours logs. Each line on those pages is a step, a warning, a meaning, or part of the form.
+- Details marked as extra across all pages went from 43 to 88. The count is in [docs/testing-browser.md](docs/testing-browser.md).
+
 ## 0.3.2 beta (2026-11-13)
 
 Four Washington source addresses that had gone dead were replaced with the addresses the agencies now publish, each verified on Nov. 13, 2026 against the facts it supports: WA11 (HCA, Filing an application) and WA23 (HCA, Apple Health Expansion) moved in HCA's site restructure, and WA16 (WAC 182-504-0035) and WA17 (WAC 182-504-0130) now point to the legislature's current WAC address, the same form the registry already uses for WAC 182-505-0250. The WA11 registry note no longer says the page states the Apple Health for Adults test, because the moved page does not state it; the facts WA11 supports are unchanged. This fix carries its own version because v0.3.1-beta was tagged from the tidy merge before the fix merged; the 0.3.1 beta entry below originally described the fix as part of that version, and this entry corrects that.
