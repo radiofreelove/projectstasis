@@ -163,7 +163,7 @@ Done early, ahead of checkpoint 2026-11-16.
 
 ## Release 0.3.0 beta: Washington
 
-Built on **Nov. 12, 2026**. Merged the same day, ahead of the source review, on the project owner's direction. Washington's sources were accessed and reviewed against the facts they support; 14 of its 25 sources have not yet been read in full, and the source review is checkpointed for Nov. 26, 2026 in [data/review.json](../data/review.json).
+Built on **Nov. 12, 2026**. Merged the same day, ahead of the source review, on the project owner's direction. Washington's sources were accessed and reviewed against the facts they support; at the merge, 14 of its 25 sources had not been read in full (see "Reads on Nov. 13, 2026" below for what has changed), and the source review is checkpointed for Nov. 26, 2026 in [data/review.json](../data/review.json).
 
 ### How the Washington guide was built
 
@@ -175,7 +175,7 @@ The assistant that built the pages did not read any Washington source. It worked
 
 ### Drafting claims: resting on a source nobody has read in full
 
-17 claims rest on at least one source marked `"opened": false`. Their notes in the fact log start "Drafting claim". All are pending the end-to-end read.
+At the merge on Nov. 12, 2026, 17 claims rested on at least one source marked `"opened": false`, and their notes in the fact log started "Drafting claim". The table shows that starting state. "Reads on Nov. 13, 2026", below, says which of them are settled and which are still drafting claims.
 
 | Claim | Unread source | Page |
 |---|---|---|
@@ -197,7 +197,18 @@ The assistant that built the pages did not read any Washington source. It worked
 | WA-IMM-03 | WA20, WA23 | washington-immigration |
 | WA-IMM-04 | WA23 | washington-immigration |
 
-Two unread sources support no claim and no page links to them. They are in the registry so the gap is visible: WA21 (the medically frail memo; its address is unverified) and WA22 (the work requirements client page).
+At the merge, two unread sources supported no claim and no page linked to them: WA21 (the medically frail memo) and WA22 (the work requirements client page). Both were read in full on Nov. 13, 2026; they still support no claim.
+
+### Reads on Nov. 13, 2026
+
+On Nov. 13, 2026 the AI assistant fetched each registry address below and read the document or page there. This is not the source review by a person, which stays checkpointed for Nov. 26, 2026 (Washington) and Nov. 24, 2026 (Utah).
+
+- **Read in full, Washington (13):** WA12, WA13, WA14, WA15, WA16, WA17, WA18, WA19, WA20, WA21, WA22, WA23, WA24. For a web page, "in full" means the page's own content, not the site's menus. For WA20, the text of all 46 slides; charts and maps that are images were not read. WA05 was also read at HCA's own address, which answered this time.
+- **Read in full, Utah (5):** U15S and U19S (in Spanish, by the AI assistant; no fluent Spanish reader on the project has checked them), U34 and U35 (the home page at each address only), U36.
+- **Not read in full (3):** WA25 (its address answered 403 twice; the text of the same filed complaint was read from the copy the Washington Attorney General links, and the entry stays `"opened": false` until a person opens the address or the owner rules that copy counts); U32 (a sign-in site that answered 404); U38 (a 514-page code list; the title page, definitions, section headings, first two pages, and last page were read).
+- **Drafting claims settled (14 of 17):** 13 confirmed as written by the read of every source they rest on: WA-RULE-09, WA-APP-08, WA-APP-09, WA-LTR-02, WA-DEN-03, WA-DEN-04, WA-DEN-05, WA-HLT-04, WA-IMM-02, WA-IMM-03, WA-WRD-02, WA-WRD-05, WA-LOG-03. One corrected: WA-DEN-01, because the version of WAC 182-504-0035 that takes effect Jan. 1, 2027 no longer says coverage is restored without a gap.
+- **Still drafting claims (3):** WA-CHK-01 (WAC 182-505-0250 states the income test as at or below 133 percent, not under 138 percent as HCA's fact sheet does); WA-IMM-04 (WA23 confirms the enrollment cap is met but not "state-funded" or "December 2025", which are on an HCA announcement not in the registry); WA-RSN-15 (WA25 is still marked as not read in full). Each waits for the owner's ruling.
+- **Found and not acted on:** HCA's work requirements page (WA22) differs from the guide on several of the 12 open points in [corrections.md](corrections.md), including a sixth way to meet the rule (working at least 80 hours a month). No claim cites WA22 yet, and the open points are unchanged.
 
 ### What a person still has to read
 
