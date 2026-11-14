@@ -4,7 +4,7 @@ This log lists places where official materials disagree with each other, with th
 
 - [Oregon](#oregon): as found on **Nov. 2, 2026**. Item 1 was re-checked on Nov. 10, 2026.
 - [Utah](#utah): as found on **Nov. 10, 2026**.
-- [Washington](#washington): as recorded in the research for the guide on **Nov. 12, 2026**. None of these is settled yet.
+- [Washington](#washington): as recorded in the research for the guide on **Nov. 12, 2026**. None of these is settled yet. Item 7 gained the federal half of its answer on Nov. 14, 2026.
 
 ## Oregon
 
@@ -170,7 +170,7 @@ Found on **Nov. 10, 2026**. Utah's documents were read through a tool that answe
 
 ## Washington
 
-These 12 points come from the research dossier the Washington guide was built from, dated Nov. 12, 2026. They keep the dossier's numbers, because notes in the fact log point here by number. **None is resolved.** Each waits for a person to read the sources end to end ([research-log.md](research-log.md), checkpoint 2026-11-26 in [review.json](../data/review.json)). "What the site does" is the reading the research directed for now, not an answer. "HCA" is the Health Care Authority. Nothing here has been reported to HCA.
+These 12 points come from the research dossier the Washington guide was built from, dated Nov. 12, 2026. They keep the dossier's numbers, because notes in the fact log point here by number. **None is resolved.** Item 7 has a federal answer from a letter of Nov. 13, 2026 (S41); its state half is open. Each waits for a person to read the sources end to end ([research-log.md](research-log.md), checkpoint 2026-11-26 in [review.json](../data/review.json)). "What the site does" is the reading the research directed for now, not an answer. "HCA" is the Health Care Authority. Nothing here has been reported to HCA.
 
 ### 1. The age band
 
@@ -211,7 +211,9 @@ These 12 points come from the research dossier the Washington guide was built fr
 
 - **Federal law:** allows a good-faith delay of the work rules to as late as Dec. 31, 2028. **WA03:** names the option. No HCA client source found says whether Washington has asked for it or received it.
 - **A news report of Nov. 12, 2026 (not an official source, not in the registry):** says Washington and three other states sued the federal government in Oregon over threatened funding withholding. Not confirmed from a docket, and it does not answer the delay question.
-- **What the site does:** says nothing about a delay, on any page, until an official source speaks.
+- **S41 (federal letter SMD# 26-006, Nov. 13, 2026), the federal half of the answer:** the start date does not move. States implement the requirement no later than Jan. 1, 2027, and the checking starts then. The letter gives each state a different option, a "hold harmless period" through June 30, 2027: a state that asks for it, and gets federal approval, may suspend denials and disenrollments that are only for not meeting the requirement, while it still checks each person. It does not cover denials or disenrollments on other grounds, such as income. A state that intends to use it from Jan. 1, 2027 is asked to notify CMS by Dec. 11, 2026. The letter names no state.
+- **The state half, still open:** whether Washington will ask for the hold harmless period, and whether it has asked for the separate delay to Dec. 31, 2028. On Nov. 14, 2026, HCA's client page (WA01) and stakeholder page (WA03) were searched for either and said nothing (claim WA-HH-05 records the search). Checkpoint 2026-12-11 in [review.json](../data/review.json).
+- **What the site does:** states the federal option on the Washington home, rules, and turned-down pages (claims WA-HH-01 to WA-HH-04), and says that as of Nov. 14, 2026, HCA's pages did not say what Washington will choose (WA-HH-05). It does not say Washington has chosen the period or has not. It still says nothing about the Dec. 31, 2028 delay, on any page, until an official source speaks.
 - **Related, also open:** WA05 lists "short-term hardship" as an exemption without saying which federal hardship kinds Washington has adopted. The reasons page lists the federal kinds (S27, WA24) and says HCA's client papers do not name which count.
 
 ### 8. What the $580 counts
