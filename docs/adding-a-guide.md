@@ -7,7 +7,7 @@ The examples use Washington. The build stops with a plain message if a step is m
 ## Before you write a page
 
 1. **Decide the front door.** With a third guide, the question in [roadmap.md](roadmap.md) ("A front door") comes due: what should `/` be? Record the answer as a decision in [decisions/](decisions/).
-2. **Read the state's sources yourself.** The Utah guide went live before a person had read its sources end to end ([decisions/0013-utah-section.md](decisions/0013-utah-section.md)). For the next guide, finish that read before the guide is merged.
+2. **Read the state's sources yourself.** The Utah guide went live before its source review was complete ([decisions/0013-utah-section.md](decisions/0013-utah-section.md)), and the Washington guide merged ahead of its source review on the owner's direction ([decisions/0015-front-door-with-three-guides.md](decisions/0015-front-door-with-three-guides.md)). For the next guide, complete the source review before the guide is merged.
 3. **Learn the state's own words.** A new state has its own program names, agencies, deadlines, and ways to apply. Nothing carries over from another state without a source from the new one.
 
 ## The steps

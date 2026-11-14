@@ -33,5 +33,5 @@ A Washington guide, for Apple Health, is now built. Three things were on the tab
 ## Consequences
 
 - A reader who lands on `/` from Washington or Utah still has to see and use the switch. That is the cost of keeping Oregon's address.
-- The Washington guide sits second in the list although it is the newest and the least checked. Its About page and its "Every source" page say so in plain words, and it does not merge before a person has read its sources end to end ([adding-a-guide.md](../adding-a-guide.md), "Before you write a page", step 2).
+- The Washington guide sits second in the list although it is the newest. Its About page and its "Every source" page say in plain words which of its sources have not yet been read in full. The guide merged on Nov. 12, 2026 on the owner's direction, ahead of the source review checkpointed for Nov. 26, 2026; the pre-merge source read ([adding-a-guide.md](../adding-a-guide.md), "Before you write a page", step 2).
 - If a fourth guide arrives, or the site gets its own address, this decision should be looked at again. A list of four on a phone is a long way to the headline.
