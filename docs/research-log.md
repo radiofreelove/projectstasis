@@ -220,7 +220,7 @@ The 12 points in [corrections.md](corrections.md#washington), all open.
 - A news report of Nov. 12, 2026 about a new lawsuit over funding. Secondary, not confirmed from a docket.
 - The hospital association's copy of the fact sheet is not in the registry and is not linked. The registry points to HCA's own address (WA05).
 
-## Release 0.3.3 beta: the federal hold harmless letter
+## Release 0.3.5 beta: the federal hold harmless letter
 
 Done on **Nov. 14, 2026**, over two working sessions. The first registered the source and wrote the claims. The second wrote the pages from those claims and did not fetch the letter or the state pages again.
 
@@ -251,3 +251,20 @@ The result is recorded as what the pages said on that day (claims C-HH-STATE, U-
 
 - Footnote 3 of the letter cites *Massachusetts v. Oz* as No. 26-12692-RGS. The order in the registry (S28) carries No. 1:26-cv-12962. The site quotes neither number on a page. Not resolved.
 - Each state's choice. Checkpoint 2026-12-11 in [data/review.json](../data/review.json).
+
+## Release 0.3.6 beta: Oregon source reads
+
+### Reads on Nov. 14, 2026
+
+On Nov. 14, 2026 the AI assistant fetched the registry address of each of the 26 Oregon and shared entries that were marked `"opened": false`, and read the document or page there. This is not a source review by a person. No claim in the fact log cites any of the 26, so no claim changed.
+
+- **Read in full (20):** S16, S17, S19, S21, S22, S24, S26B, S38, K01, K03, K04, K05, K06, K07, K08, K09, K10, K11, K12, K13. For a web page, "in full" means the page's own content, not the site's menus. S22 and S38 are the home page at each address only. S16 and S26B each hold a tool or a form; the page around it was read, no search was run, and no form was filled in. K10 is in Spanish and was read by the AI assistant; no fluent Spanish reader on the project has checked it. The S17 wording in languages other than English was not checked by a fluent reader.
+- **Not read in full (6):** S15, S36, and S37 (each is a search tool, not a document; each address answered and landed on the tool or, for S37, on the publisher's home page); S18 (the address gave an empty reply three times, so the file was not retrieved); S20 (the text shown on the home page was read, but not the backs of its 4 flip cards); S23 (the address forwarded to OHA's general OHP page, which has no list of job or volunteer resources).
+- **Addresses that forward:** benefits.oregon.gov (S19) forwarded to ODHS's benefits page. OHP.Oregon.gov/HR1 (S24) forwarded to OHA's federal changes page, the same address as S07. The FQHC short link (S21) forwarded to a page of the Oregon Primary Care Association. OHP.Oregon.gov/HR1 and OHP.Oregon.gov/Resources answered automated requests that day, and the host served no robots.txt file. The table under "Could not check" above records the state on Nov. 2, 2026.
+- **Found and not acted on.** Each needs the owner's ruling, and none changed a claim or a page:
+  - The ONE language lines sheet (S17) gives the Spanish line as (833) 743-9182. OHA's how-to-apply page (S09) gives 800-743-9182, and the guide uses the S09 number (C-LANGLINES).
+  - OHP.Oregon.gov/Resources (S23) did not land on a list of job or volunteer resources (C-FIND-ACTIVITIES). OHA's own page and notices still print the address.
+  - OHA's quick reference guide for providers (K03) has a sentence that tracks the clause a federal court vacated on Oct. 29, 2026, as the provider FAQ (S01) does ([corrections.md](corrections.md), Oregon item 1).
+  - The Open Card site (S22) already gives 800-562-4620 as its help line. The guide says to call starting Jan. 1, 2027, as OHA's sheets do (C-OPENCARD-FIND).
+  - The registry titles of K03 and K13 differ from the titles on the documents, and the S21 short link lands on a publisher other than the one the registry names. Each entry's note says so.
+- **Owner rulings, Nov. 14, 2026.** The owner ruled on the five items above the same day, and the rulings were applied in this release: the Resources link now goes to OHA's Community Resources page (S23 corrected and read in full); K03 was added to corrections item 1; the K03 and K13 registry titles and the S21 publisher were corrected; the Spanish line disagreement was recorded as corrections item 9 with no page change. See the 0.3.6 beta entry in the CHANGELOG.

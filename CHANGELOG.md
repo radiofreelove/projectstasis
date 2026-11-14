@@ -2,8 +2,17 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
-## 0.3.5 beta (2026-11-14)
+## 0.3.6 beta (2026-11-14)
 
+Oregon source reads on Nov. 14, 2026. The reads were done by the AI assistant. A read by the AI assistant is not a source review by a person.
+
+- Read in full on Nov. 14, 2026, and marked so in the source registry with that checked date: S16, S17, S19, S21, S22, S24, S26B, S38, K01, K03, K04, K05, K06, K07, K08, K09, K10, K11, K12, and K13. For a web page, that means the page's own content, not the site's menus. S22 and S38 are the home page at each address only. S16 and S26B each hold a search tool or a form; the page around it was read, no search was run, and no form was filled in. K10 is in Spanish, and no fluent Spanish reader on the project has checked it.
+- Still marked as not read in full: S15, S18, S20, S36, and S37. Each registry note says what was read on Nov. 14, 2026 and what was not: S15, S36, and S37 are search tools, and no search was run; S18 gave an empty reply to three requests, so the file was not retrieved; S20's home page text was read, but not the backs of its 4 flip cards. S23 was also not read as described that day; the owner's ruling below corrects it in this release.
+- The reads themselves changed no claim, because no claim in the fact log cites any of these 26 sources. The pages that show source data (read or not read, dates checked, and dates on documents) were rebuilt from the registry.
+- Three addresses forward: benefits.oregon.gov (S19) to ODHS's benefits page, OHP.Oregon.gov/HR1 (S24) to OHA's federal changes page (the same address as S07), and the health center short link (S21) to a page of the Oregon Primary Care Association. The registry notes say so.
+- **Owner rulings of Nov. 14, 2026, applied in this release.** The five items the reads found are listed in [docs/research-log.md](docs/research-log.md) under "Release 0.3.6 beta: Oregon source reads". The rulings: the rules page link for job and volunteer resources now goes to OHA's Community Resources page, because the printed short address (OHP.Oregon.gov/Resources) forwards to OHA's general OHP page, which has no such list; S23's registry address was corrected to that page, read in full that day, and claim C-FIND-ACTIVITIES now cites it. K03 was added to corrections item 1 as a second document carrying the vacated work-limit sentence, and corrections item 4 gained the K03 and K04 support for "$580 or more". The K03 and K13 registry titles now match their documents, and S21's publisher is corrected to the Oregon Primary Care Association. The Spanish line disagreement (S09 prints 800-743-9182, S17 prints 833-743-9182) is recorded as corrections item 9 with no page change; the guide keeps the S09 number until one is confirmed by a call. The Open Card claim was left as it was.
+
+## 0.3.5 beta (2026-11-14)
 
 A federal letter of Nov. 13, 2026 gives each state a new choice about the work or activity rules. All three guides now say so, near the top of each home page.
 
@@ -15,7 +24,6 @@ A federal letter of Nov. 13, 2026 gives each state a new choice about the work o
 - **Two new checkpoints** in [data/review.json](data/review.json): Dec. 11, 2026, to search each state's pages again for its choice and update the "As of" dates; and June 30, 2027, the last day a state's period can cover, to reword or remove the boxes. The Dec. 9, 2026 Washington checkpoint and the Washington hand-check in [docs/maintenance.md](docs/maintenance.md) now point to the new one.
 - **Washington open point 7** in [docs/corrections.md](docs/corrections.md), whether Washington will delay the rules, now records the federal half of the answer from S41: the start date does not move, and the new option is a limit on denials and on ending coverage, not a delay. The state half stays open.
 - **Federal words.** The letter calls the requirement "community engagement," which is the federal name the guides already give, so no page wording changed. The letter says CMS refers to the 2025 law as the "Working Families Tax Cut" legislation; no page names that law, and [docs/methodology.md](docs/methodology.md) now records the name next to the Public Law number. Words the states use on their own pages are unchanged.
-
 ## 0.3.4 beta (2026-11-14)
 
 Extra detail is now marked on 21 more pages, so "Show just the key points" hides something on them. Marking only: no wording, fact, link, or source list changed, and the strip itself did not change. Before this, the browser report listed 26 pages where the strip hid nothing. It now lists 5.

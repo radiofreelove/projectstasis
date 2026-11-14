@@ -2,7 +2,7 @@
 
 This log lists places where official materials disagree with each other, with the federal rule, or with a court order. For each one it records what the site does. Source IDs (S01, U01, and so on) are defined in [sources.md](sources.md).
 
-- [Oregon](#oregon): as found on **Nov. 2, 2026**. Item 1 was re-checked on Nov. 10, 2026.
+- [Oregon](#oregon): as found on **Nov. 2, 2026**. Item 1 was re-checked on Nov. 10, 2026. Items 1 and 4 gained sources on Nov. 14, 2026, and item 9 was added that day.
 - [Utah](#utah): as found on **Nov. 10, 2026**.
 - [Washington](#washington): as recorded in the research for the guide on **Nov. 12, 2026**. None of these is settled yet. Item 7 gained the federal half of its answer on Nov. 14, 2026.
 
@@ -21,6 +21,7 @@ How the site chooses: follow the most authoritative current source (federal stat
 - **What the site does:** uses "a serious or disabling health condition," the wording on OHA's sample notice (S08), and adds an "In the news" note on the reasons and health pages. Checkpoint 2026-12-10 in [review.json](../data/review.json).
 - **Inference:** the FAQ sentence tracks the clause the court vacated. As of Nov. 2, 2026, OHA's federal changes page (S07, last updated Sept. 18) had not said what changes.
 - **Re-checked Nov. 10, 2026:** S01, S03, and S07 were unchanged, and S07 still showed "Last updated Sept. 18, 2026." The court entered judgment and dismissed the case on Oct. 29 (docket entry 149, S40). No notice of appeal appeared in the docket entries through Nov. 6 that CourtListener held. Next checkpoint: 2026-12-10.
+- **K03 (OHA quick reference guide for providers and clinic staff, file data September 2026):** page 2 carries the same sentence ("a condition qualifies only if it significantly limits a person's ability to work") and does not mention the Oct. 29, 2026 ruling. Added Nov. 14, 2026.
 - **Reported to OHA:** Not yet.
 
 ### 2. What counts as school
@@ -44,6 +45,7 @@ How the site chooses: follow the most authoritative current source (federal stat
 - **S01:** "More than $580 per month of household income." **S02:** "Income over $580 a month."
 - **S27:** monthly income "not less than" the federal minimum wage times 80 hours, which is $7.25 x 80 = $580, counted as household income under MAGI rules.
 - **What the site does:** "$580 or more." The difference matters only at exactly $580.
+- **More support, added Nov. 14, 2026:** K04 says both, in one document: its summary box says "Make more than $580 a month," and its body says "If it's $580 a month or more before taxes and deductions, you meet the rules." K03's badge card says "at least $580."
 - **Reported to OHA:** Not yet.
 
 ### 5. Former foster youth age
@@ -69,6 +71,13 @@ How the site chooses: follow the most authoritative current source (federal stat
 
 - **S01, S03, S04, S05, and S08** show no date. Readers cannot tell which is newest.
 - **What the site does:** records the date each source was checked, and lists the date shown on it, in [sources.md](sources.md) and on every page.
+
+### 9. The Spanish language line number
+
+- **S09 (OHA how-to-apply page):** "Espanol: 800-743-9182."
+- **S17 (ONE language lines sheet, form DHS 2844, linked from S09):** "(833) 743-9182." Every other line on S17 starts with 833, and the other language numbers on S09 match S17 exactly; only the Spanish prefix differs.
+- **What the site does:** keeps the number from S09, the source the claim (C-LANGLINES) cites, until someone calls both numbers and one is confirmed. Found Nov. 14, 2026.
+- **Reported to OHA:** Not yet.
 
 ### Not a conflict, but worth knowing
 
