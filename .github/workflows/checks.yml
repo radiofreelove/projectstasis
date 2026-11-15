@@ -24,7 +24,7 @@ jobs:
       - name: Site matches its sources; every link registered; every fact logged
         run: python3 tools/build.py --check
 
-      - name: Tool tests (guide rules, a third guide, the link checker, release notes)
+      - name: Tool tests (guide rules, a third guide, the link checker, the evidence audit, the date updater, release notes)
         run: python3 -m unittest discover -s tools/tests
 
       - name: The changelog has an entry for this version

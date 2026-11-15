@@ -2,6 +2,18 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.9 beta (2026-11-15)
+
+Tools only. The weekly check now records what each source says and reports when that changes. No page wording, fact, claim, source entry, or check script changed. The only change a reader sees is the version number in the footer.
+
+- **Evidence audit** (`tools/evidence_audit.py`). The link check asks whether a source still answers. The audit asks whether it still says the same thing. It fetches every source in the registry the way the link check does, turns each reply into text it can compare, and compares a SHA-256 of that text with a baseline. Each source ends in one of four states: unchanged, changed, unreachable, or checker-blocked. A checker-blocked source is not a dead link and not a removed document. For a changed source, the report shows what changed, up to a limit, and names the facts that cite it and the pages that show them. Only a changed source fails the run. A PDF is compared by its bytes, because the project declares no PDF library, so a change report for a PDF is lower-confidence.
+- **The baseline** ([data/evidence_baseline.json](data/evidence_baseline.json)), written on Nov. 15, 2026. It holds a hash for 93 of the 120 sources (56 compared as text, 37 by bytes). 16 were checker-blocked and 11 were unreachable that day, so they have no hash yet and are listed as not yet baselined. The baselines rest on the project's November 2026 verified source checks. The run that wrote them was a tool fetching each address, not a new read of each source by a person.
+- **The weekly check** runs the audit and puts its report in the same single issue. The job's permissions did not change.
+- **Dated language** ([docs/dated-language.md](docs/dated-language.md)). A list of the wording whose truth depends on the date: the Jan. 1, 2027 start, the Dec. 11, 2026 date for telling the federal agency, the June 30, 2027 end of a hold harmless period, dated figures, and wording like "right now" and "not yet". Each entry gives the exact wording, where it is, when it expires, and what to do then. No wording changed.
+- **Three new checkpoints** in [data/review.json](data/review.json), for the items no checkpoint covered: Dec. 31, 2026 (start-date wording beyond the home page titles), Jan. 31, 2027 (dated figures and letters), and Dec. 1, 2027 (wording that names 2027 or 2028). No existing checkpoint changed.
+- **Checked-date updates, off by default** (`tools/mechanical_update.py`). For each source the audit found unchanged, the tool can set its "checked" date to the day of the audit, and change nothing else. It refuses to write if a source it would touch is changed, blocked, unreachable, or not yet baselined. A second weekly job runs it and opens a pull request only if the repository variable `MECHANICAL_UPDATES` is set to `on`. The variable does not exist, so nothing runs. Nothing merges on its own. That job is the only one that can write to the repository. See [docs/maintenance.md](docs/maintenance.md), "Evidence audit".
+- [docs/testing-browser.md](docs/testing-browser.md) is regenerated. The copy in the repository still held lines left over from a merge, with three different counts. It now gives one: 94 details marked as extra.
+
 ## 0.3.8 beta (2026-11-14)
 
 Washington corrections, on the owner's rulings of Nov. 14, 2026, and a restore.
@@ -31,7 +43,6 @@ Washington corrections, on the owner's rulings of Nov. 14, 2026, and a restore.
 - **What the test could not fix.** On a 390 by 844 phone the site header, the menu, and the "How much to show" strip fill about 600 px, so the headline starts near the bottom of the first screen on every page. That is why the test measures from the headline. The header and the strip did not change.
 - [docs/reading-level.md](docs/reading-level.md) and [docs/testing-browser.md](docs/testing-browser.md) are regenerated. No page's reading grade went up. The browser report in the repository was older than 0.3.4 beta; its counts now match the 0.3.4 and 0.3.5 entries below.
 
-=======
 
 ## 0.3.6 beta (2026-11-14)
 

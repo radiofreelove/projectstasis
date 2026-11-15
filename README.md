@@ -87,16 +87,17 @@ python3 tools/serve.py    # serve it the way Cloudflare Pages does, then open ht
 | Command | What it proves |
 |---|---|
 | `python3 tools/build.py --check` | The site matches its sources; every link is registered; every fact is logged and sourced on its page |
-| `python3 -m unittest discover -s tools/tests` | The tools themselves: the rules that keep each guide whole, a made-up third guide, the link checker against local test servers, and the release notes |
+| `python3 -m unittest discover -s tools/tests` | The tools themselves: the rules that keep each guide whole, a made-up third guide, the link checker and the evidence audit against local test servers, the checked-date updater, and the release notes |
 | `python3 tools/check_structure.py` | Language, titles, one h1, no skipped headings, skip link, landmarks, labels, unique IDs, valid ARIA references, CSP and referrer policy (in each page and in `site/_headers`), no new windows, no immigration questions, and every internal link points to a page or file that exists |
 | `python3 tools/check_contrast.py` | Every color pair meets 7:1 for text and 3:1 for borders and focus |
 | `python3 tools/check_reading_level.py` | Each page's estimated reading grade (target 6, fails above 8) |
 | `python3 tools/check_review_dates.py` | No dated checkpoint is past due |
 | `python3 tools/check_links.py` | Every official link answers, respecting robots.txt; addresses it cannot judge are listed for a person (needs internet) |
+| `python3 tools/evidence_audit.py --report FILE` | Every official source still says what it said when its baseline was set; a changed source is listed with the facts and pages that rest on it (needs internet) |
 | `python3 tools/browser_check.py` | Real-browser tests on a server that behaves like Cloudflare Pages: reflow at 320 px, contrast in every theme, target sizes, focus visibility, no outside requests, the policy header on every page, every path through the check, and axe-core when `AXE_JS` is set (needs the test tools in `test-tools/requirements.txt` and `test-tools/package.json`) |
 | `python3 tools/check_live.py` | The live site matches this repository byte for byte, with every header, the 404 page, and redirects from old `.html` addresses (needs internet) |
 
-GitHub Actions run the checks on every push ([checks.yml](.github/workflows/checks.yml)), confirm after every push to `main` that the live site matches the commit ([live.yml](.github/workflows/live.yml)), and every Monday check links, checkpoints, and the live site, opening an issue if a person is needed ([weekly.yml](.github/workflows/weekly.yml)). When the version number changes, they tag the commit and publish a release once the checks pass ([release.yml](.github/workflows/release.yml)). Cloudflare Pages publishes `site/` from `main` after its own freshness and structure check ([settings](docs/maintenance.md#cloudflare-pages-settings)).
+GitHub Actions run the checks on every push ([checks.yml](.github/workflows/checks.yml)), confirm after every push to `main` that the live site matches the commit ([live.yml](.github/workflows/live.yml)), and every Monday check links, what each source says, checkpoints, and the live site, opening an issue if a person is needed ([weekly.yml](.github/workflows/weekly.yml)). When the version number changes, they tag the commit and publish a release once the checks pass ([release.yml](.github/workflows/release.yml)). Cloudflare Pages publishes `site/` from `main` after its own freshness and structure check ([settings](docs/maintenance.md#cloudflare-pages-settings)).
 
 ## Report a problem
 

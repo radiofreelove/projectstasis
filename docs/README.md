@@ -31,6 +31,8 @@ Start with the [project README](../README.md). These files show how the site is 
 
 - [maintenance.md](maintenance.md): what runs on its own, the Cloudflare Pages settings, and what a person must do.
 - [../data/review.json](../data/review.json): dated checkpoints.
+- [dated-language.md](dated-language.md): wording that depends on the date, when each piece expires, and what to do then.
+- [../data/evidence_baseline.json](../data/evidence_baseline.json): a hash of what each source said, for the weekly evidence audit.
 - [roadmap.md](roadmap.md): what comes next.
 - [decisions/](decisions/): why it was built this way. [0013](decisions/0013-utah-section.md) explains the Utah guide, and [0014](decisions/0014-guide-list.md) explains how the build tells guides apart.
 - [adding-a-guide.md](adding-a-guide.md): the steps for adding another state.

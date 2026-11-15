@@ -37,9 +37,19 @@
       "claims": ["C-RETRO-NOW", "C-RETRO-2027", "C-START", "U-RETRO-NOW", "U-RETRO-2027", "U-START", "U-AIAN-PROOF", "WA-BILL-01", "WA-BILL-02", "WA-HOME-02", "WA-HOME-04"]
     },
     {
+      "review_by": "2026-12-31",
+      "what": "Dated wording, Jan. 1, 2027 (docs/dated-language.md, entries 3.4 to 3.17): the wording that says the rules 'start' or are 'starting' Jan. 1, 2027, beyond the home page titles and the Dec. 31 notes in the checkpoint above. First confirm from each state's page that the start date did not move (S07, U02, WA01). Then flip to past tense: 'Starts: Jan. 1, 2027' on each rules page; the 'What's new' line on each home page; the Jan. 1, 2027 entry on each words page; 'Big changes ... start Jan. 1, 2027' on each About page; 'Still starting' and 'still start' in the hold harmless box and on each rules page; Utah's 6-month reviews (U-SIX-MONTH) and 'If you apply: On or after Jan. 1, 2027' (U-START-APP); and the 'gets shorter' lines and 'Starting Jan. 1, 2027' lines on each bills page, after re-reading S01, U02, and WA01. Source check first, then reword: Open Card (S01, S06; 'Starting in January 2027, Healthier Oregon members move' and 'Starting Jan. 1, 2027, you can call Open Card'); Washington's 90-day rule (WA16; 'Until Jan. 1, 2027, the state rule says coverage comes back with no gap'); and Utah's July 2026 letter ('you do not need to do anything yet'). Reword the same sentences where the check scripts repeat them: site/assets/js/checker-utah.js (proof of tribal status by Jan. 1, 2027) and site/assets/js/checker-washington.js. Update each claim's statement to match its page, and remove the finished entries from docs/dated-language.md.",
+      "claims": ["C-START", "C-HH-START", "C-RETRO-2027", "C-HO-OPENCARD", "C-OPENCARD-FIND", "U-START", "U-START-APP", "U-SIX-MONTH", "U-HH-START", "U-RETRO-2027", "U-LETTER-KEY", "U-LETTER-GREEN", "U-AIAN-PROOF", "WA-HOME-02", "WA-HOME-04", "WA-HH-01", "WA-BILL-02", "WA-DEN-01"]
+    },
+    {
       "review_by": "2027-01-15",
       "what": "First check after the rules start. Oregon: re-read S01 to S09 and S24 by hand. Look for new OHA notices, forms (including any new version of OHP 7210), and any change to the 35-day reply window. Utah: re-read U01 to U05 and U14 to U16. Look for a new 61MED that asks about the rules, form 742, the medically frail screener, and what Utah's denial and verification letters are called. If form 742 or the screener is posted, update the 'what to do' lines in site/assets/js/checker-utah.js, docs/checker-logic.md, and U-742-NOLINK. Washington: re-read WA01, WA05, and WA22. HCA said in 2026 that there was nothing to do 'right now'; that line (WA-HOME-02) is out of date once HCA changes it, so reword every place the guide repeats it, including site/assets/js/checker-washington.js. The rules reach a person at their first renewal in 2027 (WA-HOME-03); decide whether the Washington guide needs renewal pages.",
       "claims": ["C-START", "C-LOOKBACK-APP", "C-RFI-35", "C-7210-NOQS", "U-START-APP", "U-LOOKBACK-APP", "U-VERIFY-30", "U-61MED-NOQS", "U-TELL-HOW", "WA-HOME-02", "WA-HOME-03", "WA-RULE-08", "WA-CHK-04"]
+    },
+    {
+      "review_by": "2027-01-31",
+      "what": "Dated figures and dated letters (docs/dated-language.md, entries 4.4 to 4.8). Each needs a source check before any rewording. Utah's count of about 83,000 people is from January 2026 and is then a year old: look on U11 and U02 for a newer count, and replace the month and the number together or keep both. Oregon's 'about 600,000 people ... could be subject to the new rules' is a forecast given to lawmakers on Sept. 9, 2026: look on S30 and S07 for a count from after the start, and if there is none, keep the sentence and add its date. 'Letters Utah mailed in 2026': look on U02 for letters mailed since, and add them or keep the heading as a list for 2026. 'Utah said it would send each affected member a letter by Oct. 1, 2026': that date has passed; find on U27 and U02 whether Utah says the letters went out. 'Utah's pages do not yet say exactly what counts': re-read U03 for definitions of work and volunteering. Remove the finished entries from docs/dated-language.md.",
+      "claims": ["U-UTAH-PEOPLE", "C-OHP-PEOPLE", "U-LETTER-KEY", "U-IMM-LETTER", "U-ACTIVITY-DEFS"]
     },
     {
       "review_by": "2027-03-01",
@@ -70,6 +80,11 @@
       "review_by": "2027-12-01",
       "what": "Prepare for 2028 proof rules. Replace 'In 2027, no doctor's note is needed' with current OHA guidance.",
       "claims": ["C-HEALTH-2027", "C-HEALTH-WHO", "C-2028-PROOF"]
+    },
+    {
+      "review_by": "2027-12-01",
+      "what": "Dated wording that names 2027 or 2028, beyond the health claims in the checkpoint above (docs/dated-language.md, entries 7.2 to 7.5 and 8.1). After re-reading S02 and S03, reword 'Starting in 2028, OHP may ask for a calendar or schedule' (C-EX-CHILD) and 'Starting in 2028, OHP may ask for a paper that shows your treatment dates' (C-EX-SUD) on reasons.html for a site read in 2028. Reword 'In 2027, you do not need a note from a doctor' in site/assets/js/checker-oregon.js and the matching rows of docs/checker-logic.md in the same change as the health pages. Washington: 'That starts at a person's first renewal in 2027' (WA-HOME-03) is out of date once 2027 ends; re-read WA05 and reword it. Decide whether 'the new rules' still fits a rule that is a year old; if not, use 'the work or activity rules' (Washington: 'the work rules') in titles, descriptions, headings, and menus. Remove the finished entries from docs/dated-language.md.",
+      "claims": ["C-EX-CHILD", "C-EX-SUD", "C-HEALTH-2027", "WA-HOME-03"]
     }
   ]
 }

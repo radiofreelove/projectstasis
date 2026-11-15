@@ -2,3 +2,6 @@ __pycache__/
 node_modules/
 screenshots/
 .DS_Store
+
+# Text of official web pages, kept by tools/evidence_audit.py to show what changed. Not committed.
+.evidence-snapshots/
