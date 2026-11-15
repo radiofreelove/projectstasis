@@ -2,6 +2,18 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.8 beta (2026-11-14)
+
+Washington corrections, on the owner's rulings of Nov. 14, 2026, and a restore.
+
+- **Restored: the Nov. 13, 2026 source reads.** The merge of 0.3.5 beta (PR #19) overwrote the registry and page changes from 0.3.3 beta: the Washington and Utah sources showed as not read in full, and the turned-down page again said coverage comes back with no gap, with no end date. Those changes are restored in this release, reconciled with everything merged since. See [docs/research-log.md](docs/research-log.md).
+- **Work is a way of its own.** HCA's work requirements page (WA22) lists six ways to meet the rules. The rules page and step 3 of the check now list six, adding working at least 80 hours a month, for pay, for goods or services, or unpaid (claim WA-CHK-06). HCA's fact sheet lists five and leaves this one out; the check page says so.
+- **The $580** is monthly household MAGI income. It does not have to come from a job (WA-CHK-02, WA22).
+- **SNAP and TANF.** The reason is meeting those programs' own work requirements, not household membership (WA-RSN-06).
+- **Hardships.** The reasons page now lists the four short-term hardships HCA names for Washington, two a person must ask for and two automatic, and keeps one line for the federal 8 percent unemployment test (WA-HARD-01, WA-HARD-02, WA-RULE-09).
+- **Two smaller points.** The month a child turns 14 still counts for the caregiver reason (WA-RSN-05). A note on the reasons page and the words page explains HCA's two names, exemptions and current-month exclusions (WA-RSN-16).
+- **The three drafting claims are settled.** WA-CHK-01 keeps 138 percent, with the rule's 133 percent recorded in its note. WA-IMM-04 cites the enrollment cap announcement, added as source WA26. WA-RSN-15 rests on WA25, now marked read in full: the filed complaint was read from the copy the Attorney General links, which the owner ruled counts as its read.
+
 ## 0.3.7 beta (2026-11-14)
 
 19 topic pages now show where to go next within one screen of the headline. Before this, a reader had to scroll to the end of those pages to find the next step. No fact, source, or existing link changed, and no existing sentence was reworded.

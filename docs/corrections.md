@@ -179,7 +179,7 @@ Found on **Nov. 10, 2026**. Utah's documents were read through a tool that answe
 
 ## Washington
 
-These 12 points come from the research dossier the Washington guide was built from, dated Nov. 12, 2026. They keep the dossier's numbers, because notes in the fact log point here by number. **None is resolved.** Item 7 has a federal answer from a letter of Nov. 13, 2026 (S41); its state half is open. Each waits for a person to read the sources end to end ([research-log.md](research-log.md), checkpoint 2026-11-26 in [review.json](../data/review.json)). "What the site does" is the reading the research directed for now, not an answer. "HCA" is the Health Care Authority. Nothing here has been reported to HCA.
+These 12 points come from the research dossier the Washington guide was built from, dated Nov. 12, 2026. They keep the dossier's numbers, because notes in the fact log point here by number. The sources were read in full on Nov. 13, 2026, and the owner ruled on the open points on Nov. 14, 2026. Items 1, 5, and 6 are settled with no change. Items 2, 3, 4, 8, 9, and 12 are resolved. Item 7's hardship half is resolved; its state half (whether Washington will delay, or elect the federal hold harmless period) is still open. Item 10 needs no change. Item 11 is still a gap. The Nov. 26, 2026 checkpoint in [review.json](../data/review.json) stands for the source review by a person. "HCA" is the Health Care Authority. Nothing here has been reported to HCA.
 
 ### 1. The age band
 
@@ -193,17 +193,20 @@ These 12 points come from the research dossier the Washington guide was built fr
 - **Other HCA text:** "work, train, or do community engagement 80 hours per month".
 - **Not known:** whether this is a drafting slip or a real reading of the income test. It must be settled against WA22 and the fact sheet's own text.
 - **What the site does:** the rules page and step 3 of the check list the fact sheet's five ways exactly, add no paid work way, and say in plain words that the fact sheet names work hours only as part of a mix.
+- **Resolved Nov. 14, 2026.** WA22 was read in full on Nov. 13, 2026. It lists working at least 80 hours a month as a way of its own, covering work for money, for goods or services, or unpaid. The owner ruled WA22 may be cited as a claim source. The rules page and step 3 of the check now list six ways, with work as way 2 (claim WA-CHK-06). The check page notes that the fact sheet lists five and leaves this one out.
 
 ### 3. Exemption or exclusion
 
 - **WA05:** calls its whole list "exemptions".
 - **HCA's August 2026 training material (not found, not read):** is described as separating "current month exclusions" from "exemptions", which matches the federal rule's structure.
 - **What the site does:** one list, called exemptions, as WA05 has it. The reasons page and the check may need a new structure after the training material is read.
+- **Resolved Nov. 14, 2026.** WA22 splits its list into "exemptions" and "current-month exclusions". At application an exemption must be met the month before; an exclusion can be met during the application month. The owner ruled the guide keeps one plain list under its own heading. A short note now appears on the reasons page and the words page (claim WA-RSN-16).
 
 ### 4. The age of a child in a caregiver's care
 
 - **Sources derived from HCA** write it three ways: "under age 14", "age 13 or younger", and, in one training deck, under 14 through the month the child turns 14.
 - **What the site does:** "under age 14", the fact sheet's wording (WA05). Only HCA's own current text settles this.
+- **Resolved Nov. 14, 2026.** WA22 states that a dependent child is under age 14 through the month they turn 14. The reasons page now adds that the month the child turns 14 still counts (claim WA-RSN-05).
 
 ### 5. Counts differ
 
@@ -223,24 +226,26 @@ These 12 points come from the research dossier the Washington guide was built fr
 - **S41 (federal letter SMD# 26-006, Nov. 13, 2026), the federal half of the answer:** the start date does not move. States implement the requirement no later than Jan. 1, 2027, and the checking starts then. The letter gives each state a different option, a "hold harmless period" through June 30, 2027: a state that asks for it, and gets federal approval, may suspend denials and disenrollments that are only for not meeting the requirement, while it still checks each person. It does not cover denials or disenrollments on other grounds, such as income. A state that intends to use it from Jan. 1, 2027 is asked to notify CMS by Dec. 11, 2026. The letter names no state.
 - **The state half, still open:** whether Washington will ask for the hold harmless period, and whether it has asked for the separate delay to Dec. 31, 2028. On Nov. 14, 2026, HCA's client page (WA01) and stakeholder page (WA03) were searched for either and said nothing (claim WA-HH-05 records the search). Checkpoint 2026-12-11 in [review.json](../data/review.json).
 - **What the site does:** states the federal option on the Washington home, rules, and turned-down pages (claims WA-HH-01 to WA-HH-04), and says that as of Nov. 14, 2026, HCA's pages did not say what Washington will choose (WA-HH-05). It does not say Washington has chosen the period or has not. It still says nothing about the Dec. 31, 2028 delay, on any page, until an official source speaks.
-- **Related, also open:** WA05 lists "short-term hardship" as an exemption without saying which federal hardship kinds Washington has adopted. The reasons page lists the federal kinds (S27, WA24) and says HCA's client papers do not name which count.
+- **Related, resolved Nov. 14, 2026:** WA05 lists "short-term hardship" as an exemption without saying which kinds count. WA22 names four for Washington: two a person must ask for (travel outside the community for care for a serious or complex condition; part or all of a month in an inpatient facility) and two automatic (living in a presidential disaster area; living in a county with unemployment 1.5 times the national rate). The reasons page now lists HCA's four and keeps one line for the federal 8 percent unemployment test, which WA22 does not mention (claims WA-HARD-01, WA-HARD-02, WA-RULE-09).
 
 ### 8. What the $580 counts
 
 - **WA05:** "monthly household income". **A nonprofit summary of the federal rule:** household MAGI. **CMS:** earnings of at least 80 times the federal minimum wage.
 - **Why it matters:** for a person with unpaid activity plus small earnings, the three framings give different answers.
 - **What the site does:** "your household has at least $580 in income a month", the fact sheet's wording. The site does not say which income counts.
+- **Resolved Nov. 14, 2026.** WA22 states the $580 is monthly household MAGI income, and that it does not have to come from a job. The rules page and the check now say so (claim WA-CHK-02).
 
 ### 9. SNAP and TANF
 
 - **WA05:** exempts a "household member of SNAP or TANF". **The federal framing:** complying with SNAP or TANF work requirements. Those are different tests.
 - **What the site does:** uses WA05's wording.
+- **Resolved Nov. 14, 2026.** WA22 and HCA's sample client notice both frame the reason as meeting SNAP's or TANF's own work requirements. The reasons page, the check, and claim WA-RSN-06 now use that framing.
 
 ### 10. How far the court order reaches
 
 - **One national summary:** described the Oct. 29, 2026 ruling as applying nationwide.
 - **The order itself (S28):** vacates the clause and bars its use against the plaintiff states, with a 6-month bar on penalizing them.
-- **What the site does:** follows the order's own text, and says Washington is one of the states that sued (WA14, WA25; neither has been read in full, so those are drafting claims).
+- **What the site does:** follows the order's own text, and says Washington is one of the states that sued (WA14, WA25; both read in full on Nov. 13, 2026, WA25 from the copy the Attorney General links, which the owner ruled on Nov. 14, 2026 counts as its read).
 
 ### 11. Good cause
 
@@ -252,6 +257,7 @@ These 12 points come from the research dossier the Washington guide was built fr
 - **WA05:** HCA's address for the fact sheet answered 403 to the research tool. The text was read from an identical copy hosted by the hospital association.
 - **WA22:** HCA's main client page on the work requirements came back empty. Its wording has not been read.
 - **What the site does:** uses WA05 as read, and cites WA22 for no fact. Both are first on the list for the end-to-end read.
+- **Resolved Nov. 13, 2026.** Both HCA addresses answered that day, and both documents were read in full at HCA's own addresses. WA22 is cited for claims from Nov. 14, 2026, on the owner's ruling. A line-by-line comparison of the two WA05 copies (HCA's and the hospital association's) remains for a person to do.
 
 ### Left out on purpose
 

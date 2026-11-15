@@ -4,7 +4,7 @@ order: 60
 title: Do the Washington rules fit me? A 1-minute check
 short_title: Do the rules fit me?
 description: Answer 3 quick questions to see whether the new Apple Health work rules in Washington may apply to you. Your answers never leave your device.
-sources: WA04, WA05, WA06, WA13, WA15, S27, S29
+sources: WA04, WA05, WA06, WA13, WA15, S27, S29, WA22
 scripts: checker-washington, checker
 -->
     <h1>Do the Washington rules fit me?</h1>
@@ -62,7 +62,7 @@ scripts: checker-washington, checker
           <div class="step-group" role="group" aria-labelledby="group-coverage">
             <h3 id="group-coverage">Coverage and benefits</h3>
             <label class="choice"><input type="checkbox" name="reason" value="medicare"> I have Medicare Part A or Part B.</label>
-            <label class="choice"><input type="checkbox" name="reason" value="snap"> I am a household member of someone who gets SNAP food assistance or TANF cash assistance.</label>
+            <label class="choice"><input type="checkbox" name="reason" value="snap"> I am in a SNAP (food) household that meets SNAP's work rules, or I get TANF (cash) and meet TANF's work rules.</label>
           </div>
 
           <div class="step-group" role="group" aria-labelledby="group-background">
@@ -93,7 +93,7 @@ scripts: checker-washington, checker
       <div class="step" data-step="3" tabindex="-1" hidden>
         <fieldset aria-describedby="step-3-hint step-3-error">
           <legend><h2>Do any of these fit you?</h2></legend>
-          <p class="hint" id="step-3-hint">Pick all that fit. Think about the month before you apply. These are the 5 ways to meet the rules.</p>
+          <p class="hint" id="step-3-hint">Pick all that fit. Think about the month before you apply. These are the 6 ways to meet the rules.</p>
           <label class="choice"><input type="checkbox" name="meet" value="income"> My household has at least $580 in income a month.</label>
           <label class="choice"><input type="checkbox" name="meet" value="school"> I am in an educational program at least half-time.</label>
           <label class="choice"><input type="checkbox" name="meet" value="program"> I am in a work program at least 80 hours a month.</label>
@@ -116,5 +116,5 @@ scripts: checker-washington, checker
     <div class="more">
       <h2>How this check works</h2>
       <p>The check runs on this page only. It uses the same lists as our pages on <a href="washington-rules.html">the Apple Health rules</a> and <a href="washington-reasons.html">the reasons you may not have to meet them</a>. It does not ask about your county. You can read every rule it uses in our public <a href="https://github.com/radiofreelove/projectstasis/blob/main/docs/checker-logic.md">checker notes</a>.</p>
-      <p data-claim="WA-CHK-04">The 5 ways in step 3 are the 5 on the fact sheet from the Health Care Authority (HCA). That list does not have hours at a paid job as a way of its own. It names work hours only as part of a mix.</p>
+      <p data-claim="WA-CHK-04 WA-CHK-06">The 6 ways in step 3 are the 6 on the work requirements page from the Health Care Authority (HCA). HCA's fact sheet lists 5 of them. It leaves out work itself as a way of its own.</p>
     </div>

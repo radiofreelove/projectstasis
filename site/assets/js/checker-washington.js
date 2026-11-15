@@ -7,10 +7,10 @@
   check never says "you are exempt" or "you qualify". Only Washington
   decides.
 
-  The ways to meet the rules are the five on the fact sheet from the
-  Health Care Authority (HCA), as that sheet lists them. The sheet has no
-  item for hours at a paid job by itself; it names work only inside the
-  mix. Nothing here adds one (docs/corrections.md, Washington item 2).
+  The ways to meet the rules are the six on HCA's work requirements
+  page (WA22). HCA's fact sheet lists five of them and leaves out work
+  itself as a way of its own; the page's list governs here
+  (docs/corrections.md, Washington item 2, settled Nov. 14, 2026).
 */
 window.StasisCheck = (function () {
   'use strict';
@@ -36,7 +36,7 @@ window.StasisCheck = (function () {
         notApply: true
       },
       snap: { // WA-RSN-06
-        label: 'You are a household member of someone who gets SNAP food assistance or TANF cash assistance.'
+        label: 'You are in a SNAP (food) household that meets SNAP\'s work rules, or you get TANF (cash) and meet TANF\'s work rules.'
       },
       aian: { // WA-RSN-04, WA-RSN-14
         label: 'You are American Indian or Alaska Native.',
@@ -51,16 +51,20 @@ window.StasisCheck = (function () {
       jail: { // WA-RSN-09
         label: 'You got out of jail or prison in the last 90 days.'
       },
-      hardship: { // WA-RSN-13, WA-RULE-09
+      hardship: { // WA-RSN-13, WA-HARD-01, WA-HARD-02
         label: 'You had a short-term hardship.',
-        how: 'HCA lists short-term hardship as an exemption. Its papers for clients do not say which kinds count. Ask HCA.'
+        how: 'HCA names four kinds: travel outside your community for care for a serious condition, and a stay in a hospital or care facility (you must ask for these two); and living where the President declared a disaster, or in a county with unemployment 1.5 times the national rate (these two are automatic).'
       }
     },
 
     meets: {
       income: { // WA-CHK-02, WA-RULE-02
         label: 'Your household has at least $580 in income a month.',
-        how: 'Seasonal workers may use an average of $580 a month over 6 months.'
+        how: 'This is the household income HCA already counts for Apple Health (called MAGI). It does not have to come from a job. Seasonal workers may use an average of $580 a month over 6 months.'
+      },
+      work: { // WA-CHK-06
+        label: 'You work at least 80 hours a month.',
+        how: 'The work can be for pay, for goods or services, or unpaid.'
       },
       school: { // WA-CHK-03, WA-RULE-03
         label: 'You are in an educational program at least half-time.',
