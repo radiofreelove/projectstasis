@@ -164,7 +164,7 @@ Done early, ahead of checkpoint 2026-11-16.
 
 ## Release 0.3.0 beta: Washington
 
-Built on **Nov. 12, 2026**. Merged the same day, ahead of the source review, on the project owner's direction. Washington's sources were accessed and reviewed against the facts they support; 14 of its 25 sources have not yet been read in full, and the source review is checkpointed for Nov. 26, 2026 in [data/review.json](../data/review.json).
+Built on **Nov. 12, 2026**. Merged the same day, ahead of the source review, on the project owner's direction. Washington's sources were accessed and reviewed against the facts they support; at the merge, 14 of its 25 sources had not been read in full (see "Reads on Nov. 13, 2026" below for what has changed), and the source review is checkpointed for Nov. 26, 2026 in [data/review.json](../data/review.json).
 
 ### How the Washington guide was built
 
@@ -176,7 +176,7 @@ The assistant that built the pages did not read any Washington source. It worked
 
 ### Drafting claims: resting on a source nobody has read in full
 
-17 claims rest on at least one source marked `"opened": false`. Their notes in the fact log start "Drafting claim". All are pending the end-to-end read.
+At the merge on Nov. 12, 2026, 17 claims rested on at least one source marked `"opened": false`, and their notes in the fact log started "Drafting claim". The table shows that starting state. "Reads on Nov. 13, 2026", below, says which of them are settled and which are still drafting claims.
 
 | Claim | Unread source | Page |
 |---|---|---|
@@ -198,7 +198,18 @@ The assistant that built the pages did not read any Washington source. It worked
 | WA-IMM-03 | WA20, WA23 | washington-immigration |
 | WA-IMM-04 | WA23 | washington-immigration |
 
-Two unread sources support no claim and no page links to them. They are in the registry so the gap is visible: WA21 (the medically frail memo; its address is unverified) and WA22 (the work requirements client page).
+At the merge, two unread sources supported no claim and no page linked to them: WA21 (the medically frail memo) and WA22 (the work requirements client page). Both were read in full on Nov. 13, 2026; they still support no claim.
+
+### Reads on Nov. 13, 2026
+
+On Nov. 13, 2026 the AI assistant fetched each registry address below and read the document or page there. This is not the source review by a person, which stays checkpointed for Nov. 26, 2026 (Washington) and Nov. 24, 2026 (Utah).
+
+- **Read in full, Washington (13):** WA12, WA13, WA14, WA15, WA16, WA17, WA18, WA19, WA20, WA21, WA22, WA23, WA24. For a web page, "in full" means the page's own content, not the site's menus. For WA20, the text of all 46 slides; charts and maps that are images were not read. WA05 was also read at HCA's own address, which answered this time.
+- **Read in full, Utah (5):** U15S and U19S (in Spanish, by the AI assistant; no fluent Spanish reader on the project has checked them), U34 and U35 (the home page at each address only), U36.
+- **Not read in full (3):** WA25 (its address answered 403 twice; the text of the same filed complaint was read from the copy the Washington Attorney General links, and the entry stays `"opened": false` until a person opens the address or the owner rules that copy counts); U32 (a sign-in site that answered 404); U38 (a 514-page code list; the title page, definitions, section headings, first two pages, and last page were read).
+- **Drafting claims settled (14 of 17):** 13 confirmed as written by the read of every source they rest on: WA-RULE-09, WA-APP-08, WA-APP-09, WA-LTR-02, WA-DEN-03, WA-DEN-04, WA-DEN-05, WA-HLT-04, WA-IMM-02, WA-IMM-03, WA-WRD-02, WA-WRD-05, WA-LOG-03. One corrected: WA-DEN-01, because the version of WAC 182-504-0035 that takes effect Jan. 1, 2027 no longer says coverage is restored without a gap.
+- **Still drafting claims (3):** WA-CHK-01 (WAC 182-505-0250 states the income test as at or below 133 percent, not under 138 percent as HCA's fact sheet does); WA-IMM-04 (WA23 confirms the enrollment cap is met but not "state-funded" or "December 2025", which are on an HCA announcement not in the registry); WA-RSN-15 (WA25 is still marked as not read in full). Each waits for the owner's ruling.
+- **Found and not acted on:** HCA's work requirements page (WA22) differs from the guide on several of the 12 open points in [corrections.md](corrections.md), including a sixth way to meet the rule (working at least 80 hours a month). No claim cites WA22 yet, and the open points are unchanged.
 
 ### What a person still has to read
 
@@ -268,3 +279,15 @@ On Nov. 14, 2026 the AI assistant fetched the registry address of each of the 26
   - The Open Card site (S22) already gives 800-562-4620 as its help line. The guide says to call starting Jan. 1, 2027, as OHA's sheets do (C-OPENCARD-FIND).
   - The registry titles of K03 and K13 differ from the titles on the documents, and the S21 short link lands on a publisher other than the one the registry names. Each entry's note says so.
 - **Owner rulings, Nov. 14, 2026.** The owner ruled on the five items above the same day, and the rulings were applied in this release: the Resources link now goes to OHA's Community Resources page (S23 corrected and read in full); K03 was added to corrections item 1; the K03 and K13 registry titles and the S21 publisher were corrected; the Spanish line disagreement was recorded as corrections item 9 with no page change. See the 0.3.6 beta entry in the CHANGELOG.
+
+## Release 0.3.8 beta: Washington corrections, and a restore
+
+### The restore
+
+On Nov. 14, 2026, while preparing this release, the maintainer's assistant found that the merge of release 0.3.5 (PR #19) had overwritten the registry and page changes from release 0.3.3 (the Nov. 13, 2026 reads). The 0.3.5 branch had been built from a checkout taken before 0.3.3 merged, and publishing it as a single commit carried its older copies of data/sources.json, data/claims.json, and two Washington pages over the newer ones. The site therefore showed the Washington and Utah sources as not read in full, and claim WA-DEN-01 and the turned-down page again said coverage is restored without a gap, with no end date. This release restores the 0.3.3 changes as merged in PR #15, reconciled with the 0.3.5 and 0.3.6 changes to the same files (the S41 claims and registry entry, the WA-HH claims, and the S23 correction are kept). Three registry notes (WA16, WA17, WA19) and parts of three more (WA22, WA25, S41) were split into shorter sentences so the Washington sources page stays within the reading level limit; no facts changed. Releases 0.3.4, 0.3.6, and 0.3.7 were checked for the same loss and did not lose anything.
+
+### Owner rulings of Nov. 14, 2026, applied in this release
+
+- WA22 may be cited as a claim source. Washington corrections items 2, 3, 4, 7 (hardship half), 8, and 9 are resolved; see [corrections.md](corrections.md). New claims: WA-CHK-06, WA-HARD-01, WA-HARD-02, WA-RSN-16. New source: WA26 (HCA's Apple Health Expansion enrollment cap announcement).
+- The three drafting claims are settled. WA-CHK-01: the guide keeps HCA's 138 percent figure; the rule's 133 percent and the 5-percentage-point disregard are recorded in the claim note. WA-IMM-04: WA26 added and cited. WA-RSN-15: the filed complaint read from the copy the Attorney General links counts as WA25's read; WA25 is marked read in full.
+- Not changed: items 1, 5, and 6 (settled, no change); item 7's state half and item 10 (the guide keeps saying nothing); item 11 (still a gap). WA-RULE-07 against WA-RULE-08, the continued-coverage exception in WAC 182-504-0130(5), and the medical frailty detail were not ruled on and stay open.

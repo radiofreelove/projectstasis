@@ -147,20 +147,21 @@ Built on Nov. 12, 2026 from the check claims in the research dossier (WA-CHK-01 
 | health | Blind or a disability, a substance use disorder, a disabling mental health condition, or a serious or complex medical condition | HCA calls this medically frail. The list comes from federal law. | WA-RSN-10, WA-HLT-03 |
 | treatment | In treatment for alcohol or substance use | Nothing | WA-RSN-11 |
 | medicare | Medicare Part A or Part B | The work rules are only for Apple Health for Adults, a group for people with no Medicare. | WA-RSN-08, WA-CHK-01 |
-| snap | Household member of someone who gets SNAP food assistance or TANF cash assistance | Nothing | WA-RSN-06 |
+| snap | In a SNAP (food) household that meets SNAP's work rules, or get TANF (cash) and meet TANF's work rules | Nothing | WA-RSN-06 |
 | aian | American Indian or Alaska Native | Also left out of the shorter 6-month coverage periods. | WA-RSN-04, WA-RSN-14 |
 | foster | Foster youth, or former foster youth under 26 | Nothing | WA-RSN-03 |
 | veteran | Disabled veteran with a 100 percent total disability rating | Nothing | WA-RSN-12 |
 | jail | Out of jail or prison in the last 90 days | Nothing | WA-RSN-09 |
-| hardship | A short-term hardship, like a hospital stay or travel for medical care | HCA lists short-term hardship as an exemption. Its papers for clients do not say which kinds count. Ask HCA. | WA-RSN-13, WA-RULE-09 |
+| hardship | A short-term hardship, like a hospital stay or travel for medical care | HCA names four kinds: travel outside your community for care for a serious condition, and a stay in a hospital or care facility (you must ask for these two); and living where the President declared a disaster, or in a county with unemployment 1.5 times the national rate (these two are automatic). | WA-RSN-13, WA-HARD-01, WA-HARD-02 |
 
 ### Ways to meet the rules (Washington)
 
-Five choices, not three, because HCA's fact sheet lists five ways.
+Six choices, not three, because HCA's work requirements page lists six ways.
 
 | Value | Label | What the check adds | Claim |
 |---|---|---|---|
-| income | Your household has at least $580 in income a month | Seasonal workers may use an average of $580 a month over 6 months. | WA-CHK-02, WA-RULE-02 |
+| income | Your household has at least $580 in income a month | This is the household income HCA already counts for Apple Health (called MAGI). It does not have to come from a job. Seasonal workers may use an average of $580 a month over 6 months. | WA-CHK-02, WA-RULE-02 |
+| work | You work at least 80 hours a month | The work can be for pay, for goods or services, or unpaid. | WA-CHK-06 |
 | school | In an educational program at least half-time | Under the federal rule, this includes high school and GED programs. | WA-CHK-03, WA-RULE-03 |
 | program | In a work program at least 80 hours a month | Nothing | WA-CHK-04 |
 | service | Community service at least 80 hours a month | Nothing | WA-CHK-04 |
@@ -168,7 +169,7 @@ Five choices, not three, because HCA's fact sheet lists five ways.
 
 ### What the Washington check leaves out, and why
 
-- **Hours at a paid job as a way of its own.** HCA's fact sheet does not list one; it names work only inside the mix. The check follows the fact sheet's five ways exactly and adds nothing on anyone's judgment. The page says so under "How this check works". See [corrections.md](corrections.md), Washington item 2. If WA22 or the fact sheet's own text settles it, step 3 changes.
+- **Hours at a paid job as a way of its own.** Settled Nov. 14, 2026. HCA's fact sheet does not list one; it names work only inside the mix. HCA's work requirements page (WA22) lists work as a way of its own, and the owner ruled WA22 may be cited. Step 3 now follows the page's six ways, and the check page says so under "How this check works". See [corrections.md](corrections.md), Washington item 2.
 - **How Washington checks medical frailty.** HCA's memo (WA21) has not been read. The "health" choice uses the federal list (S27, S29) and says nothing about a screening question or proof.
 - **County reasons** (high unemployment, or a federal emergency or disaster). A person cannot easily know them. The reasons page lists them as kinds federal law allows.
 - **"In jail or prison now."** A person using the check is asked only about getting out in the last 90 days.
