@@ -1,9 +1,14 @@
 name: Weekly source check
 
 # Every Monday morning (Oregon time), and on Jan. 1 each year when dated
-# notes expire: check every official link, every dated checkpoint, and
-# what Cloudflare serves at the live address. If anything needs a person,
-# open one GitHub issue with the full report.
+# notes expire: check every official link, what every official source says
+# (the evidence audit), every dated checkpoint, and what Cloudflare serves
+# at the live address. If anything needs a person, open one GitHub issue
+# with the full report.
+#
+# A second job drafts "checked" date updates as a pull request. It is off
+# unless the repository variable MECHANICAL_UPDATES is set to "on", and it
+# never merges anything.
 # Run it by hand from the Actions tab after any change to the Cloudflare
 # settings. See docs/maintenance.md.
 
@@ -32,6 +37,21 @@ jobs:
         continue-on-error: true
         run: python3 tools/check_links.py --report link-report.md
 
+      # The baseline holds hashes, not text. The text of each page is kept
+      # between runs so a report can show what changed. If it is gone, the
+      # report says so and still names the changed source.
+      - name: Bring back the page text saved by earlier runs
+        uses: actions/cache@v5
+        with:
+          path: .evidence-snapshots
+          key: evidence-snapshots-${{ github.run_id }}
+          restore-keys: evidence-snapshots-
+
+      - name: Evidence audit (what each source says, compared with its baseline; respects robots.txt)
+        id: evidence
+        continue-on-error: true
+        run: python3 tools/evidence_audit.py --report evidence-report.md
+
       - name: Check dated checkpoints
         id: dates
         continue-on-error: true
@@ -43,7 +63,7 @@ jobs:
         run: python3 tools/check_live.py --report live-report.md
 
       - name: Open an issue if a person is needed
-        if: steps.links.outcome == 'failure' || steps.dates.outcome == 'failure' || steps.live.outcome == 'failure'
+        if: steps.links.outcome == 'failure' || steps.evidence.outcome == 'failure' || steps.dates.outcome == 'failure' || steps.live.outcome == 'failure'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         run: |
@@ -58,6 +78,8 @@ jobs:
             echo
             cat link-report.md 2>/dev/null || echo "(no link report)"
             echo
+            cat evidence-report.md 2>/dev/null || echo "(no evidence audit report)"
+            echo
             cat live-report.md 2>/dev/null || echo "(no live-site report)"
             echo
             echo "See docs/maintenance.md for what to do."
@@ -65,3 +87,80 @@ jobs:
           gh issue create \
             --title "Weekly source check needs attention ($(date -u +%Y-%m-%d))" \
             --body-file body.md
+
+  # Off by default. Runs only when the repository variable MECHANICAL_UPDATES
+  # is "on" (Settings, Secrets and variables, Actions, Variables). It opens a
+  # pull request and stops there: a person reviews and merges it, or closes it.
+  # This is the only job that can write to the repository.
+  mechanical:
+    name: Draft checked-date updates (only when MECHANICAL_UPDATES is on)
+    if: ${{ !cancelled() && vars.MECHANICAL_UPDATES == 'on' }}
+    # After the first job, so the two never ask the same site at once.
+    needs: review
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      pull-requests: write
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Evidence audit
+        continue-on-error: true
+        run: python3 tools/evidence_audit.py --report evidence-report.md --results evidence-results.json
+
+      - name: Set the checked date of each source the audit found unchanged
+        run: python3 tools/mechanical_update.py --audit evidence-results.json --summary mechanical-summary.md
+
+      - name: Rebuild the pages that show those dates
+        run: |
+          if git diff --quiet -- data/sources.json; then
+            echo "No dates to update."
+          else
+            python3 tools/build.py
+          fi
+
+      - name: Open a pull request with the date updates and nothing else
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          if git diff --quiet -- data/sources.json; then
+            exit 0
+          fi
+          # Only the registry and what the build makes from it may differ.
+          other="$(git status --porcelain -- . ':!data/sources.json' ':!site' ':!docs/sources.md' \
+            ':!evidence-report.md' ':!evidence-results.json' ':!mechanical-summary.md')"
+          if [ -n "$other" ]; then
+            echo "Something other than the checked dates changed. No pull request was opened."
+            echo "$other"
+            exit 1
+          fi
+          today="$(date -u +%Y-%m-%d)"
+          branch="mechanical-updates-$today-run-${{ github.run_number }}"
+          {
+            echo "Drafted by the weekly source check because the repository variable MECHANICAL_UPDATES is on."
+            echo "This changes the \"checked\" date of each source below in data/sources.json, and the built files that show those dates. It changes nothing else."
+            echo
+            echo "A date set this way means a tool found the same content as the baseline in data/evidence_baseline.json. It does not mean a person read the source again."
+            echo
+            echo "Nothing merges this for you. The checks do not start by themselves on a pull request opened by a workflow: run **Checks** by hand on this branch (Actions tab) before merging. See docs/maintenance.md, \"Evidence audit\"."
+            echo
+            echo "## Dates changed"
+            echo
+            cat mechanical-summary.md
+            echo
+            # GitHub's limit for a pull request body is 65,536 characters.
+            head -c 50000 evidence-report.md
+          } > pr-body.md
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git switch -c "$branch"
+          git add data/sources.json site docs/sources.md
+          git commit -m "Checked dates for sources the evidence audit found unchanged ($today)"
+          git push origin "$branch"
+          gh pr create --base main --head "$branch" \
+            --title "Checked dates for unchanged sources ($today)" \
+            --body-file pr-body.md
