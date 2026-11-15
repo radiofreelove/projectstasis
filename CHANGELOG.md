@@ -43,7 +43,6 @@ Washington corrections, on the owner's rulings of Nov. 14, 2026, and a restore.
 - **What the test could not fix.** On a 390 by 844 phone the site header, the menu, and the "How much to show" strip fill about 600 px, so the headline starts near the bottom of the first screen on every page. That is why the test measures from the headline. The header and the strip did not change.
 - [docs/reading-level.md](docs/reading-level.md) and [docs/testing-browser.md](docs/testing-browser.md) are regenerated. No page's reading grade went up. The browser report in the repository was older than 0.3.4 beta; its counts now match the 0.3.4 and 0.3.5 entries below.
 
-=======
 
 ## 0.3.6 beta (2026-11-14)
 
