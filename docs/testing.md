@@ -7,7 +7,7 @@ Results are not kept in this file, so it cannot go out of date. Each run's log i
 | Check | Tool | When it runs |
 |---|---|---|
 | Built pages match their sources; every link registered; every fact logged; font files match their checksums | `tools/build.py --check` | Every push, in GitHub Actions and in the Cloudflare build |
-| The tools themselves: the rules that keep each guide whole, a made-up third guide, the link checker against local test servers, and the release notes | `python3 -m unittest discover -s tools/tests` | Every push |
+| The tools themselves: the rules that keep each guide whole, a made-up third guide, the link checker and the evidence audit against local test servers, the checked-date updater, and the release notes | `python3 -m unittest discover -s tools/tests` | Every push |
 | The changelog has an entry for the version in the footer | `tools/release_notes.py --check` | Every push. After the checks pass on `main`, a new version is tagged and released |
 | Structure, privacy, and accessibility lint, including the security headers in `site/_headers` | `tools/check_structure.py` | Every push, in GitHub Actions and in the Cloudflare build |
 | Color contrast (7:1 text) | `tools/check_contrast.py` | Every push. Report: [contrast.md](contrast.md) |
@@ -15,6 +15,7 @@ Results are not kept in this file, so it cannot go out of date. Each run's log i
 | Dated checkpoints and expired notes | `tools/check_review_dates.py` | Every push (reported only); Mondays and Jan. 1 (opens an issue) |
 | Real browser on a server that behaves like Cloudflare Pages: every page in each display setting, every path through both checks, no outside requests, nothing left in storage, and axe-core | `tools/browser_check.py` | Every push. Report: [testing-browser.md](testing-browser.md) |
 | Official links | `tools/check_links.py` | Mondays |
+| What each official source says, compared with its baseline ([maintenance.md](maintenance.md), "Evidence audit") | `tools/evidence_audit.py` | Mondays |
 | Live site matches the repository, headers included | `tools/check_live.py` | After every push to `main`, and Mondays |
 
 The browser checks use two test-only tools, pinned to the same versions as The Strand Project: Playwright ([test-tools/requirements.txt](../test-tools/requirements.txt)) and axe-core ([test-tools/package.json](../test-tools/package.json)). Dependabot proposes updates to them and to the GitHub Actions each month ([.github/dependabot.yml](../.github/dependabot.yml)). The site build itself uses only the Python standard library. The test tools sit in `test-tools/`, not the repository root, because Cloudflare Pages installs any `package.json` it finds at the root on every deploy ([Cloudflare docs: Build image](https://developers.cloudflare.com/pages/configuration/build-image/), updated Oct. 26, 2026).
@@ -46,5 +47,6 @@ pip install -r test-tools/requirements.txt && python3 -m playwright install chro
 npm install --prefix test-tools --no-package-lock
 AXE_JS=test-tools/node_modules/axe-core/axe.min.js python3 tools/browser_check.py --shots screenshots
 python3 tools/check_links.py
+python3 tools/evidence_audit.py --report evidence-report.md
 python3 tools/check_live.py
 ```
