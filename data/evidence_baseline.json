@@ -193,13 +193,13 @@
     {
       "id": "S18",
       "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/de5530.pdf",
-      "fetched": "2026-11-16",
+      "fetched": "2026-11-17",
       "state": "unreachable",
       "mode": null,
       "sha256": null,
       "length": null,
       "registry_checked": "2026-11-02",
-      "note": "the reply stopped at 834508 of the 856769 bytes it announced; asked twice"
+      "note": "Remote end closed connection without response; asked twice"
     },
     {
       "id": "S19",
@@ -425,13 +425,13 @@
     {
       "id": "S38",
       "url": "https://equitycorps.org/",
-      "fetched": "2026-11-16",
-      "state": "checker-blocked",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "f05c5bbfbdb5d58834148adb62d19ef9f92ab161064d3567424f4c9d006bb698",
+      "length": 1351,
       "registry_checked": "2026-11-14",
-      "note": "the reply has no readable words (the site may have sent a check for automated visitors)"
+      "rules": 2
     },
     {
       "id": "K01",
@@ -613,13 +613,14 @@
     {
       "id": "U02",
       "url": "https://obbba.medicaid.utah.gov/",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "baff01d80110a7eb4a8d1c1bf6e071c467f8667a935a4087971f4f73b08f3800",
+      "length": 14481,
       "registry_checked": "2026-11-10",
-      "note": "the reply stopped at 81920 of the 118961 bytes it announced; asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U03",
@@ -657,13 +658,14 @@
     {
       "id": "U06",
       "url": "https://obbba.medicaid.utah.gov/wp-content/themes/twentytwelve/page-templates/pdf/FINAL_H.R.1-CE-requirement-toolkit.pdf",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "bytes",
+      "sha256": "7cda2c3e56f6a2911e72fb6f01a7d9033330620c558c98c2716a69c381840028",
+      "length": 360372,
       "registry_checked": "2026-11-10",
-      "note": "the reply stopped at 229098 of the 360372 bytes it announced; asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U07",
@@ -701,13 +703,14 @@
     {
       "id": "U10",
       "url": "https://obbba.medicaid.utah.gov/wp-content/themes/twentytwelve/page-templates/pdf/July2026_Medicaid_Flyer.pdf",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "bytes",
+      "sha256": "c6a4079a498ee9d9a4aacca968277df38e7e3c170ff0361f19461b19e7e572e2",
+      "length": 1002927,
       "registry_checked": "2026-11-10",
-      "note": "the reply stopped at 147177 of the 1002927 bytes it announced; asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U11",
@@ -745,13 +748,14 @@
     {
       "id": "U14",
       "url": "https://medicaid.utah.gov/apply-medicaid/",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "90724df20bde2a703491bedeedbe817feb0ed5c2df8e638c4fc3944364fadf7e",
+      "length": 4965,
       "registry_checked": "2026-11-10",
-      "note": "IncompleteRead(5853 bytes read); asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U15",
@@ -778,46 +782,50 @@
     {
       "id": "U16",
       "url": "https://jobs.utah.gov/customereducation/apply/index.html",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "aacd86fbcf374b06d9b094d2da7f9d31207f49f04ef736c3ae0841258f9a5ba2",
+      "length": 2980,
       "registry_checked": "2026-11-10",
-      "note": "the reply stopped at 32330 of the 53666 bytes it announced; asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U17",
       "url": "https://medicaid.utah.gov/hearings/",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "a95303046ac2fdd5aadc9ab3e657a87c19b14659c689a22ea15b22fc009523bf",
+      "length": 5587,
       "registry_checked": "2026-11-10",
-      "note": "IncompleteRead(64106 bytes read); asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U18",
       "url": "https://jobs.utah.gov/appeals/pa/filingpublic.html",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "1883dfea0395614a4ae5bf18add914ba418852a4692a83ac5a1b7e5f724b5286",
+      "length": 1694,
       "registry_checked": "2026-11-10",
-      "note": "Remote end closed connection without response; asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U19",
       "url": "https://jobs.utah.gov/appeals/490.pdf",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "bytes",
+      "sha256": "43afce2f611e43c4c11e81038215b67245ccf1c36c93f6f2352700176deaf992",
+      "length": 228758,
       "registry_checked": "2026-11-10",
-      "note": "the reply stopped at 130629 of the 228758 bytes it announced; asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U19S",
@@ -833,24 +841,25 @@
     {
       "id": "U20",
       "url": "https://jobs.utah.gov/appeals/pa/guidepats.html",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "eee0153db619b53aaf81ae791efbf0076d506f0a212e98d7eeb20b19a00fd6e0",
+      "length": 15830,
       "registry_checked": "2026-11-10",
-      "note": "the reply stopped at 15517 of the 28138 bytes it announced; asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U21",
       "url": "https://obbba-support.medicaid.utah.gov/coverage/",
-      "fetched": "2026-11-16",
-      "state": "checker-blocked",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "aca50d3ef98c2e3bc95630b520ee884c921ec10e69c03cb2f38035e62ab7826e",
+      "length": 2443,
       "registry_checked": "2026-11-10",
-      "note": "the site answered with a check for automated visitors (\"please wait while your request is being verified\"), not the source"
+      "rules": 2
     },
     {
       "id": "U22",
@@ -878,35 +887,38 @@
     {
       "id": "U24",
       "url": "https://obbba-support.medicaid.utah.gov/",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "c8a55abe006e978e7a71e83b93721721628048bfad88356488228367abafcb8f",
+      "length": 2799,
       "registry_checked": "2026-11-10",
-      "note": "the reply stopped at 21343 of the 31742 bytes it announced; asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U25",
       "url": "https://medicaid.utah.gov/expansion/",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "105f3ccecc323437faf751d41ad4471160beb0ad5ba0b4d483516a0e879a6618",
+      "length": 9987,
       "registry_checked": "2026-11-10",
-      "note": "IncompleteRead(129509 bytes read); asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U26",
       "url": "https://medicaid.utah.gov/targeted-adult-medicaid-program/",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "bd459ade97592a3fe984f8aa5df24410e326ff4cf7720273d5421eababe701c5",
+      "length": 8453,
       "registry_checked": "2026-11-10",
-      "note": "IncompleteRead(0 bytes read); asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U27",
@@ -955,13 +967,14 @@
     {
       "id": "U31",
       "url": "https://medicaid.utah.gov/language-services/",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "94c601f26285a33adaa556fadc334bc9790fa09d73429b62b0e124106a27d1c6",
+      "length": 6049,
       "registry_checked": "2026-11-10",
-      "note": "IncompleteRead(5855 bytes read); asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U32",
@@ -1010,35 +1023,38 @@
     {
       "id": "U36",
       "url": "https://medicaid.utah.gov/emergency-medicaid/",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "e752c7b658f83ce326c501a92a10f1bc3805efc67686f8a07fa02e0c786a6a11",
+      "length": 3536,
       "registry_checked": "2026-11-13",
-      "note": "IncompleteRead(0 bytes read); asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U37",
       "url": "https://www.utahlegalservices.org/",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "30f89397f893e373714edb6f896800139ec1a47928b8dcb3b29860fcba9c8c13",
+      "length": 3566,
       "registry_checked": "2026-11-10",
-      "note": "IncompleteRead(32768 bytes read); asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U38",
       "url": "https://obbba-support.medicaid.utah.gov/wp-content/uploads/2026/10/DiagnosesforMedicallyFrail_10.2026-1.pdf",
-      "fetched": "2026-11-16",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "bytes",
+      "sha256": "6a0503da7d659dde098a53fd37f256bb8e345f8164839b462b2993f4eca0912d",
+      "length": 2089136,
       "registry_checked": "2026-11-10",
-      "note": "the reply stopped at 229096 of the 2089136 bytes it announced; asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "WA01",
