@@ -43,7 +43,7 @@ sys.path.insert(0, str(TOOLS))
 import evidence_audit as audit  # noqa: E402
 
 # The hash of the comparison-rules block, the same in both projects (see OneSetOfRules).
-RULES_BLOCK_SHA256 = "9557dcd7a40651a9a0073d33551140c2ef8ac53c5597d07f1df11a4e180dd135"
+RULES_BLOCK_SHA256 = "1e34858acd2a520b6c39ba569c912a4a17d5e465b2deb1f63ae765933b6dea1f"
 
 PAGE = """<!doctype html>
 <html><head><title>Work rules</title>
@@ -53,6 +53,15 @@ PAGE = """<!doctype html>
 <p>The rules start <b>Jan.&nbsp;1,
 2027</b>.</p><ul><li>80 hours a month</li><li>%s</li></ul></body></html>
 """
+
+# Every real source has well over audit.MIN_WORDS words; a reply with fewer is
+# not taken as the source. Pages these tests have the tool fetch or carry
+# forward get this paragraph, so they are the size of a real page.
+ENOUGH = ("Adults who get Medicaid through the expansion group must show 80 hours a month of work, school, "
+          "volunteering, or a work program, unless an exemption applies. People who are pregnant, care for a "
+          "young child, are medically frail, or are in treatment for drug or alcohol use are exempt. Hours can "
+          "be reported online, by phone, by mail, or in person, and free help is available.")
+SERVED_PAGE = PAGE.replace("</ul></body>", "</ul><p>" + ENOUGH + "</p></body>")
 
 
 class Normalization(unittest.TestCase):
@@ -148,6 +157,15 @@ class WholeReplies(unittest.TestCase):
             audit.check_whole(b"%PDF-1.7\n1 0 obj", "application/pdf", None)
         audit.check_whole(b"%PDF-1.7\n1 0 obj\n%%EOF\n", "application/pdf", None)
 
+    def test_the_same_cut_twice_is_cut_short_both_times(self):
+        # U08, Nov. 2026: three of six fetches stopped at the same 81,642 of
+        # 209,710 bytes. Under rules 1 two such fetches hashed the same, and the
+        # PDF would have been called unchanged on a tenth of its bytes.
+        part = b"%PDF-1.7\n" + b"x" * 81_633
+        for _ in range(2):
+            with self.assertRaises(audit.CutShort):
+                audit.check_whole(part, "application/pdf", "209710")
+
     def test_a_whole_pdf_with_a_length_needs_no_marker(self):
         audit.check_whole(b"%PDF-1.7 x", "application/pdf", "10")
 
@@ -178,6 +196,43 @@ class NotTheSource(unittest.TestCase):
         self.assertEqual(result["state"], audit.BLOCKED)
         self.assertIn("no readable words", result["note"])
 
+    def test_a_page_too_short_to_be_the_source_is_checker_blocked(self):
+        # A check page in words no list has yet. Hashed, it would match itself
+        # on the next fetch, and the source would be called unchanged unread.
+        body = b"<html><body><noscript></noscript><div id=root>You need to enable JavaScript to run this app.</div></body></html>"
+        result = audit.examine(body, "text/html", str(len(body)))
+        self.assertEqual(result["state"], audit.BLOCKED)
+        self.assertNotIn("sha256", result)
+        self.assertIn("only 9 words", result["note"])
+
+    def test_the_same_check_page_twice_is_never_unchanged(self):
+        # S27, Nov. 2026: the baseline and the next fetch were the same CAPTCHA
+        # page, with lines broken differently. Under rules 1 only the line breaks
+        # made it "changed"; with them ignored it would have been "unchanged".
+        page = ("<html><body><h1>Request Access</h1><p>Due to aggressive automated scraping of FederalRegister.gov "
+                "and eCFR.gov, programmatic access to these sites is limited to access to our extensive developer "
+                "APIs.</p><p>Your request has been flagged as potentially automated. If you are human user receiving "
+                "this message, please complete the CAPTCHA (bot test) below and click \"Request Access\". You may "
+                "occassionally be asked to complete the CAPTCHA again, this is normal and part of our security "
+                "measures.</p></body></html>")
+        for body in (page, page.replace(" ", "\n", 9)):
+            self.assertEqual(audit.examine(body.encode(), "text/html", None)["state"], audit.BLOCKED)
+
+    def test_other_common_checks_are_checker_blocked(self):
+        for words in ("Just a moment... Verifying you are human. This may take a few seconds. example.gov needs to "
+                      "review the security of your connection before proceeding.",
+                      "Request unsuccessful. Incapsula incident ID: 1234-5678",
+                      "Pardon Our Interruption. As you were browsing something about your browser made us think "
+                      "you were a bot."):
+            body = f"<html><body><p>{words}</p></body></html>".encode()
+            self.assertEqual(audit.examine(body, "text/html", None)["state"], audit.BLOCKED, words)
+
+    def test_the_shortest_real_source_is_read(self):
+        # The shortest source text in November 2026 (U22) had 165 words.
+        body = ("<html><body><p>" + " ".join([ENOUGH] * 3) + "</p></body></html>").encode()
+        self.assertGreaterEqual(len(audit.canonical(audit.html_text(body.decode())).split()), 165)
+        self.assertEqual(audit.examine(body, "text/html", None)["state"], audit.FETCHED)
+
     def test_a_long_page_that_quotes_a_phrase_is_read(self):
         body = ("<html><body><p>" + "Words. " * 600 + "verify you are human</p></body></html>").encode()
         self.assertEqual(audit.examine(body, "text/html", None)["state"], audit.FETCHED)
@@ -190,7 +245,7 @@ class NotTheSource(unittest.TestCase):
 class RulesVersions(unittest.TestCase):
     """A hash written under other rules is never compared, and can be carried forward."""
     URL = "https://example.test/a"
-    TEXT = "Work rules\nThe rules start\nJan. 1, 2027."
+    TEXT = "Work rules\nThe rules start\nJan. 1, 2027.\n" + ENOUGH
 
     def old(self, text=TEXT, **extra):
         """An entry as the tool wrote it before RULES: no "rules", the saved text hashed as it was."""
@@ -202,9 +257,21 @@ class RulesVersions(unittest.TestCase):
         self.assertEqual(audit.classify(now, self.old(), self.URL), audit.NOT_BASELINED)
         self.assertTrue(audit.older_rules(self.old(), self.URL))
 
-    def test_a_refresh_does_not_keep_an_old_rules_hash(self):
-        blocked = {"id": "T1", "url": self.URL, "state": audit.BLOCKED, "sha256": None}
+    def test_a_refresh_keeps_an_old_rules_hash_it_cannot_replace(self):
+        # Nov. 16, 2026: a refresh that could not read U01 and nine other sources
+        # wrote "unreachable" over their only hashes. Kept, a hash can still be
+        # carried forward or checked against the next whole fetch.
+        blocked = {"id": "T1", "url": self.URL, "state": audit.UNREACHABLE, "sha256": None}
         merged, kept = audit.merge_baseline({"T1": self.old()}, {"T1": blocked}, ["T1"])
+        self.assertEqual(merged[0], self.old())
+        self.assertEqual(kept, ["T1"])
+        # Kept, but still never compared.
+        now = {"state": audit.FETCHED, "mode": "text", "sha256": audit.text_digest(self.TEXT)}
+        self.assertEqual(audit.classify(now, merged[0], self.URL), audit.NOT_BASELINED)
+
+    def test_a_refresh_still_drops_an_old_rules_hash_for_another_address(self):
+        moved = {"id": "T1", "url": "https://example.test/new", "state": audit.UNREACHABLE, "sha256": None}
+        merged, kept = audit.merge_baseline({"T1": self.old()}, {"T1": moved}, ["T1"])
         self.assertIsNone(merged[0]["sha256"])
         self.assertEqual(kept, [])
 
@@ -225,10 +292,144 @@ class RulesVersions(unittest.TestCase):
         self.assertIsNone(carried)
         self.assertIn("not the source", why)
 
-    def test_a_bytes_entry_keeps_its_hash_and_says_so(self):
-        carried, _ = audit.carry_forward(self.old(mode="bytes"), None)
-        self.assertEqual(carried["sha256"], self.old()["sha256"])
-        self.assertIn("not known whether that reply was whole", carried["carried"])
+    def test_a_bytes_entry_is_never_carried_forward(self):
+        # Under rules 1, 9 of the 37 PDF hashes were of replies cut short (U08:
+        # 81,642 of 209,710 bytes). There is no saved copy to re-take a bytes
+        # hash from, so it is written again from a whole fetch instead.
+        carried, why = audit.carry_forward(self.old(mode="bytes"), None)
+        self.assertIsNone(carried)
+        self.assertIn("not known", why)
+
+    def test_a_stub_is_never_carried_forward(self):
+        stub = "Loading\nPlease enable JavaScript to view this page."
+        carried, why = audit.carry_forward(self.old(stub), stub)
+        self.assertIsNone(carried)
+        self.assertIn("too few to be the source", why)
+
+
+class EarlierHash(unittest.TestCase):
+    """A fresh fetch that replaces a hash says whether it says what that hash said."""
+    URL = "https://example.test/a"
+
+    def old(self, digest, mode="text", rules=None):
+        made = {"id": "T1", "url": self.URL, "fetched": "2026-11-15", "state": audit.FETCHED, "mode": mode,
+                "sha256": digest}
+        if rules:
+            made["rules"] = rules
+        return made
+
+    def now(self, mode, digest):
+        return {"state": audit.FETCHED, "mode": mode, "sha256": digest}
+
+    def test_the_same_bytes_carry_the_check_forward(self):
+        said = audit.compared_with_earlier(self.old("abc", "bytes"), self.now("bytes", "abc"), self.URL, None)
+        self.assertEqual(said, "the same as the entry of 2026-11-15 (rules 1)")
+
+    def test_a_cut_short_old_hash_is_reported_different(self):
+        whole, part = b"%PDF-1.7 whole file %%EOF", b"%PDF-1.7 whole"
+        said = audit.compared_with_earlier(self.old(hashlib.sha256(part).hexdigest(), "bytes"),
+                                           self.now("bytes", hashlib.sha256(whole).hexdigest()), self.URL, None)
+        self.assertTrue(said.startswith("different from the entry of 2026-11-15"))
+
+    def test_old_text_is_compared_under_the_new_rules(self):
+        split, joined = "Please call 800-699-9075, go to\nBenefits.Oregon.gov", "Please call 800-699-9075, go to Benefits.Oregon.gov"
+        old = self.old(hashlib.sha256(split.encode()).hexdigest())
+        self.assertTrue(audit.compared_with_earlier(old, self.now("text", audit.text_digest(joined)), self.URL,
+                                                    split).startswith("the same as"))
+        changed = audit.text_digest(joined.replace("699", "698"))
+        self.assertTrue(audit.compared_with_earlier(old, self.now("text", changed), self.URL,
+                                                    split).startswith("different from"))
+
+    def test_without_the_old_text_it_is_not_known(self):
+        said = audit.compared_with_earlier(self.old("abc"), self.now("text", "def"), self.URL, None)
+        self.assertTrue(said.startswith("not known"))
+        # Saved text that is not the text the old hash was taken from does not count.
+        said = audit.compared_with_earlier(self.old("abc"), self.now("text", "def"), self.URL, "other words")
+        self.assertTrue(said.startswith("not known"))
+
+    def test_current_rules_hashes_are_compared_directly(self):
+        self.assertTrue(audit.compared_with_earlier(self.old("abc", rules=audit.RULES), self.now("text", "abc"),
+                                                    self.URL, None).startswith("the same as"))
+
+    def test_nothing_to_say_without_an_earlier_hash_for_this_address(self):
+        self.assertIsNone(audit.compared_with_earlier(None, self.now("text", "abc"), self.URL, None))
+        self.assertIsNone(audit.compared_with_earlier(self.old("abc"), self.now("text", "abc"), "https://example.test/b", None))
+        self.assertIsNone(audit.compared_with_earlier(self.old("abc"), {"state": audit.BLOCKED}, self.URL, None))
+
+
+class RewriteRun(unittest.TestCase):
+    """--write-baseline over an older baseline: what the Nov. 16, 2026 recapture
+    needed. A source it cannot read keeps its old hash; a source it can read
+    says whether it says what the old hash said."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.tmp = Path(tempfile.mkdtemp(prefix="stasis-audit-test-"))
+        cls.addClassCleanup(shutil.rmtree, cls.tmp, ignore_errors=True)
+        clean = {key: value for key, value in os.environ.items() if "proxy" not in key.lower()}
+        for patcher in (mock.patch.dict(os.environ, clean, clear=True),
+                        mock.patch.object(urllib.request, "_opener", None),
+                        mock.patch.object(audit.links, "PAUSE", 0),
+                        mock.patch.object(audit.links, "ROBOTS", {}),
+                        mock.patch.object(audit.links, "UNVERIFIABLE_HOSTS", set())):
+            patcher.start()
+            cls.addClassCleanup(patcher.stop)
+        whole_pdf = b"%PDF-1.7\n" + b"x" * 200 + b"\n%%EOF\n"
+        page = "<html><body><h1>Work rules</h1><p>" + ENOUGH + "</p></body></html>"
+        hits: list = []
+        server = http.server.ThreadingHTTPServer(("127.0.0.1", 0), make_handler({
+            "/same": (200, "text/html", page.encode()),
+            "/moved-on": (200, "text/html", page.replace("80 hours", "100 hours").encode()),
+            "/form.pdf": (200, "application/pdf", whole_pdf),
+            "/refused": (403, "text/plain", b"no"),
+        }, hits))
+        threading.Thread(target=server.serve_forever, daemon=True).start()
+        cls.addClassCleanup(server.shutdown)
+        base = f"http://127.0.0.1:{server.server_address[1]}"
+        ids = {"T-SAME": "/same", "T-MOVED": "/moved-on", "T-PDF": "/form.pdf", "T-403": "/refused", "T-NEW": "/same"}
+        registry = {"sources": [{"id": i, "url": base + path, "short": i, "checked": "2026-11-10"} for i, path in ids.items()]}
+        (cls.tmp / "registry.json").write_text(json.dumps(registry), encoding="utf-8")
+        # The rules-1 text as another computer saved it: the same words, lines broken elsewhere.
+        old_text = "Work rules\n" + ENOUGH.replace(", ", ",\n")
+
+        def old(source_id, digest, mode="text"):
+            return {"id": source_id, "url": base + ids[source_id], "fetched": "2026-11-15", "state": "fetched",
+                    "mode": mode, "sha256": digest, "length": 1, "registry_checked": "2026-11-10"}
+        rules1 = hashlib.sha256(old_text.encode()).hexdigest()
+        cls.before = {"T-SAME": old("T-SAME", rules1), "T-MOVED": old("T-MOVED", rules1),
+                      "T-PDF": old("T-PDF", hashlib.sha256(whole_pdf[:120]).hexdigest(), "bytes"),
+                      "T-403": old("T-403", rules1)}
+        (cls.tmp / "baseline.json").write_text(json.dumps({"sources": list(cls.before.values())}), encoding="utf-8")
+        for source_id in ("T-SAME", "T-MOVED", "T-403"):
+            audit.save_snapshot(cls.tmp / "snapshots", source_id, old_text)
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out), contextlib.redirect_stderr(io.StringIO()):
+            cls.code = audit.main(["--write-baseline", "--registry", str(cls.tmp / "registry.json"), "--baseline",
+                                   str(cls.tmp / "baseline.json"), "--snapshots", str(cls.tmp / "snapshots"),
+                                   "--today", "2026-11-17"])
+        cls.out = out.getvalue()
+        cls.after = {item["id"]: item for item in
+                     json.loads((cls.tmp / "baseline.json").read_text(encoding="utf-8"))["sources"]}
+
+    def test_a_source_it_cannot_read_keeps_its_old_hash(self):
+        self.assertEqual(self.after["T-403"], self.before["T-403"])
+        self.assertIn("Kept the earlier hash for sources that could not be read this time: T-403", self.out)
+
+    def test_the_same_words_carry_the_check_forward(self):
+        self.assertEqual(self.after["T-SAME"]["earlier"], "the same as the entry of 2026-11-15 (rules 1)")
+        self.assertEqual(self.after["T-SAME"]["rules"], audit.RULES)
+
+    def test_changed_words_are_named_for_a_person(self):
+        self.assertTrue(self.after["T-MOVED"]["earlier"].startswith("different from the entry of 2026-11-15"))
+        self.assertIn("a person reads these before the new hash is relied on: T-MOVED", self.out)
+
+    def test_a_pdf_hashed_cut_short_before_is_named_for_a_person(self):
+        self.assertTrue(self.after["T-PDF"]["earlier"].startswith("different from"))
+        self.assertIn("T-MOVED, T-PDF", self.out)
+
+    def test_a_first_hash_is_named_for_a_person(self):
+        self.assertNotIn("earlier", self.after["T-NEW"])
+        self.assertIn("A first hash, with no earlier one to compare (a person reads these first): T-NEW", self.out)
 
 
 class OneSetOfRules(unittest.TestCase):
@@ -406,9 +607,9 @@ class CutShort(unittest.TestCase):
             return audit.fetch("https://example.invalid/page"), asked
 
     def test_a_cut_short_reply_is_asked_for_once_more(self):
-        result, asked = self.fetch([None, b"<html><p>All of it</p></html>"])
+        result, asked = self.fetch([None, ("<html><p>All of it</p><p>" + ENOUGH + "</p></html>").encode()])
         self.assertEqual(asked, ["HEAD", "GET", "GET"])
-        self.assertEqual((result["state"], result["text"]), (audit.FETCHED, "All of it"))
+        self.assertEqual((result["state"], result["text"]), (audit.FETCHED, "All of it\n" + ENOUGH))
 
     def test_two_cut_short_replies_are_unreachable_and_nothing_is_hashed(self):
         result, asked = self.fetch([None, None])
@@ -472,7 +673,7 @@ class CarryForwardRun(unittest.TestCase):
     def test_old_entries_are_carried_forward_from_their_saved_text(self):
         tmp = Path(tempfile.mkdtemp(prefix="stasis-audit-test-"))
         self.addCleanup(shutil.rmtree, tmp, ignore_errors=True)
-        text, page = "Work rules\nThe rules start", "One moment, please...\nPlease wait while your request is being verified..."
+        text, page = "Work rules\nThe rules start\n" + ENOUGH, "One moment, please...\nPlease wait while your request is being verified..."
         old = lambda source_id, words: {"id": source_id, "url": f"https://example.invalid/{source_id}",
                                         "fetched": "2026-11-15", "state": "fetched", "mode": "text",
                                         "sha256": hashlib.sha256(words.encode()).hexdigest(), "length": len(words),
@@ -518,11 +719,11 @@ class WholeTool(unittest.TestCase):
 
         html = "text/html; charset=utf-8"
         cls.site = {
-            "/same": (200, html, (PAGE % ("run 1", "School counts")).encode()),
-            "/moving": (200, html, (PAGE % ("x", "School counts")).encode()),
+            "/same": (200, html, (SERVED_PAGE % ("run 1", "School counts")).encode()),
+            "/moving": (200, html, (SERVED_PAGE % ("x", "School counts")).encode()),
             "/form.pdf": (200, "application/pdf", b"%PDF-1.7 first version"),
             "/refused": (403, "text/plain", b"no"),
-            "/later": (200, html, b"<html><body><p>Added later</p></body></html>"),
+            "/later": (200, html, ("<html><body><p>Added later</p><p>" + ENOUGH + "</p></body></html>").encode()),
         }
         open_port = cls.serve(cls.site)
         ruled = cls.serve({"/private/a": (200, html, b"<p>x</p>"), "robots": "User-agent: *\nDisallow: /private/\n"})
@@ -554,11 +755,11 @@ class WholeTool(unittest.TestCase):
         cls.baseline = {item["id"]: item for item in json.loads(cls.baseline_text)["sources"]}
 
         # 2. Nothing changed, except scripts and markup on one page.
-        cls.site["/same"] = (200, html, (PAGE % ("run 2", "School counts")).replace("<b>", "<em>").encode())
+        cls.site["/same"] = (200, html, (SERVED_PAGE % ("run 2", "School counts")).replace("<b>", "<em>").encode())
         cls.quiet_code, cls.quiet_report = cls.run_tool("--report", str(cls.tmp / "quiet.md"), "--today", "2026-11-16")
 
         # 3. One page's words change, the PDF is replaced, and a source is added.
-        cls.site["/moving"] = (200, html, (PAGE % ("x", "School no longer counts")).encode())
+        cls.site["/moving"] = (200, html, (SERVED_PAGE % ("x", "School no longer counts")).encode())
         cls.site["/form.pdf"] = (200, "application/pdf", b"%PDF-1.7 second version")
         cls.registry["sources"].append(source("T-NEW", f"{base}/later"))
         cls.write_registry()
