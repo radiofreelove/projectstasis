@@ -1,142 +1,155 @@
 {
-  "notes": "What each source in data/sources.json returned to tools/evidence_audit.py on its 'fetched' date. 'mode' is how it is compared: 'text' is the readable words of a web page; 'bytes' is the raw file (every PDF), so a change report for it is lower-confidence. 'sha256' and 'length' describe that content. An entry with no 'sha256' was blocked or unreachable and has no baseline yet. 'registry_checked' is the source's 'checked' date in the registry when this entry was written: the verified check this entry rests on. Writing a baseline is not a read of the source. Refresh an entry only on purpose, after a person has re-read the source (docs/maintenance.md).",
-  "written": "2026-11-15",
+  "notes": "What each source in data/sources.json returned to tools/evidence_audit.py on its 'fetched' date. 'mode' is how it is compared: 'text' is the readable words of a web page; 'bytes' is the raw file (every PDF), so a change report for it is lower-confidence. 'sha256' and 'length' describe that content. An entry with no 'sha256' was blocked or unreachable and has no baseline yet. 'registry_checked' is the source's 'checked' date in the registry when this entry was written: the verified check this entry rests on. 'rules' is the version of the comparison rules the hash was taken under (RULES in the tool); an entry under other rules is not compared. 'carried' means the hash was re-taken from the saved text of the earlier fetch, without fetching again. 'earlier' says whether this fetch said the same as the hash it replaced; if it is different, a person reads the source before this hash is relied on. Writing a baseline is not a read of the source. Refresh an entry only on purpose, after a person has re-read the source (docs/maintenance.md).",
+  "written": "2026-11-17",
   "sources": [
     {
       "id": "S01",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Tools/HR1-Provider-FAQ.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "687b5dc28704bd043d85c1f562fe371904e0331b259e139530e8069382d21ba7",
       "length": 348773,
-      "registry_checked": "2026-11-10"
+      "registry_checked": "2026-11-10",
+      "rules": 2
     },
     {
       "id": "S02",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Tools/Work-Activity-Requirements-EN.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "5be1fb68eb15e785503fc4eec9182d7b66a47080161580b92580468916212f21",
       "length": 107827,
-      "registry_checked": "2026-11-02"
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S03",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Documents/Work-Activity-Exemptions.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "bc42fa3caa17103e54be2e6292a3fe71fd499b59dbceb05c53b824014d0f394e",
       "length": 386136,
-      "registry_checked": "2026-11-10"
+      "registry_checked": "2026-11-10",
+      "rules": 2
     },
     {
       "id": "S04",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Documents/Applicant-Renewal-Journey-Maps.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "b97c98428b746674fe6d3ffdcb036c5ced7599fba0556b25e7af6a7d4217dc29",
       "length": 875907,
-      "registry_checked": "2026-11-02"
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S05",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Documents/HR1-Mythbusters.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "01c6c1669fdf99f99bc547f5873d6197e810de67a7f0680b35edc915f6b371d0",
       "length": 174094,
-      "registry_checked": "2026-11-02"
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S06",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Documents/Talking%20Points_HR1_Staff%20and%20Partner.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "eb87dd342d6ca77d2423d8028bb3960144f42e85965577109096c6b15af306ca",
       "length": 181741,
-      "registry_checked": "2026-11-02"
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S07",
       "url": "https://www.oregon.gov/oha/hsd/ohp/pages/federal-changes.aspx",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "bda8bea0fcde7675de817f7a45cfe6e3c29f77a233dd62e2b96062b8aec0b777",
-      "length": 20037,
-      "registry_checked": "2026-11-10"
+      "sha256": "3b195a5702f24c46baa4c62eea6e796f7470f762cfa7988797fcbd14d3d42e45",
+      "length": 19989,
+      "registry_checked": "2026-11-10",
+      "rules": 2
     },
     {
       "id": "S08",
       "url": "https://www.oregon.gov/oha/HSD/OHP/OHPLetters/ONE-Outreach-Notice-EN.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "d56f8ff3d2a944403a827249111e26ee632608d8683057cc18a0c51e2a97e4de",
       "length": 170584,
-      "registry_checked": "2026-11-02"
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S09",
       "url": "https://www.oregon.gov/oha/hsd/ohp/pages/apply.aspx",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "19bf0a9949fe78c7024dc869ac663e7558b9be71b24446bf8b0471e8322c0d05",
-      "length": 10477,
-      "registry_checked": "2026-11-02"
+      "sha256": "41bfc2c9cafb99c7c4902e75ad7ec3d9cae7d2e191082ed995428038aa2dbd16",
+      "length": 10432,
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S10",
       "url": "https://sharedsystems.dhsoha.state.or.us/DHSforms/Served/he7210.pdf",
-      "fetched": "2026-11-15",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "bytes",
+      "sha256": "82f4d02cefca214d7006021e3eb7b7177c259252ae03aa2c84cff33f54414848",
+      "length": 1534498,
       "registry_checked": "2026-11-02",
-      "note": "Remote end closed connection without response; asked twice"
+      "rules": 2,
+      "certificate": "incomplete chain; the connection was not verified"
     },
     {
       "id": "S11",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Pages/Healthier-Oregon.aspx",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "762b4f2618a3fcc81de73ee207e79e0810b9eb6b374f926624691c06ec129aae",
-      "length": 10582,
-      "registry_checked": "2026-11-02"
+      "sha256": "789df804dff827c6decd3b7edb207e28bb5c8db6f1a7e7b2118c303e1b667fe7",
+      "length": 10561,
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S12",
       "url": "https://www.oregon.gov/OHA/ERD/Pages/public-charge.aspx",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "5e326501ae9f227065d1c0c3660eef7c60694b6ec74b2798784d54fd94bb8519",
-      "length": 6935,
-      "registry_checked": "2026-11-02"
+      "sha256": "f3fa0dd88c5abc3da82c3016b47a97affc882ad70bc3c27b59ffa506d93e7863",
+      "length": 6923,
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S13",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Pages/Bridge.aspx",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "6938a73249c547eae04e15a1af1e4a3f420d58f2f4e97e02958a994125d337e6",
-      "length": 5693,
-      "registry_checked": "2026-11-02"
+      "sha256": "cd6a3e8e4008c5520805fc1853f55e4a8a89076e046cb10d9bf03dcfc232bdce",
+      "length": 5681,
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S14",
       "url": "https://www.oregon.gov/oha/OHP/Members/Pages/Appeals-Hearings.aspx",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -147,37 +160,40 @@
     {
       "id": "S15",
       "url": "https://www.oregon.gov/odhs/Pages/office-finder.aspx",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "62126763e17feb4e5f7e075b6fa0ce6ac4632a35777320af671d592ccfa6388b",
-      "length": 1553,
-      "registry_checked": "2026-11-02"
+      "sha256": "9dd7bfde5352355c75c27e8b0e6e959fc4cc17c26029c8a9419e3e092d28ed87",
+      "length": 1552,
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S16",
       "url": "https://healthcare.oregon.gov/Pages/find-help.aspx",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "50ab32a3553f42557624d97be922e62404b597b5616153f857508a9b651edbf1",
-      "length": 5741,
-      "registry_checked": "2026-11-14"
+      "sha256": "3d895efa9cb352c704e3f1a5da2a29ea4f5976f24881d5b3203ca593ca4eab49",
+      "length": 5728,
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "S17",
       "url": "https://www.oregon.gov/odhs/benefits/Documents/one-language-lines-translation.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "da4991df98213248802aa9a5f0faef3f847ca8a6568f77a7e4426c93a46266a0",
       "length": 625036,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "S18",
       "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/de5530.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "unreachable",
       "mode": null,
       "sha256": null,
@@ -188,57 +204,62 @@
     {
       "id": "S19",
       "url": "https://benefits.oregon.gov/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "afa5ae76331acce628ccaf12bd128bed7379acce1aa2bf0332d8dc8d6dab8407",
-      "length": 5241,
-      "registry_checked": "2026-11-14"
+      "sha256": "2b8075dc94c9190e48d7cd5bcdaebeba11cc2de9397dc1342f4f5268c27f43b4",
+      "length": 5238,
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "S20",
       "url": "https://oregonhealthcare.gov/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "6a42b7f0110b0ec1a93f5b7b6c1cd995e5ce1caac10c809a30fa51009ed03eb2",
-      "length": 2163,
-      "registry_checked": "2026-11-02"
+      "sha256": "0615c0325dc8d5cb8004c2577a74b3ccc4adf5e8a353792fc29c39a926d73846",
+      "length": 2150,
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S21",
       "url": "https://orhim.info/FQHC",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "8c15d560d1e2975d4ac0ff1ba0ce732c56049c7075b61b04c788c16636e2deb7",
+      "sha256": "101374abe9c344997ce0ac673e50cb1f59e79d7b5cf6fa0a973175b87be138c8",
       "length": 11086,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "S22",
       "url": "https://ohpopencard.org/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "98b1602f8febded9eed56758a07c95de95c5dcd252eb995083a9bf496a536943",
+      "sha256": "10d5dfc26712b8f2abeed3edc501f13f6ef486e8ce29a17f3dc250787ecc4fb4",
       "length": 3031,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "S23",
       "url": "https://www.oregon.gov/oha/hsd/ohp/pages/community-resources.aspx",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "75b73e7658b004be43a149037069a08a9beaa9fcf679362c9ad91c8d6c85d455",
-      "length": 18114,
-      "registry_checked": "2026-11-14"
+      "sha256": "6f8a7bad4cff4af6e5e74c29344a0e68aa474554c30b5a9fb04960f5a2f2458d",
+      "length": 18062,
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "S24",
       "url": "https://ohp.oregon.gov/HR1",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -249,47 +270,51 @@
     {
       "id": "S25",
       "url": "https://oregonlawhelp.org/node/107",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "998c7d572b9eda32913d2ce01b76f0f79dd2d5a269cc660e94669e9b1fa3c2b9",
-      "length": 3202,
-      "registry_checked": "2026-11-02"
+      "sha256": "68ec2ed5d34083e0ae2bffc6347eb606862ceea70ce7400bad6d8273dc6c2e37",
+      "length": 3393,
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S26",
       "url": "https://www.droregon.org/disability-rights-oregon-resources/ohp-new-rules",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "cce685d56399158b7bebdce5efffc27807bf1976d0a33894140e2945596c4969",
+      "sha256": "453cf540ff47abd6773711e05f0c51200b09e3ef8b3884b6c02bba60a9cf0f51",
       "length": 16829,
-      "registry_checked": "2026-11-02"
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S26B",
       "url": "https://www.droregon.org/request-help",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "523a193ffd6a59792d74d75fcc4384de9c12ba45df7d917e8435e32b3fbd63b1",
+      "sha256": "6c8978cf57db56cca2aba56a4854b5714dbe38c3a9a23892cd92485bd78c60f9",
       "length": 9355,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "S27",
       "url": "https://www.federalregister.gov/documents/2026/06/03/2026-11094/medicaid-program-community-engagement-requirement-for-certain-individuals",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "458fcc6b160f69f4820735225e982a664f2df02e73ebf264d067874137e68b60",
-      "length": 1098,
-      "registry_checked": "2026-11-02"
+      "sha256": "e616ebbee87c1d6f41ba9ca5c8e5b32e0bc65e2512686f3822ddd88d2a8582b2",
+      "length": 843420,
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S28",
       "url": "https://www.courtlistener.com/docket/73546826/148/commonwealth-of-massachusetts-v-oz/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -300,7 +325,7 @@
     {
       "id": "S29",
       "url": "https://www.courtlistener.com/docket/73546826/147/commonwealth-of-massachusetts-v-oz/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -311,28 +336,30 @@
     {
       "id": "S30",
       "url": "https://olis.oregonlegislature.gov/liz/2025I1/Downloads/CommitteeMeetingDocument/317583",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "54fb0c6170b1a6e7132f6a166725cfef55120ad14360138882850f1d368808bd",
       "length": 829708,
-      "registry_checked": "2026-11-02"
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S31",
       "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/dhs2022.pdf",
-      "fetched": "2026-11-15",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "bytes",
+      "sha256": "8c8929dab9e20164d9f2ee0bc7359a158a10b4dc726aa2a661b16b1d20ac6405",
+      "length": 3956726,
       "registry_checked": "2026-11-02",
-      "note": "Remote end closed connection without response; asked twice"
+      "rules": 2,
+      "certificate": "incomplete chain; the connection was not verified"
     },
     {
       "id": "S32",
       "url": "https://www.w3.org/TR/coga-usable/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -343,7 +370,7 @@
     {
       "id": "S33",
       "url": "https://www.w3.org/TR/WCAG22/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -354,187 +381,205 @@
     {
       "id": "S34",
       "url": "https://www.cloudflare.com/privacypolicy/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "7e8d1e9be7b687b874e0731661572cd634c7e2f122531d81a683b5a8f98735d9",
+      "sha256": "fba39a99e3b89d3ac2784e1613e60458fafc00577f15d965f28ab5ef2ffae1b9",
       "length": 51919,
-      "registry_checked": "2026-11-03"
+      "registry_checked": "2026-11-03",
+      "rules": 2
     },
     {
       "id": "S35",
       "url": "https://www.doj.state.or.us/media-home/news-media-releases/ag-rayfield-sues-trump-over-unlawful-implementation-of-medicaid-work-requirements/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "97e89968fd3a2ddb0d49b05470f91040a4e518a4d07407974bcc878fe51b89f0",
-      "length": 73,
-      "registry_checked": "2026-11-02"
+      "sha256": "4f5fd7d247ae8e880671dd7bc6c50c92fbbbcd33f82ba59bedc589cdf26fad7f",
+      "length": 7055,
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S36",
       "url": "https://www.ailalawyer.com/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "e5060d186d757a963a968a24be9db31fe2c61f79aed6f05a4c19d225d1070368",
+      "sha256": "916a7aa0861e11cfc2c0c61df6d63ef61a462917780041568086b46d0cc44266",
       "length": 6854,
-      "registry_checked": "2026-11-02"
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S37",
       "url": "https://www.immigrationadvocates.org/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "063d01a6b074448baa429eb5735ca0b98f630d59441959ddcc99b80e3b518926",
+      "sha256": "ae8340120835906321e23c30f16ab8518e4c9a050d1eb958be5a711ff61d96d6",
       "length": 1790,
-      "registry_checked": "2026-11-02"
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "S38",
       "url": "https://equitycorps.org/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "text",
-      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
-      "length": 0,
-      "registry_checked": "2026-11-14"
+      "sha256": "f05c5bbfbdb5d58834148adb62d19ef9f92ab161064d3567424f4c9d006bb698",
+      "length": 1351,
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "K01",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Documents/HR1-Key-Changes-EN.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "9ba3342fa395d57ff7d8d72ce857452a1f88cec2ccdbbc38c4ea564d66b5a2ca",
       "length": 120452,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "K02",
       "url": "https://www.oregon.gov/odhs/news/Documents/hr1-partner-timeline.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "1da8c550f852b4216c48eff5942275f5c70471f798b727d5db3b17e8214374ae",
       "length": 176022,
-      "registry_checked": "2026-11-02"
+      "registry_checked": "2026-11-02",
+      "rules": 2
     },
     {
       "id": "K03",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Tools/HR1-Patient-Conversation-Guide-EN.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "5a4b295941c91a03ad30caca8f7121bee19d329bb756b8f64ac91016185b0a2a",
       "length": 405093,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "K04",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Documents/Gig-Workers-Guide.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "fc71d440c75017ba093e9a178832f8b8effd34d3259613e8205f146a38593f21",
       "length": 115006,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "K05",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Documents/People-with-Disabilities-Guide-EN.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "d15f35db7851172e721865e90729c3a8e45b8676695ac930848d245ebc53ca42",
       "length": 194903,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "K06",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Documents/Houseless-Guide.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "4b46232fbff2a480b38501dda8efb5583ae94274077fdb757c0a23cc77c9a53c",
       "length": 110603,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "K07",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Tools/More-Frequent-Renewals-EN.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "6f51954d477acbb9f39401e19f6e7c4d68f36bf1bd31edb299d637d162a75e67",
       "length": 108934,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "K08",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Documents/Open-Card-Transition-EN.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "b329f6b5c91e1179eee3e5f15c81640a302159e458972b599b208d2a083c6732",
       "length": 73395,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "K09",
       "url": "https://www.oregon.gov/oha/HSD/OHP/Tools/Non-Citizen-Changes-EN.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "fb1cdef42d41c14a62ed4a4efe65a42267040713d21d0540309cd4533098e29f",
       "length": 100124,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "K10",
       "url": "https://www.oregon.gov/oha/HSD/OHP/OHPLetters/ONE-Outreach-Notice-ES.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "835e8b928f0f95d68031dc801510928deee80bca16d008f82037be1340fe5975",
       "length": 1980544,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "K11",
       "url": "https://www.oregon.gov/odhs/news/Documents/hr1-dual-eligible-info-sheet-en.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "c4a44106303b7b1972717c396c7624e24465eb8f4fd07e0b5525887e9e75e987",
       "length": 407099,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "K12",
       "url": "https://www.oregon.gov/odhs/news/Documents/hr1-disabilities-work-info-sheet-en.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "d261f54e1af625677b6974cba06d6e7950b87d80a824a33aacb505ddcdef6b8d",
       "length": 402140,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "K13",
       "url": "https://www.oregon.gov/odhs/news/pages/hr1-partner-updates.aspx",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "38501cf21d3642addde69267a9f0e8f68eea1df4bf2e92027e70f6ad487fce06",
-      "length": 8040,
-      "registry_checked": "2026-11-14"
+      "sha256": "f04392138b26631cb171b293af7a592bf119ec1912a0f4ac6ec5c7272ac70956",
+      "length": 7976,
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "S40",
       "url": "https://www.courtlistener.com/docket/73546826/commonwealth-of-massachusetts-v-oz/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -545,12 +590,13 @@
     {
       "id": "S41",
       "url": "https://www.medicaid.gov/Federal-Policy-Guidance/Downloads/smd26006.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "9afc56d8ba71256491e5fa0cbc5cc0bde9916b6e03c3b7918e86d721792991be",
       "length": 170600,
-      "registry_checked": "2026-11-14"
+      "registry_checked": "2026-11-14",
+      "rules": 2
     },
     {
       "id": "U01",
@@ -558,64 +604,73 @@
       "fetched": "2026-11-15",
       "state": "fetched",
       "mode": "text",
-      "sha256": "6ca02f39be8e065c2c536e0cbb27cad1f2f94ffcf2d9f238b4edb72b641bc596",
+      "sha256": "9b07e9d31cbf5a2f6bd8a78d785586648730b87fa32ed0f1ec582f53bc8d737b",
       "length": 5679,
-      "registry_checked": "2026-11-10"
+      "registry_checked": "2026-11-10",
+      "rules": 2,
+      "carried": "re-hashed under rules 2 from the text fetched on 2026-11-15"
     },
     {
       "id": "U02",
       "url": "https://obbba.medicaid.utah.gov/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "text",
-      "sha256": "7d874cd54677c27ab3cf18efc1b1bdf3ef3a0713e2fd24edba310c3df5f58930",
-      "length": 8696,
-      "registry_checked": "2026-11-10"
+      "sha256": "baff01d80110a7eb4a8d1c1bf6e071c467f8667a935a4087971f4f73b08f3800",
+      "length": 14481,
+      "registry_checked": "2026-11-10",
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U03",
       "url": "https://obbba-support.medicaid.utah.gov/community-requirement/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "84354df2368599d1a24655a3be2956827d473b94c7557173742b22d2cd5c1f6d",
-      "length": 3562,
-      "registry_checked": "2026-11-10"
+      "sha256": "daf613715ee20ee045117903572779bcc881aace0fbf244b7183f12ac9d83fe0",
+      "length": 9620,
+      "registry_checked": "2026-11-10",
+      "rules": 2
     },
     {
       "id": "U04",
       "url": "https://jobs.utah.gov/customereducation/services/medicaid/adults.html",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "text",
-      "sha256": "fd55deed1b894e2fd0067f3d509b94c0185aa4435aaf377da0561d40f03996fe",
-      "length": 562,
-      "registry_checked": "2026-11-10"
+      "sha256": "e8f3eaded4af8ae70c34a6feb260d13379c3ea34f1d49356fcf79d9d33fdeae1",
+      "length": 8247,
+      "registry_checked": "2026-11-10",
+      "rules": 2
     },
     {
       "id": "U05",
       "url": "https://obbba.medicaid.utah.gov/wp-content/themes/twentytwelve/page-templates/pdf/FINAL_%20H.R.%201%20CE%20requirement%20exclusions_exceptions%20table.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
-      "sha256": "568e8e13d90655fa9a81c9c9fad93292d8e06a474af4c21622ebe344d46d4457",
-      "length": 98026,
-      "registry_checked": "2026-11-10"
+      "sha256": "7e4786fe0104ba0367f9467cc3e57f1be75c195cf628d6151e688dbb2df7cec8",
+      "length": 167853,
+      "registry_checked": "2026-11-10",
+      "rules": 2
     },
     {
       "id": "U06",
       "url": "https://obbba.medicaid.utah.gov/wp-content/themes/twentytwelve/page-templates/pdf/FINAL_H.R.1-CE-requirement-toolkit.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "bytes",
-      "sha256": "452275fa15d9317441bb041498f7f8bc83105cfc4fe8d607ba53e6a90e7dca95",
-      "length": 311018,
-      "registry_checked": "2026-11-10"
+      "sha256": "7cda2c3e56f6a2911e72fb6f01a7d9033330620c558c98c2716a69c381840028",
+      "length": 360372,
+      "registry_checked": "2026-11-10",
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U07",
       "url": "https://medicaid-documents.dhhs.utah.gov/Documents/pdfs/Community%20Engagement%20Requirement%20and%20Eligibility%20Review%20Member%20Letter%20(English).pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -626,37 +681,41 @@
     {
       "id": "U08",
       "url": "https://obbba.medicaid.utah.gov/wp-content/themes/twentytwelve/page-templates/pdf/Utah%20Medicaid%20H.R.%201%20glossary%20of%20terms.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
-      "sha256": "1cffed136d14e2bcbd34975becc473b2d117a0ebacc48f5b6e3d05616079138c",
-      "length": 81642,
-      "registry_checked": "2026-11-10"
+      "sha256": "2e0ab97364b60b26b4e5788b8b2a9dfaabb37e42ddff52bf7c65b323b3e6c4b0",
+      "length": 209710,
+      "registry_checked": "2026-11-10",
+      "rules": 2
     },
     {
       "id": "U09",
       "url": "https://obbba.medicaid.utah.gov/wp-content/themes/twentytwelve/page-templates/pdf/FINAL_%20Quick%20guide_%20New%20Utah%20Medicaid%20rules%20under%20H.R.%201.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "bytes",
-      "sha256": "e0b91b6a28be2912ee09d0612f07063382c681db68685b0971106455ca6e2c5b",
-      "length": 81642,
-      "registry_checked": "2026-11-10"
+      "sha256": "037babea7a2c1bbb267620313ea2646d7b3aeee904bb3ed850ffe4cb760b6a17",
+      "length": 151487,
+      "registry_checked": "2026-11-10",
+      "rules": 2
     },
     {
       "id": "U10",
       "url": "https://obbba.medicaid.utah.gov/wp-content/themes/twentytwelve/page-templates/pdf/July2026_Medicaid_Flyer.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "bytes",
-      "sha256": "ad93f1158d128355c62129003c98baf2e3e870186d5130f7636bdb6da2b3fc0f",
-      "length": 737001,
-      "registry_checked": "2026-11-10"
+      "sha256": "c6a4079a498ee9d9a4aacca968277df38e7e3c170ff0361f19461b19e7e572e2",
+      "length": 1002927,
+      "registry_checked": "2026-11-10",
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U11",
       "url": "https://medicaid-documents.dhhs.utah.gov/Documents/pdfs/OBBBA%20FAQ%20for%20partners_1.2026.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -667,7 +726,7 @@
     {
       "id": "U12",
       "url": "https://medicaid-documents.dhhs.utah.gov/Documents/pdfs/OBBBA%20FAQ%20for%20members_1.2026.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -678,28 +737,30 @@
     {
       "id": "U13",
       "url": "https://obbba.medicaid.utah.gov/wp-content/themes/twentytwelve/page-templates/pdf/FINAL_%20H.R.-1-Eligibility-reviews-very-6-months-toolkit.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "bytes",
-      "sha256": "f07d3b7b7d81f1b642a0a33d5ea4262d507325b805a7b88488230bb3c26654b2",
-      "length": 147178,
-      "registry_checked": "2026-11-10"
+      "sha256": "398805f1652f7d48daaba7733363bb6056cc3c742511644439b7ec97f9ee2aca",
+      "length": 241873,
+      "registry_checked": "2026-11-10",
+      "rules": 2
     },
     {
       "id": "U14",
       "url": "https://medicaid.utah.gov/apply-medicaid/",
-      "fetched": "2026-11-15",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "90724df20bde2a703491bedeedbe817feb0ed5c2df8e638c4fc3944364fadf7e",
+      "length": 4965,
       "registry_checked": "2026-11-10",
-      "note": "IncompleteRead(64100 bytes read); asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U15",
       "url": "https://medicaid-documents.dhhs.utah.gov/Documents/pdfs/61MED_English.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -710,7 +771,7 @@
     {
       "id": "U15S",
       "url": "https://medicaid-documents.dhhs.utah.gov/Documents/pdfs/61MED_Spanish.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -721,84 +782,95 @@
     {
       "id": "U16",
       "url": "https://jobs.utah.gov/customereducation/apply/index.html",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "text",
-      "sha256": "fd8549d831b64e2cef5b63c435e3f184698f66d41951e4dc7caaaec0cd99b5e1",
-      "length": 557,
-      "registry_checked": "2026-11-10"
+      "sha256": "aacd86fbcf374b06d9b094d2da7f9d31207f49f04ef736c3ae0841258f9a5ba2",
+      "length": 2980,
+      "registry_checked": "2026-11-10",
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U17",
       "url": "https://medicaid.utah.gov/hearings/",
-      "fetched": "2026-11-15",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "a95303046ac2fdd5aadc9ab3e657a87c19b14659c689a22ea15b22fc009523bf",
+      "length": 5587,
       "registry_checked": "2026-11-10",
-      "note": "IncompleteRead(0 bytes read); asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U18",
       "url": "https://jobs.utah.gov/appeals/pa/filingpublic.html",
-      "fetched": "2026-11-15",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "1883dfea0395614a4ae5bf18add914ba418852a4692a83ac5a1b7e5f724b5286",
+      "length": 1694,
       "registry_checked": "2026-11-10",
-      "note": "Remote end closed connection without response; asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U19",
       "url": "https://jobs.utah.gov/appeals/490.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "bytes",
-      "sha256": "5bed7186473371b8f8782406d3d47c5a4ed7a4256feebde46fafc60a89819327",
-      "length": 179781,
-      "registry_checked": "2026-11-10"
+      "sha256": "43afce2f611e43c4c11e81038215b67245ccf1c36c93f6f2352700176deaf992",
+      "length": 228758,
+      "registry_checked": "2026-11-10",
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U19S",
       "url": "https://jobs.utah.gov/appeals/490sp.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "bytes",
-      "sha256": "0829f774890db4f5afa5f093d8eedaf924639555d3b18155c6f197b6b384bc13",
-      "length": 81475,
-      "registry_checked": "2026-11-13"
+      "sha256": "71e000639f97489cf8415bada048bbfd5558cab5ccab696f99bf40727b109b57",
+      "length": 211952,
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "U20",
       "url": "https://jobs.utah.gov/appeals/pa/guidepats.html",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "text",
-      "sha256": "f81ee7c8cc571ac9f064664cd7ec7e4f157529fbce0330af1e84eb10c4d4a8e2",
-      "length": 4368,
-      "registry_checked": "2026-11-10"
+      "sha256": "eee0153db619b53aaf81ae791efbf0076d506f0a212e98d7eeb20b19a00fd6e0",
+      "length": 15830,
+      "registry_checked": "2026-11-10",
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U21",
       "url": "https://obbba-support.medicaid.utah.gov/coverage/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "text",
-      "sha256": "97e89968fd3a2ddb0d49b05470f91040a4e518a4d07407974bcc878fe51b89f0",
-      "length": 73,
-      "registry_checked": "2026-11-10"
+      "sha256": "aca50d3ef98c2e3bc95630b520ee884c921ec10e69c03cb2f38035e62ab7826e",
+      "length": 2443,
+      "registry_checked": "2026-11-10",
+      "rules": 2
     },
     {
       "id": "U22",
       "url": "https://obbba-support.medicaid.utah.gov/i-need-help/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "text",
-      "sha256": "8b4de9990810e718f7cb99b7e0c0aea1edbdb436354df9b7c4de4cd9582d7d1c",
-      "length": 550,
-      "registry_checked": "2026-11-10"
+      "sha256": "5970085ab40c41f2d04a538e293539a9e90c9bcb09cc212fab3110f1ebc3b666",
+      "length": 1097,
+      "registry_checked": "2026-11-10",
+      "rules": 2
     },
     {
       "id": "U23",
@@ -806,46 +878,52 @@
       "fetched": "2026-11-15",
       "state": "fetched",
       "mode": "text",
-      "sha256": "d0c639d4b353dbb0d17630b8ad6390c273faee426a679f386c66560f478fd5b3",
+      "sha256": "ec1681cb6e736f5898fdc443668c886494b8bfdca2fc060b791c9cab4f71acd3",
       "length": 5188,
-      "registry_checked": "2026-11-10"
+      "registry_checked": "2026-11-10",
+      "rules": 2,
+      "carried": "re-hashed under rules 2 from the text fetched on 2026-11-15"
     },
     {
       "id": "U24",
       "url": "https://obbba-support.medicaid.utah.gov/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "text",
-      "sha256": "603b7503b27441afe101b7b8acb62116aadb28acec5c202fb7fea80dca828fb5",
-      "length": 287,
-      "registry_checked": "2026-11-10"
+      "sha256": "c8a55abe006e978e7a71e83b93721721628048bfad88356488228367abafcb8f",
+      "length": 2799,
+      "registry_checked": "2026-11-10",
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U25",
       "url": "https://medicaid.utah.gov/expansion/",
-      "fetched": "2026-11-15",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "105f3ccecc323437faf751d41ad4471160beb0ad5ba0b4d483516a0e879a6618",
+      "length": 9987,
       "registry_checked": "2026-11-10",
-      "note": "IncompleteRead(64106 bytes read); asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U26",
       "url": "https://medicaid.utah.gov/targeted-adult-medicaid-program/",
-      "fetched": "2026-11-15",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "bd459ade97592a3fe984f8aa5df24410e326ff4cf7720273d5421eababe701c5",
+      "length": 8453,
       "registry_checked": "2026-11-10",
-      "note": "IncompleteRead(0 bytes read); asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U27",
       "url": "https://medicaid-documents.dhhs.utah.gov/Documents/pdfs/Final_%20H.R.1%20Definition%20of%20a%20Qualified%20Immigrant%20Member%20Letter.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -856,7 +934,7 @@
     {
       "id": "U28",
       "url": "https://medicaid-documents.dhhs.utah.gov/Documents/pdfs/FINAL_%20Letter%20for%20members%20with%20unverified%20tribal%20status.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -867,7 +945,7 @@
     {
       "id": "U29",
       "url": "https://medicaid-documents.dhhs.utah.gov/Documents/pdfs/HR%201%20Mailed%20letter%20key.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -878,28 +956,30 @@
     {
       "id": "U30",
       "url": "https://www.medicaid.gov/medicaid/section-1115-demonstrations/downloads/ut-medicaid-reform-1115-overlay-09252026.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "4c0abc89d62e5ae1de682ab635f6355b3713913810b18f3f5731ce4e7af49bd0",
       "length": 3203700,
-      "registry_checked": "2026-11-10"
+      "registry_checked": "2026-11-10",
+      "rules": 2
     },
     {
       "id": "U31",
       "url": "https://medicaid.utah.gov/language-services/",
-      "fetched": "2026-11-15",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "94c601f26285a33adaa556fadc334bc9790fa09d73429b62b0e124106a27d1c6",
+      "length": 6049,
       "registry_checked": "2026-11-10",
-      "note": "IncompleteRead(0 bytes read); asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U32",
       "url": "https://jobs.utah.gov/mycase/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "checker-blocked",
       "mode": null,
       "sha256": null,
@@ -910,194 +990,214 @@
     {
       "id": "U33",
       "url": "https://jobs.utah.gov/jsp/officesearch/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "text",
-      "sha256": "779b114a8e71f50ec38e1ee182504c1dbaf0f4a292217bae32d3ff925e968810",
-      "length": 321,
-      "registry_checked": "2026-11-10"
+      "sha256": "a5a840bf5355dbc51d81bb10f733831d392ca8fe37e19dab9704e477d5d911ac",
+      "length": 1761,
+      "registry_checked": "2026-11-10",
+      "rules": 2
     },
     {
       "id": "U34",
       "url": "https://www.healthcare.gov/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "d45619a0e86b2affb11d959d2791dceb8c06cee943af36d490c36538e4357cb8",
+      "sha256": "a1497e53ddfd3639953789446d24b6c738c4b9f739fbdf9c0dbeb3772a2a513c",
       "length": 3062,
-      "registry_checked": "2026-11-13"
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "U35",
       "url": "https://211utah.org/",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "391756e1d805eea824479cc0544dd8e81b1fa4b47bf793ba596cfc84d1e3b2e1",
+      "sha256": "11190d8e09e81e383393f74b35ce7eb9d809aa97dd719c4a1569c591b4d17cc5",
       "length": 2476,
-      "registry_checked": "2026-11-13"
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "U36",
       "url": "https://medicaid.utah.gov/emergency-medicaid/",
-      "fetched": "2026-11-15",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "e752c7b658f83ce326c501a92a10f1bc3805efc67686f8a07fa02e0c786a6a11",
+      "length": 3536,
       "registry_checked": "2026-11-13",
-      "note": "IncompleteRead(64102 bytes read); asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U37",
       "url": "https://www.utahlegalservices.org/",
-      "fetched": "2026-11-15",
-      "state": "unreachable",
-      "mode": null,
-      "sha256": null,
-      "length": null,
+      "fetched": "2026-11-17",
+      "state": "fetched",
+      "mode": "text",
+      "sha256": "30f89397f893e373714edb6f896800139ec1a47928b8dcb3b29860fcba9c8c13",
+      "length": 3566,
       "registry_checked": "2026-11-10",
-      "note": "IncompleteRead(16384 bytes read); asked twice"
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "U38",
       "url": "https://obbba-support.medicaid.utah.gov/wp-content/uploads/2026/10/DiagnosesforMedicallyFrail_10.2026-1.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-17",
       "state": "fetched",
       "mode": "bytes",
-      "sha256": "35dbddf72e345663df0f8625fe21cf6d04ee092218cb4b198d44908f8c69865e",
-      "length": 769768,
-      "registry_checked": "2026-11-10"
+      "sha256": "6a0503da7d659dde098a53fd37f256bb8e345f8164839b462b2993f4eca0912d",
+      "length": 2089136,
+      "registry_checked": "2026-11-10",
+      "rules": 2,
+      "earlier": "the same as the entry of 2026-11-17 (rules 2)"
     },
     {
       "id": "WA01",
       "url": "https://www.hca.wa.gov/free-or-low-cost-health-care/changes-coming-apple-health",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "48ebb1cac1c810493d78cf7eb912a2e8401700a29bd408d20cc774c382a6a5d8",
-      "length": 105476,
-      "registry_checked": "2026-11-12"
+      "sha256": "1a80cf7920656d195ba7ff434c89ea0932a6e6d6df2370ecb55d0381d8dde7e5",
+      "length": 105469,
+      "registry_checked": "2026-11-12",
+      "rules": 2
     },
     {
       "id": "WA02",
       "url": "https://www.hca.wa.gov/free-or-low-cost-health-care/what-s-changing-apple-health-medicaid",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "2cd25a44940b1c7e063aa4d6b6eb7b980a88ed76f1957a0070c771f7778963b9",
-      "length": 105312,
-      "registry_checked": "2026-11-12"
+      "sha256": "88649133928b025770b204dc8b421d40463a771cd5f04d87b0298066067e7fb6",
+      "length": 105305,
+      "registry_checked": "2026-11-12",
+      "rules": 2
     },
     {
       "id": "WA03",
       "url": "https://www.hca.wa.gov/about-hca/programs-and-initiatives/apple-health-medicaid/hr-1-impacts",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "3c30931a4f6cffeb63e873ee3deb08ab90e6f1af518bcbbe8d3b52faf86b2a48",
-      "length": 107564,
-      "registry_checked": "2026-11-12"
+      "sha256": "5c76896e6807021ecb737f167c4c0d8d46a08daea1688ae8e4e807dedf5925dc",
+      "length": 107557,
+      "registry_checked": "2026-11-12",
+      "rules": 2
     },
     {
       "id": "WA04",
       "url": "http://hca.wa.gov/assets/program/impacts-hr1-ah-eligibility-summary.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "752145aae1a1d7c120f4db8d55025dcaebe5bb76d2d16d770ee96ed446bedd24",
       "length": 216706,
-      "registry_checked": "2026-11-12"
+      "registry_checked": "2026-11-12",
+      "rules": 2
     },
     {
       "id": "WA05",
       "url": "https://www.hca.wa.gov/assets/free-or-low-cost/hr1-work-requirements-and-renewals-fact-sheet.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "37e7c9a2af8d5b9251bb8af8764f327623126f92b361d89d1d61b9ca3dfeb750",
       "length": 123688,
-      "registry_checked": "2026-11-13"
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "WA06",
       "url": "https://www.hca.wa.gov/health-care-services-supports/apple-health-medicaid-coverage/apply-or-renew-coverage",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "6cbbe2153cb683045520059ee56a5539fc343b128f941008ae2449a7a68f56e3",
-      "length": 106587,
-      "registry_checked": "2026-11-12"
+      "sha256": "25e214104a8acd26a829fe20e26ed5dde0f25c6b259a5bb9fac3ba37a43a676f",
+      "length": 106580,
+      "registry_checked": "2026-11-12",
+      "rules": 2
     },
     {
       "id": "WA07",
       "url": "https://www.hca.wa.gov/about-hca/apple-health-medicaid/contact-apple-health-medicaid",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "94a494c7a883f25b28aa97a1756be6f9d923378c82e924370a84db18b9303716",
-      "length": 105411,
-      "registry_checked": "2026-11-12"
+      "sha256": "4f7906fc54fa6b7642d3dd846269413471b6b4a1f97495938c5a2ab235bd7930",
+      "length": 105404,
+      "registry_checked": "2026-11-12",
+      "rules": 2
     },
     {
       "id": "WA08",
       "url": "https://www.hca.wa.gov/about-hca/file-appeal-apple-health-medicaid",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "ee4dd012e2388e824abee5a0ddff6747842a9549ae4b95bde311d570e7627475",
-      "length": 104647,
-      "registry_checked": "2026-11-12"
+      "sha256": "d6beb55500e6bd5f819f4cb14081cea8520c753f268e50f13ede7c6c3c30a6aa",
+      "length": 104640,
+      "registry_checked": "2026-11-12",
+      "rules": 2
     },
     {
       "id": "WA09",
       "url": "https://www.hca.wa.gov/free-or-low-cost-health-care/i-need-medical-dental-or-vision-care/apple-health-client-booklets",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "851213a0074a61971a1668638fcf1376703f893a0f6de1c9762e1df5fa279fe7",
-      "length": 106006,
-      "registry_checked": "2026-11-12"
+      "sha256": "c39a64d89dd114fca9c8932930e27b2fb8915c259408f099867db9274c3980ce",
+      "length": 105999,
+      "registry_checked": "2026-11-12",
+      "rules": 2
     },
     {
       "id": "WA10",
       "url": "https://www.hca.wa.gov/free-or-low-cost-health-care/i-help-others-apply-and-access-apple-health/supporting-clients-changes-apple-health",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "03eafa23d610fab3140062408b65acb927175f2f6d8ae45e235a098f2faf72b2",
-      "length": 106240,
-      "registry_checked": "2026-11-12"
+      "sha256": "2d07ef747b2398c77a86f1a91036ef22287937924a7be2ded64fad447d6615d5",
+      "length": 106233,
+      "registry_checked": "2026-11-12",
+      "rules": 2
     },
     {
       "id": "WA11",
       "url": "https://www.hca.wa.gov/free-or-low-cost-health-care/i-help-others-apply-and-access-apple-health/filing-application",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "41bbf7a1af18053e972b8c28ef5e907b52c54fbdd2fa316fce635a913b0637a6",
-      "length": 126897,
-      "registry_checked": "2026-11-13"
+      "sha256": "c806a377351213f18a0132436cf08a9f4fea2ad26b9504d4050a4aad9ee33d00",
+      "length": 126887,
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "WA12",
       "url": "https://www.hca.wa.gov/free-or-low-cost-health-care/i-help-others-apply-and-access-apple-health/changes-circumstance-effect-eligibility",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "d55bbef1afe5f23cc007dfb52e1e2553af39038c6b1e028edbb6005653d35871",
-      "length": 117520,
-      "registry_checked": "2026-11-13"
+      "sha256": "0151086e9cb8c7f1faa77504c84a4101d883063026ddabb90fb881b99134339b",
+      "length": 117513,
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "WA13",
       "url": "https://www.hca.wa.gov/free-or-low-cost-health-care/submit-my-verification",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "58e1a100e06daddf6d8a5233556b192b26ec5cd0dff5e560ca0918957d95ee17",
-      "length": 114231,
-      "registry_checked": "2026-11-13"
+      "sha256": "97c561f237c87a0554023177abbde547cf4a05a044987425f16b82134ed8991c",
+      "length": 114224,
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "WA14",
@@ -1105,99 +1205,110 @@
       "fetched": "2026-11-15",
       "state": "fetched",
       "mode": "text",
-      "sha256": "cf31bd7afd83612456f054c5040671f58178518b429d44ec37f9392174a6c27d",
+      "sha256": "e3a2560cb1244917766e68601fe7393b4abaae6d19a6c0d461e2a22f849bf118",
       "length": 87117,
-      "registry_checked": "2026-11-13"
+      "registry_checked": "2026-11-13",
+      "rules": 2,
+      "carried": "re-hashed under rules 2 from the text fetched on 2026-11-15"
     },
     {
       "id": "WA15",
       "url": "https://app.leg.wa.gov/wac/default.aspx?cite=182-505-0250",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "a456d924cb0d6cffe7ec84a597a5b56fbc72cabc71cb95e9fba82761ca3326d4",
+      "sha256": "c1a97b4b239bb5214032f7d650c0d406ca389b4b960e625a873951ab2e80b70e",
       "length": 7126,
-      "registry_checked": "2026-11-13"
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "WA16",
       "url": "https://app.leg.wa.gov/wac/default.aspx?cite=182-504-0035",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "f6257aae5e26c3e8d1fe6cd50c863427567ed57d5069b6ae010ea2c2feac332a",
+      "sha256": "9b1211ce9647eb27a22f3afdd1b66a22c04a26e21cd602f266083bb0ea2c7ee3",
       "length": 14941,
-      "registry_checked": "2026-11-13"
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "WA17",
       "url": "https://app.leg.wa.gov/wac/default.aspx?cite=182-504-0130",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "15148a6485e98bfac6ea7ff2563de1f07d4bf46cd2733bedc38ca49476f49217",
+      "sha256": "11f7336a91e6ec390a30b1a81f9a662853252edd2095a2d6bd3bd123417abb68",
       "length": 5080,
-      "registry_checked": "2026-11-13"
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "WA18",
       "url": "https://app.leg.wa.gov/wac/default.aspx?cite=182-526-0200",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "29da4005030f113a6c14d77590458e8f63b64e35480f828d535b4a68af615818",
+      "sha256": "748feb8cdb3305a8f21c1f37df023fe1946a3dd95c740fb83339744f3abb1d6d",
       "length": 6958,
-      "registry_checked": "2026-11-13"
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "WA19",
       "url": "https://app.leg.wa.gov/wac/default.aspx?cite=182-503-0080",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "59be3bd431b3c0d20be903a8aa9eb26c633bbb3afc40ae343c59928d18ddced0",
+      "sha256": "173818e53cf93df25d50259fe842839aaeaead3a5192fc763689ce095f410930",
       "length": 5092,
-      "registry_checked": "2026-11-13"
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "WA20",
       "url": "https://www.hca.wa.gov/assets/program/medicaid-in-washington-state.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "78fa619e08da013e901fe694467446d14ef3716f1d4f259dc69d7dc9a2d9555f",
       "length": 1269062,
-      "registry_checked": "2026-11-13"
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "WA21",
       "url": "https://www.hca.wa.gov/assets/program/hr1-medical-frailty-memo.pdf",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "fe57fb0a77c956d6a6eb4054836e2a89219e7d9cdc106122fcf884149e4379a9",
       "length": 394821,
-      "registry_checked": "2026-11-13"
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "WA22",
       "url": "https://www.hca.wa.gov/free-or-low-cost-health-care/i-need-medical-dental-or-vision-care/apple-health-medicaid-work-requirements",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "52b9eb570d11ed5ae20fad17ae238f4b3a63cb2fb88528bc78dca30aed84a266",
-      "length": 117006,
-      "registry_checked": "2026-11-13"
+      "sha256": "6b3749f045213fc6722fa10bbdc6539b3839f3e5b70a5398d1fd7cabb62e746e",
+      "length": 116999,
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "WA23",
       "url": "https://www.hca.wa.gov/about-hca/programs-and-initiatives/apple-health-medicaid/apple-health-expansion",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "f7b514c434293bfbcd6ac5670ed1dd07e458b95d824755c4212dc94030433318",
-      "length": 109190,
-      "registry_checked": "2026-11-13"
+      "sha256": "bbf8eae293de282153b5248128f13d2f2db2742c2c325fbe6973ec11e9c9612f",
+      "length": 109183,
+      "registry_checked": "2026-11-13",
+      "rules": 2
     },
     {
       "id": "WA24",
@@ -1205,29 +1316,33 @@
       "fetched": "2026-11-15",
       "state": "fetched",
       "mode": "text",
-      "sha256": "47a1997f546887234c903681758e5802edfe96e103a9ca98e26a989f0bf381ec",
+      "sha256": "ea152bba2555d99d0e927af8d1e93022a8b47c90234706abb97d5aa402142958",
       "length": 10394,
-      "registry_checked": "2026-11-13"
+      "registry_checked": "2026-11-13",
+      "rules": 2,
+      "carried": "re-hashed under rules 2 from the text fetched on 2026-11-15"
     },
     {
       "id": "WA25",
       "url": "https://www.mass.gov/doc/medicaid-work-requirements-rule-complaint/download",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "bytes",
       "sha256": "a401e271fb925ad671529d729ab94e00b5ed46cb6f4cc11e68ede968062e73e9",
       "length": 811286,
-      "registry_checked": "2026-11-12"
+      "registry_checked": "2026-11-12",
+      "rules": 2
     },
     {
       "id": "WA26",
       "url": "https://www.hca.wa.gov/about-hca/news/announcements/apple-health-expansion-enrollment-cap",
-      "fetched": "2026-11-15",
+      "fetched": "2026-11-16",
       "state": "fetched",
       "mode": "text",
-      "sha256": "e5375dd67b8b56b26eeb0fa057f56ba7a14845ae1ad83e73198475ca43261dfb",
-      "length": 103145,
-      "registry_checked": "2026-11-13"
+      "sha256": "33350284ced3a58a6eb9c5a3eb3711e9dc73779d509f65b593a1848116afc62d",
+      "length": 103138,
+      "registry_checked": "2026-11-13",
+      "rules": 2
     }
   ]
 }

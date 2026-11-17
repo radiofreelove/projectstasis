@@ -133,8 +133,12 @@ python3 tools/evidence_audit.py --report evidence-report.md
 
 For every source in `data/sources.json`, the tool fetches the address the way the link check does: it respects robots.txt, sends HEAD and then GET, asks one site at a time with a pause, and names itself. It turns the reply into text it can compare, and compares a SHA-256 of that text with [data/evidence_baseline.json](../data/evidence_baseline.json).
 
-- **A web page** is compared as text: the words a reader sees, with tags, scripts, and styles removed.
+- **A web page** is compared as text: the words a reader sees, with tags, scripts, and styles removed. The hash covers the words alone, in order. Where the lines break does not count, so a line that was only joined to the next or split in two is not a change, and the report's diff does not show it.
 - **A PDF** is compared by its bytes, because the project declares no PDF library. The baseline marks it `"mode": "bytes"`. A change report for a PDF is lower-confidence: the same words saved again make new bytes. Open the file before you believe it.
+- **A reply that is not all there is never compared.** Some servers close the connection partway through a reply, and Python then hands over the part that arrived without an error. So a reply shorter than the length it announced (its Content-Length) is cut short, and so is a PDF that announced no length and has no end-of-file marker. A cut-short reply is asked for once more, and then the source is unreachable. One gap is known: a web page that announces no length and simply stops cannot be told from a whole one.
+- **A page that is not the source is never compared.** Some sites answer automated visitors with a page that checks for them ("Please wait while your request is being verified", a CAPTCHA), or with a page that has no words and sends the browser elsewhere. The same site can send the real page on one fetch and the check on the next. Either way the source is checker-blocked for that run. So is any reply with fewer than 50 words, whatever it says: the shortest source text in November 2026 had 165 words, and the check pages had a dozen. A check page that was hashed would match itself the next week, and the source would be called unchanged although no one had read its words.
+
+These are the comparison rules. They are the same, line for line, in The Strand Project's audit, and a test in each project checks that. `RULES` in the tool numbers them (2 since Nov. 16, 2026). See "The comparison rules" below before changing them.
 
 ### The four states
 
@@ -144,18 +148,20 @@ Every source ends in exactly one.
 |---|---|---|
 | Unchanged | The content matches the baseline. | Nothing. |
 | Changed | The content differs. For a web page, the report shows what changed, up to a limit. It names the claims in `data/claims.json` that cite the source and the guide pages that show those claims. | Re-read the source. A change is a prompt to read, not proof that a fact is wrong: a new menu item changes a page too. If a fact changed, follow "How to change a fact". Then refresh that source's baseline (below). |
-| Unreachable | The connection failed, the reply was cut short twice, or the server answered with an error. Nothing was compared. | Read the link check report in the same issue. If the link check also calls the address broken, follow "If an official link breaks". If not, wait for next week's run. |
-| Checker-blocked | The site answered 401 or 403 to this tool, its robots.txt keeps this tool out, or the registry says `"link_check": "by hand"`. | A person opens it, as in the 30-day list above. This state says nothing about the source. It is not a dead link, and it is not a removed document. |
+| Unreachable | The connection failed, the reply was cut short twice (including a reply shorter than the length it announced), or the server answered with an error. Nothing was compared. | Read the link check report in the same issue. If the link check also calls the address broken, follow "If an official link breaks". If not, wait for next week's run. |
+| Checker-blocked | The site answered 401 or 403 to this tool, its robots.txt keeps this tool out, the registry says `"link_check": "by hand"`, or the site answered with a check for automated visitors (or a page with no words, or fewer than 50) instead of the source. | A person opens it, as in the 30-day list above. This state says nothing about the source. It is not a dead link, and it is not a removed document. |
 
-The report has one more list, **Not yet baselined**: sources with no stored hash, because they were blocked or unreachable when the baseline was written, or were added to the registry since. A missing baseline is never counted as a change.
+The report has one more list, **Not yet baselined**: sources with no stored hash, because they were blocked or unreachable when the baseline was written, were added to the registry since, or have a hash written under older comparison rules. A missing baseline is never counted as a change.
 
 Only a changed source fails the run and opens the weekly issue. Blocked and unreachable sources are listed in the report and do not fail the run; the link check is what fails on an address that stops answering.
 
 ### The baseline
 
 - **What the baselines rest on.** The baselines rest on the project's November 2026 verified source checks. Each entry records the source's `checked` date from the registry on the day it was written (`registry_checked`). That check is what stands behind the hash.
-- **What the baseline run was not.** The run that wrote the baseline on Nov. 15, 2026 was a tool fetching each address and storing a hash. It was not a fresh read of every source by a person, and nothing here says it was.
-- **What it holds.** One entry per source: its address, the fetch date, the fetch state, how it is compared (`text` or `bytes`), the SHA-256, and the length. On Nov. 15, 2026: 93 of 120 sources were read (56 as text, 37 as bytes), 16 were checker-blocked, and 11 were unreachable. The 27 with no hash are "not yet baselined".
+- **What the baseline runs were not.** The runs that wrote the baseline on Nov. 15, 2026, and wrote it again on Nov. 16 and 17, 2026, were a tool fetching each address and storing a hash. None was a fresh read of every source by a person, and nothing here says it was.
+- **What it holds.** One entry per source: its address, the fetch date, the fetch state, how it is compared (`text` or `bytes`), the SHA-256, the length, `registry_checked`, and `rules`, the comparison rules the hash was taken under. An entry marked `carried` was re-hashed from the saved text of an earlier fetch, without fetching again. An entry written again from a fresh fetch says, under `earlier`, whether that fetch said the same as the hash it replaced.
+- **Nov. 16 and 17, 2026: written again under rules 2.** The Nov. 15 baseline mixed captures made by a different copy of the tool, on a different computer, from the one that compares them each week. The first weekly audit, on Nov. 16, called 45 of 120 sources changed. 42 were artifacts of how the Nov. 15 baseline was captured: 20 differed only in where lines broke, 18 had been hashed from a reply cut off partway (9 web pages and 9 PDFs), and 4 were pages that check for automated visitors rather than the source. The other 3 (U23, WA14, and WA24) may have really changed. The baseline was written again with the fixed tool, except for those 3. They were carried forward from their Nov. 15 text, so they still show as changed until a person reads them. The rewrite could not read U01, and the tool as it was then wrote "unreachable" over its hash; that hash was put back and carried forward from its saved text. After the rewrite: 85 of 120 sources have a hash (50 as text, 35 as bytes, 4 of them carried forward), 18 are checker-blocked, and 17 are unreachable. Most of the unreachable ones are Utah sites that cut replies short; under the old rules those part-replies would have been hashed. The 35 with no hash are "not yet baselined".
+- **Hashes no person has yet stood behind.** 14 of the new hashes have no earlier hash of the whole source to agree with: the Nov. 15 hash was of a cut-short reply or a check page (S25, S27, S35, U03, U04, U05, U08, U09, U13, U19S, U22, U33), or there was none (S10, S31). Each is the first hash of the whole source, written by a tool, not checked against the source check it is meant to rest on. A person reads each of these sources before the mechanical update switch goes on.
 - **Hashes, not text.** The repository does not keep copies of official pages. To show what changed, the tool keeps each page's text in `.evidence-snapshots/`, which is not committed. The weekly run saves that folder between runs. If the saved text is gone, the report still names the changed source, its claims, and its pages, and says there is no diff to show.
 - **A baseline is refreshed only on purpose.** Comparing never rewrites it. Refresh one source after a person has re-read it and the registry's `checked` date is set:
 
@@ -163,7 +169,24 @@ Only a changed source fails the run and opens the weekly issue. Blocked and unre
   python3 tools/evidence_audit.py --write-baseline --only S07
   ```
 
-  Do the same to give a "not yet baselined" source its first hash, after a person has read it. Never refresh a baseline to make a "changed" report go away without reading the source. A refresh keeps the old hash for any source it cannot read that day. Say what you refreshed, and why, in [CHANGELOG.md](../CHANGELOG.md).
+  Do the same to give a "not yet baselined" source its first hash, after a person has read it. Never refresh a baseline to make a "changed" report go away without reading the source. A refresh keeps the old hash for any source it cannot read that day, even one written under older rules. For each source it can read, it says whether the source still says what its old hash said: "the same" carries the old entry's verified check forward; "different", "not known", or a first hash means a person reads the source before the new hash is relied on. Say what you refreshed, and why, in [CHANGELOG.md](../CHANGELOG.md).
+
+### The comparison rules
+
+The comparison rules turn a reply into what is hashed: what counts as the words of a page, which replies are cut short, and which replies are not the source. They are one block in `tools/evidence_audit.py`, marked "The comparison rules (begin)" and "(end)", and the same block is in The Strand Project's `tests/evidence_audit.py`. Each project's tests hold the block's SHA-256 (`RULES_BLOCK_SHA256`), so a change in one project fails its tests until the same change is made in the other and both hashes are updated.
+
+They are shared because a baseline written on one computer is compared with fetches made on another. In November 2026 the two disagreed on where lines break, and a reply cut short on one was hashed as whole.
+
+`RULES` numbers the rules. Raise it whenever a change would change a hash. Every baseline entry records the `rules` it was written under, and an entry under other rules is never compared: it is "not yet baselined", never "changed". To bring the baseline under new rules:
+
+- **Carry forward** what you can, without fetching anything. This re-hashes each entry from the text saved when it was written, so the baseline still holds what the source said then, and a real change since is still reported:
+
+  ```bash
+  python3 tools/evidence_audit.py --carry-forward
+  ```
+
+  It refuses an entry whose saved text is not on this computer, or is a check for automated visitors or too short to be the source. It never carries a PDF forward: there is no saved copy to re-take the hash from, and under rules 1 a reply cut short was hashed as if whole (9 of 37 PDF hashes on Nov. 15, 2026). Carrying forward also cannot tell whether a saved text was itself cut short; under rules 1 four were (U02, U16, U20, U24), so carry an entry forward only when something shows its saved text was whole (a later fetch matched it, or differed from it in only a few words), and name the ids with `--only`.
+- **Write the rest again** with `--write-baseline --only ID`. It says, for each source, whether the new hash says what the old one said; read any source that is not "the same" before relying on its new hash, as above.
 
 ### Dated language
 
