@@ -8,7 +8,6 @@
 | Every push to any branch | Cloudflare Pages runs build freshness and structure lint, then publishes `site/`: `main` to <https://projectstasis.pages.dev/>, other branches and pull requests to preview addresses | Cloudflare (settings below) | Nothing new is published, and the live site stays as it was. The commit shows a failed Cloudflare check. |
 | Every push to `main`, after Cloudflare publishes | Live-site check: every page, asset, and header matches the commit (waits up to 15 minutes) | [live.yml](../.github/workflows/live.yml) | The commit shows a red X: visitors are not getting what is in `main`. Check the Cloudflare build. |
 | Mondays, and Jan. 1 each year, 15:17 UTC (morning in Oregon) | Official link check (respects robots.txt), evidence audit (what each source says, compared with its baseline), dated checkpoints, and a live-site check that every page, asset, and header matches this repository | [weekly.yml](../.github/workflows/weekly.yml) | Opens one GitHub issue with all the reports. |
-| The same run, only if the repository variable `MECHANICAL_UPDATES` is `on` (it is off) | Drafts "checked" date updates for sources the evidence audit found unchanged | [weekly.yml](../.github/workflows/weekly.yml), job `mechanical` | Opens a pull request for a person to review. Nothing merges it. See "The mechanical update switch" below. |
 
 ## Cloudflare Pages settings
 
@@ -198,36 +197,11 @@ They are shared because a baseline written on one computer is compared with fetc
 
 [dated-language.md](dated-language.md) lists the wording whose truth depends on the date: start dates, deadlines, "as of" lines, and dated figures. Each entry gives the exact wording, where it is, the day it expires, and what to do then. Each is tied to a checkpoint in `data/review.json`, so the weekly check raises it. When you add dated wording to a page, add it to that list and add a checkpoint. When you do the work, remove the entry.
 
-### The mechanical update switch
+### Mechanical updates (removed from the weekly workflow)
 
-`tools/mechanical_update.py` drafts one kind of change: for each source an evidence audit found **unchanged**, it sets the `checked` date in `data/sources.json` to the day of the audit. The hash match is the proof. It changes no other field and no other source. It refuses to write anything if a source it would touch is changed, blocked, unreachable, or not yet baselined, or if the audit's hash or address does not match the baseline and the registry. It leaves alone any source read from a site that sends an incomplete certificate chain.
+By the owner's November 18, 2026 ruling, machines never change a source's `checked` date in `data/sources.json`. A checked date certifies that a person read the source; a machine match belongs only in run receipts and reports.
 
-A date set this way means "a tool found the same content as the last verified check". It does not mean a person read the source again, and the baseline entry keeps the date of the check it rests on.
-
-**The switch is off.** The weekly workflow has a second job, `mechanical`, that runs only when the repository variable `MECHANICAL_UPDATES` is exactly `on`. The variable does not exist until the owner makes it, so nothing runs.
-
-To turn it on:
-
-1. In the repository on GitHub: Settings, Secrets and variables, Actions, Variables, New repository variable. Name `MECHANICAL_UPDATES`, value `on`.
-2. In Settings, Actions, General, Workflow permissions: allow GitHub Actions to create pull requests. Without it the job fails at its last step and changes nothing.
-
-To turn it off, delete the variable or set it to anything else.
-
-When it is on, each weekly run:
-
-1. Runs the evidence audit again, after the first job, and runs the tool on its result.
-2. Rebuilds the site, because every page shows each source's checked date.
-3. Opens a pull request that holds the date changes in `data/sources.json` and the built files that show them (`site/`, `docs/sources.md`), and nothing else. If anything else differs, it stops and opens nothing. The pull request body lists every date changed and carries the audit report.
-
-It never merges. A person reads the pull request and merges or closes it. GitHub does not start the checks on a pull request opened by a workflow, so run **Checks** by hand on its branch (Actions tab, **Checks**, **Run workflow**) before merging. This is the only job in the repository with permission to write to it (`contents: write`, `pull-requests: write`); the first job's permissions did not change.
-
-To try the tool on your computer without changing the registry, give it a copy:
-
-```bash
-python3 tools/evidence_audit.py --report evidence-report.md --results evidence-results.json
-cp data/sources.json /tmp/sources.json
-python3 tools/mechanical_update.py --audit evidence-results.json --registry /tmp/sources.json
-```
+The `mechanical` job (formerly gated on the repository variable `MECHANICAL_UPDATES`) was removed from [weekly.yml](../.github/workflows/weekly.yml). Nothing in the weekly workflow writes to the repository. `tools/mechanical_update.py` remains in `tools/` unwired and is not run by any workflow. Any future batch-PR workflow requires its own design and owner approval.
 
 ## Rules for maintainers
 
