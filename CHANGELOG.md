@@ -2,6 +2,13 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.12 beta (2026-11-19)
+
+Tools only. No page wording, fact, claim, or source entry changed, and no checked date moved. The only change a reader sees is the version number in the footer.
+
+- **Obsolete mechanical update job removed from the weekly workflow.** The `mechanical` job in `.github/workflows/weekly.yml` (which drafted `checked` date updates when `MECHANICAL_UPDATES` was set to `on`) is removed, along with its stale header comment. By the owner's November 18, 2026 ruling, machines never change `checked` dates in the registry; a checked date certifies a person's read. Nothing in the weekly workflow now has write permission on repository contents or pull requests.
+- **Maintenance runbook updated.** `docs/maintenance.md` now records that the `mechanical` job was removed from `weekly.yml` and that `tools/mechanical_update.py` is not wired into any workflow.
+
 ## 0.3.11 beta (2026-11-18)
 
 Tools only. No page wording, fact, claim, or source entry changed, and no checked date moved. The only change a reader sees is the version number in the footer.
