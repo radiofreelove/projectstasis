@@ -76,3 +76,26 @@ jobs:
           path: |
             docs/testing-browser.md
             screenshots/
+
+  merge-gate:
+    name: Merge gate (the health vector may not fall)
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          path: head
+
+      - uses: actions/checkout@v7
+        with:
+          ref: ${{ github.base_ref }}
+          path: base
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - name: Compare the offline health vector with the base branch
+        env:
+          PR_BODY: ${{ github.event.pull_request.body }}
+        run: python3 head/tools/merge_gate.py --base base --head head
