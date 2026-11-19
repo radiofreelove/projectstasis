@@ -2,6 +2,12 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.13 beta (2026-11-19)
+
+One official link fixed on the Oregon turned-down page and in the source registry. No claim wording or checked date changed.
+
+- **S14 (OHA appeals and hearings page) updated to the public URL.** The previous address (`https://www.oregon.gov/oha/OHP/Members/Pages/Appeals-Hearings.aspx`) was an internal agency link and returned 401 to the automated link check (issue #9). Both `data/sources.json` (S14) and `src/pages/oregon/denied.html` now point to OHA's public page (`https://www.oregon.gov/oha/hsd/ohp/pages/appeals-hearings.aspx`). S14's `checked` date (`2026-11-02`) is unchanged, and `data/evidence_baseline.json` is unchanged (S14 remains unbaselined until a guarded baseline refresh captures the public page).
+
 ## 0.3.12 beta (2026-11-19)
 
 Tools only. No page wording, fact, claim, or source entry changed, and no checked date moved. The only change a reader sees is the version number in the footer.
