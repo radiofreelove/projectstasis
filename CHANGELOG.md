@@ -2,6 +2,13 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.14 beta (2026-11-19)
+
+Maintenance only. No visible page wording, fact, or source checked date changed. The only change a reader sees is the version number in the footer.
+
+- **Utah past-bills phone number tagged with its claim.** Line 23 of `src/pages/utah/utah-bills.html` (`1-866-435-7414`) now carries `data-claim="U-DWS-PHONE"` (matching `utah-health.html` and `utah-help.html`), and `U01` is added to the page's source list.
+- **Stale Washington checkpoint text updated.** The `2026-11-26` entry in `data/review.json` now matches the repository (reflecting the Nov. 14 rulings: WA25 opened, zero drafting claims remaining, and `docs/corrections.md` Washington items 2, 3, 4, 8, 9, 12 and item 7's hardship half resolved) and scopes the checkpoint to the remaining owner decisions and targeted spot-checks rather than an end-to-end read of all 26 sources.
+
 ## 0.3.13 beta (2026-11-19)
 
 One official link fixed on the Oregon turned-down page and in the source registry. No claim wording or checked date changed.
