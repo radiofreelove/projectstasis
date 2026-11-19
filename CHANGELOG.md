@@ -2,6 +2,16 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.11 beta (2026-11-18)
+
+Tools only. No page wording, fact, claim, or source entry changed, and no checked date moved. The only change a reader sees is the version number in the footer.
+
+- **Baseline writes are guarded now.** A new module, `tools/guards.py` (the same block of code, line for line, in The Strand Project's `tests/guards.py`), stands between the evidence audit and the baseline file. Every write prints a completeness diff and is refused, with nothing written, if it would drop a hash, weaken an entry, shrink the count hashed under the current rules, or move the baseline's `written` date backward. This makes the November 17, 2026 merge loss (hashes a refresh could not replace, wiped) impossible by construction, not only fixed.
+- **A changed hash needs a person to name it.** A refresh that finds a source saying something different is refused unless the person refreshing adds `--accept-change ID --reason TEXT` for that source. The flag is refused when `GITHUB_ACTIONS` is set, so a scheduled run can never accept a change.
+- **Writes are atomic and read back.** The baseline is written to a temporary file, read back and checked against what was meant to be written, then renamed over the old file. A write stopped partway leaves the old file whole.
+- **The counts must add up.** A report run that cannot account for every source in the registry (each one exactly once) exits 3 and writes nothing. `python3 tools/guards.py --reconcile` checks the registry against the baseline offline and prints the equation: 120 = 103 + 0 + 16 + 1 today.
+- **A merge gate.** A new job in the checks workflow compares a pull request's offline health vector (registry size, sources hashed under the current rules, claims resting on a hashed source) with the main branch's, and fails on any decrease the pull request's body does not accept in so many words.
+
 ## 0.3.10 beta (2026-11-17)
 
 Tools only. The evidence audit no longer calls a source changed when its words did not change, and it no longer takes a reply as the source when it is not. No page wording, fact, claim, or source entry changed. The only change a reader sees is the version number in the footer.
