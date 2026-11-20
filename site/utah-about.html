@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta http-equiv="Content-Security-Policy" content="default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; connect-src 'none'; form-action 'none'; base-uri 'none'; object-src 'none'">
   <meta name="referrer" content="no-referrer">
-  <title>Why this guide exists | The Stasis Project</title>
+  <title>Why this site exists (Utah Medicaid) | The Stasis Project</title>
   <meta name="description" content="Why The Stasis Project has a Utah Medicaid guide, who it is for, what it is not, and how it keeps its facts right.">
   <link rel="canonical" href="https://projectstasis.pages.dev/utah-about">
   <link rel="icon" href="assets/img/logo.svg" type="image/svg+xml">
@@ -18,7 +18,7 @@
   <header class="site-header">
     <div class="independent-banner">
       <div class="wrap">
-        <p><strong>Independent guide.</strong> Not run by the state. <a href="utah-about">Why this guide exists</a>. <a href="utah-about#report">Report a mistake</a>.</p>
+        <p><strong>Independent guide.</strong> Not run by the state. <a href="utah-about">Why this site exists</a>. <a href="utah-about#report">Report a mistake</a>.</p>
       </div>
     </div>
     <div class="wrap">
@@ -27,15 +27,23 @@
           <img src="assets/img/logo.svg" alt="" width="40" height="40">
           <span><span class="brand-name">The Stasis Project</span><span class="brand-tag">Utah Medicaid, made plain</span></span>
         </a>
-        <nav class="main-nav" aria-label="Main">
+        <details class="state-switcher" data-state-switcher>
+          <summary aria-label="State: Utah. Switch state guide"><span class="state-switcher-label">State: Utah</span><span class="state-switcher-caret" aria-hidden="true">&#9662;</span></summary>
+          <ul class="state-switcher-menu">
+            <li><a href="./"><span class="state-switcher-name">Oregon</span><span class="state-switcher-guide">Oregon Health Plan guide</span></a></li>
+            <li><a href="washington"><span class="state-switcher-name">Washington</span><span class="state-switcher-guide">Apple Health guide</span></a></li>
+            <li><a href="utah" aria-current="page"><span class="state-switcher-name">Utah</span><span class="state-switcher-guide">Utah Medicaid guide</span></a></li>
+          </ul>
+        </details>
+      </div>
+      <nav class="main-nav" aria-label="Main">
         <ul>
           <li><a href="utah">Utah home</a></li>
           <li><a href="utah-check">Check</a></li>
           <li><a href="utah-apply">Apply</a></li>
           <li><a href="utah-help">Get help</a></li>
         </ul>
-        </nav>
-      </div>
+      </nav>
     <details class="display-settings" data-settings>
       <summary>Display settings</summary>
       <div class="settings-body">
@@ -61,11 +69,12 @@
           <label class="choice"><input type="radio" name="theme" value="warm"> Warm light</label>
           <label class="choice"><input type="radio" name="theme" value="white"> Plain white</label>
           <label class="choice"><input type="radio" name="theme" value="dark"> Dark</label>
+          <label class="choice"><input type="radio" name="theme" value="contrast"> High contrast</label>
         </fieldset>
         <fieldset>
           <legend>How much to show</legend>
-          <label class="choice"><input type="radio" name="details" value="all" checked> Everything</label>
-          <label class="choice"><input type="radio" name="details" value="fewer"> Just the key points</label>
+          <label class="choice"><input type="radio" name="details" value="all" checked> Full version</label>
+          <label class="choice"><input type="radio" name="details" value="fewer"> Short version</label>
         </fieldset>
         <div class="settings-actions">
           <button type="button" class="button-secondary" data-reset-settings>Reset to standard</button>
@@ -80,8 +89,8 @@
     <div class="wrap">
     <div class="detail-strip" data-detail-strip>
       <p class="detail-ask when-all">Still too much to take in?</p>
-      <p class="fewer-note when-fewer">You are seeing just the key points. Some details are hidden.</p>
-      <button type="button" class="button-secondary" data-toggle-details aria-pressed="false"><span class="when-all">Show just the key points</span><span class="when-fewer">Show everything</span></button>
+      <p class="fewer-note when-fewer">You are seeing the short version. Some details are hidden.</p>
+      <button type="button" class="button-secondary" data-toggle-details aria-pressed="false"><span class="when-all">Show the short version</span><span class="when-fewer">Show the full version</span></button>
       <p class="detail-hint when-all">This hides the extra details on this page. The main points, the steps, and the links you need stay here.</p>
     </div>
     <h1>Why this guide exists</h1>
@@ -163,7 +172,7 @@
   </main>
   <footer class="site-footer">
     <div class="wrap">
-      <h2>Why this guide exists</h2>
+      <h2>Why this site exists</h2>
       <p>Utah explains the new Medicaid rules across more than a dozen pages and papers. This guide puts what applicants need in one place, in plain words. Each page lists the official sources behind it.</p>
       <p><strong>Independent.</strong> Not run by the State of Utah, the Utah Department of Health and Human Services (DHHS), or the Utah Department of Workforce Services (DWS). Only the state decides who qualifies.</p>
       <p><strong>Private.</strong> No accounts, ads, cookies, or tracking. <a href="utah-privacy">How your privacy is protected</a>.</p>
@@ -185,7 +194,7 @@
           <li><a href="utah-help">Free help and languages</a></li>
           <li><a href="utah-words">Words on your letters</a></li>
           <li><a href="utah-log">Hours log</a></li>
-          <li><a href="utah-about" aria-current="page">Why this guide exists</a></li>
+          <li><a href="utah-about" aria-current="page">Why this site exists</a></li>
           <li><a href="utah-privacy">Privacy</a></li>
           <li><a href="utah-accessibility">Accessibility</a></li>
           <li><a href="utah-sources">Every source</a></li>

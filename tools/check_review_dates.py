@@ -49,6 +49,15 @@ def main() -> int:
             if today > until:
                 problems.append(f"{path.parent.name}/{path.name}: a note expired on {until}; retire or update it")
 
+    for path in sorted((ROOT / "site").glob("*.html")):
+        html_text = path.read_text(encoding="utf-8")
+        footer_m = re.search(r'Facts last checked <time datetime="(\d{4}-\d{2}-\d{2})">', html_text)
+        source_dates = re.findall(r'Checked: <time datetime="(\d{4}-\d{2}-\d{2})">', html_text)
+        if footer_m and source_dates and footer_m.group(1) < max(source_dates):
+            problems.append(
+                f"site/{path.name}: footer checked date ({footer_m.group(1)}) lags behind cited source ({max(source_dates)})"
+            )
+
     if upcoming:
         print("Upcoming checkpoints:\n  " + "\n  ".join(upcoming))
     if problems:

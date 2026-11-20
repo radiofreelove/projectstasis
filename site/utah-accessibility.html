@@ -18,7 +18,7 @@
   <header class="site-header">
     <div class="independent-banner">
       <div class="wrap">
-        <p><strong>Independent guide.</strong> Not run by the state. <a href="utah-about">Why this guide exists</a>. <a href="utah-about#report">Report a mistake</a>.</p>
+        <p><strong>Independent guide.</strong> Not run by the state. <a href="utah-about">Why this site exists</a>. <a href="utah-about#report">Report a mistake</a>.</p>
       </div>
     </div>
     <div class="wrap">
@@ -27,15 +27,23 @@
           <img src="assets/img/logo.svg" alt="" width="40" height="40">
           <span><span class="brand-name">The Stasis Project</span><span class="brand-tag">Utah Medicaid, made plain</span></span>
         </a>
-        <nav class="main-nav" aria-label="Main">
+        <details class="state-switcher" data-state-switcher>
+          <summary aria-label="State: Utah. Switch state guide"><span class="state-switcher-label">State: Utah</span><span class="state-switcher-caret" aria-hidden="true">&#9662;</span></summary>
+          <ul class="state-switcher-menu">
+            <li><a href="./"><span class="state-switcher-name">Oregon</span><span class="state-switcher-guide">Oregon Health Plan guide</span></a></li>
+            <li><a href="washington"><span class="state-switcher-name">Washington</span><span class="state-switcher-guide">Apple Health guide</span></a></li>
+            <li><a href="utah" aria-current="page"><span class="state-switcher-name">Utah</span><span class="state-switcher-guide">Utah Medicaid guide</span></a></li>
+          </ul>
+        </details>
+      </div>
+      <nav class="main-nav" aria-label="Main">
         <ul>
           <li><a href="utah">Utah home</a></li>
           <li><a href="utah-check">Check</a></li>
           <li><a href="utah-apply">Apply</a></li>
           <li><a href="utah-help">Get help</a></li>
         </ul>
-        </nav>
-      </div>
+      </nav>
     <details class="display-settings" data-settings>
       <summary>Display settings</summary>
       <div class="settings-body">
@@ -61,11 +69,12 @@
           <label class="choice"><input type="radio" name="theme" value="warm"> Warm light</label>
           <label class="choice"><input type="radio" name="theme" value="white"> Plain white</label>
           <label class="choice"><input type="radio" name="theme" value="dark"> Dark</label>
+          <label class="choice"><input type="radio" name="theme" value="contrast"> High contrast</label>
         </fieldset>
         <fieldset>
           <legend>How much to show</legend>
-          <label class="choice"><input type="radio" name="details" value="all" checked> Everything</label>
-          <label class="choice"><input type="radio" name="details" value="fewer"> Just the key points</label>
+          <label class="choice"><input type="radio" name="details" value="all" checked> Full version</label>
+          <label class="choice"><input type="radio" name="details" value="fewer"> Short version</label>
         </fieldset>
         <div class="settings-actions">
           <button type="button" class="button-secondary" data-reset-settings>Reset to standard</button>
@@ -78,12 +87,6 @@
   </header>
   <main id="main" tabindex="-1">
     <div class="wrap">
-    <div class="detail-strip" data-detail-strip>
-      <p class="detail-ask when-all">Still too much to take in?</p>
-      <p class="fewer-note when-fewer">You are seeing just the key points. Some details are hidden.</p>
-      <button type="button" class="button-secondary" data-toggle-details aria-pressed="false"><span class="when-all">Show just the key points</span><span class="when-fewer">Show everything</span></button>
-      <p class="detail-hint when-all">This hides the extra details on this page. The main points, the steps, and the links you need stay here.</p>
-    </div>
     <h1>Accessibility</h1>
     <p class="purpose">This site is built to be easy to use for as many people as possible.</p>
 
@@ -91,7 +94,7 @@
     <ul class="short">
       <li data-claim="C-A11Y-TARGET"><strong>Standard:</strong> Built to meet WCAG 2.2 Level AA. Colors meet the stricter AAA level.</li>
       <li data-claim="C-A11Y-COGA"><strong>Easy to think through:</strong> Built with W3C advice for people with cognitive and learning disabilities.</li>
-      <li data-claim="C-A11Y-SETTINGS"><strong>Make it yours:</strong> Change text size, spacing, font, colors, and how much shows. Look for "Display settings" at the top. The "Show just the key points" button above each page's heading also changes how much shows.</li>
+      <li data-claim="C-A11Y-SETTINGS"><strong>Make it yours:</strong> Change text size, spacing, font, colors, and how much shows. Look for "Display settings" at the top. The "Show the short version" button above each guide page's heading also changes how much shows.</li>
       <li data-claim="C-A11Y-TESTED"><strong>Tested so far:</strong> Automated checks only. Testing with people who use assistive technology has not happened yet.</li>
     </ul>
 
@@ -104,7 +107,7 @@
       <li>Big buttons and links that are easy to tap.</li>
       <li>A thick yellow and black outline shows where you are when you use a keyboard.</li>
       <li>Works at 400% zoom and on small phones.</li>
-      <li>"Just the key points" mode hides extra details. Turn it on with the button above each page's heading, or in "Display settings." A "Show everything" button brings the details back. Printed pages always show everything.</li>
+      <li>"Short version" mode hides extra details. Turn it on with the button above each guide page's heading, or in "Display settings." A "Show the full version" button brings the details back. Printed pages always show everything.</li>
       <li data-claim="C-COLORS">Colors come from the Oregon Department of Human Services' published palette. Every text color pair is checked for contrast.</li>
       <li>Pages print cleanly, with web addresses shown.</li>
     </ul>
@@ -133,7 +136,7 @@
   </main>
   <footer class="site-footer">
     <div class="wrap">
-      <h2>Why this guide exists</h2>
+      <h2>Why this site exists</h2>
       <p>Utah explains the new Medicaid rules across more than a dozen pages and papers. This guide puts what applicants need in one place, in plain words. Each page lists the official sources behind it.</p>
       <p><strong>Independent.</strong> Not run by the State of Utah, the Utah Department of Health and Human Services (DHHS), or the Utah Department of Workforce Services (DWS). Only the state decides who qualifies.</p>
       <p><strong>Private.</strong> No accounts, ads, cookies, or tracking. <a href="utah-privacy">How your privacy is protected</a>.</p>
@@ -155,7 +158,7 @@
           <li><a href="utah-help">Free help and languages</a></li>
           <li><a href="utah-words">Words on your letters</a></li>
           <li><a href="utah-log">Hours log</a></li>
-          <li><a href="utah-about">Why this guide exists</a></li>
+          <li><a href="utah-about">Why this site exists</a></li>
           <li><a href="utah-privacy">Privacy</a></li>
           <li><a href="utah-accessibility" aria-current="page">Accessibility</a></li>
           <li><a href="utah-sources">Every source</a></li>

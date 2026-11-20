@@ -1,0 +1,2 @@
+# The Stasis Project site build uses the Python standard library only (zero runtime dependencies).
+# Test-only browser check dependencies are pinned in test-tools/requirements.txt.

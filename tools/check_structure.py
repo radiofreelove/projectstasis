@@ -44,6 +44,7 @@ import sys
 from html.parser import HTMLParser
 from pathlib import Path
 
+import build
 import serve
 
 ROOT = Path(__file__).resolve().parent.parent
@@ -56,23 +57,33 @@ STRIP_PARTS = (
     ("Still too much to take in?", "the strip's question"),
     ('<button type="button" class="button-secondary" data-toggle-details aria-pressed="false">',
      "the strip's button, with its state"),
-    ("Show just the key points", "the button's words when everything shows"),
+    ("Show the short version", "the button's words when everything shows"),
     ("This hides the extra details on this page. The main points, the steps, and the links you need stay here.",
      "the line under the button"),
-    ("You are seeing just the key points. Some details are hidden.", "the banner's words"),
-    ("Show everything", "the button's words in key-points mode"),
+    ("You are seeing the short version. Some details are hidden.", "the banner's words"),
+    ("Show the full version", "the button's words in short-version mode"),
 )
 PANEL_PARTS = (
     ("<legend>How much to show</legend>", "the 'How much to show' choices in Display settings"),
-    ('<input type="radio" name="details" value="all" checked>', "the 'Everything' choice, picked by default"),
-    ('<input type="radio" name="details" value="fewer">', "the 'Just the key points' choice"),
+    ('<input type="radio" name="details" value="all" checked>', "the 'Full version' choice, picked by default"),
+    ('<input type="radio" name="details" value="fewer">', "the 'Short version' choice"),
     ('id="settings-status"', "the status line that announces a change"),
 )
 
+FOOTER_CHECKED_RE = re.compile(r'Facts last checked <time datetime="(\d{4}-\d{2}-\d{2})">')
+SOURCE_CHECKED_RE = re.compile(r'Checked: <time datetime="(\d{4}-\d{2}-\d{2})">')
 
-def check_strip(text: str) -> list[str]:
+
+def check_strip(text: str, expect_strip: bool = True) -> list[str]:
     errors = []
-    for needed, what in STRIP_PARTS + PANEL_PARTS:
+    for needed, what in PANEL_PARTS:
+        if needed not in text:
+            errors.append(f"'How much to show' is missing {what}")
+    if not expect_strip:
+        if "data-detail-strip" in text or "data-toggle-details" in text:
+            errors.append("page sets show_short_toggle: false but still renders the short-version strip")
+        return errors
+    for needed, what in STRIP_PARTS:
         if needed not in text:
             errors.append(f"'How much to show' is missing {what}")
     if text.count("data-toggle-details") != 1:
@@ -83,6 +94,21 @@ def check_strip(text: str) -> list[str]:
     if "open Display settings at the top" in text:
         errors.append("the old banner text, which sent readers into the menu, is still on the page")
     return errors
+
+
+def check_checked_dates(text: str) -> list[str]:
+    """Rule 18: footer 'Facts last checked' date must not be older than any cited source on the page."""
+    footer_m = FOOTER_CHECKED_RE.search(text)
+    source_dates = SOURCE_CHECKED_RE.findall(text)
+    if not footer_m or not source_dates:
+        return []
+    footer_iso = footer_m.group(1)
+    newest_source = max(source_dates)
+    if footer_iso < newest_source:
+        return [
+            f"footer 'Facts last checked' date ({footer_iso}) is older than a cited source ({newest_source})"
+        ]
+    return []
 
 
 class Page(HTMLParser):
@@ -199,11 +225,11 @@ class Page(HTMLParser):
             self.script_text.append(data)
 
 
-def check(path: Path, titles: dict) -> list[str]:
+def check(path: Path, titles: dict, expect_strip: bool = True) -> list[str]:
     page = Page()
     text = path.read_text(encoding="utf-8")
     page.feed(text)
-    errors = list(page.errors) + check_strip(text)
+    errors = list(page.errors) + check_strip(text, expect_strip=expect_strip) + check_checked_dates(text)
     if page.lang != "en":
         errors.append("html lang is not 'en'")
     title = " ".join(page.title.split())
@@ -279,6 +305,8 @@ def main() -> int:
     titles: dict[str, str] = {}
     failed = 0
     pages = sorted(SITE.glob("*.html"))
+    loaded_pages, _, _ = build.load_pages()
+    expect_strip_map = {f"{p['slug']}.html": p.get("show_short_toggle", True) for p in loaded_pages}
     first = Page()
     first.feed((SITE / "index.html").read_text(encoding="utf-8"))
     header_errors = check_headers(first.meta_csp or "")
@@ -288,7 +316,7 @@ def main() -> int:
         for error in header_errors:
             print(f"  - {error}")
     for path in pages:
-        errors = check(path, titles)
+        errors = check(path, titles, expect_strip=expect_strip_map.get(path.name, True))
         if errors:
             failed += 1
             print(f"{path.name}:")

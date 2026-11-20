@@ -347,7 +347,16 @@
     result.hidden = false;
     form.hidden = true;
     progress.hidden = true;
-    result.focus();
+    title.setAttribute('tabindex', '-1');
+    try {
+      title.focus({ preventScroll: false });
+    } catch (e) {
+      title.focus();
+    }
+    var reduceMotion = window.matchMedia && window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+    if (result.scrollIntoView) {
+      result.scrollIntoView({ behavior: reduceMotion ? 'auto' : 'smooth', block: 'start' });
+    }
   }
 
   /* Empties the result area but keeps its heading, which the page
