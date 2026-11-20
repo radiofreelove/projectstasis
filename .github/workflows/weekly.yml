@@ -18,6 +18,10 @@ permissions:
   contents: read
   issues: write
 
+concurrency:
+  group: weekly-source-check
+  cancel-in-progress: false
+
 jobs:
   review:
     runs-on: ubuntu-latest
@@ -62,24 +66,44 @@ jobs:
         if: steps.links.outcome == 'failure' || steps.evidence.outcome == 'failure' || steps.dates.outcome == 'failure' || steps.live.outcome == 'failure'
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+          LINKS: ${{ steps.links.outcome }}
+          EVIDENCE: ${{ steps.evidence.outcome }}
+          DATES: ${{ steps.dates.outcome }}
+          LIVE: ${{ steps.live.outcome }}
         run: |
+          verdict() { [ "$1" = "failure" ] && echo "needs a person" || echo "nothing to do"; }
           {
             echo "The weekly source check found something that needs a person."
+            echo
+            echo "| Check | Result |"
+            echo "|---|---|"
+            echo "| Official links | $(verdict "$LINKS") |"
+            echo "| Evidence audit | $(verdict "$EVIDENCE") |"
+            echo "| Checkpoints | $(verdict "$DATES") |"
+            echo "| Live site | $(verdict "$LIVE") |"
+            echo
+            echo "A link the link check lists, or a source the evidence audit calls checker-blocked, is not a dead link: some sites refuse automated tools. Open it in a browser before you call it broken."
             echo
             echo "## Checkpoints"
             echo
             echo '```'
-            cat review-report.txt 2>/dev/null || echo "(no checkpoint report)"
+            # GitHub's limit for an issue body is 65,536 characters.
+            head -c 2000 review-report.txt 2>/dev/null || echo "(no checkpoint report)"
+            echo
             echo '```'
             echo
-            cat link-report.md 2>/dev/null || echo "(no link report)"
-            echo
-            cat evidence-report.md 2>/dev/null || echo "(no evidence audit report)"
-            echo
-            cat live-report.md 2>/dev/null || echo "(no live-site report)"
-            echo
+            head -c 8000 link-report.md 2>/dev/null || echo "(no link report)"
+            printf '\n\n'
+            head -c 50000 evidence-report.md 2>/dev/null || echo "(no evidence audit report)"
+            printf '\n\n'
+            head -c 4000 live-report.md 2>/dev/null || echo "(no live-site report)"
+            printf '\n\n'
             echo "See docs/maintenance.md for what to do."
           } > body.md
+          gh label create "automated-source-check" \
+            --description "Opened by the weekly source check workflow" \
+            --color "1D4ED8" 2>/dev/null || true
           gh issue create \
             --title "Weekly source check needs attention ($(date -u +%Y-%m-%d))" \
+            --label "automated-source-check" \
             --body-file body.md
