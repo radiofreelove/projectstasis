@@ -27,12 +27,12 @@
     text: ['m', 'l', 'xl'],
     spacing: ['normal', 'roomy'],
     font: ['system', 'hyper'],
-    theme: ['auto', 'warm', 'white', 'dark'],
+    theme: ['auto', 'warm', 'white', 'dark', 'contrast'],
     details: ['all', 'fewer']
   };
   var DETAILS_SAID = {
-    fewer: 'Just the key points. Extra details on this page are now hidden.',
-    all: 'Everything. All the details on this page are showing again.'
+    fewer: 'Short version. Extra details on this page are now hidden.',
+    all: 'Full version. All the details on this page are showing again.'
   };
   var root = document.documentElement;
   var panel = null;

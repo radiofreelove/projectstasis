@@ -14,10 +14,10 @@
 | 2. Help users find what they need | Four menu items only (Home, Check, Apply, Get help). A state switch above the headline of each home page. "Go deeper" cards on the home page. A full page list in every footer. One topic per page. |
 | 3. Use clear content | Short sentences, plain words, literal language, no idioms. Bold labels on key bullets. Numbers as digits, with plain equivalents ("about $135 a week," "about 20 hours a week"). Reading level measured for every page ([reading-level.md](reading-level.md)). |
 | 4. Help users avoid mistakes | The check asks one step at a time, shows "Step 1 of 3," has Back buttons, keeps answers when going back, and gives plain error messages that say how to fix them. "Start over" is always offered. |
-| 5. Help users focus | No pop-ups, carousels, autoplay, animation, or ads. A "Just the key points" setting hides extra detail. |
+| 5. Help users focus | No pop-ups, carousels, autoplay, animation, or ads. A "Short version" setting hides extra detail. |
 | 6. Do not rely on memory | No accounts or logins. Results list what the person picked. Pages and results can be printed. An hours log can be printed. |
 | 7. Provide help and support | "Get help" is in the same place on every page (also WCAG 3.2.6). Phone numbers for people, free helpers, language lines, and legal help. The check's results always name a next step. |
-| 8. Support adaptation and personalization | Display settings: text size (3 levels), spacing (WCAG 1.4.12 values or more), an optional easy-to-read font (Atkinson Hyperlegible Next), colors (device, warm light, plain white, dark), and how much to show. Respects the device's dark mode and reduced-motion settings, Windows high contrast (forced colors), and browser zoom. |
+| 8. Support adaptation and personalization | Display settings: text size (3 levels), spacing (WCAG 1.4.12 values or more), an optional easy-to-read font (Atkinson Hyperlegible Next), colors (device, warm light, plain white, dark, high contrast), and how much to show. Respects the device's dark mode, high-contrast mode, and reduced-motion settings, Windows high contrast (forced colors), and browser zoom. |
 
 ## Other details
 

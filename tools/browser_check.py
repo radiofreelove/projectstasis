@@ -54,6 +54,7 @@ SCENARIOS = [
     ("phone 320px, extra-large text and more space", 320, 800, {"text": "xl", "spacing": "roomy"}),
     ("phone 390px, dark", 390, 844, {"theme": "dark"}),
     ("phone 390px, plain white", 390, 844, {"theme": "white"}),
+    ("phone 390px, high contrast", 390, 844, {"theme": "contrast"}),
     ("desktop 1280px, warm", 1280, 900, {"theme": "warm"}),
 ]
 
@@ -275,20 +276,91 @@ def run(shots: Path | None):
             problems.append(f"focus not visible on: {invisible}")
         context.close()
 
-        # "How much to show": the strip above each page's heading, and the
-        # same setting in Display settings. On every page.
+        # Right-edge container alignment (desktop 1280px and mobile 375px) and
+        # persistent header state switcher pill checks.
+        for vp_label, vp_w, vp_h in (("desktop 1280px", 1280, 900), ("mobile 375px", 375, 812)):
+            context = browser.new_context(viewport={"width": vp_w, "height": vp_h})
+            page = context.new_page()
+            for check_name in ("index.html", "washington.html", "utah.html", "check.html", "utah-accessibility.html"):
+                page.goto(base + address(check_name), wait_until="load")
+                page.wait_for_timeout(50)
+                edges = page.evaluate(
+                    """() => {
+                        const pick = sel => {
+                            const el = document.querySelector(sel);
+                            if (!el) return null;
+                            const r = el.getBoundingClientRect();
+                            return r.width > 0 ? Math.round(r.right * 10) / 10 : null;
+                        };
+                        return {
+                            header: pick('header .header-row'),
+                            nav: pick('header .main-nav'),
+                            settings: pick('header .display-settings'),
+                            mainWrap: pick('main .wrap'),
+                            strip: pick('main .detail-strip'),
+                            guideSwitch: pick('main .guide-switch'),
+                            timeline: pick('main .timeline-strip'),
+                            warn: pick('main .warn'),
+                            callout: pick('main .callout'),
+                            cards: pick('main ul.cards'),
+                        };
+                    }"""
+                )
+                ref = edges["settings"]
+                if ref is None:
+                    problems.append(f"alignment ({vp_label}): {check_name} missing Display settings")
+                else:
+                    for key, right_val in edges.items():
+                        if right_val is None or key == "mainWrap":
+                            continue
+                        if abs(right_val - ref) > 2.0:
+                            problems.append(
+                                f"alignment ({vp_label}): {check_name} {key} right edge ({right_val}px) "
+                                f"differs from Display settings ({ref}px) by {abs(right_val - ref):.1f}px"
+                            )
+            # Persistent header state switcher pill check on a non-home route (/check)
+            page.goto(base + "check", wait_until="load")
+            pill_h = page.evaluate("Math.round(document.querySelector('[data-state-switcher] > summary').getBoundingClientRect().height)")
+            if pill_h < 44:
+                problems.append(f"state switcher ({vp_label}): summary height is {pill_h}px, under 44px")
+            page.click("[data-state-switcher] > summary")
+            link_count = page.locator("[data-state-switcher] .state-switcher-menu a").count()
+            if link_count != len(build.GUIDES):
+                problems.append(f"state switcher ({vp_label}): expected {len(build.GUIDES)} guides, found {link_count}")
+            page.keyboard.press("Escape")
+            closed_ok = page.evaluate(
+                "() => !document.querySelector('[data-state-switcher]').open && "
+                "document.activeElement === document.querySelector('[data-state-switcher] > summary')"
+            )
+            if not closed_ok:
+                problems.append(f"state switcher ({vp_label}): Escape did not close menu and return focus to summary")
+            context.close()
+
+        # "How much to show": the strip above content pages' heading, and the
+        # same setting in Display settings. Utility pages with show_short_toggle: false
+        # omit the strip.
+        loaded_pages, _, _ = build.load_pages()
+        expect_strip_map = {f"{p['slug']}.html": p.get("show_short_toggle", True) for p in loaded_pages}
         strip_notes: list[str] = []
         context = browser.new_context(viewport={"width": 390, "height": 844})
         page = context.new_page()
         nothing_marked = []
+        omitted_strip = []
         marked_total = 0
+        tested_strip = 0
         for name in pages:
             page.goto(base + address(name), wait_until="load")
             before = page.evaluate(STRIP_JS)
+            if not expect_strip_map.get(name, True):
+                if before["strip"]:
+                    problems.append(f"how much to show: {name} has show_short_toggle: false but shows the strip")
+                omitted_strip.append(name)
+                continue
+            tested_strip += 1
             if not before["strip"]:
                 problems.append(f"how much to show: {name} has no visible strip button")
                 continue
-            if before["button"] != "Show just the key points" or before["pressed"] != "false":
+            if before["button"] != "Show the short version" or before["pressed"] != "false":
                 problems.append(f"how much to show: {name} starts with button {before['button']!r}, pressed {before['pressed']}")
             if before["button_h"] < 44:
                 problems.append(f"how much to show: {name} strip button is {before['button_h']}px tall, under 44")
@@ -304,23 +376,23 @@ def run(shots: Path | None):
             page.wait_for_timeout(150)
             on = page.evaluate(STRIP_JS)
             if on["details"] != "fewer" or on["hidden"] != on["more"]:
-                problems.append(f"how much to show: {name} key-points mode hid {on['hidden']} of {on['more']} details")
-            if on["button"] != "Show everything" or on["pressed"] != "true":
-                problems.append(f"how much to show: {name} in key-points mode the button says {on['button']!r}, pressed {on['pressed']}")
+                problems.append(f"how much to show: {name} short-version mode hid {on['hidden']} of {on['more']} details")
+            if on["button"] != "Show the full version" or on["pressed"] != "true":
+                problems.append(f"how much to show: {name} in short-version mode the button says {on['button']!r}, pressed {on['pressed']}")
             if "Some details are hidden." not in on["banner"]:
-                problems.append(f"how much to show: {name} key-points mode shows no banner saying details are hidden")
+                problems.append(f"how much to show: {name} short-version mode shows no banner saying details are hidden")
             if not on["focus_on_button"]:
                 problems.append(f"how much to show: {name} lost keyboard focus when the button was used")
             if on["panel"] != "fewer":
-                problems.append(f"how much to show: {name} Display settings shows {on['panel']!r} while the strip says key points")
+                problems.append(f"how much to show: {name} Display settings shows {on['panel']!r} while the strip says short version")
             if on["saved"] != "fewer":
                 problems.append(f"how much to show: {name} saved {on['saved']!r}, expected 'fewer'")
             if "now hidden" not in on["status"]:
                 problems.append(f"how much to show: {name} status line said {on['status']!r}")
             if on["sources_hidden"]:
-                problems.append(f"how much to show: {name} key-points mode hides the source list")
+                problems.append(f"how much to show: {name} short-version mode hides the source list")
 
-            # Print in key-points mode: everything shows, and no strip.
+            # Print in short-version mode: everything shows, and no strip.
             page.emulate_media(media="print")
             printed = page.evaluate(STRIP_JS)
             if printed["hidden"]:
@@ -340,10 +412,10 @@ def run(shots: Path | None):
             page.keyboard.press("Space")
             page.wait_for_timeout(150)
             off = page.evaluate(STRIP_JS)
-            if off["details"] != "all" or off["hidden"] or off["button"] != "Show just the key points":
-                problems.append(f"how much to show: {name} 'Show everything' left {off['hidden']} details hidden")
+            if off["details"] != "all" or off["hidden"] or off["button"] != "Show the short version":
+                problems.append(f"how much to show: {name} 'Show the full version' left {off['hidden']} details hidden")
             if off["panel"] != "all" or off["pressed"] != "false" or not off["focus_on_button"]:
-                problems.append(f"how much to show: {name} controls disagree after 'Show everything'")
+                problems.append(f"how much to show: {name} controls disagree after 'Show the full version'")
             if "showing again" not in off["status"]:
                 problems.append(f"how much to show: {name} status line said {off['status']!r}")
 
@@ -351,7 +423,7 @@ def run(shots: Path | None):
             page.evaluate("document.querySelector('input[name=details][value=fewer]').click()")
             page.wait_for_timeout(50)
             from_panel = page.evaluate(STRIP_JS)
-            if from_panel["button"] != "Show everything" or from_panel["hidden"] != from_panel["more"]:
+            if from_panel["button"] != "Show the full version" or from_panel["hidden"] != from_panel["more"]:
                 problems.append(f"how much to show: {name} the strip did not follow Display settings")
 
             # A link into hidden detail shows everything first, then goes there.
@@ -365,13 +437,14 @@ def run(shots: Path | None):
                 shown = page.evaluate(
                     "getComputedStyle(document.getElementById('test-hidden-detail')).display !== 'none'"
                 )
-                if linked["details"] != "all" or not shown or linked["button"] != "Show just the key points":
+                if linked["details"] != "all" or not shown or linked["button"] != "Show the short version":
                     problems.append(f"how much to show: {name} a link into hidden detail left the reader with nothing")
             page.evaluate("document.querySelector('[data-reset-settings]').click()")
             page.evaluate("try { localStorage.clear(); } catch (e) {}")
         context.close()
-        strip_notes.append(f"Pages with the strip, tested on and off by keyboard, in print, from Display settings, and by a link into hidden detail: {len(pages)}")
-        strip_notes.append(f"Details marked as extra, across all pages: {marked_total}")
+        strip_notes.append(f"Pages with the strip, tested on and off by keyboard, in print, from Display settings, and by a link into hidden detail: {tested_strip}")
+        strip_notes.append(f"Utility pages omitting the strip (`show_short_toggle: false`): {len(omitted_strip)} ({', '.join(omitted_strip)})")
+        strip_notes.append(f"Details marked as extra, across all content pages: {marked_total}")
         strip_notes.append("Pages where the strip hides nothing yet: " + (", ".join(nothing_marked) or "none"))
 
         # Without JavaScript: no strip, no dead button, and the full page.
@@ -408,6 +481,26 @@ def run(shots: Path | None):
             def result_text():
                 return page.locator("#checker-result").inner_text()
 
+            def verify_result_focus_and_scroll(step_label: str):
+                page.wait_for_timeout(400)
+                info = page.evaluate(
+                    """() => {
+                        const h = document.getElementById('result-title');
+                        if (!h) return null;
+                        const r = h.getBoundingClientRect();
+                        return {
+                            activeId: document.activeElement ? document.activeElement.id : null,
+                            top: Math.round(r.top),
+                            bottom: Math.round(r.bottom),
+                            vh: window.innerHeight,
+                        };
+                    }"""
+                )
+                if not info or info["activeId"] != "result-title":
+                    problems.append(f"{guide} check ({step_label}): focus did not move to #result-title (got {info})")
+                elif info["top"] < -1 or info["bottom"] > info["vh"] + 1:
+                    problems.append(f"{guide} check ({step_label}): #result-title not scrolled cleanly into view ({info})")
+
             page.click("[data-step='1'] [data-next]")
             if not page.locator("#step-1-error").is_visible():
                 problems.append(f"{guide} check: no error when Next is pressed with no answer")
@@ -417,6 +510,7 @@ def run(shots: Path | None):
 
             page.check("input[value='65plus']")
             page.click("[data-step='1'] [data-next]")
+            verify_result_focus_and_scroll("65plus")
             flow.append(f"65 or older: '{result_title()}'")
             page.click("text=Start over")
             back_to_one = page.locator("[data-step='1']").is_visible()
@@ -434,6 +528,7 @@ def run(shots: Path | None):
             page.click("[data-step='2'] [data-next]")
             page.check("input[name='meet'][value='none']")
             page.click("[data-step='3'] button[type='submit']")
+            verify_result_focus_and_scroll("step3-medicare")
             flow.append(f"Medicare: '{result_title()}'")
             page.click("text=Start over")
 
@@ -461,6 +556,7 @@ def run(shots: Path | None):
             page.click("[data-step='2'] [data-next]")
             page.check("input[name='meet'][value='none']")
             page.click("[data-step='3'] button[type='submit']")
+            verify_result_focus_and_scroll("step3-may-apply")
             flow.append(f"No reason, nothing yet: '{result_title()}'")
 
             # Every choice on the page has words in the check's script, and

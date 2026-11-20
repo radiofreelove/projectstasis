@@ -49,6 +49,12 @@
     {"theme": "dark", "use": "Footer text and links", "fg": "Primary White", "bg": "Forest Green", "type": "text"},
     {"theme": "dark", "use": "Warning box edge", "fg": "Harvest Gold", "bg": "Ashland Charcoal", "type": "non-text"},
     {"theme": "dark", "use": "Focus outline on page background", "fg": "Harvest Gold", "bg": "Primary Black", "type": "non-text"},
-    {"theme": "dark", "use": "Form control borders", "fg": "Fog Gray", "bg": "Ashland Charcoal", "type": "non-text"}
+    {"theme": "dark", "use": "Form control borders", "fg": "Fog Gray", "bg": "Ashland Charcoal", "type": "non-text"},
+    {"theme": "contrast", "use": "Body text and headings on page background", "fg": "Primary Black", "bg": "Primary White", "type": "text"},
+    {"theme": "contrast", "use": "Links on page background and cards", "fg": "North Star Indigo", "bg": "Primary White", "type": "text"},
+    {"theme": "contrast", "use": "Primary button, banner, and footer text", "fg": "Primary White", "bg": "Primary Black", "type": "text"},
+    {"theme": "contrast", "use": "Secondary button text", "fg": "Primary Black", "bg": "Primary White", "type": "text"},
+    {"theme": "contrast", "use": "Current page in menu; current guide in the state switch", "fg": "Primary White", "bg": "Primary Black", "type": "text"},
+    {"theme": "contrast", "use": "Borders and focus outlines on page background", "fg": "Primary Black", "bg": "Primary White", "type": "non-text"}
   ]
 }

@@ -48,7 +48,9 @@
   --focus-halo: var(--gold);
   --control-accent: var(--indigo);
 
-  --measure: 38rem;
+  --container-max: 44rem;
+  --wrap-pad: 1rem;
+  --measure: var(--container-max);
   --leading: 1.6;
   --radius: 6px;
   color-scheme: light;
@@ -87,6 +89,57 @@
   color-scheme: dark;
 }
 
+/* High contrast theme, chosen in Display settings (matches The Strand Project) */
+:root[data-theme="contrast"] {
+  --bg: var(--white);
+  --surface: var(--white);
+  --text: var(--black);
+  --heading: var(--black);
+  --link: var(--indigo);
+  --border: var(--black);
+  --callout-bg: var(--white);
+  --callout-text: var(--black);
+  --callout-heading: var(--black);
+  --warn-bg: var(--white);
+  --warn-border: var(--black);
+  --good-border: var(--black);
+  --button-bg: var(--black);
+  --button-text: var(--white);
+  --button2-bg: var(--white);
+  --button2-text: var(--black);
+  --header-bg: var(--white);
+  --banner-bg: var(--black);
+  --banner-text: var(--white);
+  --footer-bg: var(--black);
+  --footer-text: var(--white);
+  --focus-outline: var(--black);
+  --focus-halo: var(--gold);
+  --control-accent: var(--black);
+  color-scheme: light;
+}
+:root[data-theme="contrast"] .callout,
+:root[data-theme="contrast"] .warn,
+:root[data-theme="contrast"] .good,
+:root[data-theme="contrast"] .promise,
+:root[data-theme="contrast"] .detail-strip,
+:root[data-theme="contrast"] .display-settings,
+:root[data-theme="contrast"] .timeline-strip,
+:root[data-theme="contrast"] .bridge-lane,
+:root[data-theme="contrast"] .bridge-outcome,
+:root[data-theme="contrast"] .answer-recap,
+:root[data-theme="contrast"] ol.steps-flow > li {
+  border: 3px solid var(--black);
+}
+:root[data-theme="contrast"] .callout,
+:root[data-theme="contrast"] .warn,
+:root[data-theme="contrast"] .good,
+:root[data-theme="contrast"] .promise,
+:root[data-theme="contrast"] .detail-strip,
+:root[data-theme="contrast"] .bridge-outcome,
+:root[data-theme="contrast"] .answer-recap {
+  border-left-width: 8px;
+}
+
 /* Dark theme, following the device setting */
 @media (prefers-color-scheme: dark) {
   :root[data-theme="auto"],
@@ -114,6 +167,36 @@
     --focus-halo: var(--black);
     --control-accent: var(--glacial);
     color-scheme: dark;
+  }
+}
+
+@media (prefers-contrast: more) {
+  :root[data-theme="auto"],
+  :root:not([data-theme]) {
+    --bg: var(--white);
+    --surface: var(--white);
+    --text: var(--black);
+    --heading: var(--black);
+    --link: var(--indigo);
+    --border: var(--black);
+    --callout-bg: var(--white);
+    --callout-text: var(--black);
+    --callout-heading: var(--black);
+    --warn-bg: var(--white);
+    --warn-border: var(--black);
+    --good-border: var(--black);
+    --button-bg: var(--black);
+    --button-text: var(--white);
+    --button2-bg: var(--white);
+    --button2-text: var(--black);
+    --header-bg: var(--white);
+    --banner-bg: var(--black);
+    --banner-text: var(--white);
+    --footer-bg: var(--black);
+    --footer-text: var(--white);
+    --focus-outline: var(--black);
+    --focus-halo: var(--gold);
+    --control-accent: var(--black);
   }
 }
 
@@ -267,13 +350,13 @@ main:focus-visible { outline: none; box-shadow: none; }
 }
 .skip-link:focus { top: 0.5rem; }
 
-/* Layout */
+/* Layout: header, Display settings, main content, and footer share one container width. */
 .wrap {
-  max-width: 46rem;
+  max-width: var(--container-max);
   margin: 0 auto;
-  padding: 0 1rem;
+  padding: 0 var(--wrap-pad);
 }
-main .wrap > * { max-width: var(--measure); }
+main .wrap > * { max-width: 100%; }
 
 /* Header */
 .independent-banner {
@@ -295,8 +378,8 @@ main .wrap > * { max-width: var(--measure); }
   flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
-  gap: 0.75rem 1.5rem;
-  padding: 0.75rem 0;
+  gap: 0.6rem 1rem;
+  padding: 0.75rem 0 0.6rem;
 }
 .brand {
   display: inline-flex;
@@ -310,8 +393,94 @@ main .wrap > * { max-width: var(--measure); }
 .brand-name { display: block; font-weight: 700; font-size: 1.15rem; line-height: 1.2; }
 .brand-tag { display: block; font-size: 0.9rem; color: var(--text); }
 
-/* Menu: two even rows on phones, one row on wider screens. Same place on every page. */
-.main-nav { width: 100%; }
+/* Persistent compact state switcher pill in the header */
+.state-switcher {
+  position: relative;
+}
+.state-switcher > summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0.4rem 0.9rem;
+  border: 2px solid var(--heading);
+  border-radius: 999px;
+  background: var(--surface);
+  color: var(--heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  line-height: 1.2;
+  cursor: pointer;
+  list-style: none;
+}
+.state-switcher > summary::-webkit-details-marker { display: none; }
+.state-switcher > summary:hover { text-decoration: underline; }
+.state-switcher[open] > summary {
+  background: var(--button-bg);
+  color: var(--button-text);
+  border-color: var(--button-bg);
+}
+.state-switcher-caret { font-size: 0.85em; }
+.state-switcher-menu {
+  position: absolute;
+  right: 0;
+  top: calc(100% + 0.35rem);
+  z-index: 20;
+  min-width: 15rem;
+  max-width: calc(100vw - 2rem);
+  list-style: none;
+  margin: 0;
+  padding: 0.35rem;
+  background: var(--surface);
+  border: 2px solid var(--heading);
+  border-radius: var(--radius);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+}
+@media (max-width: 36rem) {
+  .state-switcher { width: 100%; }
+  .state-switcher-menu {
+    position: static;
+    min-width: 0;
+    width: 100%;
+    margin-top: 0.4rem;
+    box-shadow: none;
+  }
+}
+.state-switcher-menu li { margin: 0 0 0.25rem; }
+.state-switcher-menu li:last-child { margin-bottom: 0; }
+.state-switcher-menu a {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  min-height: 44px;
+  padding: 0.4rem 0.75rem;
+  border-radius: calc(var(--radius) - 2px);
+  color: var(--link);
+  text-decoration: none;
+  font-weight: 700;
+  line-height: 1.25;
+}
+.state-switcher-menu a:hover { text-decoration: underline; }
+.state-switcher-guide {
+  font-size: 0.85rem;
+  font-weight: 400;
+  color: var(--text);
+}
+.state-switcher-menu a[aria-current="page"] {
+  background: var(--button-bg);
+  color: var(--button-text);
+}
+.state-switcher-menu a[aria-current="page"] .state-switcher-guide {
+  color: var(--button-text);
+}
+.state-switcher-menu a:focus-visible,
+.state-switcher-menu a:focus-visible .state-switcher-guide {
+  background: var(--gold);
+  color: var(--black);
+}
+
+/* Menu: two even rows on phones, one full-width row on wider screens. Same place on every page. */
+.main-nav { width: 100%; margin: 0 0 0.75rem; }
 .main-nav ul {
   list-style: none;
   margin: 0;
@@ -321,8 +490,7 @@ main .wrap > * { max-width: var(--measure); }
   gap: 0.5rem;
 }
 @media (min-width: 36rem) {
-  .main-nav { width: auto; }
-  .main-nav ul { grid-template-columns: repeat(4, auto); }
+  .main-nav ul { grid-template-columns: repeat(auto-fit, minmax(7.5rem, 1fr)); }
 }
 .main-nav li { margin: 0; }
 .main-nav a {
@@ -619,10 +787,12 @@ dl.glossary dd { margin: 0.25rem 0 0; }
 }
 .result {
   margin-top: 2rem;
+  scroll-margin-top: 1rem;
 }
 .result:focus { outline: none; }
 .result:focus-visible { outline: 3px solid var(--focus-outline); outline-offset: 4px; }
-.result h2 { margin-top: 0; }
+.result h2 { margin-top: 0; scroll-margin-top: 1rem; }
+.result h2:focus { outline: 3px solid var(--focus-outline); outline-offset: 4px; }
 
 /* Hours log */
 .log-table {
@@ -966,12 +1136,14 @@ ol.steps-flow > li::before {
 }
 @media (forced-colors: active) {
   .callout, .warn, .good, .promise, .choice, .button, .button-secondary, ul.cards a, .guide-switch a, .display-settings, .detail-strip,
+  .state-switcher > summary, .state-switcher-menu,
   .timeline-strip, .timeline-item, .bridge-lane, .bridge-outcome, .channel-bar a, ol.steps-flow > li, .answer-recap, .next-strip a {
     border: 2px solid CanvasText;
   }
   .bridge-or { border: 2px solid CanvasText; }
   /* Fills are replaced by system colors here, so the guide you are in gets a thicker edge */
-  .guide-switch a[aria-current="page"] { border-width: 4px; }
+  .guide-switch a[aria-current="page"],
+  .state-switcher-menu a[aria-current="page"] { border-width: 4px; }
   :focus-visible { outline: 3px solid Highlight; box-shadow: none; }
   ol.steps > li::before { border: 2px solid CanvasText; }
 }
@@ -984,7 +1156,7 @@ ol.steps-flow > li::before {
     --warn-bg: #ffffff; --footer-bg: #ffffff; --footer-text: #000000;
   }
   html, :root[data-text] { font-size: 12pt; }
-  .skip-link, .main-nav, .display-settings, .detail-strip, .no-print, .footer-pages, .actions, .channel-bar { display: none !important; }
+  .skip-link, .state-switcher, .main-nav, .display-settings, .detail-strip, .no-print, .footer-pages, .actions, .channel-bar { display: none !important; }
   /* "Just the key points" never shortens a printed page: the rule that
      hides .more sits inside "@media not print" (see "Fewer details" above),
      so in print every .more element keeps its own display value. The strip

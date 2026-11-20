@@ -39,3 +39,9 @@ Text must reach 7.0:1 (WCAG 2.2 Level AAA). Borders and focus outlines must reac
 | dark | Warning box edge | Harvest Gold `#ecd263` | Ashland Charcoal `#414042` | 6.86:1 | 3.0:1 | Pass |
 | dark | Focus outline on page background | Harvest Gold `#ecd263` | Primary Black `#000000` | 13.97:1 | 3.0:1 | Pass |
 | dark | Form control borders | Fog Gray `#f4f2ed` | Ashland Charcoal `#414042` | 9.22:1 | 3.0:1 | Pass |
+| contrast | Body text and headings on page background | Primary Black `#000000` | Primary White `#ffffff` | 21.00:1 | 7.0:1 | Pass |
+| contrast | Links on page background and cards | North Star Indigo `#2e3192` | Primary White `#ffffff` | 10.66:1 | 7.0:1 | Pass |
+| contrast | Primary button, banner, and footer text | Primary White `#ffffff` | Primary Black `#000000` | 21.00:1 | 7.0:1 | Pass |
+| contrast | Secondary button text | Primary Black `#000000` | Primary White `#ffffff` | 21.00:1 | 7.0:1 | Pass |
+| contrast | Current page in menu; current guide in the state switch | Primary White `#ffffff` | Primary Black `#000000` | 21.00:1 | 7.0:1 | Pass |
+| contrast | Borders and focus outlines on page background | Primary Black `#000000` | Primary White `#ffffff` | 21.00:1 | 3.0:1 | Pass |

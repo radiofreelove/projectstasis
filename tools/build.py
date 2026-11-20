@@ -106,6 +106,8 @@ def ap_date(iso: str) -> str:
 # docs/decisions/0013-utah-section.md, docs/decisions/0014-guide-list.md,
 # and docs/decisions/0015-front-door-with-three-guides.md (why the order
 # is Oregon, Washington, Utah, and why Oregon keeps the address "/").
+ABOUT_LABEL = "Why this site exists"
+
 SECTIONS = {
     "oregon": {
         "state": "Oregon",
@@ -114,9 +116,9 @@ SECTIONS = {
         "shared_order": 0,
         "home": "index",
         "nav": [("index", "Home"), ("check", "Check"), ("apply", "Apply"), ("help", "Get help")],
-        # The day the whole guide was last re-checked against its sources.
-        # Sources re-read since then carry their own "checked" date in the
-        # registry, and every page shows that date next to each source.
+        # Baseline day the whole guide was last re-checked against its sources.
+        # Each built page's footer date advances automatically to the newest
+        # "checked" date among the sources cited on that page.
         "facts_iso": "2026-11-02",
         "footer_why": (
             "The state explains the new OHP rules across more than a dozen documents. This site puts what "
@@ -126,7 +128,7 @@ SECTIONS = {
             "Not run by the State of Oregon, the Oregon Health Authority (OHA), or the Oregon Department of "
             "Human Services (ODHS). Only OHP decides who qualifies."
         ),
-        "about_label": "Why this site exists",
+        "about_label": ABOUT_LABEL,
         # What the other guides' footers call this guide.
         "guide_label": "Oregon Health Plan guide",
         # The state switch on every guide's home page: the words under this
@@ -166,7 +168,7 @@ SECTIONS = {
             "Not run by Washington's government, the Health Care Authority (HCA), or DSHS. "
             "Only Washington decides who meets the rules."
         ),
-        "about_label": "Why this guide exists",
+        "about_label": ABOUT_LABEL,
         "guide_label": "Apple Health guide",
         "switch_here": "This is the Apple Health guide.",
         "switch_go": "Go to the Apple Health guide",
@@ -200,7 +202,7 @@ SECTIONS = {
             "Not run by the State of Utah, the Utah Department of Health and Human Services (DHHS), or the "
             "Utah Department of Workforce Services (DWS). Only the state decides who qualifies."
         ),
-        "about_label": "Why this guide exists",
+        "about_label": ABOUT_LABEL,
         "guide_label": "Utah Medicaid guide",
         "switch_here": "This is the Utah Medicaid guide.",
         "switch_go": "Go to the Utah Medicaid guide",
@@ -232,7 +234,7 @@ SECTIONS = {
             "Not run by Oregon, Washington, or Utah, or by any of their agencies. "
             "Only the state decides who qualifies."
         ),
-        "about_label": "Why this site exists",
+        "about_label": ABOUT_LABEL,
         "footer_title": "All guides",
     },
 }
@@ -324,6 +326,7 @@ def parse_page(path: Path):
     meta["scripts"] = [s.strip() for s in meta.get("scripts", "").split(",") if s.strip()]
     meta["in_lists"] = meta.get("in_lists", "yes") != "no"
     meta["shared"] = meta.get("shared", "no") == "yes"
+    meta["show_short_toggle"] = meta.get("show_short_toggle", "true").lower() not in {"false", "no", "0"}
     # The folder decides which guide a page belongs to.
     if folder in GUIDES:
         if meta.get("section", folder) != folder:
@@ -478,11 +481,12 @@ SETTINGS_PANEL = """    <details class="display-settings" data-settings>
           <label class="choice"><input type="radio" name="theme" value="warm"> Warm light</label>
           <label class="choice"><input type="radio" name="theme" value="white"> Plain white</label>
           <label class="choice"><input type="radio" name="theme" value="dark"> Dark</label>
+          <label class="choice"><input type="radio" name="theme" value="contrast"> High contrast</label>
         </fieldset>
         <fieldset>
           <legend>How much to show</legend>
-          <label class="choice"><input type="radio" name="details" value="all" checked> Everything</label>
-          <label class="choice"><input type="radio" name="details" value="fewer"> Just the key points</label>
+          <label class="choice"><input type="radio" name="details" value="all" checked> Full version</label>
+          <label class="choice"><input type="radio" name="details" value="fewer"> Short version</label>
         </fieldset>
         <div class="settings-actions">
           <button type="button" class="button-secondary" data-reset-settings>Reset to standard</button>
@@ -495,19 +499,20 @@ SETTINGS_PANEL = """    <details class="display-settings" data-settings>
 
 
 # The same setting as the "How much to show" choices in SETTINGS_PANEL,
-# where a reader can see it: a slim strip at the top of every page's main
-# content, above the heading. One button, so keyboard focus stays put when
-# it is used. The style sheet shows the words that match the html element's
-# data-details value ("all" or "fewer"), so the strip is right from the
-# first paint, and assets/js/settings.js keeps it and the panel in step.
-# Without JavaScript the strip is not shown (the style sheet waits for the
-# data-js mark that settings.js sets), and the full page shows.
-# aria-pressed says whether key-points mode is on; settings.js sets it.
+# where a reader can see it: a slim strip at the top of content pages' main
+# area, above the heading. Pages with "show_short_toggle: false" omit it.
+# One button, so keyboard focus stays put when it is used. The style sheet
+# shows the words that match the html element's data-details value ("all" or
+# "fewer"), so the strip is right from the first paint, and
+# assets/js/settings.js keeps it and the panel in step. Without JavaScript
+# the strip is not shown (the style sheet waits for the data-js mark that
+# settings.js sets), and the full page shows. aria-pressed says whether
+# short-version mode is on; settings.js sets it.
 # The wording is fixed; tools/check_structure.py checks it on every page.
 DETAIL_STRIP = """    <div class="detail-strip" data-detail-strip>
       <p class="detail-ask when-all">Still too much to take in?</p>
-      <p class="fewer-note when-fewer">You are seeing just the key points. Some details are hidden.</p>
-      <button type="button" class="button-secondary" data-toggle-details aria-pressed="false"><span class="when-all">Show just the key points</span><span class="when-fewer">Show everything</span></button>
+      <p class="fewer-note when-fewer">You are seeing the short version. Some details are hidden.</p>
+      <button type="button" class="button-secondary" data-toggle-details aria-pressed="false"><span class="when-all">Show the short version</span><span class="when-fewer">Show the full version</span></button>
       <p class="detail-hint when-all">This hides the extra details on this page. The main points, the steps, and the links you need stay here.</p>
     </div>
 """
@@ -621,11 +626,63 @@ def render_guide_switch(current: str) -> str:
     )
 
 
-def render_page(meta, body, pages, by_id, doc_counts):
+def render_header_state_switcher(current: str) -> str:
+    """Compact, keyboard-accessible state indicator and switcher pill in the header."""
+    items = []
+    for name, guide in GUIDES.items():
+        here = name == current
+        mark = ' aria-current="page"' if here else ""
+        items.append(
+            f'            <li><a href="{guide["home"]}.html"{mark}>'
+            f'<span class="state-switcher-name">{esc(guide["state"])}</span>'
+            f'<span class="state-switcher-guide">{esc(guide["guide_label"])}</span></a></li>'
+        )
+    if current in GUIDES:
+        label = f"State: {GUIDES[current]['state']}"
+        aria = f"State: {GUIDES[current]['state']}. Switch state guide"
+    else:
+        label = "Pick your state"
+        aria = "Pick your state guide"
+    return (
+        '        <details class="state-switcher" data-state-switcher>\n'
+        f'          <summary aria-label="{esc(aria)}">'
+        f'<span class="state-switcher-label">{esc(label)}</span>'
+        '<span class="state-switcher-caret" aria-hidden="true">&#9662;</span></summary>\n'
+        '          <ul class="state-switcher-menu">\n' + "\n".join(items) + "\n          </ul>\n"
+        '        </details>'
+    )
+
+
+def page_facts_iso(meta, by_id, registry=None, used=None) -> str | None:
+    """Compute a page's 'Facts last checked' date so it never lags behind its cited sources."""
+    section = SECTIONS[meta["section"]]
+    base_iso = section["facts_iso"]
+    if not base_iso:
+        return None
+    dates = [base_iso]
+    for sid in meta["sources"]:
+        if sid in by_id:
+            dates.append(by_id[sid]["checked"])
+    if meta.get("base_slug") == "sources" and registry is not None:
+        sec_name = meta["section"]
+        used_ids = (used or {}).get(sec_name, set())
+        picks = {
+            "own": lambda s: s["guide"] == sec_name,
+            "own and shared": lambda s: s["guide"] in (sec_name, "all"),
+            "shared, used": lambda s: s["guide"] == "all" and s["id"] in used_ids,
+        }
+        for _, _, which in section["source_groups"]:
+            for src in registry["sources"]:
+                if picks[which](src):
+                    dates.append(src["checked"])
+    return max(dates)
+
+
+def render_page(meta, body, pages, by_id, doc_counts, registry=None, used=None):
     slug = meta["slug"]
     section = SECTIONS[meta["section"]]
     tagline = section["tagline"]
-    facts_iso = section["facts_iso"]
+    facts_iso = page_facts_iso(meta, by_id, registry=registry, used=used)
     facts_text = ap_date(facts_iso) if facts_iso else ""
     facts_line = f'Facts last checked <time datetime="{facts_iso}">{facts_text}</time>. ' if facts_iso else ""
     if slug == section["home"]:
@@ -671,6 +728,9 @@ def render_page(meta, body, pages, by_id, doc_counts):
     body = decorate_callouts(body)
     body = expand_icons(body)
 
+    detail_strip = DETAIL_STRIP if meta.get("show_short_toggle", True) else ""
+    state_switcher = render_header_state_switcher(meta["section"])
+
     canonical = ""
     if meta["in_lists"]:
         canonical = f'  <link rel="canonical" href="{BASE_URL}{"" if slug == "index" else slug}">\n'
@@ -703,17 +763,18 @@ def render_page(meta, body, pages, by_id, doc_counts):
           <img src="assets/img/logo.svg" alt="" width="40" height="40">
           <span><span class="brand-name">{SITE_NAME}</span><span class="brand-tag">{esc(tagline)}</span></span>
         </a>
-        <nav class="main-nav" aria-label="Main">
+{state_switcher}
+      </div>
+      <nav class="main-nav" aria-label="Main">
         <ul>
 {chr(10).join(nav_links)}
         </ul>
-        </nav>
-      </div>
+      </nav>
 {SETTINGS_PANEL}    </div>
   </header>
   <main id="main" tabindex="-1">
     <div class="wrap">
-{DETAIL_STRIP}{body.rstrip()}
+{detail_strip}{body.rstrip()}
 {sources_html}    </div>
   </main>
   <footer class="site-footer">
@@ -816,13 +877,13 @@ def render_language_list(registry):
     return '      <ul class="language-list">\n' + "\n".join(items) + "\n      </ul>\n"
 
 
-def render_sitemap(pages):
+def render_sitemap(pages, by_id, registry, used):
     entries = []
     for page in pages:
         if not page["in_lists"]:
             continue
         loc = BASE_URL if page["slug"] == "index" else f"{BASE_URL}{page['slug']}"
-        lastmod = SECTIONS[page["section"]]["facts_iso"]
+        lastmod = page_facts_iso(page, by_id, registry=registry, used=used)
         entries.append(f"  <url><loc>{loc}</loc><lastmod>{lastmod}</lastmod></url>")
     return (
         '<?xml version="1.0" encoding="UTF-8"?>\n'
@@ -1084,7 +1145,11 @@ def build():
                 elif not (SITE / target).exists():
                     errors.append(f"{page['file']}: link to missing file {href}")
 
-        rendered = localize_links(render_page(page, body, pages, by_id, doc_counts), name, shared_slugs)
+        rendered = localize_links(
+            render_page(page, body, pages, by_id, doc_counts, registry=registry, used=used),
+            name,
+            shared_slugs,
+        )
         rendered = pretty_links(rendered)
         if page.get("root_absolute") == "yes":
             # Cloudflare Pages serves 404.html at whatever address was missing, so
@@ -1098,7 +1163,7 @@ def build():
         if claim["id"] not in usage:
             errors.append(f"claim {claim['id']} is in the ledger but no page uses it")
 
-    outputs[SITE / "sitemap.xml"] = render_sitemap(pages)
+    outputs[SITE / "sitemap.xml"] = render_sitemap(pages, by_id, registry, used)
     outputs[SITE / "robots.txt"] = render_robots()
     outputs[SITE / "_headers"] = render_headers()
     outputs[DOCS / "sources.md"] = render_sources_md(registry)

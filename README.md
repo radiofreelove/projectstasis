@@ -17,7 +17,7 @@ A free, independent guide for people applying for the Oregon Health Plan (OHP), 
 - Three complete guides built the same way, 17 pages each for OHP applicants, Apple Health applicants, and Utah Medicaid applicants. Each guide has its own home page, 1-minute check, About, Privacy, Accessibility, and Every source pages, so a reader never lands in another state's guide by accident. The build stops if a page in one guide links to a page in another, other than its home page. Each page is written in a Smart Brevity style: a plain headline, one line on why the page exists, a few bold-labeled bullets, then details.
 - A 1-minute check ("Do the rules fit me?") for each state that runs in the browser. Answers are never stored or sent.
 - Links to each state's own forms, phone lines, and pages, including the paper OHP application in 17 languages and Utah's application in English and Spanish. Nothing is copied or re-hosted, so the forms are always the state's current versions.
-- Display settings for text size, spacing, an easy-to-read font (Atkinson Hyperlegible Next, the same option as The Strand Project), colors (warm, white, dark), and a "just the key points" mode.
+- Display settings for text size, spacing, an easy-to-read font (Atkinson Hyperlegible Next, the same option as The Strand Project), colors (warm light, plain white, dark, high contrast), and a "short version" mode.
 
 ## What it is not
 

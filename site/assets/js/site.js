@@ -34,5 +34,20 @@
       button.hidden = false;
       button.addEventListener('click', function () { window.print(); });
     });
+
+    Array.prototype.forEach.call(document.querySelectorAll('[data-state-switcher]'), function (switcher) {
+      var summary = switcher.querySelector('summary');
+      switcher.addEventListener('keydown', function (event) {
+        if (event.key === 'Escape' && switcher.open) {
+          switcher.open = false;
+          if (summary) { summary.focus(); }
+        }
+      });
+      document.addEventListener('click', function (event) {
+        if (switcher.open && !switcher.contains(event.target)) {
+          switcher.open = false;
+        }
+      });
+    });
   });
 }());

@@ -173,7 +173,7 @@ NEVADA = {
     "facts_iso": "2026-12-01",
     "footer_why": "Test words.",
     "footer_independent": "Test words.",
-    "about_label": "Why this guide exists",
+    "about_label": build.ABOUT_LABEL,
     "guide_label": "Silver Health guide",
     "switch_here": "This is the Silver Health guide.",
     "switch_go": "Go to the Silver Health guide",
@@ -265,6 +265,8 @@ class AnotherGuide(BuildCase):
             states = [part.split("<")[0] for part in html.split('<span class="guide-state">')[1:]]
             self.assertEqual(states, ["Oregon", "Washington", "Utah", "Nevada"], home)
             self.assertIn(f'aria-current="page"><span class="guide-state">{here}</span>', html)
+            header_states = [part.split("<")[0] for part in html.split('<span class="state-switcher-name">')[1:]]
+            self.assertEqual(header_states, ["Oregon", "Washington", "Utah", "Nevada"], home)
         self.assertIn("Go to the Silver Health guide", site["index.html"])
         self.assertIn("This is the Silver Health guide.", site["nevada.html"])
 
@@ -287,12 +289,34 @@ class AnotherGuide(BuildCase):
         for other in ("sources.html", "utah-sources.html", "washington-sources.html"):
             self.assertNotIn("example.org/nv/", site[other])
 
-        # The existing guides' pages are the same as before, except where
-        # they name the other guides: the switch, the footer, and the
-        # "page not found" page.
+        # The existing guides' main content is unchanged when a new guide is added;
+        # only the header state switcher, home switch, footer, and 404 list it.
         untouched = (build.SITE / "utah-apply.html").read_text(encoding="utf-8")
-        self.assertEqual(site["utah-apply.html"].split('<nav class="footer-pages"')[0],
-                         untouched.split('<nav class="footer-pages"')[0])
+        self.assertEqual(
+            site["utah-apply.html"].split("<main", 1)[1].split("</main>", 1)[0],
+            untouched.split("<main", 1)[1].split("</main>", 1)[0],
+        )
+
+
+class FooterDatesAndShortToggle(BuildCase):
+    def test_footer_checked_date_advances_to_newest_cited_source(self):
+        def bump(registry):
+            for src in registry["sources"]:
+                if src["id"] == "S01":
+                    src["checked"] = "2026-12-20"
+        self.edit_json("sources.json", bump)
+        outputs = build.build()
+        index_html = outputs[build.SITE / "index.html"]
+        self.assertIn('Facts last checked <time datetime="2026-12-20">Dec. 20, 2026</time>.', index_html)
+
+    def test_utility_pages_hide_short_toggle_banner(self):
+        outputs = build.build()
+        for slug in ("accessibility", "utah-accessibility", "washington-accessibility",
+                     "privacy", "utah-privacy", "washington-privacy",
+                     "words", "utah-words", "washington-words", "404"):
+            html = outputs[build.SITE / f"{slug}.html"]
+            self.assertNotIn("data-detail-strip", html, slug)
+        self.assertIn("data-detail-strip", outputs[build.SITE / "index.html"])
 
 
 if __name__ == "__main__":
