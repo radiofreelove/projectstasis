@@ -682,14 +682,294 @@ dl.glossary dd { margin: 0.25rem 0 0; }
 }
 .footer-pages li { break-inside: avoid; }
 
+/* Shared inline SVG icons (24x24, currentColor) and callout status kickers */
+.icon {
+  width: 1.35rem;
+  height: 1.35rem;
+  flex: none;
+  display: inline-block;
+  vertical-align: middle;
+}
+.box-kicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.9rem;
+  font-weight: 700;
+  margin: 0 0 0.4rem;
+  color: var(--text);
+}
+.box-icon { display: inline-flex; align-items: center; }
+.callout .box-kicker, .callout .box-icon { color: var(--callout-heading); }
+.warn .box-icon { color: var(--warn-border); }
+.good .box-icon, .promise .box-icon { color: var(--good-border); }
+
+/* Deadline strip on home pages */
+.timeline-strip {
+  max-width: 44rem;
+  margin: 1.5rem 0;
+  padding: 1rem 1.15rem;
+  background: var(--surface);
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+}
+.timeline-strip h2 { margin: 0 0 0.75rem; font-size: 1.15rem; }
+.timeline-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.timeline-item {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.2rem;
+  padding: 0.7rem 0.85rem;
+  margin: 0;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-left: 6px solid var(--heading);
+  border-radius: var(--radius);
+}
+.timeline-deadline { border-left-color: var(--warn-border); }
+.timeline-ongoing { border-left-color: var(--good-border); }
+.timeline-marker { display: inline-flex; color: var(--heading); }
+.timeline-deadline .timeline-marker { color: var(--warn-border); }
+.timeline-ongoing .timeline-marker { color: var(--good-border); }
+.timeline-date { font-weight: 700; font-size: 0.95rem; color: var(--text); }
+.timeline-label {
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
+  font-weight: 700;
+}
+.timeline-note { font-size: 0.9rem; color: var(--text); }
+
+/* 3-lane "or" bridge for Meet the rules any one way */
+.rule-bridge {
+  max-width: 44rem;
+  margin: 1rem 0 1.25rem;
+}
+.bridge-lanes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.65rem;
+}
+.bridge-lanes > li {
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.65rem;
+}
+.bridge-lane {
+  flex: 1;
+  padding: 0.85rem 1rem;
+  border: 2px solid var(--heading);
+  border-radius: var(--radius);
+  background: var(--surface);
+  display: flex;
+  flex-direction: column;
+  gap: 0.35rem;
+}
+.bridge-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: var(--heading);
+}
+.bridge-icon { display: inline-flex; color: var(--heading); }
+.bridge-copy { color: var(--text); }
+.bridge-or {
+  align-self: flex-start;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.15rem 0.65rem;
+  border-radius: 999px;
+  background: var(--button-bg);
+  color: var(--button-text);
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+.bridge-outcome {
+  margin: 0.75rem 0 0;
+  padding: 0.7rem 1rem;
+  border-radius: var(--radius);
+  background: var(--callout-bg);
+  color: var(--callout-heading);
+  border-left: 8px solid var(--good-border);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Go deeper card heads and channel lists/bars */
+ul.cards .card-head {
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+}
+.icon-heading {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+ul.channel-list > li {
+  display: flex;
+  align-items: flex-start;
+  gap: 0.65rem;
+}
+.channel-icon {
+  display: inline-flex;
+  color: var(--heading);
+  margin-top: 0.15rem;
+  flex: none;
+}
+.channel-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin: 1rem 0 1.5rem;
+}
+.channel-bar a {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.45rem;
+  min-height: 44px;
+  padding: 0.5rem 0.85rem;
+  border: 2px solid var(--heading);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-weight: 700;
+  text-decoration: none;
+}
+.channel-bar a:hover { text-decoration: underline; }
+
+/* 3-step visual flow for What happens after you apply */
+ol.steps-flow {
+  max-width: 44rem;
+  display: grid;
+  gap: 0.75rem;
+}
+ol.steps-flow > li {
+  padding: 3.25rem 0.95rem 0.95rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  margin: 0;
+}
+ol.steps-flow > li::before {
+  left: 0.95rem;
+  top: 0.75rem;
+}
+.flow-head {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  color: var(--heading);
+  margin-bottom: 0.35rem;
+}
+
+/* Checker answer recap and What you may need next strip */
+.answer-recap {
+  margin: 1.25rem 0;
+  padding: 0.9rem 1.1rem;
+  border: 2px solid var(--border);
+  border-left: 8px solid var(--heading);
+  border-radius: var(--radius);
+  background: var(--surface);
+}
+.recap-title {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  font-weight: 700;
+  color: var(--heading);
+  margin: 0 0 0.6rem;
+}
+.recap-list {
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+}
+.recap-row dt { font-weight: 700; color: var(--heading); }
+.recap-row dd { margin: 0.1rem 0 0; }
+.next-needs { margin: 1.5rem 0; max-width: 44rem; }
+.next-strip {
+  list-style: none;
+  padding: 0;
+  margin: 0.5rem 0 0;
+  display: grid;
+  gap: 0.75rem;
+}
+.next-strip li { margin: 0; }
+.next-strip a {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  min-height: 48px;
+  height: 100%;
+  padding: 0.85rem 0.95rem;
+  border: 2px solid var(--border);
+  border-radius: var(--radius);
+  background: var(--surface);
+  font-weight: 700;
+}
+.next-strip-head {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+.next-strip-note {
+  font-weight: 400;
+  color: var(--text);
+}
+.next-strip a:focus-visible .next-strip-note { color: var(--black); }
+
+/* Multi-column layouts only above 42rem, so 200% zoom on a 1280px screen
+   (640px CSS width) and narrow phones reflow linearly into one column. */
+@media (min-width: 42rem) {
+  .timeline-list { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .bridge-lanes { grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0.5rem; align-items: stretch; }
+  .bridge-lanes > li { flex-direction: row; align-items: stretch; gap: 0.5rem; }
+  .bridge-or { align-self: center; }
+  ol.steps-flow { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .next-strip { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+}
+:root[data-text="xl"] .timeline-list,
+:root[data-spacing="roomy"] .timeline-list,
+:root[data-text="xl"] .bridge-lanes,
+:root[data-spacing="roomy"] .bridge-lanes,
+:root[data-text="xl"] ol.steps-flow,
+:root[data-spacing="roomy"] ol.steps-flow,
+:root[data-text="xl"] .next-strip,
+:root[data-spacing="roomy"] .next-strip {
+  grid-template-columns: 1fr;
+}
+:root[data-text="xl"] .bridge-lanes > li,
+:root[data-spacing="roomy"] .bridge-lanes > li {
+  flex-direction: column;
+}
+:root[data-text="xl"] .bridge-or,
+:root[data-spacing="roomy"] .bridge-or {
+  align-self: flex-start;
+}
+
 /* User and device preferences */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
 }
 @media (forced-colors: active) {
-  .callout, .warn, .good, .promise, .choice, .button, .button-secondary, ul.cards a, .guide-switch a, .display-settings, .detail-strip {
+  .callout, .warn, .good, .promise, .choice, .button, .button-secondary, ul.cards a, .guide-switch a, .display-settings, .detail-strip,
+  .timeline-strip, .timeline-item, .bridge-lane, .bridge-outcome, .channel-bar a, ol.steps-flow > li, .answer-recap, .next-strip a {
     border: 2px solid CanvasText;
   }
+  .bridge-or { border: 2px solid CanvasText; }
   /* Fills are replaced by system colors here, so the guide you are in gets a thicker edge */
   .guide-switch a[aria-current="page"] { border-width: 4px; }
   :focus-visible { outline: 3px solid Highlight; box-shadow: none; }
@@ -704,7 +984,7 @@ dl.glossary dd { margin: 0.25rem 0 0; }
     --warn-bg: #ffffff; --footer-bg: #ffffff; --footer-text: #000000;
   }
   html, :root[data-text] { font-size: 12pt; }
-  .skip-link, .main-nav, .display-settings, .detail-strip, .no-print, .footer-pages, .actions { display: none !important; }
+  .skip-link, .main-nav, .display-settings, .detail-strip, .no-print, .footer-pages, .actions, .channel-bar { display: none !important; }
   /* "Just the key points" never shortens a printed page: the rule that
      hides .more sits inside "@media not print" (see "Fewer details" above),
      so in print every .more element keeps its own display value. The strip
@@ -714,7 +994,8 @@ dl.glossary dd { margin: 0.25rem 0 0; }
   .independent-banner a { color: #000000; }
   .log-table { min-width: 0; }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; word-break: break-all; }
-  .callout, .warn, .good, .promise { border: 1px solid #000; }
+  .callout, .warn, .good, .promise, .timeline-strip, .bridge-lane, .bridge-outcome, .answer-recap, ol.steps-flow > li { border: 1px solid #000; }
+  .bridge-or { background: #ffffff; color: #000000; border: 1px solid #000; }
   .guide-switch a[aria-current="page"],
   .guide-switch a[aria-current="page"] .guide-note { background: #ffffff; color: #000000; }
   .log-table td { height: 2.2rem; }
