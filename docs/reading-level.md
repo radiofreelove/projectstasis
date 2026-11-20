@@ -48,10 +48,10 @@ Flesch-Kincaid grade level of each page's main text. Target: grade 6 or lower. T
 | washington-help.html | 5.9 | 312 | 44 | 7.1 | On target |
 | washington-immigration.html | 5.7 | 271 | 35 | 7.7 | On target |
 | washington-letter.html | 3.1 | 282 | 36 | 7.8 | On target |
-| washington-log.html | 2.6 | 251 | 50 | 5.0 | On target |
+| washington-log.html | 2.6 | 258 | 50 | 5.2 | On target |
 | washington-privacy.html | 4.2 | 285 | 32 | 8.9 | On target |
 | washington-reasons.html | 5.1 | 535 | 61 | 8.8 | On target |
-| washington-rules.html | 3.7 | 665 | 87 | 7.6 | On target |
+| washington-rules.html | 3.7 | 646 | 86 | 7.5 | On target |
 | washington-sources.html | 8.0 | 4237 | 364 | 11.6 | Above target |
 | washington-words.html | 5.1 | 308 | 48 | 6.4 | On target |
 | washington.html | 4.1 | 663 | 80 | 8.3 | On target |
