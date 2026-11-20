@@ -49,8 +49,9 @@ Everything behind the site is public and checkable.
 
 ```text
 src/pages/           page text, each with a short metadata header, in one
-                     folder per guide (oregon/, utah/) plus shared/: the
-                     4 pages marked "shared: yes", built once for each guide
+                     folder per guide (oregon/, utah/, washington/) plus
+                     shared/: the 4 pages marked "shared: yes", built once
+                     for each guide
 data/sources.json    every outside source and link (the registry)
 data/claims.json     every factual statement and what supports it (the fact log)
 data/palette.json    ODHS colors and every color pair the site uses
