@@ -29,6 +29,61 @@
   var current = 1;
   var TOTAL = 3;
 
+  var SVG_NS = 'http://www.w3.org/2000/svg';
+  var ICON_SHAPES = {
+    shield: [['path', { d: 'M12 3l7.5 3v6c0 4.5-3.2 7.8-7.5 9-4.3-1.2-7.5-4.5-7.5-9V6L12 3z' }]],
+    paper: [
+      ['path', { d: 'M6 3h8l4 4v14H6V3z' }],
+      ['path', { d: 'M14 3v4h4' }],
+      ['path', { d: 'M9 12h6M9 16h6' }]
+    ],
+    log: [
+      ['rect', { x: '5', y: '4', width: '14', height: '17', rx: '2' }],
+      ['path', { d: 'M9 4V3h6v1' }],
+      ['path', { d: 'M8.5 10l1.5 1.5 3-3' }],
+      ['path', { d: 'M14.5 10h2' }],
+      ['path', { d: 'M8.5 15l1.5 1.5 3-3' }],
+      ['path', { d: 'M14.5 15h2' }]
+    ],
+    helper: [
+      ['circle', { cx: '9', cy: '8.5', r: '3' }],
+      ['path', { d: 'M3.5 19a5.5 5.5 0 0 1 11 0' }],
+      ['circle', { cx: '16.5', cy: '9.5', r: '2.25' }],
+      ['path', { d: 'M15.5 14a4.5 4.5 0 0 1 5 5' }]
+    ],
+    check: [
+      ['circle', { cx: '12', cy: '12', r: '9' }],
+      ['path', { d: 'M8.5 12.5l2.5 2.5 4.5-5.5' }]
+    ]
+  };
+
+  function svgIcon(name) {
+    var svg = document.createElementNS(SVG_NS, 'svg');
+    svg.setAttribute('class', 'icon');
+    svg.setAttribute('viewBox', '0 0 24 24');
+    svg.setAttribute('width', '24');
+    svg.setAttribute('height', '24');
+    svg.setAttribute('fill', 'none');
+    svg.setAttribute('stroke', 'currentColor');
+    svg.setAttribute('stroke-width', '1.75');
+    svg.setAttribute('stroke-linecap', 'round');
+    svg.setAttribute('stroke-linejoin', 'round');
+    svg.setAttribute('aria-hidden', 'true');
+    svg.setAttribute('focusable', 'false');
+    (ICON_SHAPES[name] || []).forEach(function (item) {
+      var node = document.createElementNS(SVG_NS, item[0]);
+      Object.keys(item[1]).forEach(function (k) { node.setAttribute(k, item[1][k]); });
+      svg.appendChild(node);
+    });
+    return svg;
+  }
+
+  function guidePrefix() {
+    var href = (CHECK && CHECK.age && CHECK.age.link && CHECK.age.link.href) || 'apply';
+    var idx = href.lastIndexOf('apply');
+    return idx > 0 ? href.slice(0, idx) : '';
+  }
+
   function el(tag, text, className) {
     var node = document.createElement(tag);
     if (text) { node.textContent = text; }
@@ -59,12 +114,86 @@
     return values;
   }
 
+  function checkedLabels(name) {
+    var labels = [];
+    Array.prototype.forEach.call(form.querySelectorAll('input[name="' + name + '"]:checked'), function (input) {
+      var wrap = input.closest('label');
+      var text = wrap ? wrap.textContent.replace(/\s+/g, ' ').trim() : input.value;
+      labels.push(text);
+    });
+    return labels;
+  }
+
+  function buildRecapBox(headingText, includeStep3) {
+    var box = el('div', null, 'answer-recap');
+    var head = el('p', null, 'recap-title');
+    head.appendChild(svgIcon('check'));
+    head.appendChild(el('span', headingText));
+    box.appendChild(head);
+
+    var dl = el('dl', null, 'recap-list');
+    var ageLabels = checkedLabels('age');
+    var reasonLabels = checkedLabels('reason');
+    var meetLabels = checkedLabels('meet');
+
+    function addRow(term, value) {
+      var row = el('div', null, 'recap-row');
+      row.appendChild(el('dt', term));
+      row.appendChild(el('dd', value));
+      dl.appendChild(row);
+    }
+
+    addRow('Age', ageLabels.length ? ageLabels.join(', ') : 'Not picked yet');
+    if (checkedValues('age')[0] === '19to64') {
+      addRow('Reasons that fit you', reasonLabels.length ? reasonLabels.join(' ') : 'Not picked yet');
+      if (includeStep3) {
+        addRow('Ways to meet the rules', meetLabels.length ? meetLabels.join(' ') : 'Pick at least one above');
+      }
+    }
+    box.appendChild(dl);
+    return box;
+  }
+
+  function updatePreviewRecap() {
+    var container = document.getElementById('checker-recap-preview');
+    if (!container) { return; }
+    while (container.firstChild) { container.removeChild(container.firstChild); }
+    container.appendChild(buildRecapBox('Your answers so far', true));
+  }
+
+  function buildNextStrip() {
+    var prefix = guidePrefix();
+    var wrap = el('div', null, 'next-needs');
+    wrap.appendChild(el('h3', 'What you may need next'));
+    var ul = el('ul', null, 'next-strip');
+    var items = [
+      { icon: 'paper', href: prefix + 'apply', title: 'How to apply', note: 'Online, on paper, in person, or by phone' },
+      { icon: 'log', href: prefix + 'log', title: 'Hours log', note: 'Print a sheet to write down your hours' },
+      { icon: 'helper', href: prefix + 'help', title: 'Free help', note: 'In-person helpers, language help, and phone lines' }
+    ];
+    items.forEach(function (item) {
+      var li = el('li');
+      var a = document.createElement('a');
+      a.href = item.href;
+      var head = el('span', null, 'next-strip-head');
+      head.appendChild(svgIcon(item.icon));
+      head.appendChild(el('span', item.title));
+      a.appendChild(head);
+      a.appendChild(el('span', item.note, 'next-strip-note'));
+      li.appendChild(a);
+      ul.appendChild(li);
+    });
+    wrap.appendChild(ul);
+    return wrap;
+  }
+
   function showStep(n, moveFocus) {
     current = n;
     steps.forEach(function (step) {
       step.hidden = Number(step.getAttribute('data-step')) !== n;
     });
     progress.textContent = 'Step ' + n + ' of ' + TOTAL;
+    if (n === 3) { updatePreviewRecap(); }
     if (moveFocus) {
       var target = form.querySelector('[data-step="' + n + '"]');
       if (target) { target.focus(); }
@@ -92,12 +221,14 @@
     var inputs = form.querySelectorAll('input[name="' + name + '"]');
     Array.prototype.forEach.call(inputs, function (input) {
       input.addEventListener('change', function () {
-        if (!input.checked) { return; }
-        Array.prototype.forEach.call(inputs, function (other) {
-          var otherIsNone = other.hasAttribute('data-none');
-          var thisIsNone = input.hasAttribute('data-none');
-          if (other !== input && (otherIsNone || thisIsNone)) { other.checked = false; }
-        });
+        if (input.checked) {
+          Array.prototype.forEach.call(inputs, function (other) {
+            var otherIsNone = other.hasAttribute('data-none');
+            var thisIsNone = input.hasAttribute('data-none');
+            if (other !== input && (otherIsNone || thisIsNone)) { other.checked = false; }
+          });
+        }
+        if (current === 3) { updatePreviewRecap(); }
       });
     });
   }
@@ -129,6 +260,15 @@
     return ul;
   }
 
+  function changeAnswers() {
+    var age = checkedValues('age')[0];
+    clearResult();
+    result.hidden = true;
+    form.hidden = false;
+    progress.hidden = false;
+    showStep(age === '19to64' ? 3 : 1, true);
+  }
+
   function buildResult() {
     var age = checkedValues('age')[0];
     var reasons = checkedValues('reason').filter(function (v) { return v !== 'none'; });
@@ -136,6 +276,8 @@
     var notApply = reasons.some(function (key) { return REASONS[key] && REASONS[key].notApply; });
 
     var title = clearResult();
+
+    result.appendChild(buildRecapBox('Your answers', age === '19to64'));
 
     if (age !== '19to64') {
       title.textContent = 'The new rules do not apply to your age group.';
@@ -175,11 +317,23 @@
       result.appendChild(ways);
     }
 
+    result.appendChild(buildNextStrip());
+
     var promise = el('div', null, 'promise');
+    var kicker = el('p', null, 'box-kicker');
+    var iconWrap = el('span', null, 'box-icon');
+    iconWrap.appendChild(svgIcon('shield'));
+    kicker.appendChild(iconWrap);
+    kicker.appendChild(el('span', 'Privacy'));
+    promise.appendChild(kicker);
     CHECK.promise.forEach(function (line) { promise.appendChild(el('p', line)); });
     result.appendChild(promise);
 
     var actions = el('div', null, 'actions');
+    var edit = el('button', 'Change my answers', 'button-secondary');
+    edit.type = 'button';
+    edit.addEventListener('click', changeAnswers);
+    actions.appendChild(edit);
     var again = el('button', 'Start over', 'button-secondary');
     again.type = 'button';
     again.addEventListener('click', startOver);
@@ -222,6 +376,15 @@
     progress = document.getElementById('checker-progress');
     result = document.getElementById('checker-result');
     if (!form || !progress || !result || !CHECK) { return; }
+
+    var step3 = form.querySelector('[data-step="3"]');
+    if (step3) {
+      var preview = el('div', null, 'answer-preview');
+      preview.id = 'checker-recap-preview';
+      preview.setAttribute('aria-live', 'polite');
+      var step3Actions = step3.querySelector('.actions');
+      step3.insertBefore(preview, step3Actions);
+    }
 
     steps = Array.prototype.slice.call(form.querySelectorAll('[data-step]'));
     form.hidden = false;

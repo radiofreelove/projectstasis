@@ -513,6 +513,95 @@ DETAIL_STRIP = """    <div class="detail-strip" data-detail-strip>
 """
 
 
+# Shared 24x24 inline SVG icons (1.75px rounded strokes, currentColor, zero
+# external requests). Every decorative icon sets aria-hidden="true" and
+# focusable="false". Keep in step with The Strand Project's icon vocabulary.
+ICONS = {
+    "alert": '<path d="M12 3L2.5 19.5h19L12 3z"/><path d="M12 9.5v4.5"/><path d="M12 17h.01"/>',
+    "info": '<circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/>',
+    "check": '<circle cx="12" cy="12" r="9"/><path d="M8.5 12.5l2.5 2.5 4.5-5.5"/>',
+    "shield": '<path d="M12 3l7.5 3v6c0 4.5-3.2 7.8-7.5 9-4.3-1.2-7.5-4.5-7.5-9V6L12 3z"/>',
+    "income": '<path d="M12 3v18"/><path d="M16.5 7.5a3.5 3.5 0 0 0-3.5-2.5h-2a3 3 0 0 0 0 6h2a3 3 0 0 1 0 6h-2.5a3.5 3.5 0 0 1-3.5-2.5"/>',
+    "school": '<path d="M2.5 9.5L12 5l9.5 4.5L12 14 2.5 9.5z"/><path d="M6.5 11.5v5c0 1.5 2.5 2.75 5.5 2.75s5.5-1.25 5.5-2.75v-5"/><path d="M21.5 9.5v5"/>',
+    "clock": '<circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2"/>',
+    "calendar": '<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M16 3v4M8 3v4M3 10h18"/>',
+    "circle": '<circle cx="12" cy="12" r="7"/>',
+    "triangle": '<path d="M12 4L3.5 19h17L12 4z"/>',
+    "square": '<rect x="5" y="5" width="14" height="14" rx="2"/>',
+    "online": '<circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3a13 13 0 0 1 0 18"/><path d="M12 3a13 13 0 0 0 0 18"/>',
+    "phone": '<path d="M6.5 4.5h3l1.5 4-2 1.5a11 11 0 0 0 5 5l1.5-2 4 1.5v3a2 2 0 0 1-2 2C10.5 19.5 4.5 13.5 4.5 6.5a2 2 0 0 1 2-2z"/>',
+    "inperson": '<path d="M4 20h16"/><path d="M6 20V7l6-3 6 3v13"/><path d="M10 20v-4h4v4"/><path d="M9.5 10h.01M14.5 10h.01M9.5 13h.01M14.5 13h.01"/>',
+    "paper": '<path d="M6 3h8l4 4v14H6V3z"/><path d="M14 3v4h4"/><path d="M9 12h6M9 16h6"/>',
+    "helper": '<circle cx="9" cy="8.5" r="3"/><path d="M3.5 19a5.5 5.5 0 0 1 11 0"/><circle cx="16.5" cy="9.5" r="2.25"/><path d="M15.5 14a4.5 4.5 0 0 1 5 5"/>',
+    "languages": '<path d="M4 5h16v10H9l-5 4V5z"/><path d="M8 9.5h8M8 12.5h5"/>',
+    "letter": '<rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3.5 6.5L12 13l8.5-6.5"/>',
+    "denied": '<path d="M12 4v16"/><path d="M5 7h14"/><path d="M7 7l-3 6h6l-3-6z"/><path d="M17 7l-3 6h6l-3-6z"/><path d="M8 20h8"/>',
+    "health": '<path d="M12 20s-7.5-4.5-7.5-10a4.5 4.5 0 0 1 7.5-3.3A4.5 4.5 0 0 1 19.5 10c0 5.5-7.5 10-7.5 10z"/><path d="M12 9v5M9.5 11.5h5"/>',
+    "immigration": '<rect x="5" y="3" width="14" height="18" rx="2"/><circle cx="12" cy="11" r="3.5"/><path d="M8.5 17.5h7"/>',
+    "words": '<path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H12v17H6.5A2.5 2.5 0 0 0 4 22V5.5z"/><path d="M20 5.5A2.5 2.5 0 0 0 17.5 3H12v17h5.5a2.5 2.5 0 0 1 2.5 2V5.5z"/>',
+    "log": '<rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1"/><path d="M8.5 10l1.5 1.5 3-3"/><path d="M14.5 10h2"/><path d="M8.5 15l1.5 1.5 3-3"/><path d="M14.5 15h2"/>',
+}
+
+ICON_RE = re.compile(r"\{\{ICON:([a-z0-9_-]+)\}\}")
+
+# Default icon + short sentence-case status label for each callout box class
+# so meaning never relies on left-border color alone.
+CALLOUT_META = {
+    "warn": ("alert", "Heads up"),
+    "callout": ("info", "Key point"),
+    "good": ("check", "Good to know"),
+    "promise": ("shield", "Privacy"),
+}
+
+CALLOUT_TAG_RE = re.compile(
+    r'(<(?P<tag>div|section)\b(?P<attrs>[^>]*\bclass="(?P<cls>[^"]+)"[^>]*)>)'
+)
+
+
+def render_icon(name: str, extra_class: str = "") -> str:
+    if name not in ICONS:
+        raise BuildError(f"unknown icon '{name}'")
+    cls = f"icon {extra_class}".strip()
+    return (
+        f'<svg class="{cls}" viewBox="0 0 24 24" width="24" height="24" '
+        'fill="none" stroke="currentColor" stroke-width="1.75" '
+        'stroke-linecap="round" stroke-linejoin="round" '
+        f'aria-hidden="true" focusable="false">{ICONS[name]}</svg>'
+    )
+
+
+def expand_icons(text: str) -> str:
+    return ICON_RE.sub(lambda m: render_icon(m.group(1)), text)
+
+
+def decorate_callouts(body: str) -> str:
+    """Prepend a shape icon + short status word inside each callout container."""
+    def repl(match: re.Match) -> str:
+        full = match.group(0)
+        attrs = match.group("attrs")
+        classes = match.group("cls").split()
+        kind = next((c for c in ("warn", "callout", "good", "promise") if c in classes), None)
+        if not kind:
+            return full
+        icon_name, label = CALLOUT_META[kind]
+        kicker_m = re.search(r'\bdata-kicker="([^"]+)"', attrs)
+        if kicker_m:
+            label = kicker_m.group(1)
+            if label.lower() in {"update", "policy update"}:
+                icon_name = "info"
+        icon_m = re.search(r'\bdata-icon="([^"]+)"', attrs)
+        if icon_m:
+            icon_name = icon_m.group(1)
+        badge = (
+            '\n      <p class="box-kicker">'
+            f'<span class="box-icon">{render_icon(icon_name)}</span>'
+            f'<span>{esc(label)}</span></p>'
+        )
+        return full + badge
+
+    return CALLOUT_TAG_RE.sub(repl, body)
+
+
 def render_guide_switch(current: str) -> str:
     """The "Pick your state" buttons: every guide, in order, with the reader's own guide filled."""
     items = []
@@ -579,6 +668,8 @@ def render_page(meta, body, pages, by_id, doc_counts):
         body = body.replace("{{DOC_COUNT}}", str(doc_counts[meta["section"]]))
     body = body.replace("{{FACTS_CHECKED_TEXT}}", facts_text)
     body = body.replace("{{FACTS_CHECKED_ISO}}", facts_iso or "")
+    body = decorate_callouts(body)
+    body = expand_icons(body)
 
     canonical = ""
     if meta["in_lists"]:

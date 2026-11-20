@@ -10,7 +10,31 @@ sources: S07, S01, S06, S04, S27, S05, S02, S03, S08, S41
     <h1>Applying for OHP? New rules start Jan.&nbsp;1, 2027.</h1>
     <p class="purpose" data-claim="C-STATE-DOCS"><strong>Why this site exists:</strong> The state explains the new OHP rules across more than a dozen documents. This site puts what applicants need in one place, in plain words. Each page lists its official sources.</p>
 
-    <section class="warn" aria-labelledby="update-title">
+    <section class="timeline-strip" aria-labelledby="timeline-title">
+      <h2 id="timeline-title">Key dates at a glance</h2>
+      <ol class="timeline-list">
+        <li class="timeline-item timeline-info">
+          <span class="timeline-marker" aria-hidden="true">{{ICON:circle}}</span>
+          <span class="timeline-date">Nov.&nbsp;13, 2026</span>
+          <a class="timeline-label" href="#update-title">Policy update: new state choice</a>
+          <span class="timeline-note">Federal choice through June&nbsp;30, 2027</span>
+        </li>
+        <li class="timeline-item timeline-deadline">
+          <span class="timeline-marker" aria-hidden="true">{{ICON:triangle}}</span>
+          <span class="timeline-date">Jan.&nbsp;1, 2027</span>
+          <a class="timeline-label" href="#bills-title">Deadline: rules start and bills cutoff</a>
+          <span class="timeline-note" data-show-until="2026-12-31">Past medical bills window drops from 3 months to 1</span>
+        </li>
+        <li class="timeline-item timeline-ongoing">
+          <span class="timeline-marker" aria-hidden="true">{{ICON:square}}</span>
+          <span class="timeline-date">Ongoing</span>
+          <a class="timeline-label" href="log.html">After you apply: keep track of hours</a>
+          <span class="timeline-note">Write down hours and watch for OHP letters</span>
+        </li>
+      </ol>
+    </section>
+
+    <section class="warn" data-kicker="Policy update" aria-labelledby="update-title">
       <h2 id="update-title">Update, Nov.&nbsp;13, 2026: A new choice for states</h2>
       <p data-claim="C-HH-START"><strong>Still starting:</strong> The work or activity rules still start Jan.&nbsp;1, 2027. The checking starts then too.</p>
       <p data-claim="C-HH-OPTION"><strong>What's new:</strong> The federal government gave each state a choice. Through June&nbsp;30, 2027, a state may choose not to turn anyone down, and not to end anyone's coverage, only for not meeting the work or activity rules. The state must still check whether each person meets the rules or does not have to.</p>
@@ -19,7 +43,7 @@ sources: S07, S01, S06, S04, S27, S05, S02, S03, S08, S41
       <p><a href="rules.html#state-choice">More about this choice</a></p>
     </section>
 
-    <section class="warn" aria-labelledby="bills-title">
+    <section class="warn" data-kicker="Deadline" aria-labelledby="bills-title">
       <h2 id="bills-title">Have medical bills? <span data-show-until="2026-12-31">Read this before Jan.&nbsp;1, 2027.</span></h2>
       <p data-claim="C-RETRO-NOW" data-show-until="2026-12-31">Through Dec.&nbsp;31, 2026, OHP can help with medical bills from up to 3 months before you apply.</p>
       <p data-claim="C-RETRO-2027">Starting Jan.&nbsp;1, 2027, OHP can help with medical bills from 1 month before you apply for most adults ages 19 to 64.</p>
@@ -35,11 +59,31 @@ sources: S07, S01, S06, S04, S27, S05, S02, S03, S08, S41
     </ul>
 
     <h2>Meet the rules any one way</h2>
-    <ul class="short">
-      <li data-claim="C-MEET-INCOME"><strong>Income:</strong> Your household brings in $580 or more a month.</li>
-      <li data-claim="C-MEET-SCHOOL"><strong>School:</strong> You go to school at least half-time.</li>
-      <li data-claim="C-MEET-HOURS"><strong>80 hours:</strong> You spend 80 hours a month on work, volunteering, school, or job training. Add them up.</li>
-    </ul>
+    <div class="rule-bridge">
+      <ul class="bridge-lanes">
+        <li data-claim="C-MEET-INCOME">
+          <div class="bridge-lane">
+            <span class="bridge-head"><span class="bridge-icon">{{ICON:income}}</span><strong>Income</strong></span>
+            <span class="bridge-copy">Your household brings in $580 or more a month.</span>
+          </div>
+          <span class="bridge-or">or</span>
+        </li>
+        <li data-claim="C-MEET-SCHOOL">
+          <div class="bridge-lane">
+            <span class="bridge-head"><span class="bridge-icon">{{ICON:school}}</span><strong>School</strong></span>
+            <span class="bridge-copy">You go to school at least half-time.</span>
+          </div>
+          <span class="bridge-or">or</span>
+        </li>
+        <li data-claim="C-MEET-HOURS">
+          <div class="bridge-lane">
+            <span class="bridge-head"><span class="bridge-icon">{{ICON:clock}}</span><strong>80 hours</strong></span>
+            <span class="bridge-copy">You spend 80 hours a month on work, volunteering, school, or job training. Add them up.</span>
+          </div>
+        </li>
+      </ul>
+      <p class="bridge-outcome">{{ICON:check}} <span>Any 1 way meets the rules.</span></p>
+    </div>
     <p><a href="rules.html">What counts, in plain words</a></p>
 
     <h2>You may not have to if you</h2>
@@ -59,17 +103,17 @@ sources: S07, S01, S06, S04, S27, S05, S02, S03, S08, S41
       <li data-claim="C-ANSWER-QS C-TELL-REASON">Answer every question about work, school, and volunteering. If a reason fits you, tell OHP.</li>
     </ol>
 
-    <div class="callout">
+    <div class="callout" data-kicker="Bottom line">
       <h2>Bottom line</h2>
       <p data-claim="C-REAPPLY">If you think you qualify, apply. If OHP says no, you can apply again any time.</p>
     </div>
 
     <h2>Go deeper</h2>
     <ul class="cards">
-      <li><a href="letter.html">OHP sent me a letter <span class="card-note">What it means and how to answer on time</span></a></li>
-      <li><a href="denied.html">I was turned down <span class="card-note">Your options, including free legal help</span></a></li>
-      <li><a href="health.html">I have a health condition <span class="card-note">You may not have to meet the rules</span></a></li>
-      <li><a href="immigration.html">Immigration status <span class="card-note">Healthier Oregon and your privacy</span></a></li>
-      <li><a href="words.html">Words on your letters <span class="card-note">Plain meanings for OHP words</span></a></li>
-      <li><a href="log.html">Hours log <span class="card-note">Print it and write down your hours</span></a></li>
+      <li><a href="letter.html"><span class="card-head">{{ICON:letter}}<span>OHP sent me a letter</span></span> <span class="card-note">What it means and how to answer on time</span></a></li>
+      <li><a href="denied.html"><span class="card-head">{{ICON:denied}}<span>I was turned down</span></span> <span class="card-note">Your options, including free legal help</span></a></li>
+      <li><a href="health.html"><span class="card-head">{{ICON:health}}<span>I have a health condition</span></span> <span class="card-note">You may not have to meet the rules</span></a></li>
+      <li><a href="immigration.html"><span class="card-head">{{ICON:immigration}}<span>Immigration status</span></span> <span class="card-note">Healthier Oregon and your privacy</span></a></li>
+      <li><a href="words.html"><span class="card-head">{{ICON:words}}<span>Words on your letters</span></span> <span class="card-note">Plain meanings for OHP words</span></a></li>
+      <li><a href="log.html"><span class="card-head">{{ICON:log}}<span>Hours log</span></span> <span class="card-note">Print it and write down your hours</span></a></li>
     </ul>

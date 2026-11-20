@@ -10,14 +10,30 @@ sources: S09, S02, S15, S16, S17, S25, S26, S04, S20, S10
     <p class="purpose">People who can help you apply, for free, and in your language.</p>
 
     <h2>The short version</h2>
-    <ul class="short">
-      <li data-claim="C-APPLY-PHONE"><strong>Call OHP:</strong> <span class="nowrap">800-699-9075</span> (TTY 711), Monday to Friday, 7 a.m. to 6 p.m.</li>
-      <li data-claim="C-HELP-FREE"><strong>Free helpers:</strong> Community partners can help you apply. Their help is free.</li>
-      <li data-claim="C-LANGLINES"><strong>Your language:</strong> There are phone lines for many languages.</li>
-      <li data-claim="C-APPLY-PAPER"><strong>Paper application:</strong> It comes in 17 languages.</li>
+    <ul class="short channel-list">
+      <li data-claim="C-HELP-FREE"><span class="channel-icon">{{ICON:inperson}}</span><span><strong>Free in-person helpers:</strong> Community partners can help you apply. Their help is free.</span></li>
+      <li data-claim="C-APPLY-PAPER"><span class="channel-icon">{{ICON:paper}}</span><span><strong>Paper application:</strong> It comes in 17 languages.</span></li>
+      <li data-claim="C-LANGLINES"><span class="channel-icon">{{ICON:languages}}</span><span><strong>Your language:</strong> There are phone lines for many languages.</span></li>
+      <li data-claim="C-APPLY-PHONE"><span class="channel-icon">{{ICON:phone}}</span><span><strong>Call OHP:</strong> <span class="nowrap">800-699-9075</span> (TTY 711), Monday to Friday, 7 a.m. to 6 p.m.</span></li>
     </ul>
 
-    <h2>Phone numbers</h2>
+    <nav class="channel-bar" aria-label="Ways to get help">
+      <a href="#in-person">{{ICON:inperson}}<span>In person</span></a>
+      <a href="#languages">{{ICON:paper}}<span>Paper in 17 languages</span></a>
+      <a href="#other-formats">{{ICON:languages}}<span>Other formats</span></a>
+      <a href="#phone">{{ICON:phone}}<span>By phone</span></a>
+    </nav>
+
+    <h2 id="in-person" class="icon-heading">{{ICON:inperson}}<span>Help in person</span></h2>
+    <ul data-claim="C-APPLY-INPERSON">
+      <li><a href="https://healthcare.oregon.gov/Pages/find-help.aspx">Find a free community partner near you</a></li>
+      <li><a href="https://www.oregon.gov/odhs/Pages/office-finder.aspx">Find an ODHS office near you</a></li>
+    </ul>
+
+    <h2 id="other-formats" class="icon-heading">{{ICON:languages}}<span>Other formats</span></h2>
+    <p data-claim="C-FORMATS">You can ask OHP for letters and papers in other languages, large print, braille, or another format. It is free. Call <span class="nowrap">800-699-9075</span>.</p>
+
+    <h2 id="phone" class="icon-heading">{{ICON:phone}}<span>Phone numbers</span></h2>
     <dl class="glossary">
       <dt>OHP and ONE Customer Service</dt>
       <dd data-claim="C-APPLY-PHONE"><span class="nowrap">800-699-9075</span>. TTY users can dial 711. Monday to Friday, 7 a.m. to 6 p.m. Pacific time.</dd>
@@ -37,15 +53,6 @@ sources: S09, S02, S15, S16, S17, S25, S26, S04, S20, S10
       <dd data-claim="C-MARKETPLACE"><span class="nowrap">855-268-3767</span></dd>
     </dl>
 
-    <h2>Help in person</h2>
-    <ul data-claim="C-APPLY-INPERSON">
-      <li><a href="https://healthcare.oregon.gov/Pages/find-help.aspx">Find a free community partner near you</a></li>
-      <li><a href="https://www.oregon.gov/odhs/Pages/office-finder.aspx">Find an ODHS office near you</a></li>
-    </ul>
-
-    <h2>Other formats</h2>
-    <p data-claim="C-FORMATS">You can ask OHP for letters and papers in other languages, large print, braille, or another format. It is free. Call <span class="nowrap">800-699-9075</span>.</p>
-
-    <h2 id="languages">The OHP application in your language</h2>
+    <h2 id="languages" class="icon-heading">{{ICON:paper}}<span>The OHP application in your language</span></h2>
     <p class="more" data-claim="C-APPLY-PAPER">These links go to the state's own paper application (form 7210).</p>
 {{APPLICATION_LANGUAGES}}
