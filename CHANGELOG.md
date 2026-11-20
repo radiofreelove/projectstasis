@@ -2,6 +2,14 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.15 beta (2026-11-19)
+
+Settled the Washington renewal-month conflict in favor of HCA's June 2026 fact sheet (`WA-RULE-08`). No source checked date changed.
+
+- **Removed conflicting renewal-month claim (`WA-RULE-07`).** The older February 2026 HCA summary (WA04) said a person had to prove the month before their renewal date (`WA-RULE-07`), while the June 2026 HCA fact sheet (WA05) and two newer HCA texts state the rule must be met in the month before applying or in one of the six months before renewing (`WA-RULE-08`). On the owner's ruling for `WA-RULE-08`, `WA-RULE-07` is removed from `data/claims.json` and `src/pages/washington/washington-rules.html`.
+- **Reworded Washington hours log (`WA-LOG-01`).** `data/claims.json` (`WA-LOG-01`, now citing WA05) and `src/pages/washington/washington-log.html` now match `WA-RULE-08`.
+- **Updated `2026-11-26` checkpoint in `data/review.json`.** Removed `WA-RULE-07` from the checkpoint's claim list and noted the Nov. 19 ruling.
+
 ## 0.3.14 beta (2026-11-19)
 
 Maintenance only. No visible page wording, fact, or source checked date changed. The only change a reader sees is the version number in the footer.
