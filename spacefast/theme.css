@@ -1,0 +1,202 @@
+/*
+  The Stasis Project: Spacefast copy color theme
+
+  Used only by `python3 tools/build.py --theme spacefast`. The Cloudflare
+  Pages build (site/) never loads this file.
+
+  It loads after assets/css/site.css and only redefines color tokens, so
+  layout, type, and every Display setting work the same as on the main site.
+  Each block below matches a theme block in site.css and sets the same tokens.
+
+  Colors are Radix Colors, an open source color system by Radix.
+  Copyright (c) 2021 Radix. Used under the MIT License
+  (the license text is in assets/licenses/radix-mit.txt).
+  Every text color pair meets 7:1 contrast (WCAG 2.2 Level AAA). The pairs are
+  listed in spacefast/palette.json and checked by
+  `python3 tools/check_contrast.py --theme spacefast`.
+*/
+
+:root {
+  /* Radix Colors, light scales (scale name and step) */
+  --slate-2: #f9f9fb;     /* page background */
+  --slate-9: #8b8d98;     /* borders */
+  --slate-12: #1c2024;    /* body text */
+  --blue-3: #e6f4fe;      /* callout background */
+  --blue-12: #113264;     /* primary: headings, links, buttons, banner */
+  --teal-9: #12a594;      /* good edge, dark themes */
+  --teal-11: #008573;     /* good edge */
+  --teal-12: #0d3d38;     /* footer band */
+  --amber-3: #fff7c2;     /* warning background */
+  --amber-9: #ffc53d;     /* focus and highlights */
+  --red-11: #ce2c31;      /* warning edge */
+  /* Radix Colors, dark scales */
+  --slate-dark-1: #111113;  /* text on the light blue button */
+  --slate-dark-2: #18191b;  /* page background */
+  --slate-dark-3: #212225;  /* surface */
+  --slate-dark-12: #edeef0; /* body text */
+  --blue-dark-3: #0d2847;   /* callout background */
+  --blue-dark-11: #70b8ff;  /* links and button background */
+  --blue-dark-12: #c2e6ff;  /* headings */
+  --amber-dark-3: #302008;  /* warning background */
+
+  /* site.css uses --gold directly for the yellow highlight */
+  --gold: var(--amber-9);
+
+  /* Theme: warm light (default) */
+  --bg: var(--slate-2);
+  --surface: var(--white);
+  --text: var(--slate-12);
+  --heading: var(--blue-12);
+  --link: var(--blue-12);
+  --border: var(--slate-9);
+  --callout-bg: var(--blue-3);
+  --callout-text: var(--slate-12);
+  --callout-heading: var(--blue-12);
+  --warn-bg: var(--amber-3);
+  --warn-border: var(--red-11);
+  --good-border: var(--teal-11);
+  --button-bg: var(--blue-12);
+  --button-text: var(--white);
+  --button2-bg: var(--white);
+  --button2-text: var(--blue-12);
+  --header-bg: var(--white);
+  --banner-bg: var(--blue-12);
+  --banner-text: var(--white);
+  --footer-bg: var(--teal-12);
+  --footer-text: var(--white);
+  --focus-outline: var(--black);
+  --focus-halo: var(--amber-9);
+  --control-accent: var(--blue-12);
+}
+
+:root[data-theme="white"] {
+  --bg: var(--white);
+  --surface: var(--slate-2);
+  --button2-bg: var(--white);
+}
+
+/* Dark theme, chosen in Display settings.
+   The button uses blue dark 11, not the 5.78:1 blue dark 9 of the first
+   Spacefast copy, so it meets 7:1 like every other pair. */
+:root[data-theme="dark"] {
+  --bg: var(--slate-dark-2);
+  --surface: var(--slate-dark-3);
+  --text: var(--slate-dark-12);
+  --heading: var(--blue-dark-12);
+  --link: var(--blue-dark-11);
+  --border: var(--slate-dark-12);
+  --callout-bg: var(--blue-dark-3);
+  --callout-text: var(--slate-dark-12);
+  --callout-heading: var(--blue-dark-12);
+  --warn-bg: var(--amber-dark-3);
+  --warn-border: var(--amber-9);
+  --good-border: var(--teal-9);
+  --button-bg: var(--blue-dark-11);
+  --button-text: var(--slate-dark-1);
+  --button2-bg: var(--slate-dark-2);
+  --button2-text: var(--blue-dark-12);
+  --header-bg: var(--slate-dark-2);
+  --banner-bg: var(--slate-dark-3);
+  --banner-text: var(--white);
+  --focus-outline: var(--amber-9);
+  --focus-halo: var(--black);
+  --control-accent: var(--blue-dark-11);
+}
+
+/* High contrast theme, chosen in Display settings (matches The Strand Project's Spacefast copy) */
+:root[data-theme="contrast"] {
+  --bg: var(--white);
+  --surface: var(--white);
+  --text: var(--black);
+  --heading: var(--black);
+  --link: var(--blue-12);
+  --border: var(--black);
+  --callout-bg: var(--white);
+  --callout-text: var(--black);
+  --callout-heading: var(--black);
+  --warn-bg: var(--white);
+  --warn-border: var(--black);
+  --good-border: var(--black);
+  --button-bg: var(--black);
+  --button-text: var(--white);
+  --button2-bg: var(--white);
+  --button2-text: var(--black);
+  --header-bg: var(--white);
+  --banner-bg: var(--black);
+  --banner-text: var(--white);
+  --footer-bg: var(--black);
+  --footer-text: var(--white);
+  --focus-outline: var(--black);
+  --focus-halo: var(--amber-9);
+  --control-accent: var(--black);
+}
+
+/* Dark theme, following the device setting */
+@media (prefers-color-scheme: dark) {
+  :root[data-theme="auto"],
+  :root:not([data-theme]) {
+    --bg: var(--slate-dark-2);
+    --surface: var(--slate-dark-3);
+    --text: var(--slate-dark-12);
+    --heading: var(--blue-dark-12);
+    --link: var(--blue-dark-11);
+    --border: var(--slate-dark-12);
+    --callout-bg: var(--blue-dark-3);
+    --callout-text: var(--slate-dark-12);
+    --callout-heading: var(--blue-dark-12);
+    --warn-bg: var(--amber-dark-3);
+    --warn-border: var(--amber-9);
+    --good-border: var(--teal-9);
+    --button-bg: var(--blue-dark-11);
+    --button-text: var(--slate-dark-1);
+    --button2-bg: var(--slate-dark-2);
+    --button2-text: var(--blue-dark-12);
+    --header-bg: var(--slate-dark-2);
+    --banner-bg: var(--slate-dark-3);
+    --banner-text: var(--white);
+    --focus-outline: var(--amber-9);
+    --focus-halo: var(--black);
+    --control-accent: var(--blue-dark-11);
+  }
+}
+
+/* High contrast, following the device setting */
+@media (prefers-contrast: more) {
+  :root[data-theme="auto"],
+  :root:not([data-theme]) {
+    --bg: var(--white);
+    --surface: var(--white);
+    --text: var(--black);
+    --heading: var(--black);
+    --link: var(--blue-12);
+    --border: var(--black);
+    --callout-bg: var(--white);
+    --callout-text: var(--black);
+    --callout-heading: var(--black);
+    --warn-bg: var(--white);
+    --warn-border: var(--black);
+    --good-border: var(--black);
+    --button-bg: var(--black);
+    --button-text: var(--white);
+    --button2-bg: var(--white);
+    --button2-text: var(--black);
+    --header-bg: var(--white);
+    --banner-bg: var(--black);
+    --banner-text: var(--white);
+    --footer-bg: var(--black);
+    --footer-text: var(--white);
+    --focus-outline: var(--black);
+    --focus-halo: var(--amber-9);
+    --control-accent: var(--black);
+  }
+}
+
+/* Print: plain black on white. Repeated from site.css because the :root
+   block above loads later and would otherwise win. */
+@media print {
+  :root, :root[data-theme] {
+    --bg: #ffffff; --surface: #ffffff; --text: #000000; --heading: #000000; --link: #000000;
+    --border: #000000; --callout-bg: #ffffff; --callout-text: #000000; --callout-heading: #000000;
+    --warn-bg: #ffffff; --footer-bg: #ffffff; --footer-text: #000000;
+  }
+}

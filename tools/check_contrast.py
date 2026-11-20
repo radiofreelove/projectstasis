@@ -4,6 +4,10 @@ Check every color pair in data/palette.json against WCAG 2.2 contrast.
 
     python3 tools/check_contrast.py          Check and rewrite docs/contrast.md
     python3 tools/check_contrast.py --check  Check only; fail if docs/contrast.md is stale
+    python3 tools/check_contrast.py --theme spacefast
+                                             Check the Spacefast copy's colors
+                                             (spacefast/palette.json). Prints the
+                                             results; never writes docs/contrast.md.
 
 Text pairs must reach 7:1 (WCAG 2.2 Level AAA, success criterion 1.4.6).
 Non-text pairs (borders, focus outlines) must reach 3:1 (criterion 1.4.11).
@@ -13,12 +17,15 @@ from __future__ import annotations
 
 import argparse
 import json
+import re
 import sys
 from pathlib import Path
 
 ROOT = Path(__file__).resolve().parent.parent
 PALETTE = ROOT / "data" / "palette.json"
 REPORT = ROOT / "docs" / "contrast.md"
+SPACEFAST_PALETTE = ROOT / "spacefast" / "palette.json"
+SPACEFAST_CSS = ROOT / "spacefast" / "theme.css"
 
 
 def channel(value: int) -> float:
@@ -70,10 +77,48 @@ def build_report(palette) -> tuple[str, list[str]]:
     return "\n".join(lines), failures
 
 
+def css_drift(palette, css_path: Path) -> list[str]:
+    """Every palette color must be defined with the same value in the theme CSS."""
+    css = css_path.read_text(encoding="utf-8")
+    defined = {name: value.lower() for name, value in re.findall(r"--([a-z0-9-]+):\s*(#[0-9a-fA-F]{6})\b", css)}
+    problems = []
+    for name, value in palette["colors"].items():
+        if name in ("black", "white"):
+            continue  # defined once in assets/css/site.css
+        if name not in defined:
+            problems.append(f"{name} is in {SPACEFAST_PALETTE.relative_to(ROOT)} but not in {css_path.relative_to(ROOT)}")
+        elif defined[name] != value.lower():
+            problems.append(f"{name} is {value} in the palette but {defined[name]} in {css_path.relative_to(ROOT)}")
+    return problems
+
+
 def main() -> int:
     parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
     parser.add_argument("--check", action="store_true")
+    parser.add_argument("--theme", choices=["default", "spacefast"], default="default",
+                        help="spacefast checks spacefast/palette.json and never writes docs/contrast.md")
+    parser.add_argument("--dir", type=Path,
+                        help="built site directory to inspect; checks the Spacefast palette when assets/css/spacefast-theme.css is present")
     args = parser.parse_args()
+
+    theme = args.theme
+    css_to_check = SPACEFAST_CSS
+    if args.dir is not None:
+        built_theme_css = args.dir / "assets" / "css" / "spacefast-theme.css"
+        if built_theme_css.is_file():
+            theme = "spacefast"
+            css_to_check = built_theme_css
+
+    if theme == "spacefast":
+        palette = json.loads(SPACEFAST_PALETTE.read_text(encoding="utf-8"))
+        _, failures = build_report(palette)
+        failures += css_drift(palette, css_to_check)
+        if failures:
+            print("Spacefast contrast failures:\n  " + "\n  ".join(failures), file=sys.stderr)
+            return 1
+        print(f"All {len(palette['pairs'])} Spacefast color pairs pass, and the palette matches the theme CSS.")
+        return 0
+
     palette = json.loads(PALETTE.read_text(encoding="utf-8"))
     report, failures = build_report(palette)
     if args.check:
