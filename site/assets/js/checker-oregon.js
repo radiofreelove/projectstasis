@@ -119,7 +119,7 @@ window.StasisCheck = (function () {
       body: 'You can still apply. OHP looks at the month before you apply.',
       ways: [
         { strong: 'Look again for a reason.', link: { href: 'reasons', text: 'See every reason you may not have to meet the rules' } },
-        { strong: 'Find work, school, or volunteer options.', link: { href: 'https://ohp.oregon.gov/Resources', text: "OHP's job and volunteer resources" } },
+        { strong: 'Find work, school, or volunteer options.', link: { href: 'https://www.oregon.gov/oha/hsd/ohp/pages/community-resources.aspx', text: "OHP's job and volunteer resources" } },
         { strong: 'Talk to a free helper.', link: { href: 'help', text: 'Free help and other languages' } }
       ]
     },

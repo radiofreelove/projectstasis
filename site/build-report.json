@@ -1,7 +1,7 @@
 {
-  "version": "0.3.17 beta",
-  "build_hash": "16bdb37e",
-  "inputs_sha256": "16bdb37e3601728b363efc98ac7d853c836f0a8b064c1b81ae1e23b478804f41",
+  "version": "0.3.18 beta",
+  "build_hash": "5834ef9c",
+  "inputs_sha256": "5834ef9c1cd686df279b364b9389de5708731bdb3890b47c8b63dd3e6a73c6bb",
   "latest_checked": "2026-11-21",
   "public_url": "https://projectstasis.pages.dev/",
   "repo_url": "https://github.com/radiofreelove/projectstasis",
@@ -135,7 +135,9 @@
         "S28",
         "S35",
         "S07",
-        "S42"
+        "S42",
+        "S44",
+        "S45"
       ],
       "facts": [
         "C-TIERS",
@@ -164,7 +166,8 @@
         "C-EX-TRAVEL",
         "C-ANSWER-QS",
         "C-TELL-HOW",
-        "C-COURT"
+        "C-COURT",
+        "C-OR-OZ"
       ],
       "checked": "2026-11-21",
       "tool_assisted_sources": []
@@ -206,7 +209,7 @@
         "C-BRIDGE",
         "C-MARKETPLACE"
       ],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": []
     },
     {
@@ -266,7 +269,7 @@
         "C-FQHC",
         "C-HOSP-AID"
       ],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": []
     },
     {
@@ -296,7 +299,9 @@
         "S35",
         "S07",
         "S26",
-        "S42"
+        "S42",
+        "S44",
+        "S45"
       ],
       "facts": [
         "C-EX-HEALTH",
@@ -307,6 +312,7 @@
         "C-EX-SUD",
         "C-HEALTH-WHO",
         "C-COURT",
+        "C-OR-OZ",
         "C-ADRC"
       ],
       "checked": "2026-11-21",
@@ -425,7 +431,7 @@
         "C-MEET-HOURS",
         "C-VOLUNTEER"
       ],
-      "checked": "2026-11-10",
+      "checked": "2026-11-21",
       "tool_assisted_sources": []
     },
     {
@@ -446,7 +452,7 @@
         "C-LINKCHECK",
         "C-FACT-LOG"
       ],
-      "checked": "2026-11-10",
+      "checked": "2026-11-21",
       "tool_assisted_sources": []
     },
     {
@@ -526,6 +532,7 @@
         "U-LOOKBACK-APP",
         "U-DATA-FIRST",
         "U-MEET-INCOME",
+        "U-INCOME-WHOSE",
         "U-MEET-SCHOOL",
         "U-MEET-HOURS",
         "U-EX-PREG",
@@ -608,8 +615,8 @@
         "U-HH-HOW",
         "U-HH-STATE",
         "U-MEET-INCOME",
-        "U-INCOME-WEEK",
         "U-INCOME-WHOSE",
+        "U-INCOME-WEEK",
         "U-INCOME-SEASONAL",
         "U-INCOME-WHY",
         "U-MEET-SCHOOL",
@@ -1317,7 +1324,9 @@
         "WA25",
         "S27",
         "S28",
-        "WA22"
+        "WA22",
+        "S44",
+        "S45"
       ],
       "facts": [
         "WA-CHK-05",
@@ -1343,7 +1352,8 @@
         "WA-RULE-09",
         "WA-RSN-14",
         "WA-APP-07",
-        "WA-RSN-15"
+        "WA-RSN-15",
+        "WA-OR-OZ"
       ],
       "checked": "2026-11-21",
       "tool_assisted_sources": [
@@ -1494,7 +1504,9 @@
         "WA22",
         "S27",
         "S28",
-        "S29"
+        "S29",
+        "S44",
+        "S45"
       ],
       "facts": [
         "WA-HLT-01",
@@ -1502,6 +1514,7 @@
         "WA-HLT-02",
         "WA-HLT-04",
         "WA-HLT-03",
+        "WA-OR-OZ",
         "WA-APP-07"
       ],
       "checked": "2026-11-21",

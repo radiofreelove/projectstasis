@@ -2,6 +2,16 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.18 beta (2026-11-21)
+
+UI, clarity, citation, accessibility, and mobile layout fixes from live browser testing, plus Nov. 21 source re-reads of OHA (`S07`, `S18`, `S24`) and Utah (`U01`, `U02`).
+
+- **Fresh "As of Nov. 21, 2026" dates and Nov. 5 lawsuit in "In the news".** Re-read OHA's federal changes page (`S07`, now marked "Last updated Nov. 18, 2026") and Utah's pages (`U01`, `U02`) in full on Nov. 21, 2026; moved `C-HH-STATE`, `U-HH-STATE`, `C-COURT`, and `U-COURT` from Nov. 14 / Nov. 10 to Nov. 21, 2026, and added the Nov. 5 *State of Oregon v. Oz* lawsuit (`C-OR-OZ` / `WA-OR-OZ`) to the "In the news" boxes on Oregon and Washington `reasons` and `health` pages.
+- **Income test wording.** Clarified on Oregon `rules.html` (`C-EACH-PERSON`) that each adult is checked separately for work, school, and volunteer hours while the `$580` income test uses combined household income; surfaced Utah's household-income vs. "you earn" distinction on `utah.html` and outside `.more` on `utah-rules.html`.
+- **Consistent inline sources and `S18` date.** Opened and verified `de5530.pdf` (`S18`, form `DHS 5530 (10/2026)`, 15 pages) on Nov. 21, 2026, replacing `"Not checked"`, and added consistent inline `{{SRC:...}}` citations across Oregon `reasons.html`, `apply.html`, `letter.html` (including the 35-day `S04` reply window), `help.html`, and `denied.html`.
+- **Short version, hours log, and small consistency fixes.** Kept `"Over the income limit?"` (income chart, OHP Bridge, OregonHealthCare.gov) visible in Short version mode on `apply.html`; expanded printable hours logs from 12 to 24 rows across Oregon, Washington, and Utah; aligned the 3rd home timeline tile on all three guides to "Before & ongoing: Track your hours" (month before you apply); reordered `.channel-bar` jump links to match page heading order across Oregon, Washington, and Utah help pages; changed `"People over 65"` to `"People 65 or older"` on `bills.html`; and aligned `checker-oregon.js` to the canonical OHA Community Resources URL (`S23`) used on `rules.html`.
+- **Accessibility and mobile layout.** Removed `aria-pressed` from `[data-toggle-details]` in `tools/build.py`, `site/assets/js/settings.js`, `tools/check_structure.py`, and `tools/browser_check.py` (keeping dynamic action labels and `#settings-status` announcements so screen readers do not hear conflicting label + pressed states) and tightened narrow-screen (`<= 36rem`) header, nav, Display settings, and detail-strip spacing in `site/assets/css/site.css` while preserving right-edge alignment and 44px touch targets.
+
 ## 0.3.17 beta (2026-11-21)
 
 Updated Washington's hold harmless status after HCA's Nov. 17, 2026 delayed-enforcement announcement, added a neutral pending-lawsuit note for *State of Oregon v. Oz* on Oregon and Washington pages, and clarified Spacefast header behavior on the Privacy page.

@@ -32,11 +32,11 @@ Checkpoint: `2026-12-11` (it was already in the file).
 
 | # | Exact wording | Where | Expires | Action |
 |---|---|---|---|---|
-| 1.1 | "As of Nov. 14, 2026, OHA's pages about the new rules did not say what Oregon will choose." | `oregon/index.html`, `oregon/rules.html`, `oregon/denied.html`. Claim C-HH-STATE | Dec. 11, 2026, and each time the pages are searched again | Source check first. If nothing changed, replace only the date in "As of". If Oregon has chosen, replace the sentence with what OHA says, and cite that source. |
-| 1.2 | "As of Nov. 14, 2026, Utah's pages about the new rules did not say what Utah will choose." | `utah/utah.html`, `utah/utah-rules.html`, `utah/utah-denied.html`. Claim U-HH-STATE | Same | Same, from Utah's pages. |
+| 1.1 | "As of Nov. 21, 2026, OHA's pages about the new rules did not say what Oregon will choose." | `oregon/index.html`, `oregon/rules.html`, `oregon/denied.html`. Claim C-HH-STATE | Dec. 11, 2026, and each time the pages are searched again | Source check first. If nothing changed, replace only the date in "As of". If Oregon has chosen, replace the sentence with what OHA says, and cite that source. |
+| 1.2 | "As of Nov. 21, 2026, Utah's pages about the new rules did not say what Utah will choose." | `utah/utah.html`, `utah/utah-rules.html`, `utah/utah-denied.html`. Claim U-HH-STATE | Same | Same, from Utah's pages. |
 | 1.3 | "On Nov. 17, 2026, HCA announced Washington will pursue delayed enforcement of the work rules. Through June 30, 2027, people in Apple Health for Adults will not lose or be denied coverage for not meeting the work rules." | `washington/washington.html`, `washington/washington-rules.html`, `washington/washington-denied.html`. Claim WA-HH-05 (updated Nov. 21, 2026 from WA27) | Dec. 11, 2026 (confirm CMS approval), then June 30, 2027 | Source check first (WA27, WA01, WA03, WA22, medicaid.gov). Confirm CMS approval; comes down or flips to past tense on June 30, 2027 (group 6). |
 | 1.4 | "A state that wants it from Jan. 1, 2027 was asked to tell the agency by Dec. 11, 2026." | `oregon/rules.html`, `utah/utah-rules.html`, `washington/washington-rules.html`. Claims C-HH-HOW, U-HH-HOW, WA-HH-04 | Does not expire on Dec. 11, 2026. It is already in the past tense and stays true. It comes down with the rest of the hold harmless wording (group 6). | No change on Dec. 11, 2026. |
-| 1.5 | "Oral argument is set for Jan. 12, 2027. As of Nov. 21, 2026, no court order has changed these rules." | `oregon/index.html`, `oregon/rules.html` (C-OR-OZ); `washington/washington.html`, `washington/washington-rules.html` (WA-OR-OZ) | Jan. 12, 2027 (checkpoint `2027-01-12`) | Source check first (S44, S45, WA14, and D. Or. docket `6:26-cv-02435-AA`). Update with any ruling or new schedule and move the "As of" date. |
+| 1.5 | "Oral argument is set for Jan. 12, 2027. As of Nov. 21, 2026, no court order has changed these rules." | `oregon/index.html`, `oregon/rules.html`, `oregon/reasons.html`, `oregon/health.html` (C-OR-OZ); `washington/washington.html`, `washington/washington-rules.html`, `washington/washington-reasons.html`, `washington/washington-health.html` (WA-OR-OZ) | Jan. 12, 2027 (checkpoint `2027-01-12`) | Source check first (S44, S45, WA14, and D. Or. docket `6:26-cv-02435-AA`). Update with any ruling or new schedule and move the "As of" date. |
 
 ## 2. Dec. 10, 2026: the court ruling "as of" lines
 
@@ -44,8 +44,8 @@ Checkpoints: `2026-12-10` and `2027-04-29` (both were already in the file).
 
 | # | Exact wording | Where | Expires | Action |
 |---|---|---|---|---|
-| 2.1 | "As of Nov. 10, 2026, OHA's pages had not said what changes." | `oregon/health.html`, `oregon/reasons.html`. Claim C-COURT | Dec. 10, 2026, and each re-check after | Source check first (S01, S03, S07, S24, and the docket, S40). If nothing changed, replace only the date. If OHA has spoken, replace the sentence with what OHA says. |
-| 2.2 | "As of Nov. 10, 2026, Utah's pages had not said what changes." | `utah/utah-health.html`, `utah/utah-reasons.html`. Claim U-COURT | Same | Same, from U01 to U04. |
+| 2.1 | "As of Nov. 21, 2026, OHA's pages had not said what changes." | `oregon/health.html`, `oregon/reasons.html`. Claim C-COURT | Dec. 10, 2026, and each re-check after | Source check first (S01, S03, S07, S24, and the docket, S40). If nothing changed, replace only the date. If OHA has spoken, replace the sentence with what OHA says. |
+| 2.2 | "As of Nov. 21, 2026, Utah's pages had not said what changes." | `utah/utah-health.html`, `utah/utah-reasons.html`. Claim U-COURT | Same | Same, from U01 to U04. |
 
 ## 3. Jan. 1, 2027: the rules and the checking start
 

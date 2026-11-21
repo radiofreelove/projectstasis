@@ -360,7 +360,7 @@ def run(shots: Path | None):
             if not before["strip"]:
                 problems.append(f"how much to show: {name} has no visible strip button")
                 continue
-            if before["button"] != "Show the short version" or before["pressed"] != "false":
+            if before["button"] != "Show the short version" or before["pressed"] is not None:
                 problems.append(f"how much to show: {name} starts with button {before['button']!r}, pressed {before['pressed']}")
             if before["button_h"] < 44:
                 problems.append(f"how much to show: {name} strip button is {before['button_h']}px tall, under 44")
@@ -377,7 +377,7 @@ def run(shots: Path | None):
             on = page.evaluate(STRIP_JS)
             if on["details"] != "fewer" or on["hidden"] != on["more"]:
                 problems.append(f"how much to show: {name} short-version mode hid {on['hidden']} of {on['more']} details")
-            if on["button"] != "Show the full version" or on["pressed"] != "true":
+            if on["button"] != "Show the full version" or on["pressed"] is not None:
                 problems.append(f"how much to show: {name} in short-version mode the button says {on['button']!r}, pressed {on['pressed']}")
             if "Some details are hidden." not in on["banner"]:
                 problems.append(f"how much to show: {name} short-version mode shows no banner saying details are hidden")
@@ -414,7 +414,7 @@ def run(shots: Path | None):
             off = page.evaluate(STRIP_JS)
             if off["details"] != "all" or off["hidden"] or off["button"] != "Show the short version":
                 problems.append(f"how much to show: {name} 'Show the full version' left {off['hidden']} details hidden")
-            if off["panel"] != "all" or off["pressed"] != "false" or not off["focus_on_button"]:
+            if off["panel"] != "all" or off["pressed"] is not None or not off["focus_on_button"]:
                 problems.append(f"how much to show: {name} controls disagree after 'Show the full version'")
             if "showing again" not in off["status"]:
                 problems.append(f"how much to show: {name} status line said {off['status']!r}")

@@ -102,7 +102,7 @@ SPACEFAST_DIR = ROOT / "spacefast"
 SITE_NAME = "The Stasis Project"
 BASE_URL = "https://projectstasis.pages.dev/"
 PROJECT_REPO = "https://github.com/radiofreelove/projectstasis"
-VERSION = "0.3.17 beta"
+VERSION = "0.3.18 beta"
 
 ODHS_COLORS_LINE = (
     "Colors come from the Oregon Department of Human Services' published palette. "
@@ -558,13 +558,14 @@ SETTINGS_PANEL = """    <details class="display-settings" data-settings>
 # "fewer"), so the strip is right from the first paint, and
 # assets/js/settings.js keeps it and the panel in step. Without JavaScript
 # the strip is not shown (the style sheet waits for the data-js mark that
-# settings.js sets), and the full page shows. aria-pressed says whether
-# short-version mode is on; settings.js sets it.
+# settings.js sets), and the full page shows. The button's own label switches
+# between "Show the short version" and "Show the full version" without
+# aria-pressed so screen readers do not hear conflicting label + pressed states.
 # The wording is fixed; tools/check_structure.py checks it on every page.
 DETAIL_STRIP = """    <div class="detail-strip" data-detail-strip>
       <p class="detail-ask when-all">Still too much to take in?</p>
       <p class="fewer-note when-fewer">You are seeing the short version. Some details are hidden.</p>
-      <button type="button" class="button-secondary" data-toggle-details aria-pressed="false"><span class="when-all">Show the short version</span><span class="when-fewer">Show the full version</span></button>
+      <button type="button" class="button-secondary" data-toggle-details><span class="when-all">Show the short version</span><span class="when-fewer">Show the full version</span></button>
       <p class="detail-hint when-all">This hides the extra details on this page. The main points, the steps, and the links you need stay here.</p>
     </div>
 """

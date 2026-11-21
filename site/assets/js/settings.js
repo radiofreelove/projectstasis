@@ -86,16 +86,15 @@
   apply(state);
   root.setAttribute('data-js', '');
 
-  /* Make the panel and the strip show the current state. */
+  /* Make the panel show the current state. The strip button swaps its own
+     action label via data-details CSS and does not use aria-pressed so
+     screen readers do not hear both a changing label and a pressed state. */
   function reflect() {
     if (panel) {
       Object.keys(DEFAULTS).forEach(function (name) {
         var input = panel.querySelector('input[name="' + name + '"][value="' + state[name] + '"]');
         if (input) { input.checked = true; }
       });
-    }
-    if (strip) {
-      strip.setAttribute('aria-pressed', state.details === 'fewer' ? 'true' : 'false');
     }
   }
 

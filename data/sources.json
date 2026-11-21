@@ -104,11 +104,11 @@
       "url": "https://www.oregon.gov/oha/hsd/ohp/pages/federal-changes.aspx",
       "format": "Web page",
       "kind": "state-explainer",
-      "date_on_document": "Last updated Sept. 18, 2026",
-      "checked": "2026-11-10",
+      "date_on_document": "Last updated Nov. 18, 2026",
+      "checked": "2026-11-21",
       "opened": true,
       "verified_by": "human",
-      "public_note": "Look-back for applicants and renewals; 2027 self-report and 2028 proof. Did not mention the Oct. 29, 2026 court ruling when checked. Re-read on 2026-11-10: still last updated Sept. 18, 2026, with no mention of the ruling."
+      "public_note": "Look-back for applicants and renewals; 2027 self-report and 2028 proof. Re-read in full on 2026-11-21 (page shows 'Last updated Nov. 18, 2026'): still does not mention the Oct. 29, 2026 court ruling or the Nov. 13, 2026 CMS hold harmless option."
     },
     {
       "id": "S08",
@@ -273,12 +273,12 @@
       "url": "https://sharedsystems.dhsoha.state.or.us/DHSForms/Served/de5530.pdf",
       "format": "PDF",
       "kind": "state-form",
-      "date_on_document": "Not checked",
-      "checked": "2026-11-02",
-      "opened": false,
+      "date_on_document": "DHS 5530 (10/2026)",
+      "checked": "2026-11-21",
+      "opened": true,
       "verified_by": "human",
       "linked_from": "S09",
-      "public_note": "Linked instead of copying income numbers, which change. Not read. On 2026-11-14 the address gave an empty reply to three requests, so the file was not retrieved. A person needs to open it in a browser."
+      "public_note": "Opened and checked in full on 2026-11-21 (15 pages, form 100-65796_DHS 5530, 10/2026; OHP and OHP Bridge income tables on pages 14-15). Linked directly instead of copying income numbers, which change."
     },
     {
       "id": "S19",
@@ -369,12 +369,12 @@
       "url": "https://ohp.oregon.gov/HR1",
       "format": "Web page",
       "kind": "state-page",
-      "date_on_document": "Last updated Sept. 18, 2026",
-      "checked": "2026-11-14",
+      "date_on_document": "Last updated Nov. 18, 2026",
+      "checked": "2026-11-21",
       "opened": true,
       "verified_by": "human",
       "linked_from": "S01, S02, S03, S08",
-      "public_note": "OHA's official update page per its own materials. It blocked automated access on 2026-11-02. On 2026-11-14 the address answered an automated request, and the host served no robots.txt file. The address forwarded to OHA's federal changes page, the same address as S07. That page was read in full on 2026-11-14. It still says last updated Sept. 18, 2026, and does not mention the Oct. 29, 2026 court ruling. No claim cites this source; claims cite S07.",
+      "public_note": "OHA's official short address per its own materials; forwards to OHA's federal changes page (S07). That target page was re-read in full on 2026-11-21 ('Last updated Nov. 18, 2026') and does not mention the Oct. 29, 2026 court ruling or the Nov. 13, 2026 CMS hold harmless option. No claim cites this source; claims cite S07.",
       "link_check": "by hand"
     },
     {

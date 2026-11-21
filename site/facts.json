@@ -211,9 +211,10 @@
   "C-EACH-PERSON": {
     "guide": "oregon",
     "kind": "fact",
-    "statement": "OHP checks each adult on their own. One person meeting the rules does not cover everyone in the home.",
+    "statement": "OHP checks each adult on their own for work, school, and volunteer hours, though the $580 income test uses combined household income. One person meeting the hour or school rules does not cover everyone in the home.",
     "sources": [
-      "S05"
+      "S05",
+      "S27"
     ],
     "pages": [
       "rules"
@@ -618,7 +619,7 @@
   "C-COURT": {
     "guide": "oregon",
     "kind": "fact",
-    "statement": "On Oct. 29, 2026, a federal court threw out part of a federal rule that narrowed the health reason. Oregon was part of that case. As of Nov. 10, 2026, OHA's pages had not said what changes.",
+    "statement": "On Oct. 29, 2026, a federal court threw out part of a federal rule that narrowed the health reason. Oregon was part of that case. As of Nov. 21, 2026, OHA's pages had not said what changes.",
     "sources": [
       "S28",
       "S35",
@@ -628,7 +629,7 @@
       "health",
       "reasons"
     ],
-    "note": "S28 vacates the 'significantly impairs ability to comply' clause of the medically frail definition and enjoins applying it to plaintiff states. S35 confirms Oregon joined. S07 (last updated Sept. 18) does not mention the ruling; re-read on 2026-11-10, along with S01 and S03. The docket (S40) showed a judgment on Oct. 29 and no notice of appeal through its Nov. 6 entries. Review at each checkpoint; see docs/maintenance.md."
+    "note": "S28 vacates the 'significantly impairs ability to comply' clause of the medically frail definition and enjoins applying it to plaintiff states. S35 confirms Oregon joined. S07 (last updated Nov. 18, 2026, re-read in full on 2026-11-21) does not mention the ruling. Review at each checkpoint; see docs/maintenance.md."
   },
   "C-RFI-35": {
     "guide": "oregon",
@@ -761,7 +762,7 @@
   "C-HH-STATE": {
     "guide": "oregon",
     "kind": "fact",
-    "statement": "As of Nov. 14, 2026, OHA's pages about the new rules did not say what Oregon will choose.",
+    "statement": "As of Nov. 21, 2026, OHA's pages about the new rules did not say what Oregon will choose.",
     "sources": [
       "S07"
     ],
@@ -770,7 +771,7 @@
       "index",
       "rules"
     ],
-    "note": "A statement about what the pages say, not about what Oregon has decided. No election by Oregon, and no decision against one, is verified. Checked on 2026-11-14: the text of OHA's federal changes page (S07, still showing 'Last updated Sept. 18, 2026') was fetched from oregon.gov and searched for 'hold harmless', 'June 30, 2027', 'SMD', 'mitigation plan', and for any word of a pause, delay, or suspension of denials or of ending coverage under the rules; none appeared. The address ohp.oregon.gov/HR1 (S24) returned the same page that day. ODHS's partner updates page (K13) was searched the same way; none appeared. OHA's news release list loads by script and could not be read, so a news release is not ruled out. The registry 'checked' dates of those sources are unchanged, because this was a search for one subject and not a new full read. Re-check at the 2026-12-11 checkpoint in data/review.json and update the 'As of' date."
+    "note": "A statement about what OHA's pages say, not about what Oregon has decided. Re-checked on 2026-11-21 by reading the live text of OHA's federal changes page (S07, last updated Nov. 18, 2026); no mention of the Nov. 13 CMS hold harmless period appeared. Re-check at the 2026-12-11 checkpoint in data/review.json."
   },
   "C-OR-OZ": {
     "guide": "oregon",
@@ -781,7 +782,9 @@
       "S45"
     ],
     "pages": [
+      "health",
       "index",
+      "reasons",
       "rules"
     ],
     "note": "Neutral factual note on the pending federal lawsuit challenging the Medicaid work requirements in the U.S. District Court for the District of Oregon (filed Nov. 5, 2026, S44; Jan. 12, 2027 telephone oral argument before Judge Ann L. Aiken, S45). Does not predict an outcome. Checkpoint 2027-01-12 in data/review.json."
@@ -1113,7 +1116,7 @@
   "C-RETRO-2027": {
     "guide": "oregon",
     "kind": "fact",
-    "statement": "Starting Jan. 1, 2027, OHP can help with bills from 1 month before you apply for most adults ages 19 to 64, and up to 2 months for everyone else, including children, people over 65, people who are pregnant, and people with OHP based on disability.",
+    "statement": "Starting Jan. 1, 2027, OHP can help with bills from 1 month before you apply for most adults ages 19 to 64, and up to 2 months for everyone else, including children, people 65 or older, people who are pregnant, and people with OHP based on disability.",
     "sources": [
       "S01"
     ],
@@ -1775,6 +1778,7 @@
       "S27"
     ],
     "pages": [
+      "utah",
       "utah-rules"
     ],
     "note": "S27, section II.C.8: 'monthly income' is 'the same as the individual's household income used for financial eligibility'. U01 and U04 say only 'earning at least $580'. See docs/corrections.md, Utah item 2."
@@ -2216,7 +2220,7 @@
   "U-COURT": {
     "guide": "utah",
     "kind": "fact",
-    "statement": "On Oct. 29, 2026, a federal court threw out part of a federal rule that narrowed the health reason. Utah was not one of the states in that case. As of Nov. 10, 2026, Utah's pages had not said what changes.",
+    "statement": "On Oct. 29, 2026, a federal court threw out part of a federal rule that narrowed the health reason. Utah was not one of the states in that case. As of Nov. 21, 2026, Utah's pages had not said what changes.",
     "sources": [
       "S28",
       "S40",
@@ -2226,7 +2230,7 @@
       "utah-health",
       "utah-reasons"
     ],
-    "note": "S28 vacates the clause of the medically frail definition about a condition that 'significantly impairs the individual's ability to comply with the community engagement requirement'; its bar on applying the clause names the plaintiff states only. S40: the plaintiffs listed on the docket do not include Utah. U01 and U03 do not mention the ruling. The site does not say what the ruling means for Utah."
+    "note": "S28 vacates the clause of the medically frail definition about a condition that 'significantly impairs the individual's ability to comply with the community engagement requirement'; its bar on applying the clause names the plaintiff states only. S40: the plaintiffs listed on the docket do not include Utah. U01 and U02 (re-read in full on 2026-11-21) do not mention the ruling. The site does not say what the ruling means for Utah."
   },
   "U-APPLY-ONLINE": {
     "guide": "utah",
@@ -2610,7 +2614,7 @@
   "U-HH-STATE": {
     "guide": "utah",
     "kind": "fact",
-    "statement": "As of Nov. 14, 2026, Utah's pages about the new rules did not say what Utah will choose.",
+    "statement": "As of Nov. 21, 2026, Utah's pages about the new rules did not say what Utah will choose.",
     "sources": [
       "U01",
       "U02",
@@ -2621,7 +2625,7 @@
       "utah-denied",
       "utah-rules"
     ],
-    "note": "A statement about what the pages say, not about what Utah has decided. No election by Utah, and no decision against one, is verified. Checked on 2026-11-14: the text of Utah Medicaid's community engagement page (U01), its H.R. 1 page (U02), and DWS's page on Medicaid for adults (U04) was fetched from the agencies' own sites and searched for 'hold harmless', 'June 30, 2027', 'SMD', 'mitigation plan', and for any word of a pause, delay, or suspension of denials or of ending coverage under the rules; none appeared. Utah's support site home page (U24) and the medicaid.utah.gov home page were searched the same way; none appeared. Utah Medicaid's news page did not load, so a news item is not ruled out. The registry 'checked' dates of those sources are unchanged, because this was a search for one subject and not a new full read. Re-check at the 2026-12-11 checkpoint in data/review.json and update the 'As of' date."
+    "note": "A statement about what Utah's pages say, not about what Utah has decided. Re-checked on 2026-11-21 by reading the live text of Utah Medicaid's community engagement page (U01) and H.R. 1 member page (U02); no mention of the Nov. 13 CMS hold harmless period appeared. Re-check at the 2026-12-11 checkpoint in data/review.json."
   },
   "U-SEND-WAYS": {
     "guide": "utah",
@@ -3301,6 +3305,8 @@
     ],
     "pages": [
       "washington",
+      "washington-health",
+      "washington-reasons",
       "washington-rules"
     ],
     "note": "Neutral factual note on the pending federal lawsuit challenging the Medicaid work requirements in the U.S. District Court for the District of Oregon (WA14 item 85; Oregon DOJ tracker S44; Jan. 12, 2027 telephone oral argument on D. Or. calendar S45). Does not predict an outcome. Checkpoint 2027-01-12 in data/review.json."

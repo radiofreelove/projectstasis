@@ -55,8 +55,8 @@ FORBIDDEN_WORDS = ("immigra", "citizen")
 STRIP_PARTS = (
     ('<div class="detail-strip" data-detail-strip>', "the strip itself"),
     ("Still too much to take in?", "the strip's question"),
-    ('<button type="button" class="button-secondary" data-toggle-details aria-pressed="false">',
-     "the strip's button, with its state"),
+    ('<button type="button" class="button-secondary" data-toggle-details>',
+     "the strip's button"),
     ("Show the short version", "the button's words when everything shows"),
     ("This hides the extra details on this page. The main points, the steps, and the links you need stay here.",
      "the line under the button"),
