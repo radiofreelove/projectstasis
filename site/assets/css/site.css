@@ -500,6 +500,7 @@ main .wrap > * { max-width: 100%; }
   align-items: center;
   justify-content: center;
   min-height: 48px;
+  height: 100%;
   padding: 0.25rem 0.75rem;
   border: 2px solid var(--heading);
   border-radius: var(--radius);
@@ -756,19 +757,21 @@ dl.glossary dt {
 }
 dl.glossary dd { margin: 0.25rem 0 0; }
 
-/* Phone numbers stay on one line */
-.nowrap { white-space: nowrap; }
+/* Phone numbers and filenames stay on one line */
+.nowrap, a[href$=".json"] { white-space: nowrap; }
 
 /* Tags such as PDF or state site */
+.inline-tag-link { display: inline-block; }
 .tag {
-  display: inline-block;
+  display: inline;
+  white-space: nowrap;
   font-size: 0.85rem;
   font-weight: 700;
   border: 1px solid currentColor;
   border-radius: 4px;
   padding: 0 0.35rem;
-  margin-left: 0.25rem;
-  vertical-align: 0.1em;
+  margin-left: 0.2rem;
+  vertical-align: 0.08em;
 }
 
 /* Checker */
@@ -827,12 +830,31 @@ dl.glossary dd { margin: 0.25rem 0 0; }
 .log-table.form-table th { width: 45%; }
 .table-scroll { overflow-x: auto; }
 
-/* Inline source citations and automatic tool-assisted review status notice */
-.src {
-  font-size: 0.9rem;
+/* Quiet flex-wrapped sub-line for end-of-block source citations (parity with Strand) */
+.cite-row {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.35rem 0.75rem;
+  margin-top: 0.45rem;
+  font-size: 0.85rem;
+  line-height: 1.4;
+  color: var(--text);
 }
+.src, .src:visited {
+  display: inline-block;
+  max-width: 100%;
+  font-size: 0.85rem;
+  color: var(--text);
+  text-decoration: underline;
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.18em;
+  overflow-wrap: break-word;
+}
+.cite-row .src { padding-top: 0.15rem; padding-bottom: 0.15rem; }
+.src:hover { color: var(--link); text-decoration-thickness: 0.14em; }
 .src-label {
-  font-weight: 700;
+  font-weight: 600;
   white-space: nowrap;
 }
 .review-notice {
@@ -873,6 +895,7 @@ dl.glossary dd { margin: 0.25rem 0 0; }
   font-size: 0.9em;
   color: inherit;
   background: transparent;
+  white-space: nowrap;
 }
 .site-footer h2 { color: var(--footer-text); font-size: 1.15rem; margin-top: 1.5rem; }
 .footer-pages ul {
@@ -1195,6 +1218,7 @@ ol.steps-flow > li::before {
      tools/browser_check.py tests both. */
   .independent-banner { background: #ffffff; color: #000000; border-bottom: 1px solid #000000; }
   .independent-banner a { color: #000000; }
+  .cite-row { margin-top: 0.2rem; gap: 0.15rem 0.5rem; }
   .log-table { min-width: 0; }
   a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.85em; word-break: break-all; }
   .callout, .warn, .good, .promise, .review-notice, .timeline-strip, .bridge-lane, .bridge-outcome, .answer-recap, ol.steps-flow > li { border: 1px solid #000; }

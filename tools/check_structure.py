@@ -136,6 +136,8 @@ class Page(HTMLParser):
         self.script_text = []
         self.skip_link = False
         self.local_refs = []
+        self.block_stack = []
+        self.cite_row_depth = 0
 
     def handle_starttag(self, tag, attrs):
         a = dict(attrs)
@@ -158,6 +160,14 @@ class Page(HTMLParser):
         for key in a:
             if key.startswith("on"):
                 self.errors.append(f"inline event handler {key} on <{tag}>")
+        if tag in {"p", "li", "td", "dd", "div"}:
+            self.block_stack.append({"tag": tag, "after_cite_row": False})
+        if tag == "span":
+            classes = set((a.get("class") or "").split())
+            if "cite-row" in classes:
+                self.cite_row_depth = 1
+            elif self.cite_row_depth > 0:
+                self.cite_row_depth += 1
         if tag == "a":
             href = a.get("href", "")
             if "target" in a:
@@ -199,6 +209,12 @@ class Page(HTMLParser):
     def handle_endtag(self, tag):
         if tag == "title":
             self.in_title = False
+        if tag == "span" and self.cite_row_depth > 0:
+            self.cite_row_depth -= 1
+            if self.cite_row_depth == 0 and self.block_stack:
+                self.block_stack[-1]["after_cite_row"] = True
+        if tag in {"p", "li", "td", "dd", "div"} and self.block_stack and self.block_stack[-1]["tag"] == tag:
+            self.block_stack.pop()
         if tag == "label" and self.label_depth:
             self.labels.append(" ".join("".join(self.label_text).split()))
             self.label_depth -= 1
@@ -223,6 +239,13 @@ class Page(HTMLParser):
             self.button_text.append(data)
         if self.script_open:
             self.script_text.append(data)
+        if self.cite_row_depth == 0 and self.block_stack and self.block_stack[-1]["after_cite_row"]:
+            trailing = data.strip()
+            if trailing:
+                self.errors.append(
+                    f"text or punctuation after .cite-row inside <{self.block_stack[-1]['tag']}>: {trailing[:40]!r}"
+                )
+                self.block_stack[-1]["after_cite_row"] = False
 
 
 def check(path: Path, titles: dict, expect_strip: bool = True) -> list[str]:

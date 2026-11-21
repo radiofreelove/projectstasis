@@ -199,7 +199,7 @@ SECTIONS = {
         "shared_order": 60,
         "home": "washington",
         "nav": [
-            ("washington", "Washington home"), ("washington-check", "Check"),
+            ("washington", "Home"), ("washington-check", "Check"),
             ("washington-apply", "Apply"), ("washington-help", "Get help"),
         ],
         "facts_iso": "2026-11-12",
@@ -765,7 +765,18 @@ def expand_inline_sources(body: str, page, by_id, errors: list[str]) -> str:
             )
         return " ".join(chips)
 
-    return SRC_RE.sub(repl, body)
+    return group_citations(SRC_RE.sub(repl, body))
+
+
+_SRC_LINK_RE = r'<a class="src" href="[^"]+"><span class="src-label">Source:</span> [^<]+</a>'
+CITE_RUN_RE = re.compile(
+    rf'({_SRC_LINK_RE}(?:\s+{_SRC_LINK_RE})*)(?=\s*</(?:p|li|td|dd)>|\s*</span>\s*</div>)'
+)
+
+
+def group_citations(body: str) -> str:
+    """Wrap trailing inline source runs at the end of a block in a quiet flex-wrapped sub-line."""
+    return CITE_RUN_RE.sub(r'<span class="cite-row">\1</span>', body)
 
 
 def render_tool_assisted_notice() -> str:
