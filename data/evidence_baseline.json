@@ -1,6 +1,6 @@
 {
   "notes": "What each source in data/sources.json returned to tools/evidence_audit.py on its 'fetched' date. 'mode' is how it is compared: 'text' is the readable words of a web page; 'bytes' is the raw file (every PDF), so a change report for it is lower-confidence. 'sha256' and 'length' describe that content. An entry with no 'sha256' was blocked or unreachable and has no baseline yet. 'registry_checked' is the source's 'checked' date in the registry when this entry was written: the verified check this entry rests on. 'rules' is the version of the comparison rules the hash was taken under (RULES in the tool); an entry under other rules is not compared. 'carried' means the hash was re-taken from the saved text of the earlier fetch, without fetching again. 'earlier' says whether this fetch said the same as the hash it replaced; if it is different, a person reads the source before this hash is relied on. Writing a baseline is not a read of the source. Refresh an entry only on purpose, after a person has re-read the source (docs/maintenance.md).",
-  "written": "2026-11-17",
+  "written": "2026-11-21",
   "sources": [
     {
       "id": "S01",
@@ -596,6 +596,28 @@
       "sha256": "9afc56d8ba71256491e5fa0cbc5cc0bde9916b6e03c3b7918e86d721792991be",
       "length": 170600,
       "registry_checked": "2026-11-14",
+      "rules": 2
+    },
+    {
+      "id": "S42",
+      "url": "https://www.oregon.gov/oha/HSD/OHP/Documents/HR1-FAQ.pdf",
+      "fetched": "2026-11-21",
+      "state": "fetched",
+      "mode": "bytes",
+      "sha256": "86dc91396d4a523c2a3003d67d03949f3071f6aacb28fecb32b2021569f71fc9",
+      "length": 1271236,
+      "registry_checked": "2026-11-21",
+      "rules": 2
+    },
+    {
+      "id": "S43",
+      "url": "https://www.oregon.gov/oha/HSD/OHP/Announcements/HR1-Changes0426.pdf",
+      "fetched": "2026-11-21",
+      "state": "fetched",
+      "mode": "bytes",
+      "sha256": "c93a2047f9775fdd0431b99480a4985770a01cead23a8c00ca7bc3a339acef27",
+      "length": 218398,
+      "registry_checked": "2026-11-21",
       "rules": 2
     },
     {
