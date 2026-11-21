@@ -96,6 +96,7 @@ Found on **Nov. 10, 2026**. Utah's documents were read through a tool that answe
 - **U02:** "you must fulfill the community engagement requirement in at least one month since your last approval or renewal."
 - **S27 (federal rule):** the part that sets the months for enrolled people (section II.H) is beyond the first 100,000 characters that were read. Unverified.
 - **What the site does:** states only the rule for applicants, which every Utah page gives the same way (the month before you apply). It does not say how many months a current member must meet.
+- **Updated Nov. 21, 2026:** Re-verified against U01 and U02. `utah-rules.html` now explains both lookbacks: new members (the month before applying) and current members (any 1 month since the last approval or renewal; claims U-LOOKBACK-APP and U-LOOKBACK-MEMBER).
 - **Reported to Utah:** Not yet.
 
 ### 2. Whose income counts toward $580
@@ -261,4 +262,4 @@ These 12 points come from the research dossier the Washington guide was built fr
 
 ### Left out on purpose
 
-- **How Washington checks medical frailty.** Secondary sources describe a screening question in Washington Healthplanfinder, self-attestation through 2027, and a state records check with a 12-month look-back from January 2028. HCA's memo (WA21) has not been opened. The dossier's claim WA-HLT-05 is marked "pending, do not publish", so it is in neither the fact log nor any page. The Washington health page says plainly that this part is missing.
+- **How Washington checks medical frailty.** Previously left out pending review of WA21. **Updated Nov. 21, 2026:** Verified from WA21 and WA22; `washington-health.html` now explains medically frail self-attestation through 2027 and verification starting Jan. 1, 2028 when state records cannot confirm it (claim WA-HLT-05).

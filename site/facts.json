@@ -384,6 +384,19 @@
       "reasons"
     ]
   },
+  "C-EX-CARE-HOURS": {
+    "guide": "oregon",
+    "kind": "fact",
+    "statement": "OHA distinguishes household or family caregiving from non-household caregiving: caring for a family member or someone who lives in your household counts without an 80-hour minimum, while caring for an unrelated person outside your household requires at least 80 hours a month.",
+    "sources": [
+      "S03",
+      "S42"
+    ],
+    "pages": [
+      "reasons"
+    ],
+    "note": "Verified Nov. 2026 from OHA's H.R. 1 FAQ (S42)."
+  },
   "C-EX-HEALTH": {
     "guide": "oregon",
     "kind": "fact",
@@ -476,13 +489,16 @@
   "C-EX-SUD": {
     "guide": "oregon",
     "kind": "fact",
-    "statement": "You are in drug or alcohol treatment, or you were in the last 5 years. Starting in 2028, OHP may ask for a paper that shows treatment dates.",
+    "statement": "You are in drug or alcohol treatment, or you are in stable recovery from a substance use disorder (within 5 years of treatment). Starting in 2028, OHP may ask for a paper that shows treatment dates.",
     "sources": [
-      "S03"
+      "S03",
+      "S42"
     ],
     "pages": [
+      "health",
       "reasons"
-    ]
+    ],
+    "note": "Verified Nov. 2026 from OHA's H.R. 1 FAQ (S42): includes the 5-year stable recovery substance use disorder exception."
   },
   "C-EX-AIAN": {
     "guide": "oregon",
@@ -663,6 +679,18 @@
     "pages": [
       "letter"
     ]
+  },
+  "C-DEC-NOTICES": {
+    "guide": "oregon",
+    "kind": "fact",
+    "statement": "OHP plans to send outreach notices to members in December 2026 explaining how the 2027 work or activity rules may apply to them.",
+    "sources": [
+      "S42"
+    ],
+    "pages": [
+      "letter"
+    ],
+    "note": "Verified Nov. 2026 from OHA's H.R. 1 FAQ (S42)."
   },
   "C-NO-PROOF-DENY": {
     "guide": "oregon",
@@ -1121,15 +1149,16 @@
   "C-HO-OPENCARD": {
     "guide": "oregon",
     "kind": "fact",
-    "statement": "Starting in January 2027, Healthier Oregon members move to OHP Open Card. Benefits stay the same. Your doctors may change.",
+    "statement": "On Jan. 1, 2027, Healthier Oregon members move from a coordinated care organization (CCO) to OHP Open Card. Full OHP benefits stay the same. Your doctors may change.",
     "sources": [
       "S01",
-      "S06"
+      "S06",
+      "S43"
     ],
     "pages": [
       "immigration"
     ],
-    "note": "S11 notes some CCO-only extras, like flexible services, are not part of Open Card."
+    "note": "S11 notes some CCO-only extras, like flexible services, are not part of Open Card. S43 (April 2026 announcement) confirms the Jan. 1, 2027 CCO-to-OHP Open Card transition."
   },
   "C-OPENCARD-FIND": {
     "guide": "oregon",
@@ -1624,7 +1653,20 @@
       "utah-rules",
       "utah-words"
     ],
-    "note": "U01 and U04: 'New members - We look at your activities the month before you applied.' Utah's pages describe the look-back for current members in different ways; see docs/corrections.md, Utah item 1."
+    "note": "U01 and U04: 'New members - We look at your activities the month before you applied.' For current members, see U-LOOKBACK-MEMBER."
+  },
+  "U-LOOKBACK-MEMBER": {
+    "guide": "utah",
+    "kind": "fact",
+    "statement": "For current members, the state looks at the time since your last approval or renewal. You must meet the rules in any 1 month during that time.",
+    "sources": [
+      "U01",
+      "U02"
+    ],
+    "pages": [
+      "utah-rules"
+    ],
+    "note": "Verified Nov. 2026 on Utah Medicaid's community engagement page (U01) and H.R. 1 page (U02)."
   },
   "U-DATA-FIRST": {
     "guide": "utah",
@@ -2358,6 +2400,18 @@
       "utah-help"
     ],
     "note": "See docs/corrections.md, Utah item 5."
+  },
+  "U-HUB-PAGE": {
+    "guide": "utah",
+    "kind": "fact",
+    "statement": "Utah Medicaid posts its official H.R. 1 letters, guides, and toolkits at obbba.medicaid.utah.gov.",
+    "sources": [
+      "U02"
+    ],
+    "pages": [
+      "utah-help"
+    ],
+    "note": "Verified Nov. 2026."
   },
   "U-HELP-TCU": {
     "guide": "utah",
@@ -3239,7 +3293,7 @@
   "WA-CHK-02": {
     "guide": "washington",
     "kind": "fact",
-    "statement": "A person may meet the rule with at least $580 in monthly household income.",
+    "statement": "A person may meet the rule with at least $580 in monthly household MAGI income. It counts everyone in the household together and does not have to come from a job.",
     "sources": [
       "WA05",
       "WA22"
@@ -3248,7 +3302,7 @@
       "washington",
       "washington-rules"
     ],
-    "note": "WA22 (read in full on 2026-11-13) says the $580 is monthly household MAGI income, and that it does not have to come from a job. The rules page and the check now say so (docs/corrections.md, Washington item 8)."
+    "note": "WA22 (read in full on 2026-11-13, re-verified Nov. 2026) says the $580 is monthly household MAGI income, and that it does not have to come from a job. The rules page and the check say so (docs/corrections.md, Washington item 8)."
   },
   "WA-CHK-03": {
     "guide": "washington",
@@ -3294,7 +3348,7 @@
   "WA-CHK-06": {
     "guide": "washington",
     "kind": "fact",
-    "statement": "A person may meet the rule by working at least 80 hours a month, for money, for goods or services, or unpaid.",
+    "statement": "A person may meet the rule by working at least 80 hours a month, including paid work, self-employment, in-kind work (paid in goods, housing, or services), or unpaid work.",
     "sources": [
       "WA22"
     ],
@@ -3302,7 +3356,19 @@
       "washington-check",
       "washington-rules"
     ],
-    "note": "WA22's detail section gives the three kinds of work and two examples (a property manager paid in reduced rent; a self-employed person). Added Nov. 14, 2026 on the owner's ruling that WA22 may be cited (docs/corrections.md, Washington item 2)."
+    "note": "WA22's detail section gives the kinds of work and examples (such as a property manager paid in reduced rent, or a self-employed person). Added Nov. 14, 2026 on the owner's ruling that WA22 may be cited (docs/corrections.md, Washington item 2) and re-verified Nov. 2026."
+  },
+  "WA-CHK-07": {
+    "guide": "washington",
+    "kind": "fact",
+    "statement": "The Health Care Authority (HCA) provides an official H.R. 1 work requirements screener on its Apple Health work requirements page.",
+    "sources": [
+      "WA22"
+    ],
+    "pages": [
+      "washington-check"
+    ],
+    "note": "Verified Nov. 2026 on WA22."
   },
   "WA-RULE-01": {
     "guide": "washington",
@@ -3404,6 +3470,19 @@
       "washington-reasons"
     ],
     "note": "WA24 was read in full on 2026-11-13 and confirms this as written. It stays on the reasons page as one line: federal law also names an 8 percent unemployment test, which HCA's page does not mention. The hardships HCA names for Washington are claims WA-HARD-01 and WA-HARD-02 (docs/corrections.md, Washington item 7)."
+  },
+  "WA-RULE-10": {
+    "guide": "washington",
+    "kind": "fact",
+    "statement": "When mixing school credits with other activities, HCA converts 1 to 6 credit hours into monthly hours: 1 credit = 13 hours, 2 credits = 26 hours, 3 credits = 39 hours, 4 credits = 52 hours, 5 credits = 66 hours, and 6 credits = 78 hours.",
+    "sources": [
+      "WA22",
+      "S27"
+    ],
+    "pages": [
+      "washington-rules"
+    ],
+    "note": "Verified Nov. 2026 from HCA's work requirements page (WA22) and the federal rule (S27)."
   },
   "WA-HARD-01": {
     "guide": "washington",
@@ -3547,7 +3626,7 @@
       "washington",
       "washington-reasons"
     ],
-    "note": "WA21 was read in full on 2026-11-13. How Washington checks medical frailty stays off the pages until the owner rules."
+    "note": "See WA-HLT-05 for self-attestation through 2027 and verification starting Jan. 2028."
   },
   "WA-RSN-11": {
     "guide": "washington",
@@ -3903,6 +3982,19 @@
       "washington-health"
     ],
     "note": "WA14 was read in full on 2026-11-13 and confirms that Washington joined the case (item 62). The order is S28."
+  },
+  "WA-HLT-05": {
+    "guide": "washington",
+    "kind": "fact",
+    "statement": "Through 2027, Washington accepts your own statement (self-attestation) that you are medically frail. Starting Jan. 1, 2028, HCA may ask for proof (verification) when state records cannot confirm it.",
+    "sources": [
+      "WA21",
+      "WA22"
+    ],
+    "pages": [
+      "washington-health"
+    ],
+    "note": "Verified Nov. 2026 from HCA's medically frail provider memo (WA21) and work requirements page (WA22)."
   },
   "WA-IMM-01": {
     "guide": "washington",

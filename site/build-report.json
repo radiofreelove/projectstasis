@@ -1,8 +1,8 @@
 {
   "version": "0.3.15 beta",
-  "build_hash": "6b3b67b6",
-  "inputs_sha256": "6b3b67b696fe2efc58fb9fa432bc0de3f0015bcbb45dbb2a1ee15624a6e687ac",
-  "latest_checked": "2026-11-14",
+  "build_hash": "b8a7a33f",
+  "inputs_sha256": "b8a7a33ff7939b67ebca9213058ea775b3bd8c19eda9317bcf4db685b9da34a9",
+  "latest_checked": "2026-11-21",
   "public_url": "https://projectstasis.pages.dev/",
   "repo_url": "https://github.com/radiofreelove/projectstasis",
   "pages": [
@@ -128,7 +128,8 @@
         "S19",
         "S28",
         "S35",
-        "S07"
+        "S07",
+        "S42"
       ],
       "facts": [
         "C-TIERS",
@@ -151,6 +152,7 @@
         "C-EX-VET",
         "C-EX-CHILD",
         "C-EX-CARE",
+        "C-EX-CARE-HOURS",
         "C-EX-SUD",
         "C-EX-HOSP",
         "C-EX-TRAVEL",
@@ -158,7 +160,7 @@
         "C-TELL-HOW",
         "C-COURT"
       ],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": []
     },
     {
@@ -210,9 +212,11 @@
         "S19",
         "S16",
         "S03",
-        "S06"
+        "S06",
+        "S42"
       ],
       "facts": [
+        "C-DEC-NOTICES",
         "C-RFI-35",
         "C-RFI-REMIND",
         "C-REPORT-WAYS",
@@ -224,7 +228,7 @@
         "C-NO-PROOF-DENY",
         "C-REAPPLY"
       ],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": []
     },
     {
@@ -285,7 +289,8 @@
         "S29",
         "S35",
         "S07",
-        "S26"
+        "S26",
+        "S42"
       ],
       "facts": [
         "C-EX-HEALTH",
@@ -293,11 +298,12 @@
         "C-HEALTH-RECORDS",
         "C-HEALTH-MANY",
         "C-HEALTH-EXAMPLES",
+        "C-EX-SUD",
         "C-HEALTH-WHO",
         "C-COURT",
         "C-ADRC"
       ],
-      "checked": "2026-11-10",
+      "checked": "2026-11-21",
       "tool_assisted_sources": []
     },
     {
@@ -312,7 +318,8 @@
         "S12",
         "S36",
         "S37",
-        "S38"
+        "S38",
+        "S43"
       ],
       "facts": [
         "C-HO-FULL",
@@ -323,7 +330,7 @@
         "C-PUBLIC-CHARGE",
         "C-IMM-LAWYER"
       ],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": []
     },
     {
@@ -478,7 +485,7 @@
       "section": "oregon",
       "sources": [],
       "facts": [],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": []
     },
     {
@@ -524,7 +531,7 @@
         "U-TELL-HOW",
         "U-REAPPLY"
       ],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "U01",
         "U02",
@@ -555,7 +562,7 @@
         "C-NO-IMM-Q",
         "U-ONLY-STATE"
       ],
-      "checked": "2026-11-10",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "U01",
         "U03",
@@ -587,6 +594,7 @@
         "U-START-APP",
         "U-START-MEMBER",
         "U-LOOKBACK-APP",
+        "U-LOOKBACK-MEMBER",
         "U-SIX-MONTH",
         "U-HH-OPTION",
         "U-HH-START",
@@ -607,7 +615,7 @@
         "U-PROOF-6MO",
         "U-VERIFY-30"
       ],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "U01",
         "U02",
@@ -666,7 +674,7 @@
         "U-742-NOLINK",
         "U-COURT"
       ],
-      "checked": "2026-11-10",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "U01",
         "U02",
@@ -721,7 +729,7 @@
         "U-ESI",
         "U-CONTACT"
       ],
-      "checked": "2026-11-13",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "U01",
         "U03",
@@ -767,7 +775,7 @@
         "U-CONTACT",
         "U-REAPPLY"
       ],
-      "checked": "2026-11-10",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "U02",
         "U03",
@@ -821,7 +829,7 @@
         "U-OTHER-CARE",
         "U-EMERGENCY"
       ],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "U01",
         "U02",
@@ -857,7 +865,7 @@
         "U-RETRO-TIP",
         "U-DWS-PHONE"
       ],
-      "checked": "2026-11-10",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "U01",
         "U02",
@@ -889,7 +897,7 @@
         "U-COURT",
         "U-DWS-PHONE"
       ],
-      "checked": "2026-11-10",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "U01",
         "U03",
@@ -919,7 +927,7 @@
         "U-EMERGENCY-BIRTH",
         "U-IMM-LAWYER"
       ],
-      "checked": "2026-11-10",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "U02",
         "U09",
@@ -956,6 +964,7 @@
         "U-LANG",
         "U-DWS-PHONE",
         "U-APPLY-INPERSON",
+        "U-HUB-PAGE",
         "U-FORMATS",
         "U-DWS-SLC",
         "U-HPR-PHONE",
@@ -966,7 +975,7 @@
         "U-HEARING-PHONE",
         "U-LETTER-KEY"
       ],
-      "checked": "2026-11-13",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "U01",
         "U02",
@@ -1022,7 +1031,7 @@
         "U-W-TAM",
         "U-START"
       ],
-      "checked": "2026-11-10",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "U01",
         "U02",
@@ -1059,7 +1068,7 @@
         "U-MEET-HOURS",
         "U-ACTIVITY-DEFS"
       ],
-      "checked": "2026-11-10",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "U01",
         "U02",
@@ -1088,7 +1097,7 @@
         "C-LINKCHECK",
         "C-FACT-LOG"
       ],
-      "checked": "2026-11-10",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "U01",
         "U02",
@@ -1145,7 +1154,7 @@
       "facts": [
         "U-NEW-GUIDE"
       ],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": []
     },
     {
@@ -1188,7 +1197,7 @@
         "WA-RULE-05",
         "WA-HOME-06"
       ],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "WA01",
         "WA03",
@@ -1216,10 +1225,11 @@
         "C-PRIV-NOSEND",
         "C-NO-IMM-Q",
         "WA-HOME-06",
+        "WA-CHK-07",
         "WA-CHK-04",
         "WA-CHK-06"
       ],
-      "checked": "2026-11-13",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "WA04",
         "WA05",
@@ -1261,10 +1271,11 @@
         "WA-RULE-03",
         "WA-CHK-04",
         "WA-RULE-04",
+        "WA-RULE-10",
         "WA-RULE-05",
         "WA-HOME-03"
       ],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "WA01",
         "WA03",
@@ -1307,14 +1318,14 @@
         "WA-RSN-12",
         "WA-RSN-13",
         "WA-RSN-16",
-        "WA-HARD-01",
         "WA-HARD-02",
+        "WA-HARD-01",
         "WA-RULE-09",
         "WA-RSN-14",
         "WA-APP-07",
         "WA-RSN-15"
       ],
-      "checked": "2026-11-13",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "WA04",
         "WA05",
@@ -1457,22 +1468,27 @@
         "WA05",
         "WA07",
         "WA14",
+        "WA21",
+        "WA22",
         "S27",
         "S28",
         "S29"
       ],
       "facts": [
         "WA-HLT-01",
+        "WA-HLT-05",
         "WA-HLT-02",
         "WA-HLT-04",
         "WA-HLT-03",
         "WA-APP-07"
       ],
-      "checked": "2026-11-13",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "WA05",
         "WA07",
-        "WA14"
+        "WA14",
+        "WA21",
+        "WA22"
       ]
     },
     {
@@ -1565,7 +1581,7 @@
         "WA-APP-01",
         "WA-HOME-02"
       ],
-      "checked": "2026-11-13",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "WA01",
         "WA03",
@@ -1594,7 +1610,7 @@
         "WA-LOG-02",
         "WA-RULE-02"
       ],
-      "checked": "2026-11-13",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "WA05",
         "WA13",
@@ -1668,7 +1684,7 @@
       "section": "washington",
       "sources": [],
       "facts": [],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": []
     },
     {
@@ -1680,8 +1696,8 @@
       "tool_assisted_sources": []
     }
   ],
-  "source_count": 120,
-  "fact_count": 330,
+  "source_count": 122,
+  "fact_count": 337,
   "tool_assisted_source_count": 67,
   "warnings": [],
   "clean_urls": true
