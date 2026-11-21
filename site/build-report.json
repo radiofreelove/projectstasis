@@ -1,0 +1,1688 @@
+{
+  "version": "0.3.15 beta",
+  "build_hash": "2baedf33",
+  "inputs_sha256": "2baedf3301a133647eb3f8fca0b947cec86d9f744bb0cda145ef422dd65fda03",
+  "latest_checked": "2026-11-14",
+  "public_url": "https://projectstasis.pages.dev/",
+  "repo_url": "https://github.com/radiofreelove/projectstasis",
+  "pages": [
+    {
+      "slug": "index",
+      "section": "oregon",
+      "sources": [
+        "S07",
+        "S01",
+        "S06",
+        "S04",
+        "S27",
+        "S05",
+        "S02",
+        "S03",
+        "S08",
+        "S41"
+      ],
+      "facts": [
+        "C-STATE-DOCS",
+        "C-HH-START",
+        "C-HH-OPTION",
+        "C-HH-LIMIT",
+        "C-HH-STATE",
+        "C-RETRO-NOW",
+        "C-RETRO-2027",
+        "C-START",
+        "C-MANY-OK",
+        "C-LOOKBACK-APP",
+        "C-DATA-FIRST",
+        "C-MEET-INCOME",
+        "C-MEET-SCHOOL",
+        "C-MEET-HOURS",
+        "C-EX-PREG",
+        "C-EX-CHILD",
+        "C-EX-CARE",
+        "C-EX-HEALTH",
+        "C-EX-AIAN",
+        "C-EX-FOSTER",
+        "C-TIERS",
+        "C-ANSWER-QS",
+        "C-TELL-REASON",
+        "C-REAPPLY"
+      ],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "check",
+      "section": "oregon",
+      "sources": [
+        "S02",
+        "S03",
+        "S01",
+        "S05",
+        "S04",
+        "S27"
+      ],
+      "facts": [
+        "C-PRIV-NOSEND",
+        "C-NO-IMM-Q",
+        "C-ONLY-OHP"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "rules",
+      "section": "oregon",
+      "sources": [
+        "S01",
+        "S02",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S07",
+        "S08",
+        "S23",
+        "S27",
+        "S41"
+      ],
+      "facts": [
+        "C-START",
+        "C-WHO-AGE",
+        "C-NA-PROGRAM",
+        "C-NA-MEDICARE",
+        "C-HO-RULES",
+        "C-LOOKBACK-APP",
+        "C-MANY-OK",
+        "C-HH-OPTION",
+        "C-HH-START",
+        "C-HH-LIMIT",
+        "C-HH-HOW",
+        "C-HH-STATE",
+        "C-MEET-INCOME",
+        "C-INCOME-WEEK",
+        "C-INCOME-HOUSEHOLD",
+        "C-INCOME-WHY",
+        "C-MEET-SCHOOL",
+        "C-SCHOOL-WHO",
+        "C-MEET-HOURS",
+        "C-HOURS-WEEK",
+        "C-WORK-KINDS",
+        "C-VOLUNTEER",
+        "C-FIND-ACTIVITIES",
+        "C-EACH-PERSON",
+        "C-NO-MONTHLY",
+        "C-DATA-FIRST"
+      ],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "reasons",
+      "section": "oregon",
+      "sources": [
+        "S02",
+        "S03",
+        "S01",
+        "S05",
+        "S08",
+        "S19",
+        "S28",
+        "S35",
+        "S07"
+      ],
+      "facts": [
+        "C-TIERS",
+        "C-HEALTH-2027",
+        "C-2028-PROOF",
+        "C-TELL-REASON",
+        "C-WHO-AGE",
+        "C-NA-PROGRAM",
+        "C-NA-MEDICARE",
+        "C-EX-SNAP",
+        "C-EX-TANF",
+        "C-EX-FOSTER",
+        "C-EX-OTHERPROG",
+        "C-EX-COUNTY",
+        "C-EX-AIAN",
+        "C-EX-PREG",
+        "C-EX-JAIL",
+        "C-EX-HEALTH",
+        "C-EX-SSI",
+        "C-EX-VET",
+        "C-EX-CHILD",
+        "C-EX-CARE",
+        "C-EX-SUD",
+        "C-EX-HOSP",
+        "C-EX-TRAVEL",
+        "C-ANSWER-QS",
+        "C-TELL-HOW",
+        "C-COURT"
+      ],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "apply",
+      "section": "oregon",
+      "sources": [
+        "S09",
+        "S11",
+        "S03",
+        "S19",
+        "S15",
+        "S16",
+        "S17",
+        "S10",
+        "S04",
+        "S05",
+        "S13",
+        "S18",
+        "S20"
+      ],
+      "facts": [
+        "C-APPLY-ONLINE",
+        "C-APPLY-PAPER",
+        "C-APPLY-INPERSON",
+        "C-APPLY-PHONE",
+        "C-HELP-FREE",
+        "C-ONE-ADDR",
+        "C-TECH",
+        "C-LANGLINES",
+        "C-7210-NOQS",
+        "C-READY",
+        "C-READY-RULES",
+        "C-DATA-FIRST",
+        "C-NOE",
+        "C-RFI-35",
+        "C-INCOME-CHART",
+        "C-BRIDGE",
+        "C-MARKETPLACE"
+      ],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "letter",
+      "section": "oregon",
+      "sources": [
+        "S04",
+        "S08",
+        "S19",
+        "S16",
+        "S03",
+        "S06"
+      ],
+      "facts": [
+        "C-RFI-35",
+        "C-RFI-REMIND",
+        "C-REPORT-WAYS",
+        "C-NOE",
+        "C-NOS",
+        "C-TIP-COPY",
+        "C-TIP-CASE",
+        "C-TIP-EARLY",
+        "C-NO-PROOF-DENY",
+        "C-REAPPLY"
+      ],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "denied",
+      "section": "oregon",
+      "sources": [
+        "S04",
+        "S06",
+        "S14",
+        "S25",
+        "S26",
+        "S26B",
+        "S20",
+        "S21",
+        "S07",
+        "S41"
+      ],
+      "facts": [
+        "C-REAPPLY",
+        "C-HEARING",
+        "C-HEARING-CONT",
+        "C-LEGAL",
+        "C-HH-OPTION",
+        "C-HH-LIMIT",
+        "C-HH-STATE",
+        "C-DRO",
+        "C-MARKETPLACE",
+        "C-MKT-LIMIT",
+        "C-FQHC",
+        "C-HOSP-AID"
+      ],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "bills",
+      "section": "oregon",
+      "sources": [
+        "S01"
+      ],
+      "facts": [
+        "C-RETRO-NOW",
+        "C-RETRO-2027",
+        "C-RETRO-NAME",
+        "C-RETRO-TIP"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "health",
+      "section": "oregon",
+      "sources": [
+        "S01",
+        "S03",
+        "S08",
+        "S28",
+        "S29",
+        "S35",
+        "S07",
+        "S26"
+      ],
+      "facts": [
+        "C-EX-HEALTH",
+        "C-HEALTH-2027",
+        "C-HEALTH-RECORDS",
+        "C-HEALTH-MANY",
+        "C-HEALTH-EXAMPLES",
+        "C-HEALTH-WHO",
+        "C-COURT",
+        "C-ADRC"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "immigration",
+      "section": "oregon",
+      "sources": [
+        "S11",
+        "S05",
+        "S06",
+        "S01",
+        "S22",
+        "S12",
+        "S36",
+        "S37",
+        "S38"
+      ],
+      "facts": [
+        "C-HO-FULL",
+        "C-HO-RULES",
+        "C-HO-OPENCARD",
+        "C-NO-IMM-Q",
+        "C-OPENCARD-FIND",
+        "C-PUBLIC-CHARGE",
+        "C-IMM-LAWYER"
+      ],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "help",
+      "section": "oregon",
+      "sources": [
+        "S09",
+        "S02",
+        "S15",
+        "S16",
+        "S17",
+        "S25",
+        "S26",
+        "S04",
+        "S20",
+        "S10"
+      ],
+      "facts": [
+        "C-HELP-FREE",
+        "C-APPLY-PAPER",
+        "C-LANGLINES",
+        "C-APPLY-PHONE",
+        "C-APPLY-INPERSON",
+        "C-FORMATS",
+        "C-TECH",
+        "C-LEGAL",
+        "C-ADRC",
+        "C-MARKETPLACE"
+      ],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "words",
+      "section": "oregon",
+      "sources": [
+        "S01",
+        "S03",
+        "S04",
+        "S05",
+        "S06",
+        "S09",
+        "S11",
+        "S13",
+        "S27",
+        "S29"
+      ],
+      "facts": [
+        "C-W-CCO",
+        "C-W-CE",
+        "C-HELP-FREE",
+        "C-W-EXEMPTION",
+        "C-SCHOOL-WHO",
+        "C-HO-FULL",
+        "C-HEARING",
+        "C-INCOME-HOUSEHOLD",
+        "C-W-MARKETPLACE",
+        "C-W-FRAIL",
+        "C-NOE",
+        "C-BRIDGE",
+        "C-APPLY-ONLINE",
+        "C-W-OPENCARD",
+        "C-W-RENEWAL",
+        "C-RFI-35",
+        "C-RETRO-NAME",
+        "C-START"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "log",
+      "section": "oregon",
+      "sources": [
+        "S04",
+        "S07",
+        "S05",
+        "S27",
+        "S03",
+        "S01"
+      ],
+      "facts": [
+        "C-NOT-FORM",
+        "C-PROOF-OHP",
+        "C-LOOKBACK-APP",
+        "C-MEET-HOURS",
+        "C-VOLUNTEER"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "about",
+      "section": "oregon",
+      "sources": [
+        "S07",
+        "S30",
+        "S02"
+      ],
+      "facts": [
+        "C-STATE-DOCS",
+        "C-OHP-PEOPLE",
+        "C-DIFFER",
+        "C-NOT-STATE",
+        "C-ONLY-OHP",
+        "C-LINK-OUT",
+        "C-LINKCHECK",
+        "C-FACT-LOG"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "privacy",
+      "section": "oregon",
+      "sources": [
+        "S34"
+      ],
+      "facts": [
+        "C-PRIV-NONE",
+        "C-PRIV-NOSEND",
+        "C-PRIV-SETTINGS",
+        "C-PRIV-HOST",
+        "C-PRIV-CSP",
+        "C-PRIV-NOREF",
+        "C-NO-IMM-Q",
+        "C-PRIV-NOFONTS"
+      ],
+      "checked": "2026-11-03",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "accessibility",
+      "section": "oregon",
+      "sources": [
+        "S33",
+        "S32",
+        "S31"
+      ],
+      "facts": [
+        "C-A11Y-TARGET",
+        "C-A11Y-COGA",
+        "C-A11Y-SETTINGS",
+        "C-A11Y-TESTED",
+        "C-COLORS"
+      ],
+      "checked": "2026-11-02",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "sources",
+      "section": "oregon",
+      "sources": [],
+      "facts": [],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "utah",
+      "section": "utah",
+      "sources": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U21",
+        "U28",
+        "S27",
+        "S41"
+      ],
+      "facts": [
+        "U-STATE-DOCS",
+        "U-HH-START",
+        "U-HH-OPTION",
+        "U-HH-LIMIT",
+        "U-HH-STATE",
+        "U-RETRO-NOW",
+        "U-RETRO-2027",
+        "U-START",
+        "U-WHO-PROGRAMS",
+        "U-W-CE",
+        "U-LOOKBACK-APP",
+        "U-DATA-FIRST",
+        "U-MEET-INCOME",
+        "U-MEET-SCHOOL",
+        "U-MEET-HOURS",
+        "U-EX-PREG",
+        "U-EX-CARE",
+        "U-EX-FRAIL",
+        "U-EX-AIAN",
+        "U-EX-FOSTER",
+        "U-EXC-WORDS",
+        "U-TELL-HOW",
+        "U-REAPPLY"
+      ],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U21",
+        "U28"
+      ]
+    },
+    {
+      "slug": "utah-check",
+      "section": "utah",
+      "sources": [
+        "U01",
+        "U03",
+        "U04",
+        "U05",
+        "U28",
+        "S27"
+      ],
+      "facts": [
+        "C-PRIV-NOSEND",
+        "C-NO-IMM-Q",
+        "U-ONLY-STATE"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": [
+        "U01",
+        "U03",
+        "U04",
+        "U05",
+        "U28"
+      ]
+    },
+    {
+      "slug": "utah-rules",
+      "section": "utah",
+      "sources": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U13",
+        "S27",
+        "S41"
+      ],
+      "facts": [
+        "U-START",
+        "U-WHO-PROGRAMS",
+        "U-START-APP",
+        "U-START-MEMBER",
+        "U-LOOKBACK-APP",
+        "U-SIX-MONTH",
+        "U-HH-OPTION",
+        "U-HH-START",
+        "U-HH-LIMIT",
+        "U-HH-HOW",
+        "U-HH-STATE",
+        "U-MEET-INCOME",
+        "U-INCOME-WEEK",
+        "U-INCOME-WHOSE",
+        "U-INCOME-SEASONAL",
+        "U-INCOME-WHY",
+        "U-MEET-SCHOOL",
+        "U-SCHOOL-WHO",
+        "U-MEET-HOURS",
+        "U-HOURS-WEEK",
+        "U-ACTIVITY-DEFS",
+        "U-DATA-FIRST",
+        "U-PROOF-6MO",
+        "U-VERIFY-30"
+      ],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U07",
+        "U08",
+        "U09",
+        "U10",
+        "U13"
+      ]
+    },
+    {
+      "slug": "utah-reasons",
+      "section": "utah",
+      "sources": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U07",
+        "U13",
+        "U28",
+        "S28",
+        "S40"
+      ],
+      "facts": [
+        "U-EXC-WORDS",
+        "U-EXC-WHEN",
+        "U-EXC-REQUEST",
+        "U-AIAN-PROOF",
+        "U-NA-AGE",
+        "U-NA-MEDICARE",
+        "U-NA-GROUP",
+        "U-WHO-PROGRAMS",
+        "U-EX-PREG",
+        "U-EX-CARE",
+        "U-EX-FRAIL",
+        "U-EX-SUD",
+        "U-EX-AIAN",
+        "U-EX-FOSTER",
+        "U-EX-VET",
+        "U-EX-SNAP",
+        "U-EX-JAIL",
+        "U-HARDSHIP",
+        "U-HARD-HOSP",
+        "U-HARD-TRAVEL",
+        "U-HARD-COUNTY",
+        "U-AIAN-12",
+        "U-AIAN-UNVERIFIED",
+        "U-AIAN-DOCS",
+        "U-DATA-FIRST",
+        "U-TELL-HOW",
+        "U-742-NOLINK",
+        "U-COURT"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U07",
+        "U13",
+        "U28"
+      ]
+    },
+    {
+      "slug": "utah-apply",
+      "section": "utah",
+      "sources": [
+        "U01",
+        "U03",
+        "U04",
+        "U05",
+        "U07",
+        "U08",
+        "U14",
+        "U15",
+        "U15S",
+        "U16",
+        "U22",
+        "U23",
+        "U25",
+        "U28",
+        "U31"
+      ],
+      "facts": [
+        "U-APPLY-ONLINE",
+        "U-APPLY-PAPER",
+        "U-APPLY-INPERSON",
+        "U-DWS-PHONE",
+        "U-HELP-TCU",
+        "U-W-DWS",
+        "U-APPLY-MAIL",
+        "U-FAX-DIFFER",
+        "U-APPLY-CALL",
+        "U-61MED-NOQS",
+        "U-OFFICE-HOURS",
+        "U-READY",
+        "U-READY-10",
+        "U-READY-RULES",
+        "U-DATA-FIRST",
+        "U-VERIFY-30",
+        "U-DECIDE-30",
+        "U-LANG",
+        "U-INCOME-TABLE",
+        "U-ESI",
+        "U-CONTACT"
+      ],
+      "checked": "2026-11-13",
+      "tool_assisted_sources": [
+        "U01",
+        "U03",
+        "U04",
+        "U05",
+        "U07",
+        "U08",
+        "U14",
+        "U15",
+        "U15S",
+        "U16",
+        "U22",
+        "U23",
+        "U25",
+        "U28",
+        "U31"
+      ]
+    },
+    {
+      "slug": "utah-letter",
+      "section": "utah",
+      "sources": [
+        "U02",
+        "U03",
+        "U04",
+        "U06",
+        "U07",
+        "U21",
+        "U28",
+        "U29",
+        "S27"
+      ],
+      "facts": [
+        "U-LETTER-DWS",
+        "U-VERIFY-30",
+        "U-LOSE-FORMS",
+        "U-SEND-WAYS",
+        "U-LETTER-KEY",
+        "U-LETTER-GREEN",
+        "U-TIP-CASE",
+        "C-TIP-COPY",
+        "C-TIP-EARLY",
+        "U-CONTACT",
+        "U-REAPPLY"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": [
+        "U02",
+        "U03",
+        "U04",
+        "U06",
+        "U07",
+        "U21",
+        "U28",
+        "U29"
+      ]
+    },
+    {
+      "slug": "utah-denied",
+      "section": "utah",
+      "sources": [
+        "U01",
+        "U02",
+        "U04",
+        "U05",
+        "U08",
+        "U14",
+        "U17",
+        "U18",
+        "U19",
+        "U19S",
+        "U20",
+        "U21",
+        "U22",
+        "U23",
+        "U37",
+        "S27",
+        "S41"
+      ],
+      "facts": [
+        "U-REAPPLY",
+        "U-HEARING-90",
+        "U-HEARING-15",
+        "U-LEGAL",
+        "U-HH-OPTION",
+        "U-HH-LIMIT",
+        "U-HH-STATE",
+        "U-LOOKBACK-APP",
+        "U-W-HEARING",
+        "U-HEARING-WHO",
+        "U-HEARING-PHONE",
+        "U-HEARING-REP",
+        "U-HEARING-HOW",
+        "U-HEARING-NOMYCASE",
+        "U-HELP-TCU",
+        "U-MARKETPLACE",
+        "U-OTHER-CARE",
+        "U-EMERGENCY"
+      ],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": [
+        "U01",
+        "U02",
+        "U04",
+        "U05",
+        "U08",
+        "U14",
+        "U17",
+        "U18",
+        "U19",
+        "U19S",
+        "U20",
+        "U21",
+        "U22",
+        "U23",
+        "U37"
+      ]
+    },
+    {
+      "slug": "utah-bills",
+      "section": "utah",
+      "sources": [
+        "U01",
+        "U02",
+        "U08",
+        "U09"
+      ],
+      "facts": [
+        "U-RETRO-NOW",
+        "U-RETRO-2027",
+        "U-RETRO-NAME",
+        "U-RETRO-ASK",
+        "U-RETRO-TIP",
+        "U-DWS-PHONE"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": [
+        "U01",
+        "U02",
+        "U08",
+        "U09"
+      ]
+    },
+    {
+      "slug": "utah-health",
+      "section": "utah",
+      "sources": [
+        "U01",
+        "U03",
+        "U04",
+        "U05",
+        "S28",
+        "S40"
+      ],
+      "facts": [
+        "U-EX-FRAIL",
+        "U-FRAIL-PATHS",
+        "U-FRAIL-CLAIMS",
+        "U-EX-SUD",
+        "U-FRAIL-SELF",
+        "U-FRAIL-PROVIDER",
+        "U-FRAIL-CODES",
+        "U-HARD-HOSP",
+        "U-HARD-TRAVEL",
+        "U-COURT",
+        "U-DWS-PHONE"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": [
+        "U01",
+        "U03",
+        "U04",
+        "U05"
+      ]
+    },
+    {
+      "slug": "utah-immigration",
+      "section": "utah",
+      "sources": [
+        "U02",
+        "U09",
+        "U17",
+        "U19",
+        "U21",
+        "U27"
+      ],
+      "facts": [
+        "U-IMM-OCT",
+        "U-IMM-KIDS",
+        "U-EMERGENCY",
+        "U-HEARING-90",
+        "C-NO-IMM-Q",
+        "U-IMM-LOSE",
+        "U-IMM-LETTER",
+        "U-EMERGENCY-BIRTH",
+        "U-IMM-LAWYER"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": [
+        "U02",
+        "U09",
+        "U17",
+        "U19",
+        "U21",
+        "U27"
+      ]
+    },
+    {
+      "slug": "utah-help",
+      "section": "utah",
+      "sources": [
+        "U01",
+        "U02",
+        "U10",
+        "U14",
+        "U15",
+        "U15S",
+        "U16",
+        "U18",
+        "U19",
+        "U19S",
+        "U20",
+        "U22",
+        "U23",
+        "U29",
+        "U31",
+        "U37"
+      ],
+      "facts": [
+        "U-HELP-TCU",
+        "U-APPLY-PAPER",
+        "U-LANG",
+        "U-DWS-PHONE",
+        "U-APPLY-INPERSON",
+        "U-FORMATS",
+        "U-DWS-SLC",
+        "U-HPR-PHONE",
+        "U-HEARING-HOW",
+        "U-LEGAL",
+        "U-MARKETPLACE",
+        "U-RELAY",
+        "U-HEARING-PHONE",
+        "U-LETTER-KEY"
+      ],
+      "checked": "2026-11-13",
+      "tool_assisted_sources": [
+        "U01",
+        "U02",
+        "U10",
+        "U14",
+        "U15",
+        "U15S",
+        "U16",
+        "U18",
+        "U19",
+        "U19S",
+        "U20",
+        "U22",
+        "U23",
+        "U29",
+        "U31",
+        "U37"
+      ]
+    },
+    {
+      "slug": "utah-words",
+      "section": "utah",
+      "sources": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U08",
+        "U10",
+        "U13",
+        "U14",
+        "U16",
+        "U18",
+        "U26",
+        "U28",
+        "S27"
+      ],
+      "facts": [
+        "U-W-AEM",
+        "U-W-CE",
+        "U-W-DHHS",
+        "U-W-DWS",
+        "U-APPLY-INPERSON",
+        "U-EXC-WORDS",
+        "U-W-HEARING",
+        "U-SCHOOL-WHO",
+        "U-LOOKBACK-APP",
+        "U-EX-FRAIL",
+        "U-W-MYCASE",
+        "U-SIX-MONTH",
+        "U-RETRO-NAME",
+        "U-W-TAM",
+        "U-START"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U08",
+        "U10",
+        "U13",
+        "U14",
+        "U16",
+        "U18",
+        "U26",
+        "U28"
+      ]
+    },
+    {
+      "slug": "utah-log",
+      "section": "utah",
+      "sources": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U08",
+        "S27"
+      ],
+      "facts": [
+        "U-NOT-FORM",
+        "U-PROOF-DWS",
+        "U-TELL-HOW",
+        "U-LOOKBACK-APP",
+        "U-MEET-HOURS",
+        "U-ACTIVITY-DEFS"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": [
+        "U01",
+        "U02",
+        "U03",
+        "U04",
+        "U05",
+        "U08"
+      ]
+    },
+    {
+      "slug": "utah-about",
+      "section": "utah",
+      "sources": [
+        "U01",
+        "U02",
+        "U11"
+      ],
+      "facts": [
+        "U-STATE-DOCS",
+        "U-UTAH-PEOPLE",
+        "U-DIFFER",
+        "U-NOT-STATE",
+        "U-ONLY-STATE",
+        "U-NEW-GUIDE",
+        "C-LINK-OUT",
+        "C-LINKCHECK",
+        "C-FACT-LOG"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": [
+        "U01",
+        "U02",
+        "U11"
+      ]
+    },
+    {
+      "slug": "utah-privacy",
+      "section": "utah",
+      "sources": [
+        "S34"
+      ],
+      "facts": [
+        "C-PRIV-NONE",
+        "C-PRIV-NOSEND",
+        "C-PRIV-SETTINGS",
+        "C-PRIV-HOST",
+        "C-PRIV-CSP",
+        "C-PRIV-NOREF",
+        "C-NO-IMM-Q",
+        "C-PRIV-NOFONTS"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "utah-accessibility",
+      "section": "utah",
+      "sources": [
+        "S33",
+        "S32",
+        "S31",
+        "U15",
+        "U31"
+      ],
+      "facts": [
+        "C-A11Y-TARGET",
+        "C-A11Y-COGA",
+        "C-A11Y-SETTINGS",
+        "C-A11Y-TESTED",
+        "C-COLORS",
+        "U-FORMATS"
+      ],
+      "checked": "2026-11-10",
+      "tool_assisted_sources": [
+        "U15",
+        "U31"
+      ]
+    },
+    {
+      "slug": "utah-sources",
+      "section": "utah",
+      "sources": [],
+      "facts": [
+        "U-NEW-GUIDE"
+      ],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "washington",
+      "section": "washington",
+      "sources": [
+        "WA01",
+        "WA03",
+        "WA04",
+        "WA05",
+        "WA06",
+        "WA15",
+        "S41",
+        "WA22"
+      ],
+      "facts": [
+        "WA-HH-01",
+        "WA-HH-02",
+        "WA-HH-03",
+        "WA-HH-05",
+        "WA-BILL-01",
+        "WA-HOME-04",
+        "WA-BILL-02",
+        "WA-HOME-01",
+        "WA-HOME-02",
+        "WA-CHK-01",
+        "WA-RULE-06",
+        "WA-HOME-03",
+        "WA-HOME-05",
+        "WA-CHK-02",
+        "WA-CHK-03",
+        "WA-CHK-04",
+        "WA-RSN-01",
+        "WA-RSN-05",
+        "WA-RSN-10",
+        "WA-RSN-04",
+        "WA-RSN-03",
+        "WA-CHK-05",
+        "WA-APP-06",
+        "WA-RULE-05",
+        "WA-HOME-06"
+      ],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": [
+        "WA01",
+        "WA03",
+        "WA04",
+        "WA05",
+        "WA06",
+        "WA15",
+        "WA22"
+      ]
+    },
+    {
+      "slug": "washington-check",
+      "section": "washington",
+      "sources": [
+        "WA04",
+        "WA05",
+        "WA06",
+        "WA13",
+        "WA15",
+        "S27",
+        "S29",
+        "WA22"
+      ],
+      "facts": [
+        "C-PRIV-NOSEND",
+        "C-NO-IMM-Q",
+        "WA-HOME-06",
+        "WA-CHK-04",
+        "WA-CHK-06"
+      ],
+      "checked": "2026-11-13",
+      "tool_assisted_sources": [
+        "WA04",
+        "WA05",
+        "WA06",
+        "WA13",
+        "WA15",
+        "WA22"
+      ]
+    },
+    {
+      "slug": "washington-rules",
+      "section": "washington",
+      "sources": [
+        "WA01",
+        "WA03",
+        "WA04",
+        "WA05",
+        "WA15",
+        "S27",
+        "S41",
+        "WA22"
+      ],
+      "facts": [
+        "WA-HOME-02",
+        "WA-CHK-01",
+        "WA-RULE-08",
+        "WA-RULE-06",
+        "WA-WRD-03",
+        "WA-HH-02",
+        "WA-HH-01",
+        "WA-HH-03",
+        "WA-HH-04",
+        "WA-HH-05",
+        "WA-CHK-02",
+        "WA-RULE-01",
+        "WA-RULE-02",
+        "WA-CHK-06",
+        "WA-CHK-03",
+        "WA-RULE-03",
+        "WA-CHK-04",
+        "WA-RULE-04",
+        "WA-RULE-05",
+        "WA-HOME-03"
+      ],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": [
+        "WA01",
+        "WA03",
+        "WA04",
+        "WA05",
+        "WA15",
+        "WA22"
+      ]
+    },
+    {
+      "slug": "washington-reasons",
+      "section": "washington",
+      "sources": [
+        "WA04",
+        "WA05",
+        "WA07",
+        "WA14",
+        "WA24",
+        "WA25",
+        "S27",
+        "S28",
+        "WA22"
+      ],
+      "facts": [
+        "WA-CHK-05",
+        "WA-RULE-06",
+        "WA-RULE-05",
+        "WA-HOME-06",
+        "WA-RSN-01",
+        "WA-RSN-02",
+        "WA-RSN-03",
+        "WA-RSN-04",
+        "WA-RSN-05",
+        "WA-RSN-07",
+        "WA-RSN-06",
+        "WA-RSN-08",
+        "WA-RSN-09",
+        "WA-RSN-10",
+        "WA-RSN-11",
+        "WA-RSN-12",
+        "WA-RSN-13",
+        "WA-RSN-16",
+        "WA-HARD-01",
+        "WA-HARD-02",
+        "WA-RULE-09",
+        "WA-RSN-14",
+        "WA-APP-07",
+        "WA-RSN-15"
+      ],
+      "checked": "2026-11-13",
+      "tool_assisted_sources": [
+        "WA04",
+        "WA05",
+        "WA07",
+        "WA14",
+        "WA24",
+        "WA25",
+        "WA22"
+      ]
+    },
+    {
+      "slug": "washington-apply",
+      "section": "washington",
+      "sources": [
+        "WA04",
+        "WA06",
+        "WA07",
+        "WA10",
+        "WA11",
+        "WA12",
+        "WA13"
+      ],
+      "facts": [
+        "WA-APP-01",
+        "WA-APP-03",
+        "WA-APP-04",
+        "WA-APP-02",
+        "WA-APP-06",
+        "WA-APP-05",
+        "WA-RULE-06",
+        "WA-APP-09",
+        "WA-APP-07",
+        "WA-HLP-01",
+        "WA-APP-08"
+      ],
+      "checked": "2026-11-13",
+      "tool_assisted_sources": [
+        "WA04",
+        "WA06",
+        "WA07",
+        "WA10",
+        "WA11",
+        "WA12",
+        "WA13"
+      ]
+    },
+    {
+      "slug": "washington-letter",
+      "section": "washington",
+      "sources": [
+        "WA01",
+        "WA04",
+        "WA07",
+        "WA13"
+      ],
+      "facts": [
+        "WA-LTR-01",
+        "WA-LTR-02",
+        "WA-APP-09",
+        "WA-HOME-02",
+        "WA-LTR-03",
+        "C-TIP-COPY",
+        "C-TIP-EARLY",
+        "WA-HOME-05",
+        "WA-APP-07"
+      ],
+      "checked": "2026-11-13",
+      "tool_assisted_sources": [
+        "WA01",
+        "WA04",
+        "WA07",
+        "WA13"
+      ]
+    },
+    {
+      "slug": "washington-denied",
+      "section": "washington",
+      "sources": [
+        "WA01",
+        "WA03",
+        "WA06",
+        "WA08",
+        "WA10",
+        "WA16",
+        "WA17",
+        "WA18",
+        "WA19",
+        "S41"
+      ],
+      "facts": [
+        "WA-DEN-05",
+        "WA-DEN-04",
+        "WA-DEN-01",
+        "WA-APP-06",
+        "WA-HH-02",
+        "WA-HH-03",
+        "WA-HH-05",
+        "WA-DEN-02",
+        "WA-DEN-03",
+        "WA-HLP-04"
+      ],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": [
+        "WA01",
+        "WA03",
+        "WA06",
+        "WA08",
+        "WA10",
+        "WA16",
+        "WA17",
+        "WA18",
+        "WA19"
+      ]
+    },
+    {
+      "slug": "washington-bills",
+      "section": "washington",
+      "sources": [
+        "WA01",
+        "WA03",
+        "WA07"
+      ],
+      "facts": [
+        "WA-BILL-01",
+        "WA-BILL-02",
+        "WA-HOME-04",
+        "WA-APP-07"
+      ],
+      "checked": "2026-11-12",
+      "tool_assisted_sources": [
+        "WA01",
+        "WA03",
+        "WA07"
+      ]
+    },
+    {
+      "slug": "washington-health",
+      "section": "washington",
+      "sources": [
+        "WA05",
+        "WA07",
+        "WA14",
+        "S27",
+        "S28",
+        "S29"
+      ],
+      "facts": [
+        "WA-HLT-01",
+        "WA-HLT-02",
+        "WA-HLT-04",
+        "WA-HLT-03",
+        "WA-APP-07"
+      ],
+      "checked": "2026-11-13",
+      "tool_assisted_sources": [
+        "WA05",
+        "WA07",
+        "WA14"
+      ]
+    },
+    {
+      "slug": "washington-immigration",
+      "section": "washington",
+      "sources": [
+        "WA01",
+        "WA08",
+        "WA20",
+        "WA23",
+        "WA26"
+      ],
+      "facts": [
+        "WA-IMM-01",
+        "WA-IMM-03",
+        "WA-IMM-04",
+        "WA-DEN-02",
+        "C-NO-IMM-Q",
+        "WA-IMM-02"
+      ],
+      "checked": "2026-11-13",
+      "tool_assisted_sources": [
+        "WA01",
+        "WA08",
+        "WA20",
+        "WA23",
+        "WA26"
+      ]
+    },
+    {
+      "slug": "washington-help",
+      "section": "washington",
+      "sources": [
+        "WA02",
+        "WA06",
+        "WA07",
+        "WA08",
+        "WA09",
+        "WA10"
+      ],
+      "facts": [
+        "WA-HLP-04",
+        "WA-HLP-02",
+        "WA-HLP-01",
+        "WA-APP-07",
+        "WA-APP-04",
+        "WA-APP-02",
+        "WA-HLP-05",
+        "WA-APP-05",
+        "WA-DEN-02",
+        "WA-HLP-03"
+      ],
+      "checked": "2026-11-12",
+      "tool_assisted_sources": [
+        "WA02",
+        "WA06",
+        "WA07",
+        "WA08",
+        "WA09",
+        "WA10"
+      ]
+    },
+    {
+      "slug": "washington-words",
+      "section": "washington",
+      "sources": [
+        "WA01",
+        "WA03",
+        "WA04",
+        "WA05",
+        "WA06",
+        "WA07",
+        "WA13",
+        "WA15",
+        "S27",
+        "S29",
+        "WA22"
+      ],
+      "facts": [
+        "WA-WRD-01",
+        "WA-APP-05",
+        "WA-WRD-02",
+        "WA-WRD-04",
+        "WA-WRD-03",
+        "WA-CHK-05",
+        "WA-RSN-16",
+        "WA-HLT-01",
+        "WA-WRD-06",
+        "WA-WRD-05",
+        "WA-APP-01",
+        "WA-HOME-02"
+      ],
+      "checked": "2026-11-13",
+      "tool_assisted_sources": [
+        "WA01",
+        "WA03",
+        "WA04",
+        "WA05",
+        "WA06",
+        "WA07",
+        "WA13",
+        "WA15",
+        "WA22"
+      ]
+    },
+    {
+      "slug": "washington-log",
+      "section": "washington",
+      "sources": [
+        "WA05",
+        "WA13",
+        "WA22"
+      ],
+      "facts": [
+        "WA-LOG-01",
+        "WA-RULE-08",
+        "WA-CHK-04",
+        "WA-LOG-03",
+        "WA-LOG-02",
+        "WA-RULE-02"
+      ],
+      "checked": "2026-11-13",
+      "tool_assisted_sources": [
+        "WA05",
+        "WA13",
+        "WA22"
+      ]
+    },
+    {
+      "slug": "washington-about",
+      "section": "washington",
+      "sources": [
+        "WA01",
+        "WA04"
+      ],
+      "facts": [
+        "WA-HOME-02",
+        "WA-RULE-06",
+        "WA-HOME-06",
+        "C-LINK-OUT",
+        "C-LINKCHECK",
+        "C-FACT-LOG"
+      ],
+      "checked": "2026-11-12",
+      "tool_assisted_sources": [
+        "WA01",
+        "WA04"
+      ]
+    },
+    {
+      "slug": "washington-privacy",
+      "section": "washington",
+      "sources": [
+        "S34"
+      ],
+      "facts": [
+        "C-PRIV-NONE",
+        "C-PRIV-NOSEND",
+        "C-PRIV-SETTINGS",
+        "C-PRIV-HOST",
+        "C-PRIV-CSP",
+        "C-PRIV-NOREF",
+        "C-NO-IMM-Q",
+        "C-PRIV-NOFONTS"
+      ],
+      "checked": "2026-11-12",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "washington-accessibility",
+      "section": "washington",
+      "sources": [
+        "S33",
+        "S32",
+        "S31",
+        "WA07"
+      ],
+      "facts": [
+        "C-A11Y-TARGET",
+        "C-A11Y-COGA",
+        "C-A11Y-SETTINGS",
+        "C-A11Y-TESTED",
+        "C-COLORS",
+        "WA-APP-07"
+      ],
+      "checked": "2026-11-12",
+      "tool_assisted_sources": [
+        "WA07"
+      ]
+    },
+    {
+      "slug": "washington-sources",
+      "section": "washington",
+      "sources": [],
+      "facts": [],
+      "checked": "2026-11-14",
+      "tool_assisted_sources": []
+    },
+    {
+      "slug": "404",
+      "section": "both",
+      "sources": [],
+      "facts": [],
+      "checked": null,
+      "tool_assisted_sources": []
+    }
+  ],
+  "source_count": 120,
+  "fact_count": 330,
+  "tool_assisted_source_count": 67,
+  "warnings": [],
+  "clean_urls": true
+}

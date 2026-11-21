@@ -4,6 +4,8 @@ Build The Stasis Project site.
 
     python3 tools/build.py           Write site/*.html, site/sitemap.xml,
                                      site/robots.txt, site/_headers,
+                                     site/sources.json, site/facts.json,
+                                     site/build-report.json,
                                      docs/sources.md, and docs/claims.md.
     python3 tools/build.py --check   Rebuild in memory and fail if any
                                      committed output is out of date.
@@ -38,7 +40,9 @@ Inputs
                         here too; it belongs to no guide.
     data/sources.json   Registry of every outside source and link. Each
                         entry's "guide" says which guide may use it:
-                        a guide's name, or "all".
+                        a guide's name, or "all". "verified_by" is "human"
+                        or "tool_assisted". "public_note" is shown on the
+                        site; "internal_note" stays in the repo and docs.
     data/claims.json    Ledger of every factual statement on the site, each
                         with a "guide" in the same way.
 
@@ -50,6 +54,9 @@ Placeholders a page body may use
     {{SOURCES_TABLE}}         This guide's full source list.
     {{APPLICATION_LANGUAGES}} The paper application in each language.
     {{GUIDE_START_LISTS}}     Every guide's _not-found.html, in order.
+    {{SRC:ID}}                An inline "Source:" link for a source listed
+                              in this page's metadata (comma-separated for
+                              multiple, or {{SRC:ID|custom label}}).
     {{FACTS_CHECKED_TEXT}}, {{FACTS_CHECKED_ISO}}
 
 The build refuses to finish if a page links to an address that is not in
@@ -118,7 +125,8 @@ SPACEFAST_COLOR_SOURCE = {
     "date_on_document": "Live page",
     "checked": "2026-11-14",
     "opened": True,
-    "notes": (
+    "verified_by": "human",
+    "public_note": (
         "Source of the color palette for this copy. An open source color system, "
         "MIT licensed; the license text ships with this site at assets/licenses/radix-mit.txt. "
         "Values taken from the @radix-ui/colors package, version 3.0.0, and checked against "
@@ -299,6 +307,12 @@ def owners() -> set:
 META_RE = re.compile(r"\A<!--\s*\n(.*?)\n-->\s*\n", re.S)
 HREF_RE = re.compile(r'href="([^"]+)"')
 CLAIM_RE = re.compile(r'data-claim="([^"]+)"')
+SRC_RE = re.compile(r"\{\{SRC:([^}]+)\}\}")
+H1_CLOSE_RE = re.compile(r"(<h1\b[^>]*>.*?</h1>)", re.S)
+VALID_VERIFIED_BY = {"human", "tool_assisted"}
+INTERNAL_FILE_RE = re.compile(r"\b(?:docs|tools|data|src)/[A-Za-z0-9._/-]+\b")
+DOC_MD_RE = re.compile(r"\bdocs/([a-z0-9._-]+\.md)\b")
+GENERATED_SITE_FILES = {"sources.json", "facts.json", "build-report.json", "sitemap.xml", "robots.txt"}
 
 CSP = (
     "default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self'; "
@@ -716,13 +730,96 @@ def page_facts_iso(meta, by_id, registry=None, used=None) -> str | None:
     return max(dates)
 
 
-def render_page(meta, body, pages, by_id, doc_counts, registry=None, used=None):
+def expand_inline_sources(body: str, page, by_id, errors: list[str]) -> str:
+    """Replace {{SRC:ID}} or {{SRC:ID|label}} (comma-separated for multiple) with inline Source links."""
+    name = page["section"]
+    listed = set(page["sources"])
+
+    def repl(match: re.Match) -> str:
+        chips = []
+        for raw in match.group(1).split(","):
+            spec = raw.strip()
+            if not spec:
+                continue
+            sid, sep, custom = spec.partition("|")
+            sid = sid.strip()
+            custom = custom.strip() if sep else ""
+            if sid not in by_id:
+                errors.append(f"{page['file']}: inline source references unknown source {sid}")
+                continue
+            src = by_id[sid]
+            if foreign_source(name, src):
+                errors.append(
+                    f"{page['file']}: inline source {sid} belongs to the {src['guide']} guide"
+                )
+                continue
+            if sid not in listed:
+                errors.append(
+                    f"{page['file']}: inline source {sid} is not listed in its sources"
+                )
+                continue
+            label = custom or src.get("short") or src["title"]
+            chips.append(
+                f'<a class="src" href="{esc(src["url"])}">'
+                f'<span class="src-label">Source:</span> {esc(label)}</a>'
+            )
+        return " ".join(chips)
+
+    return SRC_RE.sub(repl, body)
+
+
+def render_tool_assisted_notice() -> str:
+    """Calm top-of-page notice shown automatically when a page cites any tool_assisted source."""
+    return (
+        '    <aside class="review-notice" role="note" aria-label="Review status">\n'
+        '      <p class="box-kicker"><span class="box-icon">{{ICON:info}}</span><span>Review status</span></p>\n'
+        '      <p>Some sources on this page were read with a research tool. A person has not yet read each one from start to finish. '
+        'If this guide and the state say different things, follow the state, and <a href="about.html#report">tell us</a>. '
+        '<a href="sources.html">See every source</a>.</p>\n'
+        '    </aside>'
+    )
+
+
+def insert_tool_assisted_notice(body: str) -> str:
+    """Insert the review status notice right after the page's <h1>."""
+    notice = render_tool_assisted_notice()
+    if H1_CLOSE_RE.search(body):
+        return H1_CLOSE_RE.sub(r"\1\n\n" + notice, body, count=1)
+    return notice + "\n" + body
+
+
+def compute_build_hash(registry, claims) -> str:
+    """Deterministic 8-char SHA-256 fingerprint of the build inputs (data and src/pages).
+
+    Stasis commits site/ and checks it byte-for-byte with --check, so the build
+    cannot embed a live wall-clock time or the commit SHA that commits site/.
+    Hashing the source data and page templates gives a reproducible build ID.
+    """
+    digest = hashlib.sha256()
+    digest.update(VERSION.encode("utf-8"))
+    digest.update(json.dumps(registry, sort_keys=True, ensure_ascii=False).encode("utf-8"))
+    digest.update(json.dumps(claims, sort_keys=True, ensure_ascii=False).encode("utf-8"))
+    for path in sorted(SRC.glob("*/*.html")):
+        rel = path.relative_to(SRC).as_posix()
+        digest.update(rel.encode("utf-8"))
+        digest.update(b"\0")
+        digest.update(path.read_bytes())
+        digest.update(b"\0")
+    return digest.hexdigest()
+
+
+def render_page(meta, body, pages, by_id, doc_counts, registry=None, used=None, build_hash: str = ""):
     slug = meta["slug"]
     section = SECTIONS[meta["section"]]
     tagline = section["tagline"]
     facts_iso = page_facts_iso(meta, by_id, registry=registry, used=used)
     facts_text = ap_date(facts_iso) if facts_iso else ""
     facts_line = f'Facts last checked <time datetime="{facts_iso}">{facts_text}</time>. ' if facts_iso else ""
+    build_bits = (
+        f'Build <code>{esc(build_hash[:8])}</code>. <a href="build-report.json">Build report</a>. '
+        if build_hash
+        else '<a href="build-report.json">Build report</a>. '
+    )
     if slug == section["home"]:
         title_tag = f"{SITE_NAME}: {tagline}"
     else:
@@ -759,6 +856,8 @@ def render_page(meta, body, pages, by_id, doc_counts, registry=None, used=None):
         f'\n  <script src="assets/js/{esc(name)}.js" defer></script>' for name in meta["scripts"]
     )
     sources_html = render_sources_section(meta["sources"], by_id) if meta["sources"] else ""
+    if any(by_id[sid].get("verified_by") == "tool_assisted" for sid in meta["sources"] if sid in by_id):
+        body = insert_tool_assisted_notice(body)
     if "{{DOC_COUNT}}" in body:
         body = body.replace("{{DOC_COUNT}}", str(doc_counts[meta["section"]]))
     body = body.replace("{{FACTS_CHECKED_TEXT}}", facts_text)
@@ -821,7 +920,7 @@ def render_page(meta, body, pages, by_id, doc_counts, registry=None, used=None):
       <p>{esc(section["footer_why"])}</p>
       <p><strong>Independent.</strong> {esc(section["footer_independent"])}</p>
       <p><strong>Private.</strong> No accounts, ads, cookies, or tracking. <a href="privacy.html">How your privacy is protected</a>.</p>
-      <p>{facts_line}Version {VERSION}. <a href="{PROJECT_REPO}">See how this site is made</a>.</p>
+      <p>{facts_line}Version {VERSION}. {build_bits}<a href="{PROJECT_REPO}">See how this site is made</a>.</p>
       <p>Words: <a href="{PROJECT_REPO}/blob/main/LICENSE">CC BY 4.0</a>. Code: <a href="{PROJECT_REPO}/blob/main/LICENSE-CODE">MIT</a>. <a href="about.html#license">Reuse this guide</a>.</p>
       <nav class="footer-pages" aria-label="{footer_title}">
         <h2>{footer_title}</h2>
@@ -888,12 +987,19 @@ def source_rows(sources):
         else:
             opened = "No (address from " + src.get("linked_from", "another official source") + ")"
         tag = pdf_tag if src["format"] == "PDF" else ""
+        checked = src["checked"]
+        review = (
+            "Human-read"
+            if src["verified_by"] == "human"
+            else "Research tool (human review pending)"
+        )
         rows.append(
             "        <li>"
             f'<a href="{esc(src["url"])}">{esc(src["title"])}</a>{tag}<br>'
             f"{esc(src['publisher'])}. Date on it: {esc(src['date_on_document'])}. "
-            f"Checked: {esc(src['checked'])}. Read by us: {esc(opened)}.<br>"
-            f"<span>Why we list it: {esc(src['notes'])}</span></li>"
+            f'Checked: <time datetime="{esc(checked)}">{esc(ap_date(checked))}</time>. '
+            f"Read by us: {esc(opened)}. Review: {esc(review)}.<br>"
+            f"<span>Why we list it: {esc(src['public_note'])}</span></li>"
         )
     return rows
 
@@ -963,6 +1069,11 @@ def md_escape(text: str) -> str:
     return text.replace("|", "\\|").replace("\n", " ")
 
 
+def link_doc_refs_md(text: str) -> str:
+    """Turn docs/<name>.md references inside docs/sources.md into clickable relative links."""
+    return DOC_MD_RE.sub(lambda m: f"[docs/{m.group(1)}]({m.group(1)})", text)
+
+
 def render_sources_md(registry):
     lines = [
         "# Source registry",
@@ -971,8 +1082,8 @@ def render_sources_md(registry):
         "",
         f"Registry version {registry['registry_version']}. {registry['notes']}",
         "",
-        "| ID | Guide | Source | Kind | Date on it | Checked | Read by us | Notes |",
-        "|---|---|---|---|---|---|---|---|",
+        "| ID | Guide | Source | Kind | Date on it | Checked | Read by us | Verified by | Public note | Internal note |",
+        "|---|---|---|---|---|---|---|---|---|---|",
     ]
     for src in registry["sources"]:
         if src["opened"]:
@@ -981,10 +1092,11 @@ def render_sources_md(registry):
             read = f"No, {unread_words(src)}"
         else:
             read = f"No, address from {src.get('linked_from', 'another source')}"
+        internal = link_doc_refs_md(md_escape(src.get("internal_note", "")))
         lines.append(
             f"| {src['id']} | {src['guide']} | [{md_escape(src['title'])}]({src['url']}) ({md_escape(src['publisher'])}) | "
             f"{src['kind']} | {md_escape(src['date_on_document'])} | {src['checked']} | {md_escape(read)} | "
-            f"{md_escape(src['notes'])} |"
+            f"{src['verified_by']} | {md_escape(src['public_note'])} | {internal} |"
         )
     lines += ["", "## Paper application languages", "", registry["application_languages"]["notes"], ""]
     for item in registry["application_languages"]["items"]:
@@ -1028,6 +1140,58 @@ def render_claims_md(claims, by_id, usage):
     return "\n".join(lines)
 
 
+def render_public_sources_json(registry) -> str:
+    """Public machine-readable source registry (omits internal_note)."""
+    public_fields = (
+        "id", "guide", "title", "short", "publisher", "url",
+        "format", "kind", "date_on_document", "checked", "opened",
+        "verified_by", "linked_from", "public_note",
+    )
+    public_sources = [
+        {k: src[k] for k in public_fields if k in src}
+        for src in registry["sources"]
+    ]
+    return json.dumps(public_sources, indent=2, ensure_ascii=False) + "\n"
+
+
+def render_public_facts_json(claims, usage) -> str:
+    """Public machine-readable claims/facts index keyed by claim ID (mirrors Strand's facts.json)."""
+    facts_map = {}
+    for claim in claims["claims"]:
+        entry = {
+            "guide": claim["guide"],
+            "kind": claim["kind"],
+            "statement": claim["statement"],
+            "sources": list(claim["sources"]),
+            "pages": sorted(usage.get(claim["id"], [])),
+        }
+        if claim.get("note"):
+            entry["note"] = claim["note"]
+        facts_map[claim["id"]] = entry
+    return json.dumps(facts_map, indent=2, ensure_ascii=False) + "\n"
+
+
+def render_build_report_json(build_hash: str, registry, claims, page_reports, warnings) -> str:
+    """Machine-readable build provenance report (mirrors Strand's build-report.json)."""
+    latest_checked = max(src["checked"] for src in registry["sources"])
+    tool_assisted_count = sum(1 for src in registry["sources"] if src["verified_by"] == "tool_assisted")
+    report = {
+        "version": VERSION,
+        "build_hash": build_hash[:8],
+        "inputs_sha256": build_hash,
+        "latest_checked": latest_checked,
+        "public_url": BASE_URL,
+        "repo_url": PROJECT_REPO,
+        "pages": page_reports,
+        "source_count": len(registry["sources"]),
+        "fact_count": len(claims["claims"]),
+        "tool_assisted_source_count": tool_assisted_count,
+        "warnings": warnings,
+        "clean_urls": True,
+    }
+    return json.dumps(report, indent=2, ensure_ascii=False) + "\n"
+
+
 def check_fonts():
     """Every font file named in fonts.lock.json exists and matches its SHA-256."""
     lock = json.loads(FONTS_LOCK.read_text(encoding="utf-8"))
@@ -1052,12 +1216,26 @@ def build(theme: str = "default"):
     by_id, known_urls = registry_maps(registry)
     claim_by_id = {c["id"]: c for c in claims["claims"]}
     errors = []
+    warnings = []
 
     for src in registry["sources"]:
         if src.get("guide") not in owners():
             errors.append(f"source {src['id']}: 'guide' must be one of {', '.join(sorted(owners()))}")
         if not re.fullmatch(r"\d{4}-\d{2}-\d{2}", src.get("checked", "")):
             errors.append(f"source {src['id']}: 'checked' must be a date like 2026-11-02")
+        if src.get("verified_by") not in VALID_VERIFIED_BY:
+            errors.append(
+                f"source {src['id']}: 'verified_by' must be one of {', '.join(sorted(VALID_VERIFIED_BY))}"
+            )
+        public_note = src.get("public_note")
+        if not isinstance(public_note, str) or not public_note.strip():
+            errors.append(f"source {src['id']}: needs a non-empty 'public_note'")
+        elif INTERNAL_FILE_RE.search(public_note):
+            bad_ref = INTERNAL_FILE_RE.search(public_note).group(0)
+            errors.append(
+                f"source {src['id']}: 'public_note' mentions internal repo path {bad_ref!r}; "
+                "move internal references to 'internal_note'"
+            )
     forms_guide = registry["application_languages"].get("guide")
     if forms_guide not in GUIDES:
         errors.append("application_languages: 'guide' must name the guide whose paper forms these are")
@@ -1080,6 +1258,7 @@ def build(theme: str = "default"):
         raise BuildError("Build stopped:\n  - " + "\n  - ".join(errors))
 
     pages, shared_slugs, not_found_parts = load_pages()
+    build_hash = compute_build_hash(registry, claims)
     doc_counts = {}
     for name, guide in GUIDES.items():
         doc_counts[name] = sum(1 for s in registry["sources"] if s["guide"] == name and s["kind"] == EXPLAINER_KIND)
@@ -1121,6 +1300,7 @@ def build(theme: str = "default"):
 
     usage: dict[str, set] = {}
     outputs: dict[Path, str] = {}
+    page_reports = []
 
     for page in pages:
         body = page["body"]
@@ -1147,8 +1327,14 @@ def build(theme: str = "default"):
             elif foreign_source(name, by_id[sid]):
                 errors.append(f"{page['file']}: lists {sid}, a source that belongs to the {by_id[sid]['guide']} guide")
 
+        if "{{SRC:" in body:
+            body = expand_inline_sources(body, page, by_id, errors)
+
+        page_claims: list[str] = []
         for attr in CLAIM_RE.findall(body):
             for cid in attr.split():
+                if cid not in page_claims:
+                    page_claims.append(cid)
                 usage.setdefault(cid, set()).add(page["slug"])
                 claim = claim_by_id.get(cid)
                 if not claim:
@@ -1188,11 +1374,14 @@ def build(theme: str = "default"):
                             f"{page['file']}: links to {href}, a page in another guide. "
                             "Only another guide's home page may be linked."
                         )
-                elif not (SITE / target).exists():
+                elif target not in GENERATED_SITE_FILES and not (SITE / target).exists():
                     errors.append(f"{page['file']}: link to missing file {href}")
 
         rendered = localize_links(
-            render_page(page, body, pages, by_id, doc_counts, registry=registry, used=used),
+            render_page(
+                page, body, pages, by_id, doc_counts,
+                registry=registry, used=used, build_hash=build_hash,
+            ),
             name,
             shared_slugs,
         )
@@ -1210,8 +1399,21 @@ def build(theme: str = "default"):
             # its links and assets must not depend on the current folder.
             rendered = re.sub(r'(href|src)="(assets/[^"]+)"', r'\1="/\2"', rendered)
             rendered = re.sub(r'href="\./(#[^"]*)?"', r'href="/\1"', rendered)
-            rendered = re.sub(r'href="([a-z0-9-]+)(#[^"]*)?"', r'href="/\1\2"', rendered)
+            rendered = re.sub(r'href="([a-z0-9-]+(?:\.[a-z0-9]+)?)(#[^"]*)?"', r'href="/\1\2"', rendered)
         outputs[SITE / f"{page['slug']}.html"] = rendered
+
+        tool_sources = [
+            sid for sid in page["sources"]
+            if sid in by_id and by_id[sid].get("verified_by") == "tool_assisted"
+        ]
+        page_reports.append({
+            "slug": page["slug"],
+            "section": name,
+            "sources": list(page["sources"]),
+            "facts": page_claims,
+            "checked": page_facts_iso(page, by_id, registry=registry, used=used),
+            "tool_assisted_sources": tool_sources,
+        })
 
     for claim in claims["claims"]:
         if claim["id"] not in usage:
@@ -1220,6 +1422,11 @@ def build(theme: str = "default"):
     outputs[SITE / "sitemap.xml"] = render_sitemap(pages, by_id, registry, used)
     outputs[SITE / "robots.txt"] = render_robots()
     outputs[SITE / "_headers"] = render_headers(theme=theme)
+    outputs[SITE / "sources.json"] = render_public_sources_json(registry)
+    outputs[SITE / "facts.json"] = render_public_facts_json(claims, usage)
+    outputs[SITE / "build-report.json"] = render_build_report_json(
+        build_hash, registry, claims, page_reports, warnings
+    )
     outputs[DOCS / "sources.md"] = render_sources_md(registry)
     outputs[DOCS / "claims.md"] = render_claims_md(claims, by_id, usage)
 
