@@ -10,13 +10,13 @@ Nothing. There are no accounts, forms that submit, cookies, analytics, ads, embe
 |---|---|---|
 | Answers in the 1-minute check | In page memory only, cleared by "Start over" or by leaving the page | No. Never written to storage. Blocked from sending by the CSP. |
 | Display settings (text size, spacing, colors, how much to show) | One localStorage key, `stasis-display-v1`, in this browser | No. "Reset to standard" removes it. |
-| Page requests | Cloudflare Pages servers | Yes, as with any website. [Cloudflare's privacy policy](https://www.cloudflare.com/privacypolicy/) (effective Nov. 4, 2025, registry S34) says it processes the IP addresses and traffic data of people who visit its customers' sites, as a processor for those customers, and it gives no fixed retention period. This project cannot see or change that. |
+| Page requests | Cloudflare Pages servers (primary host) and Spacefast servers (secondary host) | Yes, as with any website. [Cloudflare's privacy policy](https://www.cloudflare.com/privacypolicy/) (effective Nov. 4, 2025, registry S34) says it processes the IP addresses and traffic data of people who visit its customers' sites, as a processor for those customers, and it gives no fixed retention period. This project cannot see or change that.  Spacefast servers handle requests to the secondary host, and this project cannot see or change those logs either. |
 | Clicks on links to state websites | Your browser goes to the state site | The state site sees your visit. Because of `Referrer-Policy: no-referrer`, it does not see which of our pages sent you. |
 | Problem reports | GitHub Issues | Yes, and they are **public**. Templates warn people not to include personal details. |
 
 ## How it is enforced
 
-Cloudflare Pages sends these headers with every response. They come from [`site/_headers`](../site/_headers), which `tools/build.py` writes, so they cannot drift from the pages:
+Cloudflare Pages sends these headers with every response. They come from [`site/_headers`](../site/_headers), which `tools/build.py` writes, so they cannot drift from the pages (the secondary Spacefast build writes the same headers file into `site-spacefast/_headers`):
 
 ```text
 Content-Security-Policy: default-src 'none'; script-src 'self'; style-src 'self'; img-src 'self'; font-src 'self';
@@ -48,10 +48,11 @@ Cloudflare Pages also adds `Access-Control-Allow-Origin: *` to every response ([
 - `tools/check_structure.py` fails if any page loses the meta policy, or if `site/_headers` stops sending the full policy with `frame-ancestors 'none'` and `Referrer-Policy: no-referrer`.
 - `tools/browser_check.py` serves the site the way Cloudflare Pages does (`tools/serve.py`, headers included) and fails if any request leaves the site, any policy violation occurs, a page arrives without the policy header, or the check leaves anything in storage.
 - Both of those test the files in this repository. `tools/check_live.py` tests what Cloudflare actually serves: every file must match the repository byte for byte, with every header present. It runs after every push to `main` ([live.yml](../.github/workflows/live.yml)) and every Monday ([weekly.yml](../.github/workflows/weekly.yml)), which opens an issue if anything differs. This is what would catch a dashboard setting that changes the pages, such as Cloudflare Web Analytics, which adds a script to every page on the next deploy ([Cloudflare docs: Web Analytics](https://developers.cloudflare.com/pages/how-to/web-analytics/), updated Apr. 21, 2026).
+- [`deploy-spacefast.yml`](../.github/workflows/deploy-spacefast.yml) builds and publishes `site-spacefast/` to Spacefast on every push to `main` (and on manual runs), running `tools/check_contrast.py` on it. `live.yml` and `weekly.yml` check Cloudflare Pages only; they do not run `tools/check_live.py` against Spacefast.
 
 ## Preview addresses
 
-Cloudflare Pages publishes a preview at its own address for every branch and pull request. Previews are public by default, carry `X-Robots-Tag: noindex` so search engines leave them out, and can be limited to the maintainer's Cloudflare account ([Cloudflare docs: Preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/), updated Oct. 12, 2026). Previews get the same headers as the live site.
+Cloudflare Pages publishes a preview at its own address for every branch and pull request. Previews are public by default, carry `X-Robots-Tag: noindex` so search engines leave them out, and can be limited to the maintainer's Cloudflare account ([Cloudflare docs: Preview deployments](https://developers.cloudflare.com/pages/configuration/preview-deployments/), updated Oct. 12, 2026). Previews get the same headers as the live site. Spacefast is an active secondary host published from `main` (and manual workflow runs) by `deploy-spacefast.yml` as a full snapshot replacement of `site-spacefast/`; it does not publish per-branch or pull-request previews.
 
 ## How anyone can verify it
 
@@ -59,7 +60,7 @@ Cloudflare Pages publishes a preview at its own address for every branch and pul
 2. Network tab: only files from this site load. Select the page itself to see the response headers listed above.
 3. Application or Storage tab: at most one key, `stasis-display-v1`, and only after changing display settings.
 4. View the page source: the meta policy is near the top.
-5. From a terminal: `curl -I https://projectstasis.pages.dev/` prints the headers.
+5. From a terminal: `curl -I https://projectstasis.pages.dev/` prints the headers. (Cloudflare Pages sends the full header set; on Spacefast, you can run steps 1–4 in the browser to verify that only site files load, at most `stasis-display-v1` is stored, and the meta policy is in the page source.)
 
 ## Things this site does not ask
 
