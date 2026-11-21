@@ -1,6 +1,6 @@
 # Content style guide
 
-The site is written for people applying for OHP, many of whom are stressed, short on time, reading on a phone, or reading in a second language. Write for them.
+The site is written for people applying for OHP,, Utah Medicaid, or Washington Apple Health many of whom are stressed, short on time, reading on a phone, or reading in a second language. Write for them.
 
 ## The page pattern (Smart Brevity, adapted)
 
@@ -19,9 +19,10 @@ Inspired by Axios's Smart Brevity approach. No text from that book is used here.
 - On Utah pages, do the same with Utah's words: "the work or activity rules (Utah calls this the community engagement requirement)," "reasons (Utah calls these exclusions and exceptions)."
 - One idea per sentence. Aim for 8 words per sentence or fewer on average.
 - Literal language. No idioms, sayings, or jokes.
-- "May" for anything OHP decides. Never "you are exempt," "you qualify," or "you will get."
-- "You" for the reader. "OHP" for the program and its decisions. "OHA" and "ODHS" only when naming who publishes something.
+- "May" for anything OHP , Utah Medicaid, or Apple Healthdecides. Never "you are exempt," "you qualify," or "you will get."
+- "You" for the reader. "OHP" for the program and its decisions. "OHA" and "ODHS" only when naming who publishes something. 
 - On Utah pages: "the state" for whoever decides or asks, "DWS" (spelled out the first time on a page) when the reader has to call, write to, or visit it, and "Utah Medicaid" for the program. Never "OHP" on a Utah page.
+- On Washington pages: "Apple Health" for the program, and "HCA" or "DSHS" (spelled out the first time on a page) when naming the agency that runs or decides something. On Utah pages, spell out "DHHS" alongside "DWS" the first time on a page when naming the state agency. Never "OHP" on a Utah or Washington page.
 - Say "apply again," not "reapply." Say "turned down," then "denied" only when quoting.
 - People first, and only describe people when it matters to the rule.
 
