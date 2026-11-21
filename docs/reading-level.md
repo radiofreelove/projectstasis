@@ -6,7 +6,7 @@ Flesch-Kincaid grade level of each page's main text. Target: grade 6 or lower. T
 
 | Page | Grade | Words | Sentences | Words per sentence | Status |
 |---|---|---|---|---|---|
-| about.html | 3.5 | 543 | 66 | 8.2 | On target |
+| about.html | 4.3 | 749 | 81 | 9.2 | On target |
 | accessibility.html | 4.0 | 343 | 39 | 8.8 | On target |
 | apply.html | 4.2 | 414 | 62 | 6.7 | On target |
 | bills.html | 3.0 | 163 | 28 | 5.8 | On target |
@@ -21,7 +21,7 @@ Flesch-Kincaid grade level of each page's main text. Target: grade 6 or lower. T
 | privacy.html | 4.4 | 255 | 29 | 8.8 | On target |
 | reasons.html | 4.3 | 608 | 67 | 9.1 | On target |
 | rules.html | 3.6 | 600 | 75 | 8.0 | On target |
-| utah-about.html | 3.4 | 646 | 77 | 8.4 | On target |
+| utah-about.html | 4.1 | 852 | 92 | 9.3 | On target |
 | utah-accessibility.html | 3.9 | 392 | 44 | 8.9 | On target |
 | utah-apply.html | 3.6 | 525 | 67 | 7.8 | On target |
 | utah-bills.html | 3.8 | 207 | 28 | 7.4 | On target |
@@ -38,7 +38,7 @@ Flesch-Kincaid grade level of each page's main text. Target: grade 6 or lower. T
 | utah-sources.html | 6.6 | 3990 | 469 | 8.5 | Above target |
 | utah-words.html | 5.2 | 337 | 50 | 6.7 | On target |
 | utah.html | 4.1 | 709 | 89 | 8.0 | On target |
-| washington-about.html | 3.4 | 646 | 77 | 8.4 | On target |
+| washington-about.html | 4.1 | 852 | 92 | 9.3 | On target |
 | washington-accessibility.html | 3.9 | 388 | 44 | 8.8 | On target |
 | washington-apply.html | 4.5 | 405 | 55 | 7.4 | On target |
 | washington-bills.html | 2.5 | 193 | 28 | 6.9 | On target |
