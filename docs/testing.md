@@ -6,14 +6,14 @@ Results are not kept in this file, so it cannot go out of date. Each run's log i
 
 | Check | Tool | When it runs |
 |---|---|---|
-| Built pages match their sources; every link registered; every fact logged; font files match their checksums | `tools/build.py --check` | Every push, in GitHub Actions and in the Cloudflare build |
+| Built pages match their sources; every link registered; every fact logged; font files match their checksums | `tools/build.py --check` | Every push, in GitHub Actions and in the Cloudflare build; `deploy-spacefast.yml` also builds `site-spacefast/` for Spacefast |
 | The tools themselves: the rules that keep each guide whole, a made-up third guide, the link checker and the evidence audit against local test servers, the checked-date updater, and the release notes | `python3 -m unittest discover -s tools/tests` | Every push |
 | The changelog has an entry for the version in the footer | `tools/release_notes.py --check` | Every push. After the checks pass on `main`, a new version is tagged and released |
 | Structure, privacy, and accessibility lint, including the security headers in `site/_headers` | `tools/check_structure.py` | Every push, in GitHub Actions and in the Cloudflare build |
-| Color contrast (7:1 text) | `tools/check_contrast.py` | Every push. Report: [contrast.md](contrast.md) |
+| Color contrast (7:1 text) | `tools/check_contrast.py` | Every push and in `deploy-spacefast.yml` for `site-spacefast/`. Report: [contrast.md](contrast.md) |
 | Reading level (target grade 6, fails above 8) | `tools/check_reading_level.py` | Every push. Report: [reading-level.md](reading-level.md) |
 | Dated checkpoints and expired notes | `tools/check_review_dates.py` | Every push (reported only); Mondays and Jan. 1 (opens an issue) |
-| Real browser on a server that behaves like Cloudflare Pages: every page in each display setting, every path through both checks, no outside requests, nothing left in storage, and axe-core | `tools/browser_check.py` | Every push. Report: [testing-browser.md](testing-browser.md) |
+| Real browser on a server that behaves like Cloudflare Pages: every page in each display setting, every path through all three checks (Oregon, Utah, and Washington),no outside requests, nothing left in storage, and axe-core | `tools/browser_check.py` | Every push. Report: [testing-browser.md](testing-browser.md) |
 | Official links | `tools/check_links.py` | Mondays |
 | What each official source says, compared with its baseline ([maintenance.md](maintenance.md), "Evidence audit") | `tools/evidence_audit.py` | Mondays |
 | Live site matches the repository, headers included | `tools/check_live.py` | After every push to `main`, and Mondays |
