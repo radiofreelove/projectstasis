@@ -4,7 +4,10 @@ Registry IDs refer to [sources.md](sources.md).
 
 - [Release 0.1.0 beta](#release-010-beta-oregon): Oregon content research on **Nov. 2, 2026**, and hosting research on **Nov. 3, 2026**.
 - [Release 0.2.0 beta](#release-020-beta-utah-and-an-oregon-re-check): Utah content research and an Oregon re-check on **Nov. 10, 2026**.
-- [Release 0.3.3 beta](#release-033-beta-the-federal-hold-harmless-letter): one federal letter, and a search of each state's pages for its choice, on **Nov. 14, 2026**.
+- [Release 0.3.0 beta: Washington](#release-030-beta-washington): Washington guide built from a research dossier on **Nov. 12, 2026**, with follow-up source reads on **Nov. 13, 2026**.
+- [Release 0.3.5 beta: the federal hold harmless letter](#release-035-beta-the-federal-hold-harmless-letter): one federal letter, and a search of each state's pages for its choice, on **Nov. 14, 2026**.
+- [Release 0.3.6 beta: Oregon source reads](#release-036-beta-oregon-source-reads): Oregon source reads and registry updates on **Nov. 14, 2026**.
+- [Release 0.3.8 beta: Washington corrections, and a restore](#release-038-beta-washington-corrections-and-a-restore): restoring the Nov. 13 reads and applying owner rulings on **Nov. 14, 2026**.
 
 All of it was done with an AI research assistant (Claude, by Anthropic) working under the maintainer's direction.
 
