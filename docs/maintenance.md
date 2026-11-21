@@ -8,6 +8,8 @@
 | Every push to any branch | Cloudflare Pages runs build freshness and structure lint, then publishes `site/`: `main` to <https://projectstasis.pages.dev/>, other branches and pull requests to preview addresses | Cloudflare (settings below) | Nothing new is published, and the live site stays as it was. The commit shows a failed Cloudflare check. |
 | Every push to `main`, after Cloudflare publishes | Live-site check: every page, asset, and header matches the commit (waits up to 15 minutes) | [live.yml](../.github/workflows/live.yml) | The commit shows a red X: visitors are not getting what is in `main`. Check the Cloudflare build. |
 | Mondays, and Jan. 1 each year, 15:17 UTC (morning in Oregon) | Official link check (respects robots.txt), evidence audit (what each source says, compared with its baseline), dated checkpoints, and a live-site check that every page, asset, and header matches this repository | [weekly.yml](../.github/workflows/weekly.yml) | Opens one GitHub issue labeled `automated-source-check` with all the reports. |
+| Every push to `main` (and manual runs) | Builds a Spacefast-themed static copy in `site-spacefast/`, checks color contrast, and publishes it to the project's Spacefast Space as a full snapshot replacement | [deploy-spacefast.yml](../.github/workflows/deploy-spacefast.yml) | The workflow run fails. The Cloudflare Pages site is unaffected. |
+| After Checks pass on a push to `main` | Tags that commit and publishes a GitHub release if the version in `tools/build.py` has no tag yet (using `CHANGELOG.md`; most pushes do nothing) | [release.yml](../.github/workflows/release.yml) | The workflow run fails. Fix the release notes or tag conflict and re-run. |
 
 ## Cloudflare Pages settings
 
@@ -75,7 +77,7 @@ Do the listed work, then move or remove the checkpoint and say what you did in [
 
 ## How to change a fact
 
-1. Edit the page in its guide's folder: `src/pages/oregon/`, `src/pages/washington/`, `src/pages/utah/`, or `src/pages/shared/` for the 4 pages every guide has.
+1. Edit the page in its guide's folder: `src/pages/oregon/`, `src/pages/washington/`, `src/pages/utah/`, or `src/pages/shared/` (which holds the 4 shared pages plus `404.html`, 5 files total).
 2. Update the claim in `data/claims.json` (statement, sources, kind, note).
 3. If there is a new source, add it to `data/sources.json` with `checked` set to today and `opened` set honestly.
 4. If official sources disagree, add an item to [corrections.md](corrections.md).
@@ -110,8 +112,8 @@ See [adding-a-guide.md](adding-a-guide.md).
 
 ## If something on the site is wrong
 
-1. If the fix is clear, fix it and push to `main`. Cloudflare publishes it within a few minutes.
-2. If not, replace the sentence with a link to the official source and a plain line such as "Check OHA's page for the latest" (or Utah Medicaid's, on a Utah page). Saying less is better than saying something wrong.
+1. If the fix is clear, fix it and push to `main`. Cloudflare Pages and Spacefast both publish it within a few minutes.
+2. If not, replace the sentence with a link to the official source and a plain line such as "Check OHA's page for the latest" (or Washington HCA's, on a Washington page, or Utah Medicaid's, on a Utah page). Saying less is better than saying something wrong.
 3. Log it in [corrections.md](corrections.md) and the changelog.
 
 ## If an official link breaks
