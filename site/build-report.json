@@ -1,7 +1,7 @@
 {
-  "version": "0.3.16 beta",
-  "build_hash": "ad5c3fae",
-  "inputs_sha256": "ad5c3fae1bc291d3e5848775719d68fcf02a913c12dba7b8f9e555c9e1252d6f",
+  "version": "0.3.17 beta",
+  "build_hash": "16bdb37e",
+  "inputs_sha256": "16bdb37e3601728b363efc98ac7d853c836f0a8b064c1b81ae1e23b478804f41",
   "latest_checked": "2026-11-21",
   "public_url": "https://projectstasis.pages.dev/",
   "repo_url": "https://github.com/radiofreelove/projectstasis",
@@ -19,7 +19,9 @@
         "S02",
         "S03",
         "S08",
-        "S41"
+        "S41",
+        "S44",
+        "S45"
       ],
       "facts": [
         "C-STATE-DOCS",
@@ -27,6 +29,7 @@
         "C-HH-OPTION",
         "C-HH-LIMIT",
         "C-HH-STATE",
+        "C-OR-OZ",
         "C-RETRO-NOW",
         "C-RETRO-2027",
         "C-START",
@@ -47,7 +50,7 @@
         "C-TELL-REASON",
         "C-REAPPLY"
       ],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": []
     },
     {
@@ -83,7 +86,9 @@
         "S08",
         "S23",
         "S27",
-        "S41"
+        "S41",
+        "S44",
+        "S45"
       ],
       "facts": [
         "C-START",
@@ -98,6 +103,7 @@
         "C-HH-LIMIT",
         "C-HH-HOW",
         "C-HH-STATE",
+        "C-OR-OZ",
         "C-MEET-INCOME",
         "C-INCOME-WEEK",
         "C-INCOME-HOUSEHOLD",
@@ -113,7 +119,7 @@
         "C-NO-MONTHLY",
         "C-DATA-FIRST"
       ],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": []
     },
     {
@@ -1166,15 +1172,20 @@
         "WA04",
         "WA05",
         "WA06",
+        "WA14",
         "WA15",
         "S41",
-        "WA22"
+        "S44",
+        "S45",
+        "WA22",
+        "WA27"
       ],
       "facts": [
+        "WA-HH-05",
         "WA-HH-01",
         "WA-HH-02",
         "WA-HH-03",
-        "WA-HH-05",
+        "WA-OR-OZ",
         "WA-BILL-01",
         "WA-HOME-04",
         "WA-BILL-02",
@@ -1204,8 +1215,10 @@
         "WA04",
         "WA05",
         "WA06",
+        "WA14",
         "WA15",
-        "WA22"
+        "WA22",
+        "WA27"
       ]
     },
     {
@@ -1247,10 +1260,14 @@
         "WA03",
         "WA04",
         "WA05",
+        "WA14",
         "WA15",
         "S27",
         "S41",
-        "WA22"
+        "S44",
+        "S45",
+        "WA22",
+        "WA27"
       ],
       "facts": [
         "WA-HOME-02",
@@ -1258,11 +1275,12 @@
         "WA-RULE-08",
         "WA-RULE-06",
         "WA-WRD-03",
+        "WA-HH-05",
         "WA-HH-02",
         "WA-HH-01",
         "WA-HH-03",
         "WA-HH-04",
-        "WA-HH-05",
+        "WA-OR-OZ",
         "WA-CHK-02",
         "WA-RULE-01",
         "WA-RULE-02",
@@ -1281,8 +1299,10 @@
         "WA03",
         "WA04",
         "WA05",
+        "WA14",
         "WA15",
-        "WA22"
+        "WA22",
+        "WA27"
       ]
     },
     {
@@ -1413,21 +1433,22 @@
         "WA17",
         "WA18",
         "WA19",
-        "S41"
+        "S41",
+        "WA27"
       ],
       "facts": [
         "WA-DEN-05",
         "WA-DEN-04",
         "WA-DEN-01",
         "WA-APP-06",
+        "WA-HH-05",
         "WA-HH-02",
         "WA-HH-03",
-        "WA-HH-05",
         "WA-DEN-02",
         "WA-DEN-03",
         "WA-HLP-04"
       ],
-      "checked": "2026-11-14",
+      "checked": "2026-11-21",
       "tool_assisted_sources": [
         "WA01",
         "WA03",
@@ -1437,7 +1458,8 @@
         "WA16",
         "WA17",
         "WA18",
-        "WA19"
+        "WA19",
+        "WA27"
       ]
     },
     {
@@ -1696,9 +1718,9 @@
       "tool_assisted_sources": []
     }
   ],
-  "source_count": 122,
-  "fact_count": 337,
-  "tool_assisted_source_count": 67,
+  "source_count": 125,
+  "fact_count": 339,
+  "tool_assisted_source_count": 68,
   "warnings": [],
   "clean_urls": true
 }

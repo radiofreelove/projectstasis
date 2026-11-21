@@ -621,6 +621,28 @@
       "rules": 2
     },
     {
+      "id": "S44",
+      "url": "https://www.doj.state.or.us/oregon-department-of-justice/federal-oversight/federal-litigation-tracker/medicaid-work-requirements-oregon-v-oz-d-or/",
+      "fetched": "2026-11-21",
+      "state": "unreachable",
+      "mode": null,
+      "sha256": null,
+      "length": null,
+      "registry_checked": "2026-11-21",
+      "note": "newly registered on 2026-11-21; awaiting first live baseline fetch"
+    },
+    {
+      "id": "S45",
+      "url": "https://www.ord.uscourts.gov/index.php/ct-calendar/monthcalendar/2027/1/229",
+      "fetched": "2026-11-21",
+      "state": "unreachable",
+      "mode": null,
+      "sha256": null,
+      "length": null,
+      "registry_checked": "2026-11-21",
+      "note": "newly registered on 2026-11-21; awaiting first live baseline fetch"
+    },
+    {
       "id": "U01",
       "url": "https://medicaid.utah.gov/community-engagement-requirement/",
       "fetched": "2026-11-15",
@@ -1365,6 +1387,17 @@
       "length": 103138,
       "registry_checked": "2026-11-13",
       "rules": 2
+    },
+    {
+      "id": "WA27",
+      "url": "https://www.hca.wa.gov/about-hca/news/announcements/washington-state-delay-enforcement-new-medicaid-work-requirements-through-june-30-2027",
+      "fetched": "2026-11-21",
+      "state": "unreachable",
+      "mode": null,
+      "sha256": null,
+      "length": null,
+      "registry_checked": "2026-11-21",
+      "note": "newly registered on 2026-11-21; awaiting first live baseline fetch"
     }
   ]
 }

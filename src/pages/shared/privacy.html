@@ -32,7 +32,7 @@ show_short_toggle: false
 
     <div class="more">
       <h2>For the technical reader</h2>
-      <p data-claim="C-PRIV-CSP">Every page comes with a Content Security Policy that has <code>connect-src 'none'</code> and <code>form-action 'none'</code>. The host sends it, and the page repeats it. Scripts and styles load only from this site. <code>frame-ancestors 'none'</code> stops other sites from showing these pages inside their own. You can check all of this in your browser's developer tools.</p>
+      <p data-claim="C-PRIV-CSP">Every page comes with a Content Security Policy that has <code>connect-src 'none'</code> and <code>form-action 'none'</code>. Cloudflare Pages sends the full policy as an HTTP header (including <code>frame-ancestors 'none'</code>), and every page repeats it in a meta tag. Scripts and styles load only from this site. Our secondary copy on Spacefast also sees request IP addresses and relies on each page's meta policy and referrer tag rather than Cloudflare's <code>_headers</code> file. You can check all of this in your browser's developer tools.</p>
       <p data-claim="C-PRIV-SETTINGS">Display settings use one localStorage key, <code>stasis-display-v1</code>. Nothing else is stored.</p>
       <p>Full details are in our public <a href="https://github.com/radiofreelove/projectstasis/blob/main/docs/privacy.md">privacy notes</a>.</p>
     </div>

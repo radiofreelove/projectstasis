@@ -859,6 +859,36 @@
     "public_note": "OHA announcement on federal H.R. 1 changes. Notes that Healthier Oregon members move from coordinated care organizations (CCOs) to OHP Open Card on Jan. 1, 2027."
   },
   {
+    "id": "S44",
+    "guide": "all",
+    "title": "Medicaid Work Requirements (Oregon v. Oz, D. Or.) — Federal Litigation Tracker",
+    "short": "Oregon DOJ tracker, State of Oregon v. Oz",
+    "publisher": "Oregon Department of Justice",
+    "url": "https://www.doj.state.or.us/oregon-department-of-justice/federal-oversight/federal-litigation-tracker/medicaid-work-requirements-oregon-v-oz-d-or/",
+    "format": "Web page",
+    "kind": "state-page",
+    "date_on_document": "Filed Nov. 5, 2026",
+    "checked": "2026-11-21",
+    "opened": true,
+    "verified_by": "human",
+    "public_note": "Case summary for State of Oregon v. Oz, No. 6:26-cv-02435 (D. Or.). Filed Nov. 5, 2026, by Oregon, Washington, Minnesota, and New Mexico to challenge the federal Medicaid work rules."
+  },
+  {
+    "id": "S45",
+    "guide": "all",
+    "title": "Court Calendar, January 2027 — State of Oregon et al. v. Oz et al., No. 6:26-cv-02435-AA (D. Or.)",
+    "short": "U.S. District Court (D. Or.) calendar, Jan. 12, 2027",
+    "publisher": "U.S. District Court for the District of Oregon",
+    "url": "https://www.ord.uscourts.gov/index.php/ct-calendar/monthcalendar/2027/1/229",
+    "format": "Web page",
+    "kind": "court",
+    "date_on_document": "Calendar entry for Jan. 12, 2027",
+    "checked": "2026-11-21",
+    "opened": true,
+    "verified_by": "human",
+    "public_note": "Federal court calendar setting telephone oral argument in State of Oregon v. Oz (No. 6:26-cv-02435-AA) for Jan. 12, 2027, at 10:00 a.m."
+  },
+  {
     "id": "U01",
     "guide": "utah",
     "title": "Community Engagement Requirement",
@@ -1854,5 +1884,20 @@
     "opened": true,
     "verified_by": "tool_assisted",
     "public_note": "Read in full on 2026-11-13, as an extra document for the evidence memo on the Washington corrections, and added to the registry on 2026-11-14 on the owner's ruling. Its December 2025 update is headed 'Enrollment for Apple Health Expansion is currently closed'. It says the budget proposal 'Continues to provide state funds'. WA23 (the program page) links to it. It supports the 'state-funded' and 'closed as of December 2025' parts of claim WA-IMM-04, which WA23 alone did not state."
+  },
+  {
+    "id": "WA27",
+    "guide": "washington",
+    "title": "Washington state to delay enforcement of new Medicaid work requirements through June 30, 2027",
+    "short": "HCA announcement on delayed enforcement, Nov. 17, 2026",
+    "publisher": "Health Care Authority",
+    "url": "https://www.hca.wa.gov/about-hca/news/announcements/washington-state-delay-enforcement-new-medicaid-work-requirements-through-june-30-2027",
+    "format": "Web page",
+    "kind": "state-page",
+    "date_on_document": "Nov. 17, 2026",
+    "checked": "2026-11-21",
+    "opened": true,
+    "verified_by": "tool_assisted",
+    "public_note": "HCA announced Washington will pursue delayed enforcement of the work rules. People in Apple Health for Adults will not lose or be denied coverage through June 30, 2027, for not meeting work reporting rules. Six-month renewals and shorter past-bills coverage still start Jan. 1, 2027."
   }
 ]

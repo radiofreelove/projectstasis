@@ -772,6 +772,20 @@
     ],
     "note": "A statement about what the pages say, not about what Oregon has decided. No election by Oregon, and no decision against one, is verified. Checked on 2026-11-14: the text of OHA's federal changes page (S07, still showing 'Last updated Sept. 18, 2026') was fetched from oregon.gov and searched for 'hold harmless', 'June 30, 2027', 'SMD', 'mitigation plan', and for any word of a pause, delay, or suspension of denials or of ending coverage under the rules; none appeared. The address ohp.oregon.gov/HR1 (S24) returned the same page that day. ODHS's partner updates page (K13) was searched the same way; none appeared. OHA's news release list loads by script and could not be read, so a news release is not ruled out. The registry 'checked' dates of those sources are unchanged, because this was a search for one subject and not a new full read. Re-check at the 2026-12-11 checkpoint in data/review.json and update the 'As of' date."
   },
+  "C-OR-OZ": {
+    "guide": "oregon",
+    "kind": "fact",
+    "statement": "On Nov. 5, 2026, Oregon, Washington, and two other states sued the federal government over the work or activity rules (State of Oregon v. Oz, No. 6:26-cv-02435). Oral argument is set for Jan. 12, 2027. As of Nov. 21, 2026, no court order has changed these rules.",
+    "sources": [
+      "S44",
+      "S45"
+    ],
+    "pages": [
+      "index",
+      "rules"
+    ],
+    "note": "Neutral factual note on the pending federal lawsuit challenging the Medicaid work requirements in the U.S. District Court for the District of Oregon (filed Nov. 5, 2026, S44; Jan. 12, 2027 telephone oral argument before Judge Ann L. Aiken, S45). Does not predict an outcome. Checkpoint 2027-01-12 in data/review.json."
+  },
   "C-REPORT-WAYS": {
     "guide": "oregon",
     "kind": "fact",
@@ -3264,17 +3278,32 @@
   "WA-HH-05": {
     "guide": "washington",
     "kind": "fact",
-    "statement": "As of Nov. 14, 2026, HCA's pages about the new rules did not say what Washington will choose.",
+    "statement": "On Nov. 17, 2026, HCA announced Washington will pursue delayed enforcement of the work rules. Through June 30, 2027, people in Apple Health for Adults will not lose or be denied coverage for not meeting the work rules. Six-month renewals and the 1-month past-bills limit still start Jan. 1, 2027.",
     "sources": [
-      "WA01",
-      "WA03"
+      "WA27",
+      "WA01"
     ],
     "pages": [
       "washington",
       "washington-denied",
       "washington-rules"
     ],
-    "note": "A statement about what the pages say, not about what Washington has decided. No election by Washington, and no decision against one, is verified. Checked on 2026-11-14: the text of HCA's client page on the changes (WA01) and its stakeholder page (WA03) was fetched from hca.wa.gov and searched for 'hold harmless', 'June 30, 2027', 'SMD', 'mitigation plan', and for any word of a pause, delay, or suspension of denials or of ending coverage under the rules; none appeared. WA03 still lists the separate option in the federal law to apply for a waiver to implement the work requirements by Dec. 31, 2028, and does not say Washington has asked for it. HCA's work requirements client page (WA22) answered that day and was searched the same way; none appeared. WA22 is not listed as a source here because it is not marked as read in full. HCA's news list loads by script and could not be read, so a news release is not ruled out. The registry 'checked' dates of those sources are unchanged, because this was a search for one subject and not a new full read. Re-check at the 2026-12-11 checkpoint in data/review.json and update the 'As of' date."
+    "note": "Updated 2026-11-21 from HCA's Nov. 17, 2026 announcement (WA27): HCA 'will pursue a delayed enforcement of work requirements. As a result, individuals enrolled in Apple Health for Adults will not lose coverage or be denied coverage through June 30, 2027, for failing to meet new work reporting requirements.' WA27 and WA01 confirm 6-month renewals and the 1-month retroactive coverage limit still start Jan. 1, 2027. Under S41, a state requests the hold harmless period in its mitigation plan and obtains CMS approval; verify CMS approval and any updated HCA client pages at the 2026-12-11 checkpoint."
+  },
+  "WA-OR-OZ": {
+    "guide": "washington",
+    "kind": "fact",
+    "statement": "On Nov. 5, 2026, Washington, Oregon, and two other states sued the federal government over the work rules (State of Oregon v. Oz, No. 6:26-cv-02435). Oral argument is set for Jan. 12, 2027. As of Nov. 21, 2026, no court order has changed these rules.",
+    "sources": [
+      "WA14",
+      "S44",
+      "S45"
+    ],
+    "pages": [
+      "washington",
+      "washington-rules"
+    ],
+    "note": "Neutral factual note on the pending federal lawsuit challenging the Medicaid work requirements in the U.S. District Court for the District of Oregon (WA14 item 85; Oregon DOJ tracker S44; Jan. 12, 2027 telephone oral argument on D. Or. calendar S45). Does not predict an outcome. Checkpoint 2027-01-12 in data/review.json."
   },
   "WA-CHK-01": {
     "guide": "washington",

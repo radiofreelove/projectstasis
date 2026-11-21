@@ -2,6 +2,15 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.17 beta (2026-11-21)
+
+Updated Washington's hold harmless status after HCA's Nov. 17, 2026 delayed-enforcement announcement, added a neutral pending-lawsuit note for *State of Oregon v. Oz* on Oregon and Washington pages, and clarified Spacefast header behavior on the Privacy page.
+
+- **Washington delayed enforcement (`WA27`, `WA-HH-05`).** Registered HCA's Nov. 17, 2026 announcement (`WA27`) in `data/sources.json` and `data/evidence_baseline.json`, and updated `washington.html`, `washington-rules.html`, and `washington-denied.html` to reflect that HCA will pursue delayed enforcement of the work rules so Apple Health for Adults enrollees will not lose or be denied coverage through June 30, 2027 for not meeting work reporting requirements, while 6-month renewals and the 1-month past-bills limit still start Jan. 1, 2027 (and CMS approval under `S41` remains checked on Dec. 11, 2026).
+- ***State of Oregon v. Oz* neutral note (`S44`, `S45`, `C-OR-OZ`, `WA-OR-OZ`).** Registered Oregon DOJ's litigation tracker (`S44`) and the District of Oregon Jan. 12, 2027 court calendar (`S45`), added a neutral one-sentence court note on Oregon (`index.html`, `rules.html`) and Washington (`washington.html`, `washington-rules.html`) stating that no court order has changed the rules as of Nov. 21, 2026, and added a `2027-01-12` checkpoint in `data/review.json`.
+- **Spacefast header disclosure on Privacy page.** Clarified in `src/pages/shared/privacy.html` that Cloudflare Pages sends the full HTTP security headers from `_headers` (including `frame-ancestors 'none'`), while the secondary Spacefast copy sees request IP addresses and relies on each page's `<meta>` CSP and referrer tags.
+- **Docs and README.** Updated `docs/corrections.md` (Washington item 7), `docs/dated-language.md`, `data/review.json`, and `README.md` source counts (`125` total, `27` Washington).
+
 ## 0.3.16 beta (2026-11-21)
 
 November 2026 agency detail updates across Oregon, Washington, and Utah, plus provenance, visual chunking, and secondary hosting parity with The Strand Project.
