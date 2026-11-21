@@ -1,6 +1,6 @@
 # Content style guide
 
-The site is written for people applying for OHP,, Utah Medicaid, or Washington Apple Health many of whom are stressed, short on time, reading on a phone, or reading in a second language. Write for them.
+The site is written for people applying for OHP, Utah Medicaid, or Washington Apple Health, many of whom are stressed, short on time, reading on a phone, or reading in a second language. Write for them.
 
 ## The page pattern (Smart Brevity, adapted)
 
