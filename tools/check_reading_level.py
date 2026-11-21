@@ -48,7 +48,7 @@ class MainText(HTMLParser):
             self.in_main += 1
         self.depth += 1
         classes = (attrs.get("class") or "").split()
-        if self.in_main and ("sources" in classes or "fewer-note" in classes or tag in {"script", "noscript"}):
+        if self.in_main and ("sources" in classes or "src" in classes or "fewer-note" in classes or tag in {"script", "noscript"}):
             self.skip_at.append(self.depth)
         if tag in BLOCKS:
             self.flush()

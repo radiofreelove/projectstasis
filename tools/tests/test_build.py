@@ -202,7 +202,7 @@ class AnotherGuide(BuildCase):
                     "id": f"N{number:02d}", "guide": "nevada", "title": f"Test paper {number}",
                     "short": "Test", "publisher": "Test publisher", "url": f"https://example.org/nv/{number}",
                     "format": "Web page", "kind": "state-explainer", "date_on_document": "No date shown",
-                    "checked": "2026-12-01", "opened": True, "notes": "Test entry.",
+                    "checked": "2026-12-01", "opened": True, "verified_by": "human", "public_note": "Test entry.",
                 })
         self.edit_json("sources.json", add_sources)
 
@@ -352,6 +352,49 @@ class SpacefastThemeBuild(BuildCase):
         self.assertTrue((out_dir / "assets" / "css" / "spacefast-theme.css").is_file())
         self.assertTrue((out_dir / "assets" / "licenses" / "radix-mit.txt").is_file())
         self.assertIn("#113264", (out_dir / "assets" / "img" / "logo.svg").read_text(encoding="utf-8"))
+
+
+class ProvenanceParity(BuildCase):
+    def test_invalid_verified_by_fails_build(self):
+        self.edit_json("sources.json", lambda r: r["sources"][0].update(verified_by="robot"))
+        self.assertBuildFails("'verified_by' must be one of human, tool_assisted")
+
+    def test_internal_repo_path_in_public_note_fails_build(self):
+        self.edit_json("sources.json", lambda r: r["sources"][0].update(public_note="See docs/research-log.md."))
+        self.assertBuildFails("'public_note' mentions internal repo path 'docs/research-log.md'")
+
+    def test_tool_assisted_banner_renders_only_when_citing_tool_assisted_sources(self):
+        outputs = build.build()
+        self.assertNotIn('class="review-notice"', outputs[build.SITE / "index.html"])
+        self.assertIn('class="review-notice"', outputs[build.SITE / "utah.html"])
+        self.assertIn('class="review-notice"', outputs[build.SITE / "washington.html"])
+        self.assertIn('href="utah-sources"', outputs[build.SITE / "utah.html"])
+        self.assertIn('href="utah-about#report"', outputs[build.SITE / "utah.html"])
+
+    def test_sources_page_uses_ap_dates_and_hides_internal_notes(self):
+        outputs = build.build()
+        for slug in ("sources", "utah-sources", "washington-sources"):
+            html = outputs[build.SITE / f"{slug}.html"]
+            self.assertNotIn("docs/research-log.md", html, slug)
+            self.assertNotIn("FLAG, naming rule exception", html, slug)
+            self.assertRegex(html, r'Checked: <time datetime="\d{4}-\d{2}-\d{2}">[A-Z][a-z]+\.? \d+, \d{4}</time>\.')
+
+    def test_json_artifacts_and_footer_build_hash(self):
+        outputs = build.build()
+        sources_json = json.loads(outputs[build.SITE / "sources.json"])
+        facts_json = json.loads(outputs[build.SITE / "facts.json"])
+        report = json.loads(outputs[build.SITE / "build-report.json"])
+        self.assertEqual(len(sources_json), report["source_count"])
+        self.assertEqual(len(facts_json), report["fact_count"])
+        self.assertTrue(all("internal_note" not in s for s in sources_json))
+        self.assertTrue(all("verified_by" in s for s in sources_json))
+        self.assertIn(f"Build <code>{report['build_hash']}</code>.", outputs[build.SITE / "index.html"])
+        self.assertIn('href="build-report.json"', outputs[build.SITE / "index.html"])
+        self.assertIn('href="/build-report.json"', outputs[build.SITE / "404.html"])
+
+    def test_inline_source_requires_listed_source_id(self):
+        self.edit("oregon/bills.html", "{{SRC:S01}}", "{{SRC:S02}}")
+        self.assertBuildFails("oregon/bills.html: inline source S02 is not listed in its sources")
 
 
 if __name__ == "__main__":
