@@ -29,7 +29,7 @@ jobs:
 
       - uses: actions/setup-python@v7
         with:
-          python-version: "3.12"
+          python-version: "3.13"
 
       - name: Live site matches this commit (waits up to 15 minutes for Cloudflare)
         run: python3 tools/check_live.py --wait 900
