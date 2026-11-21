@@ -1,0 +1,52 @@
+name: Deploy to Spacefast
+
+# On every push to main (and on manual runs), build a Spacefast-themed static
+# copy in site-spacefast/, check its color contrast, and publish it to the
+# project's Spacefast Space as a full snapshot replacement. The Cloudflare
+# Pages build (site/) is untouched.
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+concurrency:
+  group: deploy-spacefast
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: Build and publish Spacefast copy
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-python@v7
+        with:
+          python-version: "3.12"
+
+      - uses: actions/setup-node@v7
+        with:
+          node-version: "22"
+
+      - name: Build Spacefast-themed static site
+        run: python3 tools/build.py --theme spacefast --out site-spacefast
+
+      - name: Verify contrast on Spacefast build
+        run: python3 tools/check_contrast.py --dir site-spacefast
+
+      - name: Install Spacefast CLI
+        run: npm install -g spacefast@0.10.0
+
+      - name: Publish prebuilt site to Spacefast (full atomic replacement)
+        env:
+          SPACEFAST_TOKEN: ${{ secrets.SPACEFAST_TOKEN }}
+          SPACEFAST_SPACE: ${{ secrets.SPACEFAST_SPACE }}
+        run: |
+          sf publish ./site-spacefast --prebuilt --json > receipt.json
+          jq -e '.data.space.liveUrl' receipt.json >/dev/null
+          echo "Live URL: $(jq -r '.data.space.liveUrl' receipt.json)"
+          echo "Version: $(jq -r '.data.version.ref // "noop_publish (unchanged)"' receipt.json)"

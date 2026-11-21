@@ -319,5 +319,40 @@ class FooterDatesAndShortToggle(BuildCase):
         self.assertIn("data-detail-strip", outputs[build.SITE / "index.html"])
 
 
+class SpacefastThemeBuild(BuildCase):
+    def test_spacefast_build_links_theme_css_and_swaps_color_credit(self):
+        default_outputs = build.build()
+        sf_outputs = build.build(theme="spacefast")
+        self.assertNotIn("spacefast-theme.css", default_outputs[build.SITE / "index.html"])
+        self.assertIn(
+            '<link rel="stylesheet" href="assets/css/site.css">\n'
+            '  <link rel="stylesheet" href="assets/css/spacefast-theme.css">',
+            sf_outputs[build.SITE / "index.html"],
+        )
+        self.assertIn(
+            '<link rel="stylesheet" href="/assets/css/site.css">\n'
+            '  <link rel="stylesheet" href="/assets/css/spacefast-theme.css">',
+            sf_outputs[build.SITE / "404.html"],
+        )
+        for slug in ("accessibility", "utah-accessibility", "washington-accessibility"):
+            html = sf_outputs[build.SITE / f"{slug}.html"]
+            self.assertIn("Colors come from Radix Colors", html)
+            self.assertIn('href="assets/licenses/radix-mit.txt"', html)
+            self.assertNotIn("published palette", html)
+        for slug in ("sources", "utah-sources", "washington-sources"):
+            html = sf_outputs[build.SITE / f"{slug}.html"]
+            self.assertIn("https://www.radix-ui.com/colors", html)
+            self.assertNotIn("dhs2022.pdf", html)
+
+    def test_write_standalone_site_copies_spacefast_assets(self):
+        out_dir = self.tmp / "site-spacefast"
+        sf_outputs = build.build(theme="spacefast")
+        written = build.write_standalone_site(sf_outputs, out_dir, "spacefast")
+        self.assertGreater(written, 50)
+        self.assertTrue((out_dir / "assets" / "css" / "spacefast-theme.css").is_file())
+        self.assertTrue((out_dir / "assets" / "licenses" / "radix-mit.txt").is_file())
+        self.assertIn("#113264", (out_dir / "assets" / "img" / "logo.svg").read_text(encoding="utf-8"))
+
+
 if __name__ == "__main__":
     unittest.main()

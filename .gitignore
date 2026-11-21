@@ -5,3 +5,7 @@ screenshots/
 
 # Text of official web pages, kept by tools/evidence_audit.py to show what changed. Not committed.
 .evidence-snapshots/
+
+# Spacefast build output and local CLI state
+site-spacefast/
+.spacefast/state.json
