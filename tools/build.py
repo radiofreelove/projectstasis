@@ -102,7 +102,7 @@ SPACEFAST_DIR = ROOT / "spacefast"
 SITE_NAME = "The Stasis Project"
 BASE_URL = "https://projectstasis.pages.dev/"
 PROJECT_REPO = "https://github.com/radiofreelove/projectstasis"
-VERSION = "0.3.15 beta"
+VERSION = "0.3.16 beta"
 
 ODHS_COLORS_LINE = (
     "Colors come from the Oregon Department of Human Services' published palette. "

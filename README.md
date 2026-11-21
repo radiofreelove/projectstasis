@@ -4,13 +4,13 @@ A free, independent guide for people applying for the Oregon Health Plan (OHP), 
 
 **The site:** <https://projectstasis.pages.dev/>
 
-**Why it exists:** Each state explains the new rules across more than a dozen documents ([`data/sources.json`](data/sources.json) lists 22 from Oregon as of Nov. 2, 2026, 18 from Utah as of Nov. 10, 2026, and 25 from Washington as of Nov. 12, 2026). Many carry no date. Some were written before the latest federal rule and a federal court ruling, and a few disagree with each other. This site puts what applicants need on short pages, in plain words, and lists the official source behind every fact.
+**Why it exists:** Each state explains the new rules across more than a dozen documents ([`data/sources.json`](data/sources.json) lists 24 state explainers from Oregon as of Nov. 21, 2026, 18 from Utah as of Nov. 10, 2026, and 26 total sources from Washington as of Nov. 14, 2026; 122 registered sources in all). Many carry no date. Some were written before the latest federal rule and a federal court ruling, and a few disagree with each other. This site puts what applicants need on short pages, in plain words, and lists the official source behind every fact.
 
 **Status:** Beta (current version in [CHANGELOG.md](CHANGELOG.md)). Not yet reviewed by a lawyer, a benefits advocate, or people who use assistive technology. See [docs/roadmap.md](docs/roadmap.md).
 
 **The Utah guide was added on Nov. 10, 2026.** It starts at <https://projectstasis.pages.dev/utah>. It was researched in one day through a tool that answers questions about a document instead of returning its text. Every Utah source was accessed and reviewed against the facts it supports; the source registry shows which were read in full. A source review of the Utah guide is checkpointed for Nov. 24, 2026. See [docs/decisions/0013-utah-section.md](docs/decisions/0013-utah-section.md) and [docs/research-log.md](docs/research-log.md).
 
-**The Washington guide was added on Nov. 12, 2026.** It starts at <https://projectstasis.pages.dev/washington>. It was built from a research dossier. Every Washington source was accessed and reviewed against the facts it supports; as of Nov. 13, 2026, 1 of its 25 sources (WA25) is still marked as not read in full, and the source registry shows which sources were read in full and when. A source review of the Washington guide is checkpointed for Nov. 26, 2026. The Washington About page and its source list carry the same warning. See [docs/decisions/0015-front-door-with-three-guides.md](docs/decisions/0015-front-door-with-three-guides.md) and [docs/research-log.md](docs/research-log.md).
+**The Washington guide was added on Nov. 12, 2026.** It starts at <https://projectstasis.pages.dev/washington>. It was built from a research dossier. Every Washington source was accessed and reviewed against the facts it supports; as of Nov. 14, 2026, all 26 of its sources are marked as opened in the source registry (with WA25 read in full from the copy linked on the Washington Attorney General's litigation tracker), and the registry shows when each was checked and whether it was read by a person or with tool assistance. A targeted owner review of the Washington guide is checkpointed for Nov. 26, 2026. The Washington About page and its source list carry the same notice. See [docs/decisions/0015-front-door-with-three-guides.md](docs/decisions/0015-front-door-with-three-guides.md) and [docs/research-log.md](docs/research-log.md).
 
 ## What it is
 
@@ -76,7 +76,7 @@ Spacefast           active secondary target: deploy-spacefast.yml uses
                     spacefast/ and site/ to publish site-spacefast/
 ```
 
-The build is Python standard library only. The site has no dependencies, no cookies, no analytics, and no third-party requests. Its Content Security Policy sets `connect-src 'none'`, so the browser itself blocks the page from sending data. Cloudflare sends the policy as a header, with `frame-ancestors 'none'` so other sites cannot frame the pages, and each page repeats it in a meta tag.
+The site build (`tools/build.py`) uses the Python standard library only, and the built site has no runtime dependencies, no cookies, no analytics, and no third-party requests. (The secondary Spacefast workflow uses the `spacefast` CLI in GitHub Actions only to upload the prebuilt `site-spacefast/` folder; every page carries a `<link rel="canonical">` pointing to `https://projectstasis.pages.dev/`.) Its Content Security Policy sets `connect-src 'none'`, so the browser itself blocks the page from sending data. Cloudflare sends the policy as a header, with `frame-ancestors 'none'` so other sites cannot frame the pages, and each page repeats it in a meta tag.
 
 ## Run it on your computer
 

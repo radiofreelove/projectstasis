@@ -2,6 +2,18 @@
 
 All notable changes. Dates are when facts were checked or changes were made.
 
+## 0.3.16 beta (2026-11-21)
+
+November 2026 agency detail updates across Oregon, Washington, and Utah, plus provenance, visual chunking, and secondary hosting parity with The Strand Project.
+
+- **Oregon, Washington, and Utah agency detail updates.** Added two Oregon Health Authority explainers to `data/sources.json` and `data/evidence_baseline.json`: `S42` (OHA H.R. 1 FAQ, covering household vs. non-household caregiving, the 5-year stable recovery substance use disorder exception, and December 2026 member notices) and `S43` (OHA April 2026 H.R. 1 announcement on Healthier Oregon moving from CCOs to OHP Open Card on Jan. 1, 2027). Re-verified Washington `WA21` and `WA22` (`checked`: `2026-11-21`), adding medical frailty self-attestation through 2027 and verification starting Jan. 1, 2028 (`WA-HLT-05`), the 1-to-6 credit-hour conversion table, and HCA's work requirements screener. Re-verified Utah `U01` and `U02` (`checked`: `2026-11-21`), explaining both look-back periods on `utah-rules.html` (new applicants vs. current members).
+- **SMD# 26-006 (`S41`) full-text re-verification.** Following the Nov. 17 evidence audit report that `smd26006.pdf` changed byte length (`170,600` to `235,042` bytes), the live PDF text on `medicaid.gov` was extracted and compared in full on Nov. 21, 2026; all 4 pages and 3 footnotes are word-for-word unchanged from the Nov. 14 full read.
+- **Provenance parity.** Every source in `data/sources.json` now records `verified_by` (`human` or `tool_assisted`) and separates `public_note` from `internal_note`. Pages citing any `tool_assisted` source display an automatic review notice banner, inline `Source:` links render beside facts, and `site/` publishes `sources.json`, `facts.json`, and `build-report.json`.
+- **For nonprofits, navigators, and caseworkers.** Added `#for-organizations` to each guide's About page explaining how staff can verify sources, inspect the build report, and reuse the guides.
+- **Visual chunking, navigation, and themes.** Added semantic HTML and inline SVG icons for callouts, a header state switcher pill, dynamic per-page checked dates, Warm light theme parity, quiet `.cite-row` citations, `tel:` links, and nowrap filenames.
+- **Spacefast secondary host.** Added `spacefast/`, `.github/workflows/deploy-spacefast.yml`, and [docs/decisions/0016-spacefast-secondary-host.md](docs/decisions/0016-spacefast-secondary-host.md). Every built page continues to emit `<link rel="canonical" href="https://projectstasis.pages.dev/...">`.
+- **README updates.** Updated `README.md` source counts, `WA25` opened status, and Spacefast build notes.
+
 ## 0.3.15 beta (2026-11-19)
 
 Settled the Washington renewal-month conflict in favor of HCA's June 2026 fact sheet (`WA-RULE-08`). No source checked date changed.
