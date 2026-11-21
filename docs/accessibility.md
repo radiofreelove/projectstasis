@@ -32,9 +32,9 @@
 - Print: clean black-on-white, with web addresses printed after links.
 - No images of text. The only image is the decorative logo, with empty alt text.
 
-## Testing done for 0.1.0
+## Testing summary
 
-See [testing.md](testing.md) and the generated [testing-browser.md](testing-browser.md). In short: structure lint, contrast for 31 color pairs, reading level for 16 pages, and real-browser tests in 5 settings all passed. The axe-core engine could not be installed in the build environment, so it was not run locally; the GitHub workflow runs it.
+See [testing.md](testing.md) and the generated [testing-browser.md](testing-browser.md). For the 0.1.0 baseline, structure lint, contrast for 31 color pairs, reading level for 16 pages, and real-browser tests in 5 settings all passed (with axe-core run in the GitHub workflow because it could not be installed in the initial build environment). Current coverage spans all three state guides (52 built pages across Oregon, Utah, and Washington, as recorded in [testing-browser.md](testing-browser.md) and [reading-level.md](reading-level.md)), plus the Spacefast theme contrast check (`tools/check_contrast.py`) in `deploy-spacefast.yml`.
 
 ## Known gaps
 
