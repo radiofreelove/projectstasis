@@ -1,20 +1,20 @@
 # How the 1-minute check works
 
-Each guide has its own check, and both work the same way ([decisions/0013-utah-section.md](decisions/0013-utah-section.md)).
+Each guide has its own check, and all three work the same way ([decisions/0013-utah-section.md](decisions/0013-utah-section.md), [decisions/0015-front-door-with-three-guides.md](decisions/0015-front-door-with-three-guides.md)).
 
-| | Oregon | Utah |
-|---|---|---|
-| Page | [`src/pages/oregon/check.html`](../src/pages/oregon/check.html) | [`src/pages/utah/utah-check.html`](../src/pages/utah/utah-check.html) |
-| Words, links, and lists | [`checker-oregon.js`](../site/assets/js/checker-oregon.js) | [`checker-utah.js`](../site/assets/js/checker-utah.js) |
-| The script that runs it | [`checker.js`](../site/assets/js/checker.js) | the same file |
+| | Oregon | Utah | Washington |
+|---|---|---|---|
+| Page | [`src/pages/oregon/check.html`](../src/pages/oregon/check.html) | [`src/pages/utah/utah-check.html`](../src/pages/utah/utah-check.html) | [`src/pages/washington/washington-check.html`](../src/pages/washington/washington-check.html) |
+| Words, links, and lists | [`checker-oregon.js`](../site/assets/js/checker-oregon.js) | [`checker-utah.js`](../site/assets/js/checker-utah.js) | [`checker-washington.js`](../site/assets/js/checker-washington.js) |
+| The script that runs it | [`checker.js`](../site/assets/js/checker.js) | the same file | the same file |
 
-This page describes every input, every result, and the claim behind each line, so anyone can audit either check without reading code. The promises, steps, and result order below hold for both. The Oregon tables come first, then [the Utah tables](#the-utah-check), then [the Washington tables](#the-washington-check). Washington's check uses the same script with its own page and its own file of words.
+This page describes every input, every result, and the claim behind each line, so anyone can audit each check without reading code. The promises, steps, and result order below hold for all three. The Oregon tables come first, then [the Utah tables](#the-utah-check), then [the Washington tables](#the-washington-check).
 
 ## Promises
 
 - **Nothing leaves the device.** Answers stay in page memory. Nothing is written to storage. The Content Security Policy sets `connect-src 'none'` and `form-action 'none'`, so the browser blocks any network request. `tools/browser_check.py` confirms no storage keys and no outside requests after a full run.
 - **No immigration questions.** `tools/check_structure.py` fails the build if any form label mentions immigration or citizenship.
-- **No decisions.** Results say "may" and "likely." Every result ends with "Only OHP decides. This check is not a decision." (Utah: "Only the state decides.")
+- **No decisions.** Results say "may" and "likely." Every result ends with "Only OHP decides. This check is not a decision." (Utah: "Only the state decides.") (Washington: "Only Washington decides.")
 - **One state at a time.** `tools/browser_check.py` fails if a result in one check uses another guide's own words (its `own_words` in `tools/build.py`: "OHP" for Oregon, "Apple Health" and "Washington" for Washington, "Utah" for Utah) or links to another guide.
 - **No dead ends.** Every result names a next step and a link.
 
