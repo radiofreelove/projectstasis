@@ -14,7 +14,7 @@ A free, independent guide for people applying for the Oregon Health Plan (OHP), 
 
 ## What it is
 
-- Three complete guides built the same way, 17 pages each for OHP applicants, Apple Health applicants, and Utah Medicaid applicants. Each guide has its own home page, 1-minute check, About, Privacy, Accessibility, and Every source pages, so a reader never lands in another state's guide by accident. The build stops if a page in one guide links to a page in another, other than its home page. Each page is written in a Smart Brevity style: a plain headline, one line on why the page exists, a few bold-labeled bullets, then details.
+- Three complete guides built the same way: 13 content pages (plus `_not-found.html`) per state guide for OHP, Apple Health, and Utah Medicaid applicants, plus 4 shared pages (and `404.html`) in `src/pages/shared/`, for 17 content pages per guide when built. Each guide has its own home page, 1-minute check, About, Privacy, Accessibility, and Every source pages, so a reader never lands in another state's guide by accident. The build stops if a page in one guide links to a page in another, other than its home page. Each page is written in a Smart Brevity style: a plain headline, one line on why the page exists, a few bold-labeled bullets, then details.
 - A 1-minute check ("Do the rules fit me?") for each state that runs in the browser. Answers are never stored or sent.
 - Links to each state's own forms, phone lines, and pages, including the paper OHP application in 17 languages and Utah's application in English and Spanish. Nothing is copied or re-hosted, so the forms are always the state's current versions.
 - Display settings for text size, spacing, an easy-to-read font (Atkinson Hyperlegible Next, the same option as The Strand Project), colors (warm light, plain white, dark, high contrast), and a "short version" mode.
@@ -39,7 +39,7 @@ Everything behind the site is public and checkable.
 | How does the 1-minute check decide what to show? | [docs/checker-logic.md](docs/checker-logic.md) |
 | Is it accessible, and for whom? | [docs/accessibility.md](docs/accessibility.md), [docs/contrast.md](docs/contrast.md), [docs/reading-level.md](docs/reading-level.md), [docs/testing.md](docs/testing.md) |
 | What happens to visitors' data, and what does the host see? | [docs/privacy.md](docs/privacy.md) |
-| Where is it hosted, and how does it get there? | [docs/decisions/0011-cloudflare-pages.md](docs/decisions/0011-cloudflare-pages.md) and [docs/maintenance.md](docs/maintenance.md#cloudflare-pages-settings) |
+| Where is it hosted, and how does it get there? | [docs/decisions/0011-cloudflare-pages.md](docs/decisions/0011-cloudflare-pages.md) and [docs/maintenance.md](docs/maintenance.md#cloudflare-pages-settings), plus Spacefast ([.github/workflows/deploy-spacefast.yml](.github/workflows/deploy-spacefast.yml)) |
 | Why was it built this way? | [docs/decisions/](docs/decisions/) |
 | When must it be re-checked, and how? | [data/review.json](data/review.json) and [docs/maintenance.md](docs/maintenance.md) |
 | What was researched, and what could not be checked? | [docs/research-log.md](docs/research-log.md) |
@@ -49,9 +49,9 @@ Everything behind the site is public and checkable.
 
 ```text
 src/pages/           page text, each with a short metadata header, in one
-                     folder per guide (oregon/, utah/, washington/) plus
+                     folder per guide (oregon/, utah/, washington/: 13 content pages + _not-found.html each) plus
                      shared/: the 4 pages marked "shared: yes", built once
-                     for each guide
+                     for each guide, plus 404.html
 data/sources.json    every outside source and link (the registry)
 data/claims.json     every factual statement and what supports it (the fact log)
 data/palette.json    ODHS colors and every color pair the site uses
@@ -72,6 +72,8 @@ site/                plain HTML, CSS, three small scripts, and _headers.
         v
 Cloudflare Pages     checks that site/ is current, then publishes it as is,
                      sending the headers in site/_headers
+Spacefast           active secondary target: deploy-spacefast.yml uses
+                    spacefast/ and site/ to publish site-spacefast/
 ```
 
 The build is Python standard library only. The site has no dependencies, no cookies, no analytics, and no third-party requests. Its Content Security Policy sets `connect-src 'none'`, so the browser itself blocks the page from sending data. Cloudflare sends the policy as a header, with `frame-ancestors 'none'` so other sites cannot frame the pages, and each page repeats it in a meta tag.
@@ -88,7 +90,7 @@ python3 tools/serve.py    # serve it the way Cloudflare Pages does, then open ht
 | Command | What it proves |
 |---|---|
 | `python3 tools/build.py --check` | The site matches its sources; every link is registered; every fact is logged and sourced on its page |
-| `python3 -m unittest discover -s tools/tests` | The tools themselves: the rules that keep each guide whole, a made-up third guide, the link checker and the evidence audit against local test servers, the checked-date updater, and the release notes |
+| `python3 -m unittest discover -s tools/tests` | The tools themselves: the rules that keep each guide whole, a synthetic test guide, the link checker and the evidence audit against local test servers, the checked-date updater, and the release notes |
 | `python3 tools/check_structure.py` | Language, titles, one h1, no skipped headings, skip link, landmarks, labels, unique IDs, valid ARIA references, CSP and referrer policy (in each page and in `site/_headers`), no new windows, no immigration questions, and every internal link points to a page or file that exists |
 | `python3 tools/check_contrast.py` | Every color pair meets 7:1 for text and 3:1 for borders and focus |
 | `python3 tools/check_reading_level.py` | Each page's estimated reading grade (target 6, fails above 8) |
